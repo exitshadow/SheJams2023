@@ -1,0 +1,81 @@
+# ===============
+# Unity generated
+# ===============
+Temp/
+Library/
+Build/
+Builds/
+Resources/Images/
+Logs/
+Recordings/
+Assets/TMP/
+UserSettings/Layouts/
+ConceptArt/
+
+# =================
+# Blender generated
+# =================
+*.blend[0-9]*
+
+# =====================================
+# Visual Studio / MonoDevelop generated
+# =====================================
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+/*.csproj
+*.csproj
+*.sln
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
+.vscode/
+*.code-workspace
+
+# ============
+# OS generated
+# ============
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.apk
+
+# =========
+# Specifics
+# =========
+delete.me.meta
+achievements_data.bytes*
+*.mo
+
+
+
+# ======
+# Bakery
+# ======
+bakery_times.log
+_tempScene*
+
+.vs/
+Screenshots/
+Screenshots.meta
+
+.uvblog.txt
+.uvgblog.txt
+.denoiserlog.txt
+.ftracelog.txt
+
+
+
+# =======
+# SteamVR
+# =======
+
+unityProject.vrmanifest
