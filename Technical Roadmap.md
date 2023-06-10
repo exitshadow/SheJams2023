@@ -90,7 +90,7 @@ If you find yourself writing a lot of code, split it in different methods instea
 
 #### Make use of summary tag
 
-Instead of writing comments on the top of a method, please use the C# <summary> tag in the comments above it. This will tell the IDE to show the comment about how a function is supposed to work when someone hovers over the method’s name.
+Instead of writing comments on the top of a method, please use the C# `<summary>` tag in the comments above it. This will tell the IDE to show the comment about how a function is supposed to work when someone hovers over the method’s name.
 
 Ideally, all methods should have a summary when they do something that cannot be explained in their names.
 
