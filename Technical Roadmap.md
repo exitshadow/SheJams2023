@@ -20,6 +20,8 @@ Even if the project scope is very small, I’d recommend to encapsulate as much 
 
 :arrow_right: Getters and setters **aren’t** needed at this point, as they would only complicate the code for no gain.
 
+Public variables should be used only in the case the variable *has* to be accessed by another script. In that case, it is likely that we do not want to expose that variable in the inspector and mess with the values. In that case you should use the `[HideInInspector]` attribute.
+
 ### Reference injection
 
 We’re opting to work through direct reference injections in the class member variables rather that `GameObject.Find()` in order to keep things clean.
@@ -127,7 +129,31 @@ More on this here : https://marketsplash.com/tutorials/c-sharp/csharp-how-to-cre
 
 
 
-# Features / Scripts to implement
+# Priority features
+
+## General comments on architecture
+
+It has been resolved that given the extremely small scope of the project, we’ll opt for a small script per entity or NPC, that inherit from an abstract class for common implementations. The inventory system is just about checking the values assigned to given variables. In the case the game succeeds and goes to further development, it should be replaced by a proper inventory and quest system.
+
+## Commercial Package Dependencies
+
+We use the TextAnimator commercial package to manage the animation of the text. I do own a license.
+
+## Unity Built-In Dependencies
+
+These are the main engine-specific things we’re going to use in the project.
+
+I recommend consulting the corresponding Unity Manual entry for those at least for a quick overview before starting coding. Don’t hesitate to DM me for questions.
+
+- Animator
+- Canvas / RectTransform / Button / Toggle ... (Unity UI system elements)
+
+- Unity Events
+
+- Trigger Colliders
+- NavMeshAgent (basic features)
+- Action Input (new system)
+- (will be updated in case)
 
 ## Scriptable Objects
 
@@ -176,31 +202,178 @@ This asset contains the lines that a NPC can say. Mostly based on @CaptainV’s 
 
 https://github.com/CaptainVanessa/TLSC_v1/blob/dev/Assets/%23Project/Scripts/Dialogues/Dialogue.cs
 
-### MonoBehaviours (Component scripts)
+## MonoBehaviours (Component scripts)
 
 Those are classes that are used as `Components` in a `GameObject`. Contrarily to Scriptable Objects, their data is persistent only during the time of existence of the Game Object they are attached to.
 
-### `GameState.cs`
+### Managers
+
+Those are scripts that are ubiquitous to the scene and have only one instance.
+
+#### `GameManager.cs`
 
 This is the handler for a `GameStateAsset` asset. Its job is to handle the data contained in the asset so other scripts don’t directly touch it. It will be present on a Game Object called "Game State" present in each scene, and components that need to access it will reference the Game State component and not the asset itself.
 
-#### Member variables
+##### Member variables
 
-- private GameStateAsset stateAsset
+- `private GameStateAsset stateAsset`
 
-#### Methods
+##### Methods
 
 It will contain methods that assign new values to the variables of the referenced stateAsset, as well as eventual checks.
 
-### `Inventory.cs`
+#### `InventoryManager.cs`
 
 Also a handler, but for an `InventoryAsset`.
 
-#### Member variables
+##### Member variables
 
-- private InventoryAsset inventoryAsset;
+- `private InventoryAsset inventoryAsset`
 
-#### Methods
+##### Methods
 
 Methods that assign new values to the variables of the referenced inventoryAsset, as well as eventual checks.
+
+#### `UIManager.cs`
+
+The UI Display class is in charge of displaying all the texts in their respective places, as well as triggering specific animations when applicable. UI behaviour specific to a Game Object should be defined on a Component of that element.
+
+##### Member variables
+
+- every RectTransform that represents a UI group that we want to control (private)
+- every TextAnimator / TextMeshProUIGUI fields that have to refresh their text (private)
+
+##### Methods
+
+Most of the methods of an UI manager are to be accessed through Unity Events, they therefore have to be public. Some can be accessed by other scripts. 
+
+- Methods that open and close windows and trigger animations
+- Methods that replace the text inside of the box. Flow management of the text animation should be taken in charge by the TextAnimator attached to the targeted text.
+
+:arrow_right: There should be as many methods of opening / closing groups that there are groups referenced as member variables
+
+:arrow_right: There should be as many methods of refreshing text as there are target TextAnimators & TMP elements
+
+### NPCs
+
+The NPCs have an abstract class NPC of which they inherit common behaviour such as the lines of the dialogue and the management of their animations
+
+#### `NPC.cs`
+
+##### Member variables
+
+Accessor: protected (children of the class can access it but not external scripts)
+
+Attribute `[SerializeField]` (otherwise it’s not going to show up in the inspector just as with private variables).
+
+###### Global references
+
+- a reference to a NPCDialogueAsset
+- a reference to the GameManager
+- a reference to the UIManager
+- subscription to a delegate that listens to player interacting actions ?
+
+###### GameObject references
+
+This means the script requires components of the following types so it can find them and set the reference:
+
+- a reference to the NPC Animator
+- a reference to its Trigger Collider
+- a reference to its NavMeshAgent
+
+##### Public methods
+
+- All methods needed to fetch the dialogues from the NPCDialogueAsset
+- methods to inject the changing lines in the UIManager
+
+##### Virtual methods
+
+- Dialogue inializer. Most of it should be definid in the abstract class, specifics are defined by the inherited class (eg, a specific element to be checked etc.)
+
+#### `Dad.cs`
+
+Inherits from the `NPC` abstract class.
+
+- any supplementary method seen fit
+
+#### `ButterflyNeighbour.cs`
+
+Inherits from the `NPC` abstract class.
+
+- any supplementary method seen fit
+
+#### Etc.
+
+For every new character, the same architecture is used.
+
+### Player Controls & Logic
+
+#### `PlayerController.cs`
+
+This is the class that manages the logic of the inputs to make the player execute actions
+
+##### References
+
+- Animator
+- Collider
+- Trigger Collider
+- InputMap
+
+##### Members (exposed)
+
+- base speed
+- run speed
+- steering speed
+
+##### Methods
+
+- methods to manage inputs & turn them into parameters for moving & steering
+- methods that use the parameters and logic to trigger or change animations in the Animator state machine
+
+# Special Features
+
+Those are given by order of priority.
+
+## Annoying Phone Text Messages
+
+### Scriptable Objects
+
+#### `AnnoyingTextMessageAsset.cs`
+
+##### Members
+
+- image with the texture of the sender
+- name of the sender
+- content of the text
+
+#### `AnnoyingPhone.cs`
+
+It’s a component that is attached to the player Game Object.
+
+##### Required features
+
+- regularly sends off messages to the screen with annoying questions from friends
+  - makes an annoying noise
+  - shows that there is an unread notification and a button to tell the player to open it
+  - regularly animates on the screen
+  - waits for the player to push a button to read their waiting message
+  - displays message
+  - close message on closing button
+  - only sends off a new message if last message is read
+
+##### References
+
+- UI Display, since it has to change stuff
+- list of `AnnoyingTextMessage` assets
+- Player Controller
+
+## Get The Tuna
+
+## Feed The Cat
+
+## Capture The Butterflies
+
+## Clean Dad’s Computer
+
+
 
