@@ -260,11 +260,15 @@ The NPCs have an abstract class NPC of which they inherit common behaviour such 
 
 #### `NPC.cs`
 
+The UI provides an event button of advancing the lines of the dialogue. All NPCs do subscribe to this event and the triggered method(s) must check if the NPC is currently enabled.
+
 ##### Member variables
 
 Accessor: protected (children of the class can access it but not external scripts)
 
 Attribute `[SerializeField]` (otherwise it’s not going to show up in the inspector just as with private variables).
+
+- a boolean that checks if the dialogue is being played now
 
 ###### Global references
 
