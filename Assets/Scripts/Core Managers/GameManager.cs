@@ -10,6 +10,7 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
     private GameStateAsset gameStateData;
 
     /// <summary>
@@ -74,6 +75,14 @@ public class GameManager : MonoBehaviour
     public void ConfirmCatIsFed()
     {
         gameStateData.hasFoundTuna = true;
+    }
+
+    /// <summary>
+    /// To be called by a Unity Event after having been scolded by the veterinarian.
+    /// </summary>
+    public void ConfirmSpokeToVet()
+    {
+        gameStateData.hasSpokenToVet = true;
     }
 
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 /// Class representing the Game State that will be used by the GameManager script in a scene.
 /// It allows for persistent data within an execution run.
 /// </summary>
-[CreateAssetMenu(menuName = "Game State Asset", fileName = "Game State Asset")]
+[CreateAssetMenu(menuName = "Handiman Data Assets/Game State Asset", fileName = "Game State Asset")]
 public class GameStateAsset : ScriptableObject
 {
     [Header("Game State Tracking Variables — Exposed for debugging purposes only")]
@@ -19,6 +19,7 @@ public class GameStateAsset : ScriptableObject
     [Header("Cat Cans Quest")]
     public bool hasEncounteredCat = false;
     public bool hasFoundTuna = false;
+    public bool hasSpokenToVet = false;
     public bool hasFedCat = false;
     [Header("Dad Quest")]
     public bool hasResetDadsComputer = false;
