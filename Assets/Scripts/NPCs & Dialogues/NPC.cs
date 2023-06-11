@@ -8,36 +8,57 @@ using UnityEngine.AI;
 /// </summary>
 public class NPC : MonoBehaviour
 {
-    [SerializeField]
-    protected NPCDialogueAsset npcDialogueData;
-    protected Queue<NPCDialogueAsset.DialogueSegment> dialogueQueued = new Queue<NPCDialogueAsset.DialogueSegment>();
-    protected GameManager gameManager;
-    protected UIManager uiManager;
+    [Header("GlobalReferences")]
+    [SerializeField] protected NPCDialogueAsset dialogueData;
+    [SerializeField] protected GameManager gameManager;
+    [SerializeField] protected UIManager uiManager;
+    
+    
     // subscription to a delegate that listens to player interacting actions ?
 
-    protected Animator npcAnimator;
-    protected Collider npcTriggerCollider;
-    protected NavMeshAgent npcNavMeshAgent;
+    #region inner references
+    protected Animator animator;
+    protected Collider triggerCollider;
+    protected NavMeshAgent navMeshAgent;
+    #endregion
+
+    #region state tracking
     private bool isPlayingDialogue;
+    protected Queue<NPCDialogueAsset.DialogueSegment> QueuedDialogue = new Queue<NPCDialogueAsset.DialogueSegment>();
+    #endregion
 
-    public void FetchDialogue(){ // from the NPCDialogueAsset
-        dialogueQueued.Clear();
-
-    }
-
-    public void InjectDialogue(){ // into the UIManager
-        if (dialogueQueued.Count == 0){
-            // End Dialogue
-            return;
+    public void FetchDialogue(List<NPCDialogueAsset.DialogueSegment> dialogueSegment)
+    {
+        QueuedDialogue.Clear();
+        foreach (NPCDialogueAsset.DialogueSegment dialogue in dialogueSegment)
+        {
+            QueuedDialogue.Enqueue(dialogue);
+            Debug.Log("fetched dialogue line");
         }
-        NPCDialogueAsset.DialogueSegment currentDialogue = dialogueQueued.Dequeue();
-        // send currentDialogue to UI Manager
-        // play "talking" sound?
     }
 
-    public virtual void InitializeDialogue(NPCDialogueAsset _dialogue){ // specifics are defined by the inherited class
+    public void InjectDialogue()
+    {
+        if (QueuedDialogue.Count == 0) return;
 
-        // set npcAnimator to talking
+        NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
+
+        Debug.Log(currentDialogue.speakerName + ": " + currentDialogue.dialogueText);
+        // send currentDialogue to UI Manager
+    }
+
+    public virtual void InitializeDialogue(NPCDialogueAsset _dialogue)
+    {
+
+    }
+
+    protected virtual void Awake()
+    {
+        FetchDialogue(dialogueData.questStartingDialogueSegments);
+    }
+
+    protected virtual void Start()
+    {
 
     }
 }

@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Vet : NPC
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void InitializeDialogue(NPCDialogueAsset _dialogue)
     {
-        
+        base.InitializeDialogue(_dialogue);
+        Debug.Log("initializing dialogue vet");
+        InjectDialogue();
+        InjectDialogue();
+        InjectDialogue();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Awake()
     {
-        
+        base.Awake();
+    }
+
+    protected override void Start()
+    {
+        InitializeDialogue(this.dialogueData);
     }
 }
