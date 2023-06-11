@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29c2bcddbe335a46a8925df394efe1e, type: 3}
+  m_Name: Dad Dialogue Asset
+  m_EditorClassIdentifier: 
+  questStartingDialogueSegments:
+  - speakerName: Dad
+    dialogueText: "Iman! Can you come check my computer? It\u2019s broken again!"
+  - speakerName: Iman
+    dialogueText: "Ah, uh, sorry, dad\u2026 I have to, uh, go see our neighbor! Yes.
+      She called earlier saying she needed help with something\u2026"
+  - speakerName: Dad
+    dialogueText: "Alright, alright. Have a nice day! Don\u2019t stay out too late."
+  - speakerName: Iman
+    dialogueText: "I\u2019ll take a look when I get back!"
+  questWaitingDialogueSegments:
+  - speakerName: Dad
+    dialogueText: "Ah, my daughter, you\u2019re back!"
+  - speakerName: Iman
+    dialogueText: Using the daughter card, I see.
+  - speakerName: Dad
+    dialogueText: Yes. Will you check my computer now?
+  - speakerName: Iman
+    dialogueText: You said it was broken, right? It worked fine yesterday. What did
+      you do?
+  - speakerName: Dad
+    dialogueText: "Nothing! I turned it on and there\u2019s images that keep appearing!"
+  - speakerName: Iman
+    dialogueText: Hm, you mean spam? Maybe it caught a virus.
+  - speakerName: Dad
+    dialogueText: So my computer is sick? Can you take a look?
+  - speakerName: Iman
+    dialogueText: "It\u2019s not really my area\u2026"
+  - speakerName: Dad
+    dialogueText: "My daughter has a diploma in computer science and can\u2019t even
+      help her own dad?"
+  - speakerName: Iman
+    dialogueText: "Okay, fine! I\u2019ll take a look."
+  questProgressingDialogueSegments:
+  - speakerName: Iman
+    dialogueText: Hm, I see.
+  - speakerName: Dad
+    dialogueText: What?
+  - speakerName: Iman
+    dialogueText: "So if I do this, and I download that, and I delete some stuff\u2026"
+  - speakerName: Dad
+    dialogueText: What are you doing?
+  - speakerName: Iman
+    dialogueText: ...
+  - speakerName: Dad
+    dialogueText: ...
+  - speakerName: Iman
+    dialogueText: Let me try something else.
+  - speakerName: Dad
+    dialogueText: ...
+  - speakerName: Iman
+    dialogueText: There we go!
+  - speakerName: Dad
+    dialogueText: Did you do it?
+  - speakerName: Iman
+    dialogueText: Yes. I just reset to factory settings.
+  questEndingDialogueSegments:
+  - speakerName: Dad
+    dialogueText: "Ah, I have such a smart daughter! I knew it. I said to myself:
+      \u201CShe can do it!\u201D"
+  - speakerName: Iman
+    dialogueText: Don't mention it.
+  - speakerName: Dad
+    dialogueText: "I know you will do great things. I\u2019m so proud!"
+  - speakerName: Iman
+    dialogueText: "Alright, alright. I think that\u2019s enough for today."
+  - speakerName: Dad
+    dialogueText: Thanks for playing!
+  - speakerName: Iman
+    dialogueText: Huh, what?
+  - speakerName: Dad
+    dialogueText: "Don\u2019t forget to leave us a review!"
+  - speakerName: Iman
+    dialogueText: ...
+  - speakerName: Dad
+    dialogueText: Like and subscribe!
+  - speakerName: Iman
+    dialogueText: ... Hope you enjoyed the game!

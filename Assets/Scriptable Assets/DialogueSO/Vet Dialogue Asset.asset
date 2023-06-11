@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29c2bcddbe335a46a8925df394efe1e, type: 3}
+  m_Name: Vet Dialogue Asset
+  m_EditorClassIdentifier: 
+  questStartingDialogueSegments:
+  - speakerName: Vet
+    dialogueText: "Hey, you can\u2019t give that cat tuna!"
+  - speakerName: Iman
+    dialogueText: "What, why? Don\u2019t cats like fish?"
+  - speakerName: Vet
+    dialogueText: "They do, but this is tuna. They might like the strong smell, but
+      it\u2019s not a well-balanced food. Plus, this cat is allergic to tuna."
+  - speakerName: Iman
+    dialogueText: Oh, no!
+  - speakerName: Vet
+    dialogueText: "It\u2019s fine, it just means there\u2019s going to be some hair
+      loss and a ton of farting. I\u2019m bringing it for observation, but no need
+      to worry."
+  - speakerName: Iman
+    dialogueText: "Okay\u2026 Goodbye, doctor. Sorry, kittycat."
+  questWaitingDialogueSegments: []
+  questProgressingDialogueSegments: []
+  questEndingDialogueSegments: []

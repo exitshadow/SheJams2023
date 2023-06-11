@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29c2bcddbe335a46a8925df394efe1e, type: 3}
+  m_Name: Neighbor Dialogue Asset
+  m_EditorClassIdentifier: 
+  questStartingDialogueSegments:
+  - speakerName: Neighbour
+    dialogueText: "You\u2019re here! Finally, finally!"
+  - speakerName: Iman
+    dialogueText: "I am, I am! What\u2019s the matter?"
+  - speakerName: Neighbor
+    dialogueText: Butterflies, Iman! Butterflies everywhere!
+  - speakerName: Iman
+    dialogueText: Yes, summer is coming, there are going to be butterflies.
+  - speakerName: Neighbor
+    dialogueText: "No, no. They\u2019re in my house! My house is full of butterflies!
+      I have a chronic fear of them."
+  - speakerName: Iman
+    dialogueText: "Aren\u2019t you wearing a butterfly pattern?"
+  - speakerName: Neighbor
+    dialogueText: "It\u2019s called exposure therapy! But anyways, what can I do?
+      You\u2019re so smart, Iman. Surely you can help me\u2026"
+  - speakerName: Iman
+    dialogueText: "I don\u2019t really\u2013 fine. Better this than dealing with
+      another of dad\u2019s computer questions. Hm\u2026 Butterflies\u2026 Oh, there\u2019s
+      this tree in the park, it grows flowers that attract butterflies! If I bring
+      a branch, I could lead them out of the house."
+  - speakerName: Neighbor
+    dialogueText: Yes, yes! Thank you!
+  - speakerName: Iman
+    dialogueText: Well, off I go, I guess.
+  questWaitingDialogueSegments:
+  - speakerName: Neighbor
+    dialogueText: Come back with a branch from that blooming tree in the park!
+  questProgressingDialogueSegments:
+  - speakerName: Iman
+    dialogueText: "Here\u2019s the branch."
+  - speakerName: Neighbor
+    dialogueText: "Wonderful, wonderful! Here, I\u2019ll open the door, and you get
+      them out, yes?"
+  - speakerName: Iman
+    dialogueText: "I mean, it\u2019s not going to happen by itself, right? That would
+      be nice\u2026"
+  - speakerName: Neighbor
+    dialogueText: ...
+  - speakerName: Iman
+    dialogueText: Just open the door, please.
+  questEndingDialogueSegments:
+  - speakerName: Neighbor
+    dialogueText: Iman, thank you, thank you!
+  - speakerName: Iman
+    dialogueText: "Don\u2019t worry about it."
+  - speakerName: Neighbor
+    dialogueText: I can finally go back inside. Have a nice day, Iman!
+  - speakerName: Iman
+    dialogueText: "I feel like it\u2019s sarcastic, at this point. Well, time to
+      go home."
