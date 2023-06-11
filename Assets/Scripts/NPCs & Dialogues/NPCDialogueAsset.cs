@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCDialogueAsset : MonoBehaviour
+/// <summary>
+/// contains the lines that a NPC can say
+/// </summary>
+[CreateAssetMenu(menuName = "Handiman Data Assets/NPC Dialogue Asset", fileName = "NPC Dialogue Asset")]
+public class NPCDialogueAsset : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string dialogueName;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    [Header("First dialogue")]
+    public List<DialogueSegment> firstDialogueSegments = new List<DialogueSegment>();
+
+    [Header("Quest dialogue")]
+    public List<DialogueSegment> questDialogueSegments = new List<DialogueSegment>();
+    public List<DialogueSegment> recapDialogueSegments = new List<DialogueSegment>();
+
+    [Header("Quest done dialogue")]
+    public List<DialogueSegment> endDialogueSegments = new List<DialogueSegment>();
+
+    [System.Serializable]
+    public struct DialogueSegment{
+        public string dialogueText;
+        // public List<DialogueChoice> dialogueChoices;
     }
 }
