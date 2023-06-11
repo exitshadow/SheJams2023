@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Inherits from the NPC abstract class.
+/// </summary>
 public class Dad : NPC
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public override void InitializeDialogue(NPCDialogueAsset _dialogue){
+        // if (gameStateData.hasResetDadsComputer){
+        //     foreach (NPCDialogueAsset.DialogueSegment dialogueQueue in _dialogue.questEndingDialogueSegments){
+        //     dialogueQueued.Enqueue(dialogueQueue);
+        //     }
+        //     // DisplayNextSentence();
+        //     // dialogueUI.SetActive(false);
+        // }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
