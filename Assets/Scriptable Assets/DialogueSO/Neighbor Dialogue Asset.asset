@@ -31,9 +31,11 @@ MonoBehaviour:
       You\u2019re so smart, Iman. Surely you can help me\u2026"
   - speakerName: Iman
     dialogueText: "I don\u2019t really\u2013 fine. Better this than dealing with
-      another of dad\u2019s computer questions. Hm\u2026 Butterflies\u2026 Oh, there\u2019s
-      this tree in the park, it grows flowers that attract butterflies! If I bring
-      a branch, I could lead them out of the house."
+      another of dad\u2019s computer questions."
+  - speakerName: Iman
+    dialogueText: "Hm\u2026 Butterflies\u2026 Oh, there\u2019s this tree in the park,
+      it grows flowers that attract butterflies! If I bring a branch, I could lead
+      them out of the house."
   - speakerName: Neighbor
     dialogueText: Yes, yes! Thank you!
   - speakerName: Iman
