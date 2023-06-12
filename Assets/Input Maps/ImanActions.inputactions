@@ -1,5 +1,5 @@
 {
-    "name": "Input Actions",
+    "name": "ImanActions",
     "maps": [
         {
             "name": "Player",
@@ -46,6 +46,15 @@
                     "type": "PassThrough",
                     "id": "dbb9be56-b39b-4ff9-a332-3c3ac016ebf4",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "6470f125-cfc4-43d7-832e-34159706073f",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -304,6 +313,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "544a6ee5-f46a-4a26-9f08-06ddae9bb753",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f797ad8-16ad-4b87-a746-575c9cff2114",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

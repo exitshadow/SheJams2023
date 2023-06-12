@@ -18,11 +18,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float steeringSpeed;
 
     private ImanActions actions;
-    private InputAction move;
+    private InputAction playerMove;
+    private InputAction playerInteract;
+    private InputAction playerCancel;
+    private InputAction playerPickUpPhone;
+    private InputAction playerRun;
+
     private CharacterController controller;
     private Rigidbody rb;
     private Animator animator;
-
 
     public void OnMoveCharacter()
     {
@@ -34,7 +38,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Run(InputAction.CallbackContext context){
+    public void Run(InputAction.CallbackContext context)
+    {
         if (context.performed) moveSpeed = runSpeed;
         else moveSpeed = walkSpeed;
     }
@@ -44,7 +49,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Activate(InputAction.CallbackContext context){
+    public void Interact(InputAction.CallbackContext context)
+    {
         if (context.performed) Debug.Log("Interact Unity Event Called");
     }
 
@@ -55,14 +61,29 @@ public class PlayerController : MonoBehaviour
         actions = new ImanActions();
         controller = GetComponent<CharacterController>();
 
-        move = actions.Player.Move;
-        move.Enable();
+        playerInteract = actions.Player.Interact;
+        playerInteract.Enable();
+
+        playerCancel = actions.Player.Cancel;
+        playerCancel.Enable();
+
+        playerPickUpPhone = actions.Player.PickUpPhone;
+        playerPickUpPhone.Enable();
+
+        playerRun = actions.Player.Run;
+        playerRun.Enable();
+
+        playerMove = actions.Player.Move;
+        playerMove.Enable();
+
+
         moveSpeed = walkSpeed;
 
     }
 
-    private void FixedUpdate(){
-        Vector2 moveDirection = move.ReadValue<Vector2>();
+    private void FixedUpdate()
+    {
+        Vector2 moveDirection = playerMove.ReadValue<Vector2>();
 
         float verticalSpeed = 0;
 
