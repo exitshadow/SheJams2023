@@ -44,10 +44,11 @@ GameObject:
   - component: {fileID: 2781836945021453561}
   - component: {fileID: 4617397972177446174}
   - component: {fileID: 2329569983424723825}
+  - component: {fileID: 1270951696}
   m_Layer: 0
   m_Name: ImanTestController
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -94,45 +95,61 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2329569983424723825}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f63a90f7-6a2c-4079-a9b1-447cad2ba74d
-    m_ActionName: Player/Interact[/Keyboard/e]
+    m_ActionName: Player/Interact
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 58a67143-251d-4ef8-9353-422e6bb9a945
-    m_ActionName: Player/Cancel[/Keyboard/q]
+    m_ActionName: Player/Cancel
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: cf557c0a-650d-4b64-a617-d6e7a84266e2
-    m_ActionName: Player/Pick Up Phone[/Keyboard/r]
+    m_ActionName: Player/Pick Up Phone
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 528cdc86-6b9a-4cab-8b51-a635b769fdc3
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: Player/Move
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: dbb9be56-b39b-4ff9-a332-3c3ac016ebf4
-    m_ActionName: Player/Look[/Mouse/delta]
+    m_ActionName: Player/Look
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 615635ee-9aa1-4a62-8967-3e75b05bf8b9
-    m_ActionName: UI / Phone/Accept[/Keyboard/e]
+    m_ActionName: UI / Phone/Accept
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: c6730f2c-2637-44fd-aaa4-8e4a1a95a0a0
-    m_ActionName: UI / Phone/Cancel / Back[/Keyboard/q]
+    m_ActionName: UI / Phone/Cancel / Back
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: ff42ce43-eb3d-4185-862e-0fd956cc7f28
-    m_ActionName: UI / Phone/Leave UI[/Keyboard/r]
+    m_ActionName: UI / Phone/Leave UI
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: ed9f83c0-ea43-4a54-b0ab-5a7a903df30a
-    m_ActionName: UI / Phone/Pause[/Keyboard/enter]
+    m_ActionName: UI / Phone/Pause
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: a8811cf5-9f86-42d9-afed-4831ab73ebd2
-    m_ActionName: UI / Phone/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: UI / Phone/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6470f125-cfc4-43d7-832e-34159706073f
+    m_ActionName: Player/Run[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -186,8 +203,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92be7b4df6e0d3e4da20139d0daa995e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  walkSpeed: 3
+  runSpeed: 20
   steeringSpeed: 0
+--- !u!143 &1270951696
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489551291734799639}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.6
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.0001
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0.8}
 --- !u!1001 &5368542162711076354
 PrefabInstance:
   m_ObjectHideFlags: 0
