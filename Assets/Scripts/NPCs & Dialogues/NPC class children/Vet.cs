@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Vet : NPC
 {
-    public override void InitializeDialogue(NPCDialogueAsset _dialogue)
+    public override void InitializeDialogue()
     {
-        base.InitializeDialogue(_dialogue);
+        base.InitializeDialogue();
         Debug.Log("initializing dialogue vet");
         InjectDialogue();
         InjectDialogue();
@@ -20,6 +20,6 @@ public class Vet : NPC
 
     protected override void Start()
     {
-        InitializeDialogue(this.dialogueData);
+        InitializeDialogue();
     }
 }

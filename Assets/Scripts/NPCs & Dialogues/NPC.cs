@@ -47,7 +47,7 @@ public class NPC : MonoBehaviour
         // send currentDialogue to UI Manager
     }
 
-    public virtual void InitializeDialogue(NPCDialogueAsset _dialogue)
+    public virtual void InitializeDialogue()
     {
 
     }

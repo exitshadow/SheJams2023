@@ -7,7 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Dad : NPC
 {
-    public override void InitializeDialogue(NPCDialogueAsset _dialogue){
+    public override void InitializeDialogue()
+    {
         // if (gameStateData.hasResetDadsComputer){
         //     foreach (NPCDialogueAsset.DialogueSegment dialogueQueue in _dialogue.questEndingDialogueSegments){
         //     dialogueQueued.Enqueue(dialogueQueue);
