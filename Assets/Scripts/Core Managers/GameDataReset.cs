@@ -9,6 +9,8 @@ public class GameDataReset : MonoBehaviour
     private void Start()
     {
         Reset();
+
+        gameObject.SetActive(false);
     }
 
     private void Reset()
