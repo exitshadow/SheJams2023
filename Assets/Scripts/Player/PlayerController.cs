@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
             if (currentInteractingNPC != null)
             {
-                currentInteractingNPC.GoToDialogueNewLine(context);
+                currentInteractingNPC.Talk(context);
             }
         }
     }

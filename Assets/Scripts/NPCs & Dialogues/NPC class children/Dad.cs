@@ -7,15 +7,32 @@ using UnityEngine;
 /// </summary>
 public class Dad : NPC
 {
-    public override void InitializeDialogue()
+
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
     {
-        // if (gameStateData.hasResetDadsComputer){
-        //     foreach (NPCDialogueAsset.DialogueSegment dialogueQueue in _dialogue.questEndingDialogueSegments){
-        //     dialogueQueued.Enqueue(dialogueQueue);
-        //     }
-        //     // DisplayNextSentence();
-        //     // dialogueUI.SetActive(false);
-        // }
+        List<NPCDialogueAsset.DialogueSegment> currentDialogue;
+
+        if (!gameManager.DidSpeakToDadFirstTime())
+        {
+            currentDialogue = dialogueData.questStartingDialogueSegments;
+            gameManager.ConfirmTalkDadAtHome();
+        }
+        else if (   gameManager.HasCapturedAllButterfies()
+                && !gameManager.HasResetDadsComputer()      )
+        {
+            currentDialogue = dialogueData.questProgressingDialogueSegments;
+            gameManager.ConfirmResettingDadsComputer();
+        }
+        else if (gameManager.HasResetDadsComputer())
+        {
+            currentDialogue = dialogueData.questEndingDialogueSegments;
+        }
+        else
+        {
+            currentDialogue = dialogueData.questWaitingDialogueSegments;
+        }
+
+        return currentDialogue;
 
     }
 }

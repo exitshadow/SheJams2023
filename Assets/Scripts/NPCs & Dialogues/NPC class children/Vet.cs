@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Vet : NPC
 {
-    public override void InitializeDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
     {
-        base.InitializeDialogue();
-        Debug.Log("initializing dialogue vet");
-    }
+        List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+        if (gameManager.HasFedCat())
+        {
+            currentDialogue = dialogueData.questStartingDialogueSegments;
+        }
+        else
+        {
+            currentDialogue = dialogueData.questWaitingDialogueSegments;
+        }
 
-    protected override void Start()
-    {
-        InitializeDialogue();
+        return currentDialogue;
     }
 }

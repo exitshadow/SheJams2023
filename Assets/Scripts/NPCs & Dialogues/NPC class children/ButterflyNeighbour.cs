@@ -4,5 +4,28 @@ using UnityEngine;
 
 public class ButterflyNeighbour : NPC
 {
-    
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    {
+        List<NPCDialogueAsset.DialogueSegment> currentDialogue;
+
+        if (!gameManager.HasVisitedNeighbour())
+        {
+            currentDialogue = dialogueData.questStartingDialogueSegments;
+        }
+        else if (gameManager.HasFoundTheButterflyBranch() && !gameManager.HasCapturedAllButterfies())
+        {
+            currentDialogue = dialogueData.questProgressingDialogueSegments;
+            gameManager.ConfirmButterflyCapture();
+        }
+        else if(gameManager.HasCapturedAllButterfies())
+        {
+            currentDialogue = dialogueData.questEndingDialogueSegments;
+        }
+        else
+        {
+            currentDialogue = dialogueData.questEndingDialogueSegments;
+        }
+
+        return currentDialogue;
+    }
 }

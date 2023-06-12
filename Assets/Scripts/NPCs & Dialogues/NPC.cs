@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 /// abstract class NPC of which they inherit common behaviour such as the lines of the dialogue and the management of their animations
 /// </summary>
 [RequireComponent(typeof(Collider))]
-public class NPC : MonoBehaviour
+public abstract class NPC : MonoBehaviour
 {
     #region member fields
     #region global references
@@ -46,6 +46,8 @@ public class NPC : MonoBehaviour
         }
     }
 
+    protected abstract List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue();
+
     /// <summary>
     /// Dequeues the first dialogue line from the current lines in queue and sends it to the UI Manager.
     /// </summary>
@@ -73,9 +75,17 @@ public class NPC : MonoBehaviour
     /// <summary>
     /// To be accessed through Unity Events!
     /// </summary>
-    public virtual void GoToDialogueNewLine(InputAction.CallbackContext context)
+    public virtual void Talk(InputAction.CallbackContext context)
     {
-        if (context.performed) InjectDialogue();
+        if (context.performed)
+        {
+            if (!isPlayingDialogue)
+            {
+                FetchDialogue(FindCurrentDialogue());
+            }
+            
+            InjectDialogue();
+        }
     }
 
     public virtual void InitializeDialogue()
