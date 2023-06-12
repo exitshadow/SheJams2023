@@ -25,7 +25,7 @@ public class NPC : MonoBehaviour
     #endregion
 
     #region dialogue tracking
-    private bool isPlayingDialogue;
+    private bool isPlayingDialogue = false;
     protected Queue<NPCDialogueAsset.DialogueSegment> QueuedDialogue = new Queue<NPCDialogueAsset.DialogueSegment>();
     
     #endregion
@@ -51,13 +51,21 @@ public class NPC : MonoBehaviour
     /// </summary>
     public void InjectDialogue()
     {
-        if (QueuedDialogue.Count == 0) return;
+        if (QueuedDialogue.Count == 0)
+        {
+            uiManager.CloseDialogueBox();
+            isPlayingDialogue = false;
+            return;
+        }
 
         NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
 
-        Debug.Log(currentDialogue.speakerName + ": " + currentDialogue.dialogueText);
-
-        // send currentDialogue to UI Manager
+        if (!isPlayingDialogue)
+        {
+            uiManager.OpenDialogueBox();
+            isPlayingDialogue = true;
+        }
+        
         uiManager.InjectDialogueLine(   currentDialogue.speakerName,
                                         currentDialogue.dialogueText    );
     }

@@ -14,6 +14,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
     [SerializeField] private TextMeshProUGUI dialogueContentTMP;
 
+    public void OpenDialogueBox()
+    {
+        dialogueBoxGroup.gameObject.SetActive(true);
+    }
+
+    public void CloseDialogueBox()
+    {
+        dialogueBoxGroup.gameObject.SetActive(false);
+    }
+
     public void InjectDialogueLine(string speakerName, string dialogueLine)
     {
         dialogueSpeakerNameTMP.text = speakerName;
