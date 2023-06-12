@@ -28,6 +28,8 @@ MonoBehaviour:
       to worry."
   - speakerName: Iman
     dialogueText: "Okay\u2026 Goodbye, doctor. Sorry, kittycat."
-  questWaitingDialogueSegments: []
+  questWaitingDialogueSegments:
+  - speakerName: Vet
+    dialogueText: ...
   questProgressingDialogueSegments: []
   questEndingDialogueSegments: []

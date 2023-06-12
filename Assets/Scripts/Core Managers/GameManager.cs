@@ -13,12 +13,61 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameStateAsset gameStateData;
 
+    #region dad’s quest
+    public bool DidSpeakToDadFirstTime()
+    {
+        return gameStateData.hasSpokenToDadAtHome;
+    }
+
+    public bool HasCapturedAllButterfies()
+    {
+        return gameStateData.hasCapturedButterflies;
+    }
+
+    public bool HasResetDadsComputer()
+    {
+        return gameStateData.hasResetDadsComputer;
+    }
+    #endregion
+
+    #region cat’s and neighbour quest
+    public bool HasVisitedNeighbour()
+    {
+        return gameStateData.hasVisitedNeighbour;
+    }
+
+    public bool HasFoundTheButterflyBranch()
+    {
+        return gameStateData.hasFoundTreeBranch;
+    }
+
+    public bool HasEncounteredCat()
+    {
+        return gameStateData.hasEncounteredCat;
+    }
+
+    public bool HasFoundTuna()
+    {
+        return gameStateData.hasFoundTuna;
+    }
+
+    public bool HasFedCat()
+    {
+        return gameStateData.hasFedCat;
+    }
+    #endregion
+
     /// <summary>
     /// To be called by a Unity Event after the first dad conversation.
     /// </summary>
     public void ConfirmTalkDadAtHome()
     {
         gameStateData.hasSpokenToDadAtHome = true;
+    }
+
+    public void ConfirmResettingDadsComputer()
+    {
+        gameStateData.hasResetDadsComputer = true;
     }
 
     /// <summary>
