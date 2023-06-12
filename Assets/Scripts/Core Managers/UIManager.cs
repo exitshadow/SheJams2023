@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// Dispatches all the texts in the game into their right places in the UI and manages opening and closing UI groups.
@@ -8,15 +10,13 @@ using UnityEngine;
 ///
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private RectTransform dialogueBoxGroup;
+    [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
+    [SerializeField] private TextMeshProUGUI dialogueContentTMP;
 
-    // Update is called once per frame
-    void Update()
+    public void InjectDialogueLine(string speakerName, string dialogueLine)
     {
-        
+        dialogueSpeakerNameTMP.text = speakerName;
+        dialogueContentTMP.text = dialogueLine;
     }
 }

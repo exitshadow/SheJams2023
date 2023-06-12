@@ -8,9 +8,6 @@ public class Vet : NPC
     {
         base.InitializeDialogue();
         Debug.Log("initializing dialogue vet");
-        InjectDialogue();
-        InjectDialogue();
-        InjectDialogue();
     }
 
     protected override void Awake()

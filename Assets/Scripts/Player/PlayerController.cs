@@ -11,6 +11,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    #region controls
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     private float moveSpeed;
@@ -27,6 +28,11 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Rigidbody rb;
     private Animator animator;
+    #endregion
+
+    #region interaction
+    [HideInInspector] public NPC currentInteractingNPC;
+    #endregion
 
     public void OnMoveCharacter()
     {
@@ -51,7 +57,15 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (context.performed) Debug.Log("Interact Unity Event Called");
+        if (context.performed)
+        {
+            Debug.Log("Interact Unity Event Called");
+
+            if (currentInteractingNPC != null)
+            {
+                currentInteractingNPC.GoToDialogueNewLine(context);
+            }
+        }
     }
 
     private void Awake()
