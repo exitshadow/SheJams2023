@@ -21,7 +21,17 @@ MonoBehaviour:
   - speakerName: Dad
     dialogueText: "Alright, alright. Have a nice day! Don\u2019t stay out too late."
   - speakerName: Iman
-    dialogueText: "I\u2019ll take a look when I get back!"
+    dialogueText: "I\u2019ll have a look when I get back!"
+  - speakerName: Iman
+    dialogueText: "The neighbor has messaged me, she has some problem with something
+      but I couldn\u2019t understand what it was."
+  - speakerName: Dad
+    dialogueText: Mrs Al-Qadiri always has had very strange problems.
+  - speakerName: Iman
+    dialogueText: I know right!
+  - speakerName: Dad
+    dialogueText: "I wish you good luck my daughter! I am waiting for you here when
+      you\u2019re done."
   questWaitingDialogueSegments:
   - speakerName: Dad
     dialogueText: "Ah, my daughter, you\u2019re back!"
@@ -44,7 +54,7 @@ MonoBehaviour:
     dialogueText: "My daughter has a diploma in computer science and can\u2019t even
       help her own dad?"
   - speakerName: Iman
-    dialogueText: "Okay, fine! I\u2019ll take a look."
+    dialogueText: "I\u2019ll have a look later I said!"
   questProgressingDialogueSegments:
   - speakerName: Iman
     dialogueText: Hm, I see.
