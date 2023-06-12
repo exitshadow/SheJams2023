@@ -24,8 +24,6 @@ MonoBehaviour:
       want to go back just yet. To the supermarket!"
   questProgressingDialogueSegments:
   - speakerName: Iman
-    dialogueText: "Huh, someone left some tuna cans next to the door. Convenient\u2026"
-  - speakerName: Iman
     dialogueText: Okay. Kittycat, here I come!
   questEndingDialogueSegments:
   - speakerName: Iman
