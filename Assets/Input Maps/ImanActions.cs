@@ -58,7 +58,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""528cdc86-6b9a-4cab-8b51-a635b769fdc3"",
-                    ""expectedControlType"": ""Delta"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

@@ -41,7 +41,25 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        Vector2 moveDirection = playerMove.ReadValue<Vector2>();
+        Debug.Log(moveDirection);
 
+        float verticalSpeed = 0;
+
+        if(!controller.isGrounded){
+            verticalSpeed += -9.81f * Time.fixedDeltaTime;
+        } else verticalSpeed = 0;
+
+        Vector3 verticalMovement = Vector3.up * verticalSpeed * Time.fixedDeltaTime;
+
+        Vector2 movement = moveDirection * moveSpeed * Time.fixedDeltaTime;
+        Vector3 translation = new Vector3(-movement.x, 0, -movement.y);
+
+        controller.Move(translation + verticalMovement);
+
+        if(moveDirection != Vector2.zero){
+            transform.forward += Vector3.Slerp(transform.forward, translation, Time.fixedDeltaTime * 10);
+        }
     }
 
     public void Run(InputAction.CallbackContext context)
@@ -97,23 +115,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 moveDirection = playerMove.ReadValue<Vector2>();
-
-        float verticalSpeed = 0;
-
-        if(!controller.isGrounded){
-            verticalSpeed += -9.81f * Time.fixedDeltaTime;
-        } else verticalSpeed = 0;
-
-        Vector3 verticalMovement = Vector3.up * verticalSpeed * Time.fixedDeltaTime;
-
-        Vector2 movement = moveDirection * moveSpeed * Time.fixedDeltaTime;
-        Vector3 translation = new Vector3(-movement.x, 0, -movement.y);
-
-        controller.Move(translation + verticalMovement);
-
-        if(moveDirection != Vector2.zero){
-            transform.forward = Vector3.Slerp (transform.forward, translation, Time.fixedDeltaTime * 10);
-        }
+        if (currentInteractingNPC == null || !currentInteractingNPC.isPlayingDialogue) Move();
     }
 }
