@@ -339,7 +339,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""544a6ee5-f46a-4a26-9f08-06ddae9bb753"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -49,19 +49,31 @@ public class PlayerController : MonoBehaviour
         translation = transform.TransformDirection(translation);
         transform.position += translation;
 
-        // steering (rotation)
+        // steering (rotation) and walk/idle animation
         if(moveDirection != Vector2.zero)
         {
             Debug.Log("rotating " + transform.name);
             transform.Rotate(0, moveDirection.x * steeringSpeed * Time.deltaTime * 100, 0);
+            animator.SetFloat("walkingSpeed", walkSpeed);
         }
+        else animator.SetFloat("walkingSpeed", 0);
 
     }
 
     public void Run(InputAction.CallbackContext context)
     {
-        if (context.performed) moveSpeed = runSpeed;
-        else moveSpeed = walkSpeed;
+        if (context.performed)
+        {
+            moveSpeed = runSpeed;
+            animator.SetBool("isShiftPressed", true);
+            Debug.Log(animator.GetBool("isShiftPressed"));
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+            animator.SetBool("isShiftPressed", false);
+            Debug.Log(animator.GetBool("isShiftPressed"));
+        }
     }
 
 
@@ -69,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Interact Unity Event Called");
+            // Debug.Log("Interact Unity Event Called");
 
             if (currentInteractingNPC != null)
             {
