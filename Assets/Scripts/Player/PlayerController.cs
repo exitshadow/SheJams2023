@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     private float moveSpeed;
-
     [SerializeField] private float steeringSpeed;
 
     private ImanActions actions;
@@ -53,13 +52,13 @@ public class PlayerController : MonoBehaviour
         Vector3 verticalMovement = Vector3.up * verticalSpeed * Time.fixedDeltaTime;
 
         Vector2 movement = moveDirection * moveSpeed * Time.fixedDeltaTime;
-        Vector3 translation = new Vector3(-movement.x, 0, -movement.y);
+        Vector3 translation = new Vector3(movement.x, 0, movement.y);
 
         controller.Move(translation + verticalMovement);
 
-        if(moveDirection != Vector2.zero){
-            transform.forward += Vector3.Slerp(transform.forward, translation, Time.fixedDeltaTime * 10);
-        }
+        // if(moveDirection != Vector2.zero){
+        //     transform.forward += Vector3.Slerp(transform.forward, translation, Time.fixedDeltaTime * 10);
+        // }
     }
 
     public void Run(InputAction.CallbackContext context)
