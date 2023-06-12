@@ -108,18 +108,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
-        m_MethodName: GoToNewLine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: f63a90f7-6a2c-4079-a9b1-447cad2ba74d
     m_ActionName: Player/Interact
   - m_PersistentCalls:
@@ -217,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 20
-  steeringSpeed: 0
+  steeringSpeed: 5
   currentInteractingNPC: {fileID: 0}
 --- !u!143 &1270951696
 CharacterController:
@@ -236,7 +224,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0.8}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1001 &5368542162711076354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,19 +274,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9036259018011035076, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9036259018011035076, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9036259018011035076, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9036259018011035076, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9036259018011035076, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
