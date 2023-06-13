@@ -22,6 +22,6 @@ public class AnnoyingTextMessageAsset : ScriptableObject
     public struct TextMessage
     {
         public string senderName;
-        public string textContent;
+        [TextArea] public string textContent;
     }
 }
