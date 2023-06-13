@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f1b1cda56c0e54eb88d73da42f8e8d, type: 3}
+  m_Name: Annoying Text Messages Asset
+  m_EditorClassIdentifier: 
+  textMessageConversations:
+  - conversationName: Alma
+    conversationAvatar: {fileID: 0}
+    conversationMessages:
+    - senderName: Alma
+      textContent: Iman! Do you think I should update to Windows 10?
+    - senderName: Iman
+      textContent: Uh, what?
+    - senderName: Alma
+      textContent: I dont understand
+    - senderName: Iman
+      textContent: Yes?
+    - senderName: Alma
+      textContent: ok
+    - senderName: Iman
+      textContent: ???
+  - conversationName: Hamza
+    conversationAvatar: {fileID: 0}
+    conversationMessages:
+    - senderName: Hamza
+      textContent: hey. u broke my printer
+    - senderName: Iman
+      textContent: excuse you?
+    - senderName: Hamza
+      textContent: u installed it and now it aint working whad did ya do
+    - senderName: Iman
+      textContent: "That was last year! What\u2019s up with the printer?"
+    - senderName: Hamza
+      textContent: nvm bye
+  - conversationName: Unknown Sender
+    conversationAvatar: {fileID: 0}
+    conversationMessages:
+    - senderName: Unknown Sender
+      textContent: Hello. Is this Iman?
+    - senderName: Iman
+      textContent: Yep, thats me. Who is this?
+    - senderName: Unknown Sender
+      textContent: I wanted to know if you could help me with my fridge
+    - senderName: Iman
+      textContent: Are you sure I am the right Iman
+    - senderName: Unkown Sender
+      textContent: Yeah, they told me you were very smart
+    - senderName: Unkown Sender
+      textContent: So I tought you could help
+    - senderName: Unkown Sender
+      textContent: "See... It\u2019s not running..."
+    - senderName: Iman
+      textContent: Yes?
+    - senderName: Unknown Sender
+      textContent: BECAUSE IT DOESNT HAVE LEGS!!!!!! LMAOOOOO
+    - senderName: 
+      textContent: You have blocked +666 406 0254 2887.
+  - conversationName: Fatima
+    conversationAvatar: {fileID: 0}
+    conversationMessages:
+    - senderName: Fatima
+      textContent: Hey!!
+    - senderName: Fatima
+      textContent: How you doing? <3
+    - senderName: Iman
+      textContent: Oh I am doing good thanks!
+    - senderName: Fatima
+      textContent: I heard you graduated from Computer Science last month!!! How
+        amazing!
+    - senderName: Iman
+      textContent: Yeah well now I got to find a job and
+    - senderName: Iman
+      textContent: Uh well
+    - senderName: Iman
+      textContent: I guess you know
+    - senderName: Fatima
+      textContent: Totally totally
+    - senderName: Fatima
+      textContent: But you are a smart ass you will find a job very quickly!
+    - senderName: Fatima
+      textContent: Me totally vouching for u!!!!!!!
+    - senderName: Iman
+      textContent: awww thanks
+    - senderName: Fatima
+      textContent: Since we are talking of computers
+    - senderName: Iman
+      textContent: oh no
+    - senderName: Fatima
+      textContent: '?'
+    - senderName: Iman
+      textContent: no nothing, sorry. Go ahead
+    - senderName: Fatima
+      textContent: Do you know what cable I have to use for my new computer screen?
+    - senderName: Iman
+      textContent: Well, that will depend on your monitor and graphics card...
+    - senderName: Iman
+      textContent: just read whats written
+    - senderName: Fatima
+      textContent: "I don\u2019t know, it\u2019s written... audio out? its so small
+        i cant read"
+    - senderName: Iman
+      textContent: ...
+    - senderName: Fatima
+      textContent: Or is it the weird blue thingie?
+    - senderName: Iman
+      textContent: You know Im not in the room with you right
+    - senderName: Fatima
+      textContent: Yes I know sweetpea
+    - senderName: Fatima
+      textContent: Do you think it is the black one then?
+    - senderName: Iman
+      textContent: ... all cables are black?...
+    - senderName: Fatima
+      textContent: I dont know! You are the specialist lol
+    - senderName: Iman
+      textContent: Fatima please next time
+    - senderName: Fatima
+      textContent: Ok ok
+    - senderName: Fatima
+      textContent: Well i guess that means you really dont want those honey cakes
+        i just made then
+    - senderName: Iman
+      textContent: You re a bastard lol
+  - conversationName: Nour
+    conversationAvatar: {fileID: 0}
+    conversationMessages:
+    - senderName: Nour
+      textContent: hi Iman? how have you been?
+    - senderName: Iman
+      textContent: Im great thanks! Wassup :-)
+    - senderName: Nour
+      textContent: do you know how to set up the graphics card api for running local
+        machine learning?
+    - senderName: Nour
+      textContent: by any chance?
+    - senderName: Iman
+      textContent: oof
+    - senderName: Iman
+      textContent: An actual question! finally!!!
+    - senderName: Nour
+      textContent: '?'
+    - senderName: Iman
+      textContent: Sorry I just had a long day
+    - senderName: Nour
+      textContent: hahahaha yes no worries
+    - senderName: Iman
+      textContent: I have to help with the butterflies right now
+    - senderName: Iman
+      textContent: "but I will call you back when I\u2019m done!"
+    - senderName: Nour
+      textContent: ok!! thank you so much!!
+    - senderName: Nour
+      textContent: wait
+    - senderName: Nour
+      textContent: ... what butterflies?
+    - senderName: Iman
+      textContent: It is a very long story.
+    - senderName: Nour
+      textContent: lol i m bracing myself
+    - senderName: Iman
+      textContent: You better
+    - senderName: Iman
+      textContent: See you tonight!
+    - senderName: Nour
+      textContent: <3
