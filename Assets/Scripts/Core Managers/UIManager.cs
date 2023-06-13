@@ -110,14 +110,14 @@ public class UIManager : MonoBehaviour
             messageSnippetBox = Instantiate(messageFromSenderPrefab);
         }
 
-        // append as child to the vertical layout group
-        messageSnippetBox.transform.SetParent(messageTextArea.transform);
-
         // calculates box size for said message (no need to do it for app messages)
         if (message.senderName != "")
         {
             CalculateAndApplyBoxSize(messageSnippetBox, message.textContent);
         }
+
+        // append as child to the vertical layout group
+        messageSnippetBox.transform.SetParent(messageTextArea.transform);
 
         // apply the text to the TMP component in the prefab’s children
         messageSnippetText = messageSnippetBox.GetComponentInChildren<TextMeshProUGUI>();
@@ -127,13 +127,27 @@ public class UIManager : MonoBehaviour
 
     /// <summary>
     /// Calculates how large the text message box should be according to the
-    /// length of the string provided.
+    /// length of the string provided. This method assumes that the messageBox
+    /// provided fits the right pattern.
     /// </summary>
     /// <param name="messageBox"> The box on which the transformation will be applied. Must be a RectTransform.</param>
     /// <param name="text"> The text that is used to calculate the size.</param>
     private void CalculateAndApplyBoxSize(GameObject messageBox, string text)
     {
-        RectTransform rT = messageBox.GetComponent<RectTransform>();
+        // the reason to fetch both parent and child RectTransforms and change
+        // their respective heights and width comes from the necessity to
+        // fit with the vertical align group that parents them
+
+        // The parent has a height that is taken into account and is forced
+        // to horizontally expand
+
+        // The child is set to fill the parent’s height but is allowed to
+        // control its width
+
+        RectTransform parentRT = messageBox.GetComponent<RectTransform>();
+        RectTransform childRT = messageBox.transform.Find("MessageBox").GetComponent<RectTransform>();
+
+        Debug.Log("found message box: " + (childRT != null));
 
         float newWidth;
         float newHeight;
@@ -143,7 +157,10 @@ public class UIManager : MonoBehaviour
         newWidth = (charWidth * text.Length) + (2 * messageHorizontalMargin);
         newHeight = (nbLines * charHeight * 2) + (2 * messageVerticalMargin);
 
-        rT.sizeDelta = new Vector2(newWidth, newHeight);
+        parentRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
+        childRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
+
+        parentRT.localRotation = Quaternion.Euler(0,0,-4);
     }
     #endregion
 }
