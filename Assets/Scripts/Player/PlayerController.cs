@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runSpeed;
     private float moveSpeed;
     [SerializeField] private float steeringSpeed;
+    [SerializeField] private Canvas controlsCanvas;
+    private bool isEnabled = false;
 
     private ImanActions actions;
     private InputAction playerMove;
@@ -101,6 +103,15 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             phone.PickUpPhone(context);
+        }
+    }
+
+    public void HelpControls(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isEnabled = !isEnabled;
+            controlsCanvas.enabled = isEnabled;
         }
     }
 

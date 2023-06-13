@@ -179,9 +179,41 @@ MonoBehaviour:
     m_ActionId: a8811cf5-9f86-42d9-afed-4831ab73ebd2
     m_ActionName: UI / Phone/Move
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2329569983424723825}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Run
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6470f125-cfc4-43d7-832e-34159706073f
     m_ActionName: Player/Run[/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e6574ba3-6954-41fc-a679-9c182f521b3f
+    m_ActionName: UI / Phone/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2329569983424723825}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: HelpControls
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e7227717-fe29-4e65-b18f-95f00deba378
+    m_ActionName: Player/Help / Controls[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -219,9 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92be7b4df6e0d3e4da20139d0daa995e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phone: {fileID: 0}
   walkSpeed: 3
   runSpeed: 20
   steeringSpeed: 5
+  controlsCanvas: {fileID: 0}
   currentInteractingNPC: {fileID: 0}
 --- !u!136 &1456264314
 CapsuleCollider:

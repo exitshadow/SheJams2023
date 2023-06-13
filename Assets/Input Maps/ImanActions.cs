@@ -80,6 +80,15 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Help / Controls"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7227717-fe29-4e65-b18f-95f00deba378"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -412,6 +421,28 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3cde42e-504f-4959-912b-5601ca13ab57"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Help / Controls"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e58f3982-6c1b-467b-b87d-22b7a2c2a76d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Help / Controls"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -463,6 +494,15 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6574ba3-6954-41fc-a679-9c182f521b3f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -729,6 +769,17 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89ceb9af-6279-4dfe-9a41-9276f754f6a3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -743,6 +794,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        m_Player_HelpControls = m_Player.FindAction("Help / Controls", throwIfNotFound: true);
         // UI / Phone
         m_UIPhone = asset.FindActionMap("UI / Phone", throwIfNotFound: true);
         m_UIPhone_Accept = m_UIPhone.FindAction("Accept", throwIfNotFound: true);
@@ -750,6 +802,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
         m_UIPhone_LeaveUI = m_UIPhone.FindAction("Leave UI", throwIfNotFound: true);
         m_UIPhone_Pause = m_UIPhone.FindAction("Pause", throwIfNotFound: true);
         m_UIPhone_Move = m_UIPhone.FindAction("Move", throwIfNotFound: true);
+        m_UIPhone_Newaction = m_UIPhone.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -815,6 +868,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Run;
+    private readonly InputAction m_Player_HelpControls;
     public struct PlayerActions
     {
         private @ImanActions m_Wrapper;
@@ -825,6 +879,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Run => m_Wrapper.m_Player_Run;
+        public InputAction @HelpControls => m_Wrapper.m_Player_HelpControls;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -852,6 +907,9 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                 @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @HelpControls.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHelpControls;
+                @HelpControls.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHelpControls;
+                @HelpControls.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHelpControls;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -874,6 +932,9 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @HelpControls.started += instance.OnHelpControls;
+                @HelpControls.performed += instance.OnHelpControls;
+                @HelpControls.canceled += instance.OnHelpControls;
             }
         }
     }
@@ -887,6 +948,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_UIPhone_LeaveUI;
     private readonly InputAction m_UIPhone_Pause;
     private readonly InputAction m_UIPhone_Move;
+    private readonly InputAction m_UIPhone_Newaction;
     public struct UIPhoneActions
     {
         private @ImanActions m_Wrapper;
@@ -896,6 +958,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
         public InputAction @LeaveUI => m_Wrapper.m_UIPhone_LeaveUI;
         public InputAction @Pause => m_Wrapper.m_UIPhone_Pause;
         public InputAction @Move => m_Wrapper.m_UIPhone_Move;
+        public InputAction @Newaction => m_Wrapper.m_UIPhone_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_UIPhone; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -920,6 +983,9 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_UIPhoneActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_UIPhoneActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_UIPhoneActionsCallbackInterface.OnMove;
+                @Newaction.started -= m_Wrapper.m_UIPhoneActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_UIPhoneActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_UIPhoneActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_UIPhoneActionsCallbackInterface = instance;
             if (instance != null)
@@ -939,6 +1005,9 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -951,6 +1020,7 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnHelpControls(InputAction.CallbackContext context);
     }
     public interface IUIPhoneActions
     {
@@ -959,5 +1029,6 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
         void OnLeaveUI(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
