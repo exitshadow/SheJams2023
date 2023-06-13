@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a29c2bcddbe335a46a8925df394efe1e, type: 3}
-  m_Name: Iman Dialogue Asset
+  m_Name: Branch Dialog Asset
   m_EditorClassIdentifier: 
   questStartingDialogueSegments:
   - speakerName: Iman
-    dialogueText: Hopefully he forgets about it...
-  questWaitingDialogueSegments:
+    dialogueText: "Oh, lucky! There\u2019s a branch already on the ground."
   - speakerName: Iman
-    dialogueText: Hm, I think I should go see my neighbor first. She seemed worried.
+    dialogueText: "Better bring this back before she has a heart attack. Ugh, why
+      am I doing this again? Oh, right. Avoiding my dad. And his broken computer.
+      I\u2019m sure he just forgot to plug it in, anyway."
+  questWaitingDialogueSegments: []
   questProgressingDialogueSegments: []
-  questEndingDialogueSegments:
-  - speakerName: Iman
-    dialogueText: "Ugh\u2026 Oh, right. The butterflies. I guess there\u2019s no
-      more ignoring it."
+  questEndingDialogueSegments: []
