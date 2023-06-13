@@ -14,7 +14,7 @@ public class AnnoyingTextMessageAsset : ScriptableObject
     public struct TextMessageConversation
     {
         public string conversationName;
-        public Texture conversationAvatar;
+        public Sprite conversationAvatar;
         public List<TextMessage> conversationMessages;
     }
 

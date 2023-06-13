@@ -16,7 +16,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueContentTMP;
 
     [Header("Annoying Phone References")]
+    [SerializeField] private RectTransform phoneNotificationGroup;
+    [SerializeField] private RectTransform phoneIconGroup;
     [SerializeField] private RectTransform phoneUIBoxGroup;
+    [SerializeField] private Image senderAvatar;
+    [SerializeField] private TextMeshProUGUI senderName;
     [SerializeField] private VerticalLayoutGroup messageTextArea;
     [SerializeField] private GameObject messageFromImanPrefab;
     [SerializeField] private GameObject messageFromSenderPrefab;
@@ -55,10 +59,21 @@ public class UIManager : MonoBehaviour
         phoneUIBoxGroup.gameObject.SetActive(true);
     }
 
+    public void SetSender(Sprite avatar, string name)
+    {
+        senderAvatar.sprite = avatar;
+        senderName.text = name;
+    }
+
+    public void ShowNotificationOnPhone()
+    {
+        phoneNotificationGroup.gameObject.SetActive(true);
+    }
+
     /// <summary>
     /// Instantiates a message inside of the phone box vertical group
     /// </summary>
-    private void InstantiateMessage(AnnoyingTextMessageAsset.TextMessage message)
+    public void ShowNewMessage(AnnoyingTextMessageAsset.TextMessage message)
     {
         GameObject messageSnippetBox;
         TextMeshProUGUI messageSnippetText;
