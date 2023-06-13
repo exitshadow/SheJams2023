@@ -17,9 +17,15 @@ public class AnnoyingPhone : MonoBehaviour
     private Queue<AnnoyingTextMessageAsset.TextMessage> queuedTextMessages = new Queue<AnnoyingTextMessageAsset.TextMessage>();
     private bool hasNewMessages;
 
+    public bool HasPhoneMessages()
+    {
+        return hasNewMessages;
+    }
+
     public void ShowNotification()
     {
-        // asks the UI to show the notification on the screen
+        hasNewMessages = true;
+        uiManager.ShowNotificationOnPhone();
     }
 
 
@@ -30,7 +36,9 @@ public class AnnoyingPhone : MonoBehaviour
     {
         if (hasNewMessages)
         {
-            // asks the UI to show the messages of current conversation
+            uiManager.OpenPhoneUI();
+            uiManager.SetSender(currentConvo.conversationAvatar, currentConvo.conversationName);
+            uiManager.ShowNewMessage(queuedTextMessages.Dequeue());
             hasNewMessages = false;
         }
         else
