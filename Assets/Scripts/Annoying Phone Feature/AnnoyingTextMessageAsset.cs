@@ -8,9 +8,19 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Handiman Data Assets/Annoying Phone Messages Asset")]
 public class AnnoyingTextMessageAsset : ScriptableObject
 {
+    public List<TextMessageConversation> textMessageConversations;
+
+    [System.Serializable]
+    public struct TextMessageConversation
+    {
+        public string conversationName;
+        public List<TextMessage> conversationMessages;
+    }
+
     [System.Serializable]
     public struct TextMessage
     {
-        // todo
+        public string senderName;
+        public string textContent;
     }
 }

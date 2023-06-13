@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class AnnoyingPhone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private AnnoyingTextMessageAsset textMessagesData;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private UIManager uiManager;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
