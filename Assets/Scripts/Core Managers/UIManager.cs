@@ -59,6 +59,11 @@ public class UIManager : MonoBehaviour
         phoneUIBoxGroup.gameObject.SetActive(true);
     }
 
+    public void ClosePhoneUI()
+    {
+        phoneUIBoxGroup.gameObject.SetActive(false);
+    }
+
     public void SetSender(Sprite avatar, string name)
     {
         senderAvatar.sprite = avatar;
@@ -68,6 +73,19 @@ public class UIManager : MonoBehaviour
     public void ShowNotificationOnPhone()
     {
         phoneNotificationGroup.gameObject.SetActive(true);
+    }
+
+    public void EraseNotificationsOnPhone()
+    {
+        phoneNotificationGroup.gameObject.SetActive(false);
+    }
+
+    public void ClearMessageBox()
+    {
+        foreach (Transform child in messageTextArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     /// <summary>
@@ -93,7 +111,7 @@ public class UIManager : MonoBehaviour
         }
 
         // append as child to the vertical layout group
-        messageSnippetBox.transform.parent = messageTextArea.transform;
+        messageSnippetBox.transform.SetParent(messageTextArea.transform);
 
         // calculates box size for said message (no need to do it for app messages)
         if (message.senderName != "")

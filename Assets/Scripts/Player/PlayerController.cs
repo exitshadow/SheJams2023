@@ -10,6 +10,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private AnnoyingPhone phone;
+
     #region controls
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
@@ -52,7 +54,6 @@ public class PlayerController : MonoBehaviour
         // steering (rotation) and walk/idle animation
         if(moveDirection != Vector2.zero)
         {
-            Debug.Log("rotating " + transform.name);
             transform.Rotate(0, moveDirection.x * steeringSpeed * Time.deltaTime * 100, 0);
             animator.SetFloat("walkingSpeed", walkSpeed);
         }
@@ -87,6 +88,19 @@ public class PlayerController : MonoBehaviour
             {
                 currentInteractingNPC.Talk(context);
             }
+
+            if (currentInteractingNPC == null && phone.IsReadingPhone)
+            {
+                phone.GetNewMessage();
+            }
+        }
+    }
+
+    public void PickUpPhone(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            phone.PickUpPhone(context);
         }
     }
 
@@ -119,6 +133,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentInteractingNPC == null || !currentInteractingNPC.isPlayingDialogue) Move();
+        if (    currentInteractingNPC == null
+            || !currentInteractingNPC.isPlayingDialogue
+            || !phone.IsReadingPhone                    )
+        {
+            Move();
+        }
     }
 }

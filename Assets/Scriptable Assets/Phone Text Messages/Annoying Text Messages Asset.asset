@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMessageConversations:
   - conversationName: Alma
-    conversationAvatar: {fileID: 0}
+    conversationAvatar: {fileID: 21300000, guid: d9223675fe5d2804daa96abde7128725, type: 3}
     conversationMessages:
     - senderName: Alma
       textContent: Iman! Do you think I should update to Windows 10?
@@ -29,7 +29,7 @@ MonoBehaviour:
     - senderName: Iman
       textContent: ???
   - conversationName: Hamza
-    conversationAvatar: {fileID: 0}
+    conversationAvatar: {fileID: 21300000, guid: 394f6874ae4c8ab4aaa7201ce2d74cae, type: 3}
     conversationMessages:
     - senderName: Hamza
       textContent: hey. u broke my printer
@@ -42,7 +42,7 @@ MonoBehaviour:
     - senderName: Hamza
       textContent: nvm bye
   - conversationName: Unknown Sender
-    conversationAvatar: {fileID: 0}
+    conversationAvatar: {fileID: 21300000, guid: 3e24323da8e940f40bc8a2277b219f5b, type: 3}
     conversationMessages:
     - senderName: Unknown Sender
       textContent: Hello. Is this Iman?
@@ -65,7 +65,7 @@ MonoBehaviour:
     - senderName: 
       textContent: You have blocked +666 406 0254 2887.
   - conversationName: Fatima
-    conversationAvatar: {fileID: 0}
+    conversationAvatar: {fileID: 21300000, guid: 88c74c73ff439514da4fb26728c7f9f6, type: 3}
     conversationMessages:
     - senderName: Fatima
       textContent: Hey!!
@@ -131,7 +131,7 @@ MonoBehaviour:
     - senderName: Iman
       textContent: You re a bastard lol
   - conversationName: Nour
-    conversationAvatar: {fileID: 0}
+    conversationAvatar: {fileID: 21300000, guid: d9223675fe5d2804daa96abde7128725, type: 3}
     conversationMessages:
     - senderName: Nour
       textContent: hi Iman? how have you been?
@@ -153,7 +153,7 @@ MonoBehaviour:
     - senderName: Nour
       textContent: hahahaha yes no worries
     - senderName: Iman
-      textContent: I have to help with the butterflies right now
+      textContent: There is a lot of things going on with the butterflies today
     - senderName: Iman
       textContent: "but I will call you back when I\u2019m done!"
     - senderName: Nour
