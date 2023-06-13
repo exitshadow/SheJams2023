@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionTime: 1
   transitionAnim: {fileID: 566933983254809568}
+  loadingAudioMixer: {fileID: 4821717856631384025, guid: 2b04a4113d561b845866e23809ac29e5, type: 2}
+  walkingAudioMixer: {fileID: 24500006, guid: 2b04a4113d561b845866e23809ac29e5, type: 2}
 --- !u!1 &566933983254809570
 GameObject:
   m_ObjectHideFlags: 0

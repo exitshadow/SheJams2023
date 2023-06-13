@@ -12,8 +12,8 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private float transitionTime = 1f;
     [SerializeField] private Animator transitionAnim;
-    // public AudioMixerSnapshot loadingAudioMixer;
-    // public AudioMixerSnapshot walkingAudioMixer;
+    [SerializeField] private AudioMixerSnapshot loadingAudioMixer;
+    [SerializeField] private AudioMixerSnapshot walkingAudioMixer;
 
     public void StartGame()
     {
@@ -23,10 +23,10 @@ public class SceneLoader : MonoBehaviour
     IEnumerator LoadScene(int sceneIndex)
     {
         transitionAnim.SetTrigger("StartTrigger");
-        // loadingAudioMixer.TransitionTo(0.5f);
+        loadingAudioMixer.TransitionTo(0.5f);
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneIndex);
-        // walkingAudioMixer.TransitionTo(0.5f);
+        walkingAudioMixer.TransitionTo(0.5f);
     }
 
     public void MainMenu()
