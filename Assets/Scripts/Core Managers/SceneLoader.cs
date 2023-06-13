@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private float transitionTime = 1f;
-    public Animator transitionAnim;
+    [SerializeField] private Animator transitionAnim;
     // public AudioMixerSnapshot loadingAudioMixer;
     // public AudioMixerSnapshot walkingAudioMixer;
 
