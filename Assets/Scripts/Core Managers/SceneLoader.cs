@@ -4,22 +4,25 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
+///<summary>
+/// This needs to be put in each scene of the build. In build settings, order the index acordingly (menu at index 0, etc.)
+///<\summary>
+
 public class SceneLoader : MonoBehaviour
 {
-    public float transitionTime = 1f;
-    // public Animator transition;
+    [SerializeField] private float transitionTime = 1f;
+    public Animator transitionAnim;
     // public AudioMixerSnapshot loadingAudioMixer;
     // public AudioMixerSnapshot walkingAudioMixer;
 
     public void StartGame()
     {
-        Debug.Log("Start!");
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     IEnumerator LoadScene(int sceneIndex)
     {
-        // transition.SetTrigger("Start");
+        transitionAnim.SetTrigger("StartTrigger");
         // loadingAudioMixer.TransitionTo(0.5f);
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneIndex);
@@ -28,13 +31,11 @@ public class SceneLoader : MonoBehaviour
 
     public void MainMenu()
     {
-        Debug.Log("Menu");
         StartCoroutine(LoadScene(0));
     }
 
     public void QuitGame()
     {
-        Debug.Log("Quit!");
         Application.Quit();
     }
 }
