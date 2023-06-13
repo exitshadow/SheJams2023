@@ -147,6 +147,8 @@ public class UIManager : MonoBehaviour
         RectTransform parentRT = messageBox.GetComponent<RectTransform>();
         RectTransform childRT = messageBox.transform.Find("MessageBox").GetComponent<RectTransform>();
 
+        RectTransform verticalGroupRT = messageTextArea.GetComponent<RectTransform>();
+
         Debug.Log("found message box: " + (childRT != null));
 
         float newWidth;
@@ -159,6 +161,7 @@ public class UIManager : MonoBehaviour
 
         parentRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
         childRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
+        verticalGroupRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, verticalGroupRT.sizeDelta.y + newHeight);
 
         parentRT.localRotation = Quaternion.Euler(0,0,-4);
     }
