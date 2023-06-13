@@ -118,6 +118,7 @@ public class UIManager : MonoBehaviour
 
         // append as child to the vertical layout group
         messageSnippetBox.transform.SetParent(messageTextArea.transform);
+        messageSnippetBox.transform.localRotation = Quaternion.Euler(0,0,0);
 
         // apply the text to the TMP component in the prefab’s children
         messageSnippetText = messageSnippetBox.GetComponentInChildren<TextMeshProUGUI>();
@@ -154,16 +155,19 @@ public class UIManager : MonoBehaviour
         float newWidth;
         float newHeight;
 
+        int maxCharsFirstLine;
+
         int nbLines = (int)Mathf.Ceil(text.Length / maxCharsPerLine);
 
-        newWidth = (charWidth * text.Length) + (2 * messageHorizontalMargin);
+        if (nbLines < 2 ) maxCharsFirstLine = text.Length;
+        else maxCharsFirstLine = maxCharsPerLine;
+
+        newWidth = (charWidth * maxCharsFirstLine) + (2 * messageHorizontalMargin);
         newHeight = (nbLines * charHeight * 2) + (2 * messageVerticalMargin);
 
         parentRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
         childRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
         verticalGroupRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, verticalGroupRT.sizeDelta.y + newHeight);
-
-        parentRT.localRotation = Quaternion.Euler(0,0,-4);
     }
     #endregion
 }
