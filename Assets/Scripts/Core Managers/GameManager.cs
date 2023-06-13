@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
     {
         return gameStateData.hasFedCat;
     }
+
+    public bool HasSpokenToVet()
+    {
+        return gameStateData.hasSpokenToVet;
+    }
     #endregion
 
     /// <summary>
@@ -91,7 +96,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ConfirmFoundTreeBranch()
     {
-        gameStateData.hasVisitedNeighbour = true;
+        gameStateData.hasFoundTreeBranch = true;
     }
 
     /// <summary>
@@ -123,7 +128,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ConfirmCatIsFed()
     {
-        gameStateData.hasFoundTuna = true;
+        gameStateData.hasFedCat = true;
     }
 
     /// <summary>

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29c2bcddbe335a46a8925df394efe1e, type: 3}
+  m_Name: TunaCan Dialogue Asset
+  m_EditorClassIdentifier: 
+  questStartingDialogueSegments:
+  - speakerName: Iman
+    dialogueText: Oh, how curious.
+  - speakerName: Iman
+    dialogueText: A tuna can has been left there just for my convenience.
+  - speakerName: Iman
+    dialogueText: "Lol I don\u2019t think so."
+  - speakerName: Iman
+    dialogueText: "But it\u2019s marked \"import type\", which is kinda neat."
+  - speakerName: Game Manager
+    dialogueText: 'You got: 1 tuna can(s).'
+  - speakerName: Iman
+    dialogueText: ... What?
+  questWaitingDialogueSegments: []
+  questProgressingDialogueSegments: []
+  questEndingDialogueSegments: []

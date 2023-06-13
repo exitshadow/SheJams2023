@@ -51,7 +51,7 @@ public abstract class NPC : MonoBehaviour
     /// <summary>
     /// Dequeues the first dialogue line from the current lines in queue and sends it to the UI Manager.
     /// </summary>
-    public void InjectDialogue()
+    public virtual void InjectDialogue()
     {
         if (QueuedDialogue.Count == 0)
         {
@@ -83,7 +83,7 @@ public abstract class NPC : MonoBehaviour
             {
                 FetchDialogue(FindCurrentDialogue());
             }
-            
+
             InjectDialogue();
         }
     }

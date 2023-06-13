@@ -11,6 +11,7 @@ public class ButterflyNeighbour : NPC
         if (!gameManager.HasVisitedNeighbour())
         {
             currentDialogue = dialogueData.questStartingDialogueSegments;
+            gameManager.ConfirmVisitNeighbourFirstTime();
         }
         else if (gameManager.HasFoundTheButterflyBranch() && !gameManager.HasCapturedAllButterfies())
         {
@@ -23,7 +24,7 @@ public class ButterflyNeighbour : NPC
         }
         else
         {
-            currentDialogue = dialogueData.questEndingDialogueSegments;
+            currentDialogue = dialogueData.questWaitingDialogueSegments;
         }
 
         return currentDialogue;

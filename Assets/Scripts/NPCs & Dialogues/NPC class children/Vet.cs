@@ -8,9 +8,10 @@ public class Vet : NPC
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
-        if (gameManager.HasFedCat())
+        if (gameManager.HasFedCat() && !gameManager.HasSpokenToVet())
         {
             currentDialogue = dialogueData.questStartingDialogueSegments;
+            gameManager.ConfirmSpokeToVet();
         }
         else
         {
