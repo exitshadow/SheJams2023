@@ -59,6 +59,7 @@ public class TreeBranch : NPC
     {
         base.OnTriggerExit(other);
 
-        gameObject.SetActive(false);
+        if (gameManager.HasFoundTheButterflyBranch())
+            gameObject.SetActive(false);
     }
 }
