@@ -86,12 +86,12 @@ public class PlayerController : MonoBehaviour
         {
             // Debug.Log("Interact Unity Event Called");
 
-            if (currentInteractingNPC != null)
+            if (currentInteractingNPC != null && !phone.IsReadingPhone)
             {
                 currentInteractingNPC.Talk(context);
             }
 
-            if (currentInteractingNPC == null && phone.IsReadingPhone)
+            if (phone.IsReadingPhone)
             {
                 phone.GetNewMessage();
             }
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     public void PickUpPhone(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && currentInteractingNPC == null)
         {
             phone.PickUpPhone(context);
         }
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         if (    currentInteractingNPC == null
             || !currentInteractingNPC.isPlayingDialogue)
         {
-            if (!phone.IsReadingPhone)
+            //if (!phone.IsReadingPhone)
                 Move();
         }
     }
