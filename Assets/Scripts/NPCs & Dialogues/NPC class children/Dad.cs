@@ -58,4 +58,12 @@ public class Dad : NPC
         uiManager.InjectDialogueLine(   currentDialogue.speakerName,
                                         currentDialogue.dialogueText    );
     }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        animator = GetComponent<Animator>();
+        animator.SetLayerWeight(2, 0);
+    }
 }

@@ -20,4 +20,12 @@ public class Vet : NPC
 
         return currentDialogue;
     }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        animator = GetComponent<Animator>();
+        animator.SetLayerWeight(2, 0);
+    }
 }
