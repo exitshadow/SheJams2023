@@ -29,15 +29,6 @@ public class SceneLoader : MonoBehaviour
         walkingAudioMixer.TransitionTo(0.5f);
     }
 
-    public IEnumerator LoadNextScene(int currentSceneIndex)
-    {
-        transitionAnim.SetTrigger("StartTrigger");
-        loadingAudioMixer.TransitionTo(0.5f);
-        yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(currentSceneIndex + 1);
-        walkingAudioMixer.TransitionTo(0.5f);
-    }
-
     public void MainMenu()
     {
         StartCoroutine(LoadScene(0));
