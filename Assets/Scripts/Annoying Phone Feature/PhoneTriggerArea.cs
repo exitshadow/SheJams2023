@@ -17,7 +17,7 @@ public class PhoneTriggerArea : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            if (!phoneManager.HasPhoneMessages())
+            if (!phoneManager.HasPhoneMessages() && !phoneManager.IsReadingPhone)
             {
                 phoneManager.FetchDialogue(conversationIndex);
                 phoneManager.ShowNotification();
