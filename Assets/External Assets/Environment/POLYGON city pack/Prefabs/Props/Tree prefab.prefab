@@ -162,3 +162,4 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   isPlayingDialogue: 0
   treeBranchObject: {fileID: 1121850211589678}
+  targetHand: {fileID: 0}

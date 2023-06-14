@@ -31,5 +31,11 @@ MonoBehaviour:
   questWaitingDialogueSegments:
   - speakerName: Vet
     dialogueText: ...
+  - speakerName: Iman
+    dialogueText: May I ask you, what have you been looking at for so long?
+  - speakerName: Vet
+    dialogueText: The creeping void of absolute nothingness.
+  - speakerName: Iman
+    dialogueText: Oh dear.
   questProgressingDialogueSegments: []
   questEndingDialogueSegments: []

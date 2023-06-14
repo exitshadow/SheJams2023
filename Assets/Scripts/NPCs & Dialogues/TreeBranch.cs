@@ -6,6 +6,7 @@ public class TreeBranch : NPC
 {
     [Tooltip("Has to be the one with the renderer on it!")]
     [SerializeField] private GameObject treeBranchObject;
+    [SerializeField] private Transform targetHand;
     protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
@@ -32,7 +33,9 @@ public class TreeBranch : NPC
 
             if (gameManager.HasFoundTheButterflyBranch())
             {
-                treeBranchObject.SetActive(false);
+                treeBranchObject.transform.SetParent(targetHand);
+                treeBranchObject.transform.localRotation = Quaternion.identity;
+                treeBranchObject.transform.localPosition = new Vector3(0, 0, -.1f);
             }
 
             return;
