@@ -105,6 +105,28 @@ public partial class @ImanActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""618e7a6f-85cb-46d7-b945-5108ae355ad1"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50ded4a6-ac23-4783-a58d-6aca12dbdfff"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""185a943c-432a-4341-aa5e-4a9aadae7ef7"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
