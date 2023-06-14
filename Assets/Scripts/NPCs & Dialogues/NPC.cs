@@ -97,6 +97,7 @@ public abstract class NPC : MonoBehaviour
     #region unity events
     protected virtual void Awake()
     {
+        animator = GetComponent<Animator>();
         animator.SetLayerWeight(2, 0);
         FetchDialogue(dialogueData.questStartingDialogueSegments);
     }
