@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ConfirmButterflyCapture()
     {
-        gameStateData.hasVisitedNeighbour = true;
+        gameStateData.hasCapturedButterflies = true;
     }
 
     /// <summary>
