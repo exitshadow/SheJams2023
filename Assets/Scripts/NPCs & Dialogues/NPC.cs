@@ -97,6 +97,7 @@ public abstract class NPC : MonoBehaviour
     #region unity events
     protected virtual void Awake()
     {
+        animator.SetLayerWeight(2, 0);
         FetchDialogue(dialogueData.questStartingDialogueSegments);
     }
 
@@ -125,5 +126,6 @@ public abstract class NPC : MonoBehaviour
             pc.currentInteractingNPC = null;
         }
     }
+
     #endregion
 }
