@@ -14,6 +14,7 @@ public class AnnoyingPhone : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private AudioSource source;
+    [SerializeField] private PlayerController player;
     
     private AnnoyingTextMessageAsset.TextMessageConversation currentConvo;
     private Queue<AnnoyingTextMessageAsset.TextMessage> queuedTextMessages = new Queue<AnnoyingTextMessageAsset.TextMessage>();
@@ -51,6 +52,7 @@ public class AnnoyingPhone : MonoBehaviour
 
                 hasNewMessages = false;
                 IsReadingPhone = true;
+                player.MakeTypeOnPhone(true);
             }
             else
             {
@@ -65,6 +67,7 @@ public class AnnoyingPhone : MonoBehaviour
         {
             uiManager.ClearMessageBox();
             uiManager.ClosePhoneUI();
+            player.MakeTypeOnPhone(false);
             IsReadingPhone = false;
             return;
         }
