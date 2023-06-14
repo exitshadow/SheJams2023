@@ -1465,13 +1465,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "exitshadow \u2013 Lead Programmer, Lead artist, UI artist, Game designer\r\n\r\nCaptainVanessa
-    \u2013 Narrative Designer, Programmer, Sound Designer\r\n\r\nTylia \u2013 Lead
-    animator\n\nSpecial thanks to Reem Alabras and Queenhope.\n\nYeah, that's about
-    it.\n\nWe're not that many people, so you'll have to sit through the credits
-    until the music ends.\n\nMaybe one day our team will grow so much we'll need
-    a longer song!\n\r\nThanks to She Jams for organizing the event.\r\n\nMusic by
-    LushoGames.\r"
+  m_text: "exitshadow \u2013 Lead Programmer, Lead Artist, UI Artist, Game designer,
+    Level Artist, Character Artist\r\n\r\nCaptainVanessa \u2013 Producer, Narrative
+    Designer, Programmer, UI Programmer, Sound Designer\r\n\r\nTylia \u2013 Lead
+    animator, QA Tester\r\n\r\nreem-alabras\u2013 QA Tester\r\n\r\namalalotaibi \u2013
+    QA Tester\n\nYeah, that's about it.\n\nWe're not that many people, so you'll
+    have to sit through the credits until the music ends.\n\nMaybe one day our team
+    will grow so much we'll need a longer song!\n\r\nThanks to She Jams for organizing
+    the event.\r\n\nMusic by LushoGames.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ed4d060623682549ace52a16e3382bf, type: 2}
   m_sharedMaterial: {fileID: -1385965668369951530, guid: 3ed4d060623682549ace52a16e3382bf, type: 2}
