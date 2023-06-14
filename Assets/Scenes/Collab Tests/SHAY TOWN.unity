@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStateData: {fileID: 11400000, guid: ac50abd2a7aa02d4f951ae90b5e89870, type: 2}
+  uiManager: {fileID: 0}
 --- !u!4 &19737400
 Transform:
   m_ObjectHideFlags: 0
@@ -5116,7 +5117,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 566933982322724406, guid: 7e00fa0f51110174b9566b400d530fda, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 566933982322724406, guid: 7e00fa0f51110174b9566b400d530fda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5780,7 +5781,7 @@ Transform:
   m_Children:
   - {fileID: 1666782999}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1898817318
 MeshCollider:
@@ -6495,6 +6496,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 677369618, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 107970956478083935, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
