@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Dad : NPC
 {
+    [SerializeField] private SceneLoader sceneLoader;
 
     protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
     {
@@ -34,5 +35,27 @@ public class Dad : NPC
 
         return currentDialogue;
 
+    }
+
+    public override void InjectDialogue()
+    {
+        if (QueuedDialogue.Count == 0)
+        {
+            uiManager.CloseDialogueBox();
+            isPlayingDialogue = false;
+           if (gameManager.HasResetDadsComputer()) sceneLoader.Credits();
+            return;
+        }
+
+        NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
+
+        if (!isPlayingDialogue)
+        {
+            uiManager.OpenDialogueBox();
+            isPlayingDialogue = true;
+        }
+
+        uiManager.InjectDialogueLine(   currentDialogue.speakerName,
+                                        currentDialogue.dialogueText    );
     }
 }

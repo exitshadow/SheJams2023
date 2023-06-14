@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HouseDoorOutside : MonoBehaviour
 {
+    [SerializeField] private SceneLoader sceneLoader;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Dads House");
+            sceneLoader.LoadScene(1);
         }
     }
 }

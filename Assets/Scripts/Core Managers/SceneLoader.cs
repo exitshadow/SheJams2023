@@ -43,6 +43,11 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadScene(0));
     }
 
+    public void Credits()
+    {
+        StartCoroutine(LoadScene(3));
+    }
+
     public void QuitGame()
     {
         Application.Quit();
