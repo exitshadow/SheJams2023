@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3489551290419898655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.00583}
+  m_LocalPosition: {x: 0, y: 0.657, z: 0.00583}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -147,7 +147,19 @@ MonoBehaviour:
     m_ActionId: 58a67143-251d-4ef8-9353-422e6bb9a945
     m_ActionName: Player/Cancel
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2329569983424723825}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: PickUpPhone
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: cf557c0a-650d-4b64-a617-d6e7a84266e2
     m_ActionName: Player/Pick Up Phone
   - m_PersistentCalls:
@@ -254,7 +266,7 @@ MonoBehaviour:
   phone: {fileID: 0}
   walkSpeed: 3
   runSpeed: 20
-  steeringSpeed: 5
+  steeringSpeed: 2
   controlsCanvas: {fileID: 0}
   currentInteractingNPC: {fileID: 0}
 --- !u!136 &1456264314
