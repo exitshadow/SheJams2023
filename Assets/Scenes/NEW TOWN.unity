@@ -4576,6 +4576,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2099798025
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099798021}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: afea2b796e1f60444b30ee6d8f1009f9, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2c196e27229e6e44e804d62cc07577a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2104447715 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1134225020085166752, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
