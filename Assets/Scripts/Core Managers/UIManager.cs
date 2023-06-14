@@ -10,6 +10,9 @@ using TMPro;
 ///
 public class UIManager : MonoBehaviour
 {
+    [Header("Mission Indicator Reference")]
+    [SerializeField] private TextMeshProUGUI missionPromptTMP;
+
     [Header("Dialogue Box References")]
     [SerializeField] private RectTransform dialogueBoxGroup;
     [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
@@ -34,6 +37,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float messageHorizontalMargin = 30f;
     [SerializeField] private float messageSpacingBetweenSenders = 10f;
 
+    #region mission prompt
+    public void ChangeMissionPrompt(string prompt)
+    {
+        missionPromptTMP.text = prompt;
+    }
+
+    #endregion
+
     #region dialogue box
     public void OpenDialogueBox()
     {
@@ -53,7 +64,6 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region phone ui box stuffsies
-
     public void OpenPhoneUI()
     {
         phoneUIBoxGroup.gameObject.SetActive(true);
