@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject messageFromImanPrefab;
     [SerializeField] private GameObject messageFromSenderPrefab;
     [SerializeField] private GameObject messageFromAppPrefab;
+    [SerializeField] private AudioSource source;
     
     [Header("Annoying Messages Display Parameters")]
     [SerializeField] private int maxCharsPerLine = 25;
@@ -110,6 +111,8 @@ public class UIManager : MonoBehaviour
         if (message.senderName == "Iman")
         {
             messageSnippetBox = Instantiate(messageFromImanPrefab);
+            source.Play(0);
+
         }
         else if (message.senderName == "")
         {
@@ -118,6 +121,8 @@ public class UIManager : MonoBehaviour
         else
         {
             messageSnippetBox = Instantiate(messageFromSenderPrefab);
+            source.Play(0);
+
         }
 
         // calculates box size for said message (no need to do it for app messages)

@@ -13,6 +13,7 @@ public class AnnoyingPhone : MonoBehaviour
     [SerializeField] private AnnoyingTextMessageAsset textMessagesData;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private AudioSource source;
     
     private AnnoyingTextMessageAsset.TextMessageConversation currentConvo;
     private Queue<AnnoyingTextMessageAsset.TextMessage> queuedTextMessages = new Queue<AnnoyingTextMessageAsset.TextMessage>();
@@ -27,6 +28,7 @@ public class AnnoyingPhone : MonoBehaviour
     public void ShowNotification()
     {
         hasNewMessages = true;
+        source.Play(0);
         uiManager.ShowNotificationOnPhone();
     }
 
