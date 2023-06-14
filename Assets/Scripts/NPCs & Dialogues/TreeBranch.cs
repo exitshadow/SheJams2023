@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TreeBranch : NPC
 {
+    [Tooltip("Has to be the one with the renderer on it!")]
+    [SerializeField] private GameObject treeBranchObject;
     protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
@@ -30,7 +32,7 @@ public class TreeBranch : NPC
 
             if (gameManager.HasFoundTheButterflyBranch())
             {
-                gameObject.SetActive(false);
+                treeBranchObject.SetActive(false);
             }
 
             return;
@@ -46,5 +48,12 @@ public class TreeBranch : NPC
 
         uiManager.InjectDialogueLine(   currentDialogue.speakerName,
                                         currentDialogue.dialogueText    );
+    }
+
+    protected override void OnTriggerExit(Collider other)
+    {
+        base.OnTriggerExit(other);
+
+        gameObject.SetActive(false);
     }
 }
