@@ -31,6 +31,8 @@ public class TreeBranch : NPC
             uiManager.CloseDialogueBox();
             isPlayingDialogue = false;
 
+            // todo
+            // abstract this bit in another virtual method in the parent class
             if (gameManager.HasFoundTheButterflyBranch())
             {
                 treeBranchObject.transform.SetParent(targetHand);
