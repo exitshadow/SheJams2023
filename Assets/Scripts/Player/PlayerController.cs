@@ -145,10 +145,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (    currentInteractingNPC == null
-            || !currentInteractingNPC.isPlayingDialogue
-            || !phone.IsReadingPhone                    )
+            || !currentInteractingNPC.isPlayingDialogue)
         {
-            Move();
+            if (!phone.IsReadingPhone)
+                Move();
         }
     }
 }
