@@ -1513,6 +1513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+--- !u!223 &1454804659 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 8191905167154785738, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+  m_PrefabInstance: {fileID: 1454804658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1526577665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,6 +1942,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2329569983424723825, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+      propertyPath: phone
+      value: 
+      objectReference: {fileID: 960215370}
+    - target: {fileID: 2329569983424723825, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+      propertyPath: controlsCanvas
+      value: 
+      objectReference: {fileID: 1454804659}
     - target: {fileID: 3489551291734799639, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
       propertyPath: m_Name
       value: ImanTestController
@@ -2052,6 +2065,7 @@ MonoBehaviour:
   gameManager: {fileID: 960215368}
   uiManager: {fileID: 594829370}
   isPlayingDialogue: 0
+  sceneLoader: {fileID: 111528600}
 --- !u!1001 &6280239006285669173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2081,15 +2095,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10879917
+      value: 0.10879913
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.22060943
+      value: 0.22060938
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.024771053
+      value: -0.024771042
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalPosition.y
