@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameStateAsset gameStateData;
 
+    [SerializeField] private UIManager uiManager;
+
     #region dad’s quest
     public bool DidSpeakToDadFirstTime()
     {
@@ -68,11 +70,13 @@ public class GameManager : MonoBehaviour
     public void ConfirmTalkDadAtHome()
     {
         gameStateData.hasSpokenToDadAtHome = true;
+        uiManager.ChangeMissionPrompt("Go to speak to the neighbor.");
     }
 
     public void ConfirmResettingDadsComputer()
     {
         gameStateData.hasResetDadsComputer = true;
+        uiManager.ChangeMissionPrompt("Like an subscribe!!");
     }
 
     /// <summary>
@@ -81,6 +85,7 @@ public class GameManager : MonoBehaviour
     public void ConfirmReceptionNeighbourFirstCall()
     {
         gameStateData.hasReceivedNeighbourFirstCall = true;
+        uiManager.ChangeMissionPrompt("Dad wanted to ask for something.");
     }
 
     /// <summary>
@@ -89,6 +94,7 @@ public class GameManager : MonoBehaviour
     public void ConfirmVisitNeighbourFirstTime()
     {
         gameStateData.hasVisitedNeighbour = true;
+        uiManager.ChangeMissionPrompt("Go find the butterfly tree branch.");
     }
 
     /// <summary>
@@ -97,6 +103,7 @@ public class GameManager : MonoBehaviour
     public void ConfirmFoundTreeBranch()
     {
         gameStateData.hasFoundTreeBranch = true;
+        uiManager.ChangeMissionPrompt("Go back to the neighbor bring her the butterfly tree branch.");
     }
 
     /// <summary>
@@ -105,6 +112,7 @@ public class GameManager : MonoBehaviour
     public void ConfirmButterflyCapture()
     {
         gameStateData.hasCapturedButterflies = true;
+        uiManager.ChangeMissionPrompt("Rembember dad needed you with the computer.");
     }
 
     /// <summary>
@@ -113,6 +121,7 @@ public class GameManager : MonoBehaviour
     public void ConfirmCatEncounter()
     {
         gameStateData.hasEncounteredCat = true;
+        uiManager.ChangeMissionPrompt("Find something for the cat to eat! like tuna!");
     }
 
     /// <summary>
@@ -121,6 +130,7 @@ public class GameManager : MonoBehaviour
     public void ConfirmTunaCansFound()
     {
         gameStateData.hasFoundTuna = true;
+        uiManager.ChangeMissionPrompt("Find the cat to give it tuna!");
     }
 
     /// <summary>
@@ -129,6 +139,7 @@ public class GameManager : MonoBehaviour
     public void ConfirmCatIsFed()
     {
         gameStateData.hasFedCat = true;
+        uiManager.ChangeMissionPrompt("Oh right, the butterfly tree.");
     }
 
     /// <summary>
