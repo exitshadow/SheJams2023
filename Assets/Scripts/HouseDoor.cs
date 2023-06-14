@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Collider))]
 public class HouseDoor : MonoBehaviour
 {
+    [SerializeField] private SceneLoader sceneLoader;
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("ShadySceneTests");
+            sceneLoader.LoadNextScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
