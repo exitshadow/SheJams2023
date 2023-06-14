@@ -20,12 +20,21 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
-    IEnumerator LoadScene(int sceneIndex)
+    public IEnumerator LoadScene(int sceneIndex)
     {
         transitionAnim.SetTrigger("StartTrigger");
         loadingAudioMixer.TransitionTo(0.5f);
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneIndex);
+        walkingAudioMixer.TransitionTo(0.5f);
+    }
+
+    public IEnumerator LoadNextScene(int currentSceneIndex)
+    {
+        transitionAnim.SetTrigger("StartTrigger");
+        loadingAudioMixer.TransitionTo(0.5f);
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(currentSceneIndex + 1);
         walkingAudioMixer.TransitionTo(0.5f);
     }
 
