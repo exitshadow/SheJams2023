@@ -11,7 +11,7 @@ public class HouseDoor : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            sceneLoader.LoadNextScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(sceneLoader.LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
         }
     }
 }
