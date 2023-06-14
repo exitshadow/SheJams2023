@@ -57,9 +57,13 @@ public class TreeBranch : NPC
 
     protected override void OnTriggerExit(Collider other)
     {
+        Debug.Log("exiting branch trigger");
         base.OnTriggerExit(other);
 
         if (gameManager.HasFoundTheButterflyBranch())
+        {
             gameObject.SetActive(false);
+            Debug.Log("Destroying tree branch");
+        }
     }
 }
