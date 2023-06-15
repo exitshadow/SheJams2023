@@ -54,8 +54,8 @@ MonoBehaviour:
       be nice\u2026"
   - speakerName: Neighbor
     dialogueText: ...
-  - speakerName: Iman
-    dialogueText: Just open the door, please.
+  - speakerName: Neighbor
+    dialogueText: Just give me that, please.
   questEndingDialogueSegments:
   - speakerName: Neighbor
     dialogueText: Iman, thank you, thank you!
