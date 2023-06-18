@@ -36,9 +36,12 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public NPC currentInteractingNPC;
     #endregion
 
-    public void OnMoveCharacter()
+    public void MakeTypeOnPhone(bool isTexting)
     {
+        // animator.SetBool("isTexting", isTexting);
 
+        if (isTexting) animator.SetLayerWeight(2, 100);
+        else animator.SetLayerWeight(2,0);
     }
 
     private void Move()
@@ -139,6 +142,8 @@ public class PlayerController : MonoBehaviour
 
 
         moveSpeed = walkSpeed;
+
+        animator.SetLayerWeight(2, 0);
 
     }
 

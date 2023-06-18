@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questStartingDialogueSegments:
   - speakerName: Iman
-    dialogueText: "Oh, kitty, kitty! Well, would you look at that? A cat is obviously
-      blocking my way home. Definitely no way around it. I guess I\u2019ll HAVE to
-      go buy some tuna for this cat. Sorry, neighbor. I\u2019m taking the scenic
-      route!"
+    dialogueText: Oh, kitty, kitty! Well, would you look at that? A cat is obviously
+      blocking my way home. Definitely no way around it.
+  - speakerName: Iman
+    dialogueText: "I guess I\u2019ll HAVE to go buy some tuna for this cat. Sorry,
+      neighbor. I\u2019m taking the scenic route!"
   questWaitingDialogueSegments:
   - speakerName: Iman
     dialogueText: "No, I just can\u2019t leave this poor cat to starve! Also, I don\u2019t

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Neighbor Dialogue Asset
   m_EditorClassIdentifier: 
   questStartingDialogueSegments:
-  - speakerName: Neighbour
+  - speakerName: Neighbor
     dialogueText: "You\u2019re here! Finally, finally!"
   - speakerName: Iman
     dialogueText: "I am, I am! What\u2019s the matter?"
@@ -54,8 +54,8 @@ MonoBehaviour:
       be nice\u2026"
   - speakerName: Neighbor
     dialogueText: ...
-  - speakerName: Iman
-    dialogueText: Just open the door, please.
+  - speakerName: Neighbor
+    dialogueText: Just give me that, please.
   questEndingDialogueSegments:
   - speakerName: Neighbor
     dialogueText: Iman, thank you, thank you!

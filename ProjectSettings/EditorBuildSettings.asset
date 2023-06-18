@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MENU.unity
-    guid: e8df1f0c9e050c84c9b07d6e9743876f
+    path: Assets/Scenes/SPLASH SCREEN.unity
+    guid: 1d88940e5c9d0184b9332579162d96db
   - enabled: 1
     path: Assets/Scenes/Dads House.unity
     guid: 9c31d31e3d386ae4b978b5f6ab3ce1f0

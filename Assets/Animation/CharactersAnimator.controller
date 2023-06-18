@@ -310,7 +310,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1051460997580084340}
-    m_Position: {x: 320, y: 150, z: 0}
+    m_Position: {x: 330, y: 150, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -437,7 +437,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Texting
     m_StateMachine: {fileID: -1174280528132059604}
-    m_Mask: {fileID: 31900000, guid: 6c20c282c742b2b40a523131a7946c40, type: 2}
+    m_Mask: {fileID: 31900000, guid: 100336df5adbafe458ecbc3c00310d33, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0

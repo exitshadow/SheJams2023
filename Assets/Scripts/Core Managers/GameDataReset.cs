@@ -9,11 +9,9 @@ public class GameDataReset : MonoBehaviour
     private void Start()
     {
         Reset();
-
-        gameObject.SetActive(false);
     }
 
-    private void Reset()
+    public void Reset()
     {
         gameState.hasSpokenToDadAtHome = false;
         gameState.hasReceivedNeighbourFirstCall = false;

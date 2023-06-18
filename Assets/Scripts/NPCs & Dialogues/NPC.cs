@@ -125,5 +125,6 @@ public abstract class NPC : MonoBehaviour
             pc.currentInteractingNPC = null;
         }
     }
+
     #endregion
 }
