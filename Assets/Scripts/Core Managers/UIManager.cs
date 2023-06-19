@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
 {
     [Header("Mission Indicator Reference")]
     [SerializeField] private TextMeshProUGUI missionPromptTMP;
+    [Header("Interact Tutorial Reference")]
+    [SerializeField] private Canvas interactCanvas;
 
     [Header("Dialogue Box References")]
     [SerializeField] private RectTransform dialogueBoxGroup;
@@ -97,6 +99,16 @@ public class UIManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+
+    public void ShowInteractTutorial()
+    {
+        interactCanvas.enabled = true;
+    }
+
+    public void HideInteractTutorial()
+    {
+        interactCanvas.enabled = false;
     }
 
     /// <summary>
@@ -185,4 +197,9 @@ public class UIManager : MonoBehaviour
         verticalGroupRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, verticalGroupRT.sizeDelta.y + newHeight);
     }
     #endregion
+
+    void Start()
+    {
+        HideInteractTutorial();
+    }
 }

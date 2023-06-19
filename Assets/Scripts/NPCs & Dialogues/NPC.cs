@@ -16,6 +16,7 @@ public abstract class NPC : MonoBehaviour
     [SerializeField] protected NPCDialogueAsset dialogueData;
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected UIManager uiManager;
+
     #endregion
 
     #region inner references
@@ -34,7 +35,7 @@ public abstract class NPC : MonoBehaviour
     #region dialogue methods
 
     /// <summary>
-    /// Finds the asked dialoue segment and drops all the lines into a queue for further usage.
+    /// Finds the asked dialogue segment and drops all the lines into a queue for further usage.
     /// </summary>
     public void FetchDialogue(List<NPCDialogueAsset.DialogueSegment> dialogueSegment)
     {
@@ -82,6 +83,7 @@ public abstract class NPC : MonoBehaviour
             if (!isPlayingDialogue)
             {
                 FetchDialogue(FindCurrentDialogue());
+                uiManager.HideInteractTutorial();
             }
 
             InjectDialogue();
@@ -111,6 +113,7 @@ public abstract class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            uiManager.ShowInteractTutorial();
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
             Debug.Log("player slot occupied");
@@ -121,6 +124,7 @@ public abstract class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            uiManager.HideInteractTutorial();
             PlayerController pc = other.GetComponent<PlayerController>();
             pc.currentInteractingNPC = null;
         }
