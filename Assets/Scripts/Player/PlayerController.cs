@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         Vector2 moveDirection = playerMove.ReadValue<Vector2>();
 
         Vector2 movement = moveDirection * moveSpeed * Time.fixedDeltaTime;
-        Vector3 translation = new Vector3(movement.x, 0, movement.y);
+        Vector3 translation = new Vector3(0, 0, movement.y);
 
         // movement
         translation = transform.TransformDirection(translation);
