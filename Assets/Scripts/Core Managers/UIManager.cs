@@ -103,12 +103,12 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteractTutorial()
     {
-        interactCanvas.enabled = true;
+        interactCanvas.gameObject.SetActive(true);
     }
 
     public void HideInteractTutorial()
     {
-        interactCanvas.enabled = false;
+        interactCanvas.gameObject.SetActive(false);
     }
 
     /// <summary>
