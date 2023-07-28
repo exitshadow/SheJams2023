@@ -283,6 +283,12 @@ Mister Duck is hidden in the middle of similarly-looking ducks. All ducks are qu
 
 
 - [ ] Secret Base Tarmac at the Top of the Ridge
+  - [ ] Bushes
+  - [ ] Camping tent
+  - [ ] Camping pillows
+  - [ ] Tarmac
+  - [ ] Tarmac opening (rigged)
+  - [ ] Rocket
 
 ### Specific scenes maps
 
