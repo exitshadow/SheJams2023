@@ -1,0 +1,19 @@
+﻿title: Dad
+tags:
+position: 0,0
+
+---
+<<declare $hasRepairedDadComputer2 to false>>
+Dad: Iman! Iman! My computer doesn't work anymore!
+Dad: It seems to be sick.
+Iman: What, again?
+Dad: What do you mean, again?
+Iman: I fixed it one hour ago?
+Dad: Maybe it's a chronic illness then?
+Iman: Alright, just let me have a look.
+Iman: ...
+Iman: ...
+Iman: Fixed!
+Dad: Oh, what a nice daughter I have! I am a lucky father!
+<<set $hasRepairedDadComputer2 to true>>
+===
