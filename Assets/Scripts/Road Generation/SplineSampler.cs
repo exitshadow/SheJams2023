@@ -20,10 +20,10 @@ public class SplineSampler : MonoBehaviour
     [SerializeField] private float roadWidth = 10f;
     [SerializeField] private float roadThickness = .5f;
     [SerializeField] private int subdivisions = 100;
+    [SerializeField] private bool refreshOnModification = true;
 
     [Header("Visualization Parameters")]
     [SerializeField] private float gizmoBallSize = 1f;
-
 
     private float3 position;
     private float3 tangent;
@@ -34,6 +34,10 @@ public class SplineSampler : MonoBehaviour
     private List<Vector3> bottomRightHandVertices;
     private List<Vector3> bottomLeftHandVertices;
 
+    private void OnEnable()
+    {
+        Spline.Changed += OnSplineChanged;
+    }
 
     private void Update()
     {
@@ -107,6 +111,81 @@ public class SplineSampler : MonoBehaviour
         }
     }
 
+    public void GenerateRoadMesh()
+    {
+        Mesh roadMesh = new Mesh();
+        Mesh sideRoadMesh = new Mesh();
+
+        List<Vector3> vertices = new List<Vector3>();
+        List<int> triangles = new List<int>();
+        List<int> sideTriangles = new List<int>();
+
+        int vertexCount = 4;
+
+        // add vertices
+        for (int i = 0; i < topLeftHandVertices.Count; i++)
+        {
+            Vector3 a = topRightHandVertices[i] - transform.position;
+            Vector3 b = topLeftHandVertices[i] - transform.position;
+            Vector3 c = bottomRightHandVertices[i] - transform.position;
+            Vector3 d = bottomLeftHandVertices[i] - transform.position;
+
+            vertices.AddRange(new List<Vector3> { a, b, c, d });
+        }
+
+        // add triangles
+        for (int i = 0; i < topLeftHandVertices.Count - 1; i++)
+        {
+            int root = i * vertexCount;
+            int rootNext = (i + 1) * vertexCount;
+
+        // TOP FACE
+            // triangle 1
+            int t1 = root;          // point a
+            int t2 = root + 1;      // point b
+            int t3 = rootNext + 1;  // point b’
+            // triangle 2
+            int t4 = root;          // point a
+            int t5 = t3;            // point b’
+            int t6 = rootNext;      // point a’
+
+            triangles.AddRange(new List<int> {t1, t2, t3, t4, t5, t6});
+        
+        // RIGHT SIDE FACE
+            // triangle 1
+            int r1 = root + 2;      // point c
+            int r2 = root;          // point a
+            int r3 = rootNext;      // point a’
+            // triangle 2
+            int r4 = r3;            // point a’
+            int r5 = rootNext + 2;  // point c’
+            int r6 = r1;            // point c
+
+            triangles.AddRange(new List<int> {r1, r2, r3, r4, r5, r6});
+
+        // LEFT SIDE FACE
+            // triangle 1
+            int l1 = root + 1;      // point b
+            int l2 = root + 3;      // point d
+            int l3 = rootNext + 3;  // point d’
+            // triangle 2
+            int l4 = l3;            // point d’
+            int l5 = rootNext + 1;  // point b’
+            int l6 = l1;            // point b
+
+            triangles.AddRange(new List<int> {l1, l2, l3, l4, l5, l6});
+
+        }
+
+        roadMesh.SetVertices(vertices);
+        roadMesh.SetTriangles(triangles, 0);
+        roadMesh.RecalculateNormals();
+
+        meshFilter.mesh = roadMesh;
+        
+
+    }
+
     public void GenerateMesh()
     {
         Mesh roadMesh = new Mesh();
@@ -163,6 +242,9 @@ public class SplineSampler : MonoBehaviour
             int l5 = offset + 7;
             int l6 = offset + 1;
 
+        // todo: back, front and down faces
+        // separated meshes to a collection of colliders
+
             vertices.AddRange(new List<Vector3> { p1, p2, p3, p4, p5, p6, p7, p8 });
             triangles.AddRange(new List<int> {  t1, t2, t3, t4, t5, t6,
                                                 r1, r2, r3, r4, r5, r6,
@@ -176,6 +258,16 @@ public class SplineSampler : MonoBehaviour
         meshFilter.mesh = roadMesh;
         meshFilter.name = "Road Mesh";
 
+    }
+
+    private void OnSplineChanged(Spline spline, int knotIndex, SplineModification modification)
+    {
+        if (spline != splineContainer.Spline || !refreshOnModification) return;
+
+        Debug.Log("Spline has been changed.");
+
+        GenerateRoadMesh();
+        Debug.Log("The mesh has been updated.");
     }
 
 }

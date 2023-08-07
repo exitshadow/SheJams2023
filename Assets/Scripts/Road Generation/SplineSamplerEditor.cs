@@ -10,9 +10,9 @@ public class SplineSamplerEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("GenerateMesh"))
+        if (GUILayout.Button("Generate Road Mesh"))
         {
-            ((SplineSampler)target).GenerateMesh();
+            ((SplineSampler)target).GenerateRoadMesh();
         }
     }
 }

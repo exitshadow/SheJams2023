@@ -8,7 +8,7 @@ Handiman: The Busy Season
 
 ##### Pitch
 
-Iman is a new computer science graduate and lives in a small village at the bottom of the desert’s valley. Because she is very smart, everyone asks her to solve their problems. That makes for interesting encounters.
+Iman is a new computer science graduate and lives in a small village at the bottom of the desert’s valley. Because she is very smart, everyone asks her to solve their problems. That makes for interesting encounters. 
 
 ##### Genre
 
