@@ -14,5 +14,10 @@ public class SplineSamplerEditor : Editor
         {
             ((SplineSampler)target).GenerateRoadMesh();
         }
+        
+        if (GUILayout.Button("Generate Road Colliders"))
+        {
+            ((SplineSampler)target).GenerateRoadColliders();
+        }
     }
 }

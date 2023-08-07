@@ -34,6 +34,8 @@ public class SplineSampler : MonoBehaviour
     private List<Vector3> bottomRightHandVertices;
     private List<Vector3> bottomLeftHandVertices;
 
+    private GameObject colliderHolder;
+
     private void OnEnable()
     {
         Spline.Changed += OnSplineChanged;
@@ -186,31 +188,55 @@ public class SplineSampler : MonoBehaviour
 
     }
 
-    public void GenerateMesh()
+    /// <summary>
+    /// Iterates through all the road spline samples and creates colliders
+    /// </summary>
+    public void GenerateRoadColliders()
     {
-        Mesh roadMesh = new Mesh();
+        if (colliderHolder == null)
+        {
+            colliderHolder  = new GameObject("Collider Holder");
+            colliderHolder.transform.parent = transform;
+        }
+
+        // clear previous colliders
+        if (colliderHolder.transform.childCount != 0)
+        {
+            foreach (Transform child in colliderHolder.transform)
+            {
+                GameObject.Destroy(colliderHolder);
+            }
+        }
+
         List<Vector3> vertices = new List<Vector3>();
         List<int> triangles = new List<int>();
         int offset = 0;
-        int loopLength = topRightHandVertices.Count;
+        int loopLength = topLeftHandVertices.Count;
+        Mesh collMesh = new Mesh();
 
         // write a face from vertices
         for (int i = 1; i < loopLength; i++)
         {
-            Vector3 p1 = topRightHandVertices[i-1] - transform.position;
-            Vector3 p2 = topLeftHandVertices[i-1] - transform.position;
+            collMesh.Clear();
 
-            Vector3 p3 = topRightHandVertices[i] - transform.position;
-            Vector3 p4 = topLeftHandVertices[i] - transform.position;
+            GameObject holder = new GameObject();
+            holder.transform.parent = colliderHolder.transform;
 
-            Vector3 p5 = bottomRightHandVertices[i-1] - transform.position;
-            Vector3 p6 = bottomLeftHandVertices[i-1] - transform.position;
+            MeshCollider collider = holder.AddComponent<MeshCollider>();
 
-            Vector3 p7 = bottomRightHandVertices[i] - transform.position;
-            Vector3 p8 = bottomLeftHandVertices[i] - transform.position;
+            Vector3 p1 = topRightHandVertices[i-1];
+            Vector3 p2 = topLeftHandVertices[i-1];
 
+            Vector3 p3 = topRightHandVertices[i];
+            Vector3 p4 = topLeftHandVertices[i];
 
-            offset = 8 * (i-1);
+            Vector3 p5 = bottomRightHandVertices[i-1];
+            Vector3 p6 = bottomLeftHandVertices[i-1];
+
+            Vector3 p7 = bottomRightHandVertices[i];
+            Vector3 p8 = bottomLeftHandVertices[i];
+
+            offset = 0;
 
         // TOP FACE
             // assigning first triangle indexes
@@ -222,6 +248,16 @@ public class SplineSampler : MonoBehaviour
             int t5 = offset + 1;
             int t6 = offset + 3;
 
+        // DOWN FACE
+            // 1st tri
+            int d1 = offset + 7;
+            int d2 = offset + 5;
+            int d3 = offset + 6;
+            // 2nd tri
+            int d4 = offset + 5;
+            int d5 = offset + 4;
+            int d6 = offset + 6;
+        
         // RIGHT FACE
             // 1st triangle indexes
             int r1 = t3;
@@ -242,21 +278,42 @@ public class SplineSampler : MonoBehaviour
             int l5 = offset + 7;
             int l6 = offset + 1;
 
+        // FRONT FACE
+            // 1st tri
+            int f1 = offset + 6;
+            int f2 = offset + 2;
+            int f3 = offset + 3;
+            // 2nd tri
+            int f4 = offset + 3;
+            int f5 = offset + 7;
+            int f6 = offset + 6;
+        
+        // BACK FACE
+            // 1st tri
+            int b1 = offset + 5;
+            int b2 = offset + 1;
+            int b3 = offset;
+            // 2nd tri
+            int b4 = offset;
+            int b5 = offset + 4;
+            int b6 = offset + 5;
+        
+
         // todo: back, front and down faces
         // separated meshes to a collection of colliders
 
-            vertices.AddRange(new List<Vector3> { p1, p2, p3, p4, p5, p6, p7, p8 });
-            triangles.AddRange(new List<int> {  t1, t2, t3, t4, t5, t6,
-                                                r1, r2, r3, r4, r5, r6,
-                                                l1, l2, l3, l4, l5, l6 });
+            collMesh.SetVertices(new List<Vector3> { p1, p2, p3, p4, p5, p6, p7, p8 });
+
+            collMesh.SetTriangles(new List<int> {  t1, t2, t3, t4, t5, t6,
+                                                    d1, d2, d3, d4, d5, d6, 
+                                                    r1, r2, r3, r4, r5, r6,
+                                                    l1, l2, l3, l4, l5, l6,
+                                                    f1, f2, f3, f4, f5, f6,
+                                                    b1, b2, b3, b4, b5, b6 }, 0);
+
+            collider.sharedMesh = collMesh;
         }
 
-        roadMesh.SetVertices(vertices);
-        roadMesh.SetTriangles(triangles, 0);
-        roadMesh.RecalculateNormals();
-
-        meshFilter.mesh = roadMesh;
-        meshFilter.name = "Road Mesh";
 
     }
 
