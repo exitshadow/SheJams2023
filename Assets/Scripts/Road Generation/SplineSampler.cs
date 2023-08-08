@@ -215,14 +215,14 @@ public class SplineSampler : MonoBehaviour
         List<int> triangles = new List<int>();
         int offset = 0;
         int loopLength = topLeftHandVertices.Count;
-        Mesh collMesh = new Mesh();
 
         // write a face from vertices
         for (int i = 1; i < loopLength; i++)
         {
+            Mesh collMesh = new Mesh();
             collMesh.Clear();
 
-            GameObject holder = new GameObject();
+            GameObject holder = new GameObject($"Collider {i}");
             holder.transform.parent = colliderHolder.transform;
 
             MeshCollider collider = holder.AddComponent<MeshCollider>();
@@ -314,6 +314,8 @@ public class SplineSampler : MonoBehaviour
                                                     f1, f2, f3, f4, f5, f6,
                                                     b1, b2, b3, b4, b5, b6 }, 0);
 
+            collMesh.RecalculateNormals();
+            collMesh.name = $"Road Collider {i}";
             collider.sharedMesh = collMesh;
         }
 
