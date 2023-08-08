@@ -43,7 +43,10 @@ public class SplineSampler : MonoBehaviour
 
     private void Update()
     {
+        #if (UNITY_EDITOR)
+        if (EditorApplication.isPlaying) return;
         GetVertices();
+        #endif
     }
 
     private void OnDrawGizmos()
