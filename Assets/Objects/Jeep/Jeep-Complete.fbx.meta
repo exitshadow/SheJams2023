@@ -3,7 +3,57 @@ guid: e994d7fa0b3e53e449f577309ccce085
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon
+    second: {fileID: 2100000, guid: 2be75ae6d9f443c4fb7faec92ae0abc2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.BlackDetails
+    second: {fileID: 2100000, guid: d835b9adfdb76d54b9c592801cb9a33c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.Center
+    second: {fileID: 2100000, guid: 1155b2d0c02a0e24ba1bca6dfb0e0d36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.Glass
+    second: {fileID: 2100000, guid: 0d8dd3b9a0c1cd545a2dab758abf326e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.Interior
+    second: {fileID: 2100000, guid: 10be1cf04d021ef4b8c0c61ef77ad108, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.Light.Orange
+    second: {fileID: 2100000, guid: f71ee992c986bfa4aa154e2b8a7e35f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.Light.Red
+    second: {fileID: 2100000, guid: 9fa49c75f3d59cf489a88d3010558aff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.Light.White
+    second: {fileID: 2100000, guid: b1394dfdd31c0764eb27d56e5ba7e31d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.Rubber
+    second: {fileID: 2100000, guid: 7de09d8fcec930343a5fb7b37fd2469e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeep.Toon.Wheels
+    second: {fileID: 2100000, guid: f58e2b5bdaa2c2544aec60d2663573b3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
