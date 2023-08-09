@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor;
 
 [ExecuteAlways]
-[RequireComponent(typeof(WheelPhysics))]
 public class WheelPhysicsSettings : MonoBehaviour
 {
     [Header("References")]

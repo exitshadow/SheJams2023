@@ -7,8 +7,8 @@ PhysicMaterial:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sand
-  dynamicFriction: 184.12
-  staticFriction: 232.5
+  dynamicFriction: 30
+  staticFriction: 50
   bounciness: 0
   frictionCombine: 0
   bounceCombine: 0
