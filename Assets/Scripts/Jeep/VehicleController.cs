@@ -7,11 +7,18 @@ public class VehicleController : MonoBehaviour
 {
     public enum TransmissionType { frontTransmission, backTransmission, fourByFour };
 
+    private float accelerationValue;
+    private float steeringValue;
+
     #region input controls
     private ImanActions actions;
-    private InputAction moveVehicule;
+    private InputAction gasForward;
+    private InputAction gasReverse;
+    private InputAction steerVehicle;
     private InputAction useBrakes;
     private InputAction honk;
+
+    private InputAction moveVehicule;
     #endregion
 
     [Header("References")]
@@ -37,9 +44,6 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private float steeringStrength = 1f;
     [SerializeField] private float steerBackStrength = 1f;
 
-    private float accelerationValue;
-    private float steeringValue;
-
     [Header("Vehicle Settings")]
     [SerializeField] private TransmissionType transmissionType = TransmissionType.fourByFour;
     [SerializeField] private float motorPower;
@@ -55,6 +59,8 @@ public class VehicleController : MonoBehaviour
 
     private void Update()
     {
+        //bool isPressed = gasForward.ReadValue<bool>;
+
         accelerationValue = moveVehicule.ReadValue<Vector2>().y * accelerationStrength;
         steeringValue = moveVehicule.ReadValue<Vector2>().x * steeringStrength;
 
@@ -75,6 +81,7 @@ public class VehicleController : MonoBehaviour
     #endregion
 
     #region acceleration calculations
+    // todo -> apply acceleration curve
     private void SetAcceleration()
     {
         float dir = 0;
@@ -134,7 +141,7 @@ public class VehicleController : MonoBehaviour
         wheelFR.steerAngle = maxAngleRight;
     }
 
-    // todo
+    // todo -> apply steering curve
     private float ApplySteeringCurve(WheelCollider targetWheel, float angle)
     {
         targetWheel.GetWorldPose(out Vector3 pos, out Quaternion rot);
@@ -167,13 +174,22 @@ public class VehicleController : MonoBehaviour
     private void InitializeInputActions()
     {
         actions = new ImanActions();
-        useBrakes = actions.Player.Interact;
-        moveVehicule = actions.Player.Move;
-        honk = actions.Player.PickUpPhone;
 
+        gasForward = actions.Jeep.Forward;
+        gasReverse = actions.Jeep.Reverse;
+        steerVehicle = actions.Jeep.Steer;
+        useBrakes = actions.Jeep.Brake;
+        honk = actions.Jeep.Honk;
+
+        moveVehicule = actions.Player.Move;
+
+        gasForward.Enable();
+        gasReverse.Enable();
+        steerVehicle.Enable();
         useBrakes.Enable();
-        moveVehicule.Enable();
         honk.Enable();
+
+        moveVehicule.Enable();
     }
     #endregion
 }

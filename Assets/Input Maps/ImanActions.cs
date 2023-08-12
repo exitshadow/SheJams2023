@@ -804,6 +804,299 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Jeep"",
+            ""id"": ""4d285fd6-de87-4cc8-9d20-992eb5fb7d51"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""02bc9bae-a5e7-4c81-9931-810fda87868e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Honk"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2f6800b-784a-4e37-8025-29c610e656d1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""Button"",
+                    ""id"": ""c66a5fd3-e0eb-479e-8750-e17ca29e5413"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Forward"",
+                    ""type"": ""Button"",
+                    ""id"": ""61621543-0347-468b-a2ec-0f0003a66169"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reverse"",
+                    ""type"": ""Button"",
+                    ""id"": ""2133ec30-d708-4a55-8a26-8cd96dbe2731"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Steer"",
+                    ""type"": ""Value"",
+                    ""id"": ""a1b2544e-7079-42e7-bab8-d5ce0bb60109"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5a715a88-1abe-4074-a976-8b8b3469f1a6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11585fec-6cb9-4f06-b6ca-cf1d0a77a74a"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""553493a7-dce1-4ab2-8ee4-14f67e3db7f5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c41b4ca-9696-4833-8146-68b639e5a787"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08c0a2eb-4fda-4ad1-8a69-56d724c01500"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5122db81-35db-434a-b4bb-29ee71957e54"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4815261c-f0cd-4010-89c1-420d8689de50"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df5dae5a-eef9-45e2-a63b-2a53e2030e2e"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis - Keyboard"",
+                    ""id"": ""4650bb48-3f86-4675-aac8-ed02683b860e"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""cf3757a6-5575-4273-a221-092785995db6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""fe5b29d8-3d94-477a-956c-3f65ef84db58"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis - Gamepad Stick"",
+                    ""id"": ""2de54f7e-f74a-4032-bf10-ee87ecf7ca87"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b9a62f2b-9d5c-48f9-bb76-efd0c12ea567"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""dadd0734-66f4-4885-bb8a-f851bec08cf1"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis - Gamepad Pad"",
+                    ""id"": ""ec822555-15d3-407e-8e17-a6b79bcf7138"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""fc791b68-9d4a-4984-b3fe-d70c0d3872be"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""0f8bed38-7e9f-46d1-a4eb-c8909b055b38"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b77f3dc4-ded7-47bf-8923-e2c297ee81b1"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9793c2bf-aca5-4f73-bc81-42a3c9deec99"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c0db275-a6ca-4b86-988b-c20d0ab96171"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Honk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64b10583-b545-49bb-af09-17137b8a3a4c"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Honk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -825,6 +1118,14 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
         m_UIPhone_Pause = m_UIPhone.FindAction("Pause", throwIfNotFound: true);
         m_UIPhone_Move = m_UIPhone.FindAction("Move", throwIfNotFound: true);
         m_UIPhone_Newaction = m_UIPhone.FindAction("New action", throwIfNotFound: true);
+        // Jeep
+        m_Jeep = asset.FindActionMap("Jeep", throwIfNotFound: true);
+        m_Jeep_Interact = m_Jeep.FindAction("Interact", throwIfNotFound: true);
+        m_Jeep_Honk = m_Jeep.FindAction("Honk", throwIfNotFound: true);
+        m_Jeep_Brake = m_Jeep.FindAction("Brake", throwIfNotFound: true);
+        m_Jeep_Forward = m_Jeep.FindAction("Forward", throwIfNotFound: true);
+        m_Jeep_Reverse = m_Jeep.FindAction("Reverse", throwIfNotFound: true);
+        m_Jeep_Steer = m_Jeep.FindAction("Steer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1062,6 +1363,92 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
         }
     }
     public UIPhoneActions @UIPhone => new UIPhoneActions(this);
+
+    // Jeep
+    private readonly InputActionMap m_Jeep;
+    private List<IJeepActions> m_JeepActionsCallbackInterfaces = new List<IJeepActions>();
+    private readonly InputAction m_Jeep_Interact;
+    private readonly InputAction m_Jeep_Honk;
+    private readonly InputAction m_Jeep_Brake;
+    private readonly InputAction m_Jeep_Forward;
+    private readonly InputAction m_Jeep_Reverse;
+    private readonly InputAction m_Jeep_Steer;
+    public struct JeepActions
+    {
+        private @ImanActions m_Wrapper;
+        public JeepActions(@ImanActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_Jeep_Interact;
+        public InputAction @Honk => m_Wrapper.m_Jeep_Honk;
+        public InputAction @Brake => m_Wrapper.m_Jeep_Brake;
+        public InputAction @Forward => m_Wrapper.m_Jeep_Forward;
+        public InputAction @Reverse => m_Wrapper.m_Jeep_Reverse;
+        public InputAction @Steer => m_Wrapper.m_Jeep_Steer;
+        public InputActionMap Get() { return m_Wrapper.m_Jeep; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(JeepActions set) { return set.Get(); }
+        public void AddCallbacks(IJeepActions instance)
+        {
+            if (instance == null || m_Wrapper.m_JeepActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_JeepActionsCallbackInterfaces.Add(instance);
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Honk.started += instance.OnHonk;
+            @Honk.performed += instance.OnHonk;
+            @Honk.canceled += instance.OnHonk;
+            @Brake.started += instance.OnBrake;
+            @Brake.performed += instance.OnBrake;
+            @Brake.canceled += instance.OnBrake;
+            @Forward.started += instance.OnForward;
+            @Forward.performed += instance.OnForward;
+            @Forward.canceled += instance.OnForward;
+            @Reverse.started += instance.OnReverse;
+            @Reverse.performed += instance.OnReverse;
+            @Reverse.canceled += instance.OnReverse;
+            @Steer.started += instance.OnSteer;
+            @Steer.performed += instance.OnSteer;
+            @Steer.canceled += instance.OnSteer;
+        }
+
+        private void UnregisterCallbacks(IJeepActions instance)
+        {
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Honk.started -= instance.OnHonk;
+            @Honk.performed -= instance.OnHonk;
+            @Honk.canceled -= instance.OnHonk;
+            @Brake.started -= instance.OnBrake;
+            @Brake.performed -= instance.OnBrake;
+            @Brake.canceled -= instance.OnBrake;
+            @Forward.started -= instance.OnForward;
+            @Forward.performed -= instance.OnForward;
+            @Forward.canceled -= instance.OnForward;
+            @Reverse.started -= instance.OnReverse;
+            @Reverse.performed -= instance.OnReverse;
+            @Reverse.canceled -= instance.OnReverse;
+            @Steer.started -= instance.OnSteer;
+            @Steer.performed -= instance.OnSteer;
+            @Steer.canceled -= instance.OnSteer;
+        }
+
+        public void RemoveCallbacks(IJeepActions instance)
+        {
+            if (m_Wrapper.m_JeepActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IJeepActions instance)
+        {
+            foreach (var item in m_Wrapper.m_JeepActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_JeepActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public JeepActions @Jeep => new JeepActions(this);
     public interface IPlayerActions
     {
         void OnInteract(InputAction.CallbackContext context);
@@ -1080,5 +1467,14 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IJeepActions
+    {
+        void OnInteract(InputAction.CallbackContext context);
+        void OnHonk(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
+        void OnForward(InputAction.CallbackContext context);
+        void OnReverse(InputAction.CallbackContext context);
+        void OnSteer(InputAction.CallbackContext context);
     }
 }

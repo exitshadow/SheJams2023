@@ -4,7 +4,12 @@
 
 ##### Title
 
-Handiman: The Busy Season
+Handiman: ??
+
+- Aim for the stars
+- Reach for the stars
+- To the moon! spoiler :frowning_face:
+- ...
 
 ##### Pitch
 
@@ -46,19 +51,38 @@ Programmer, QA Testing, UI/UX Artist
 
 Each aspect is summarized and split in features that have to be implemented.
 
-### Core loop
+### Core loop [Category needs more details]
 
 The player goes around, interacts with objects and characters that unlock progression, short quests and/or minigames. Being narrative, the game’s core loop is essentially linear but the mini open-world form allows for a certain flexibility in the order of the tasks having to be done.
 
 ##### Features to implement
 
-More details on those in the technical roadmap.
+:arrow_forward: **More details on those in the technical roadmap.** :warning::scream:
 
 - [x] Game State Tracking
+  - [ ] merge with yarn variables
+
 - [x] Quest Advancement System -> look for external tool?
+  - [x] to be merged with yarn too
+
 - [x] Dialogue System (that can read quest states) -> yarn spinner?
+  - [ ] migrate from current dialogue to yarn @Vanessa
+
 - [x] Walking / Running animations
 - [x] Phone messaging system
+
+##### Cinematic programming
+
+- [ ] fade in out
+- [ ] cinematic bands
+- [ ] camera
+  - [ ] core gameplay mode (controllable)
+  - [ ] cinematic mode (scene-dependent)
+  - [ ] minigame-dependent, on need
+
+##### General UI
+
+- [ ] Bubble-dialogue system with world-space target converted into screen space (see illustration)
 
 ### Additional gameplay
 
@@ -66,69 +90,57 @@ Minigames add some gameplay to the core loop of walking and talking.
 
 #### Get the butterfly tree branch
 
-Viewing the tree in first person, the player must hit a branch by throwing stones a few times until it falls while making sure not to hit any birds.
-
-**exitshadow’s note:** Maybe instead of having to "start again" if the birds are all hit, just the text can be prompted and the birds keep being knocked off for a while before returning to the tree. Or just remain on the ground because it’s safer.
+:arrow_forward:**after discussion:** alternatively, we can have a minigame where we have to pull the branch 3 times until it breaks, while making sure nobody is looking. A additional stance button allows for Iman to pretend to be "doing nothing", such as whistling or looking at the sky.
 
 ##### Features to implement
 
 ###### 3D modelling & art
 
-- [ ] Butterfly tree model in 3 states: intact, a bit broken, and broken
-- [ ] Butterfly tree branch model
+- [ ] Butterfly tree model with wobbling
+- [ ] Butterfly tree branch model with stretching
 - [x] Butterfly
-- [ ] Birds (rigged)
-- [ ] Stone model
 
 ###### Programming
 
-- [ ] Stone picking system
-- [ ] Aiming system (decision making: 1st or 3rd person?)
-  - [ ] trajectory finder (3rd person) / shooting aim (1st person)
-  - [ ] transition between normal & shooting controls
-- [ ] Collision adjustments & conditions
-- [ ] Correct integration of throwing & pickup animations & sounds
-- [ ] Integration of bird animations & sounds
+- [ ] NPC AI to see or not to see Iman while she is pulling the branch
+  - [ ] List of animations & dialogues Iman can pick from
+
+- [ ] NPC small dialogue with a wave if they see her
+  - [ ] List of dialogues NPCs can pick from when they see her
+- [ ] System that counts how long Iman has been pulling
+- [ ] Alternative camera
 
 ###### UI
 
-- [ ] Target indicator
-- [ ] Trajectory / Aim indicator
+- [ ] Indicator if NPCs are seeing you
 
 ###### Animation
 
 - [ ] Iman
 
-  - [ ] Throwing
-  - [ ] Picking up
+  - [ ] Pulling
 
-- [ ] Butterfly
+  - [ ] Pretending nothing is going on
+    - [ ] Whistling
 
-  - [x] Idle
-  - [ ] Flying
+    - [ ] Yoga
 
-- [ ] Birds
+    - [ ] ... etc
 
-  - [ ] Idle, on a branch
-  - [ ] Flying
-  - [ ] Landing
-  - [ ] Taking off
+  - [ ] Waving
 
   ###### Sounds
 
-  - [ ] Stone
-    - [ ] picking
-    - [ ] throwing
-    - [ ] hitting
-  - [ ] Bird
-    - [ ] flapping wing sounds
-    - [ ] chirping
-  - [ ] Branch
-    - [ ] crack 1
-    - [ ] crack 2
-    - [ ] crack 3
-    - [ ] falling on the ground
-  - [ ] Victory music / sound effect
+  - [ ] Tree
+    - [ ] Wobbling, leafy sound
+    - [ ] Rubber / Stretching
+    - [ ] Cracking
+    - [ ] Breaking
+  - [ ] Iman
+    - [ ] Whistling
+  - [ ] NPCs
+    - [ ] alert sound
+
 
 #### Catching all the butterflies inside the neighbour’s house
 
@@ -141,25 +153,6 @@ Holding the branch, the player must attract all the butterflies to it by going a
 (see Locations)
 
 ###### Programming
-
-That’s going to be a *terrible* pain in the ass, and will probably affect performance. Not thousands of butterflies here.
-
-WITH TRUE AI FLYING MODEL (Difficult)
-
-- [ ] Sensitivity of butterflies to branch decreasing from distance
-
-- [ ] Assign destination on the tree branch, per butterfly
-  - [ ] smart ass solution: use the mesh’s vertices + separation between positions
-
-- [ ] Butterfly attraction (AI pathfinding)
-  - [ ] Voxel spacing of coordinates
-  - [ ] Pathfinding algorithm
-  - [ ] Bezier trajectory smoothing
-
-
-Another technical solution could be more of a sweep alternative—Iman brushes the living room and the butterflies get stuck to it upon contact, at their point of collision. Could also have much better performance. However, a few butterflies are bound to remain.
-
-WITH COLLISION MODEL (Intermediate)
 
 - [ ] Create colliders that correspond to the tree branch (can get them from previous minigame)
 - [ ] Butterflies get stuck (parent to the tree branch) on contact point with the collider
@@ -188,18 +181,25 @@ Nour wants to get on the jeep so she can show off her new camo hijab (and help h
 
 ###### 3D modelling & art
 
-- [ ] Stylized Jeep Wrangler (rigged wheels)
+- [x] Stylized Jeep Wrangler (rigged wheels)
 
 ###### Programming
 
-- [ ] 4x4 vehicle driving system
-  - [ ] Chassis has to balance (approximately) on top of the two wheels axis
-    - [ ] possible use of hinged joints
-  - [ ] Increase gas
-    - [ ] Turning wheels
-  - [ ] Toggle direction forward / backward
+- [x] 4x4 vehicle driving system
+  - [x] Chassis has to balance (approximately) on top of the two wheels axis
+    - [x] possible use of hinged joints
+  - [x] Increase gas
+    - [x] Turning wheels
+  - [x] Toggle direction forward / backward
   - [ ] Breaking
-- [ ] Compass system that indicates where the aunt farm is
+  - [ ] Audio programming
+- [ ] Fade in out for people getting in and out the jeep
+- [ ] Lerping Iman driving animation synced with wheels turning animations
+- [ ] Road generation
+  - [ ] Main road mesh
+  - [ ] Main road collider meshes
+  - [ ] Side road blocking meshes
+
 
 ###### Animations
 
@@ -212,6 +212,7 @@ Nour wants to get on the jeep so she can show off her new camo hijab (and help h
   - [ ] Looking back
   - [ ] Honking
 - [ ] Duck quacking / honking / flapping wings
+- [ ] It’s too cute! animation
 
 ###### Sound effects
 
@@ -231,7 +232,7 @@ Mister Duck is hidden in the middle of similarly-looking ducks. All ducks are qu
 
 ###### 3D modelling & art
 
-- [ ] Mister Duck (rigged, including wings)
+- [ ] Mister Duck (no wings)
 - [ ] Other ducks (same model with textures or colour variations)
 
 ###### Programming
@@ -245,6 +246,14 @@ Mister Duck is hidden in the middle of similarly-looking ducks. All ducks are qu
   - [ ] Sphere Trigger Colliders of "sensing areas" around Iman & the duck
   - [ ] When both colliders collide, use Iman’s collider normal at point of contact to use as direction to project the duck, Y axis neutralized
 - [ ] Add noise & Bezier smoothing to Mister’s trajectory
+
+###### Animation
+
+- [ ] Nour
+  - [ ] jumping animation
+- [ ] Duck
+  - [ ] falling animation (smothered by Nour)
+  - [ ] surprised cartoon animation
 
 ## Locations
 
