@@ -129,7 +129,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HighColor_Tex:
-        m_Texture: {fileID: 2800000, guid: d3a28eaec1551c640937eea7d95c38a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b9b57ecb3837d443847ca493b0ab992, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _IridescenceMaskMap:
@@ -381,7 +381,7 @@ Material:
     - _Is_BlendAddToMatCap: 1
     - _Is_BlendBaseColor: 0
     - _Is_ColorShift: 0
-    - _Is_Filter_HiCutPointLightColor: 1
+    - _Is_Filter_HiCutPointLightColor: 0
     - _Is_Filter_LightColor: 1
     - _Is_LightColor_1st_Shade: 1
     - _Is_LightColor_2nd_Shade: 1
@@ -400,7 +400,7 @@ Material:
     - _Is_OutlineTex: 0
     - _Is_PingPong_Base: 0
     - _Is_SpecularToHighColor: 0
-    - _Is_UseTweakHighColorOnShadow: 0
+    - _Is_UseTweakHighColorOnShadow: 1
     - _Is_UseTweakMatCapOnShadow: 0
     - _Is_ViewCoord_Scroll: 0
     - _Is_ViewShift: 0
@@ -478,7 +478,7 @@ Material:
     - _StencilWriteMaskDistortionVec: 64
     - _StencilWriteMaskGBuffer: 3
     - _StencilWriteMaskMV: 128
-    - _StepOffset: 0.075
+    - _StepOffset: 0.258
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
     - _Surface: 0
@@ -531,14 +531,14 @@ Material:
     - _utsVersionZ: 4
     m_Colors:
     - _1st_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
-    - _2nd_ShadeColor: {r: 0.7830189, g: 0.5865255, b: 0.5865255, a: 1}
+    - _2nd_ShadeColor: {r: 0.8679245, g: 0.7238163, b: 0.7238163, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 1, g: 0.9794279, b: 0.97547174, a: 1}
+    - _BaseColor: {r: 1, g: 0.8626509, b: 0.80566037, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 0.9794279, b: 0.9754717, a: 1}
+    - _Color: {r: 1, g: 0.8626509, b: 0.80566037, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
@@ -547,7 +547,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive_Color: {r: 0, g: 0, b: 0, a: 1}
     - _FirstShadeMaskColor: {r: 0, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 1, g: 0.86226416, b: 0.86226416, a: 1}
+    - _HighColor: {r: 0.9811321, g: 0.96632254, b: 0.96632254, a: 1}
     - _HighlightMaskColor: {r: 1, g: 1, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}

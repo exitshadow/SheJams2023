@@ -236,11 +236,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _1st2nd_Shades_Feather: 0.0001
+    - _1st2nd_Shades_Feather: 0.031
     - _1st_ShadeColor_Feather: 0.0001
-    - _1st_ShadeColor_Step: 0.396
-    - _2nd_ShadeColor_Feather: 0.0001
-    - _2nd_ShadeColor_Step: 0.735
+    - _1st_ShadeColor_Step: 0.201
+    - _2nd_ShadeColor_Feather: 0.031
+    - _2nd_ShadeColor_Step: 0.777
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ARSampler_AlphaOn: 0
@@ -270,7 +270,7 @@ Material:
     - _AutoRenderQueue: 1
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
-    - _BaseColor_Step: 0.396
+    - _BaseColor_Step: 0.201
     - _BaseShade_Feather: 0.0001
     - _Base_Speed: 0
     - _Blend: 0
@@ -433,7 +433,7 @@ Material:
     - _SecondShadeOverridden: 0
     - _SecondShadeVisible: 1
     - _Set_SystemShadowsToBase: 1
-    - _ShadeColor_Step: 0.735
+    - _ShadeColor_Step: 0.777
     - _Smoothness: 0
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -459,7 +459,7 @@ Material:
     - _StencilWriteMaskDistortionVec: 64
     - _StencilWriteMaskGBuffer: 3
     - _StencilWriteMaskMV: 128
-    - _StepOffset: 0
+    - _StepOffset: 0.248
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
     - _Surface: 0
@@ -486,7 +486,7 @@ Material:
     - _Tweak_MatcapMaskLevel: 0
     - _Tweak_RimLightMaskLevel: 0
     - _Tweak_ShadingGradeMapLevel: 0
-    - _Tweak_SystemShadowsLevel: -0.294
+    - _Tweak_SystemShadowsLevel: -0.299
     - _Tweak_transparency: 0
     - _UVBase: 0
     - _UVDetail: 0
@@ -512,15 +512,15 @@ Material:
     - _utsVersionY: 9
     - _utsVersionZ: 4
     m_Colors:
-    - _1st_ShadeColor: {r: 0.30900678, g: 0.37537718, b: 0.754717, a: 1}
-    - _2nd_ShadeColor: {r: 0.18926665, g: 0.21526645, b: 0.46226418, a: 1}
+    - _1st_ShadeColor: {r: 0.3011875, g: 0.36600003, b: 0.732, a: 1}
+    - _2nd_ShadeColor: {r: 0.2107119, g: 0.24144067, b: 0.518, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.44700003, g: 0.53019476, b: 1, a: 1}
+    - _BaseColor: {r: 0.35719997, g: 0.43774503, b: 0.893, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.44700003, g: 0.5301947, b: 1, a: 1}
+    - _Color: {r: 0.35719994, g: 0.437745, b: 0.89300007, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

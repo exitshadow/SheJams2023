@@ -459,7 +459,7 @@ Material:
     - _StencilWriteMaskDistortionVec: 64
     - _StencilWriteMaskGBuffer: 3
     - _StencilWriteMaskMV: 128
-    - _StepOffset: 0
+    - _StepOffset: 0.258
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
     - _Surface: 0
@@ -513,7 +513,7 @@ Material:
     - _utsVersionZ: 4
     m_Colors:
     - _1st_ShadeColor: {r: 1, g: 0.88820755, b: 0.7018868, a: 1}
-    - _2nd_ShadeColor: {r: 0.6792453, g: 0.41267356, b: 0.41267356, a: 1}
+    - _2nd_ShadeColor: {r: 0.66166013, g: 0.63374865, b: 0.8679245, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
