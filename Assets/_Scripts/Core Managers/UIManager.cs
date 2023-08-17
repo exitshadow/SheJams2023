@@ -1,3 +1,4 @@
+using System.Security;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private RectTransform dialogueBoxGroup;
     [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
     [SerializeField] private TextMeshProUGUI dialogueContentTMP;
+    public Transform dialogueAnchor;
+    public Transform playerDialogueAnchor;
 
     [Header("Annoying Phone References")]
     [SerializeField] private RectTransform phoneNotificationGroup;
@@ -41,6 +44,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float messageHorizontalMargin = 30f;
     [SerializeField] private float messageSpacingBetweenSenders = 10f;
 
+
+    private Transform currentDialogueAnchor;
+
     #region mission prompt
     public void ChangeMissionPrompt(string prompt)
     {
@@ -54,6 +60,7 @@ public class UIManager : MonoBehaviour
     public void OpenDialogueBox()
     {
         dialogueBoxGroup.gameObject.SetActive(true);
+        PlaceDialogueBoxInScreen();
     }
 
     public void CloseDialogueBox()
@@ -65,7 +72,26 @@ public class UIManager : MonoBehaviour
     {
         dialogueSpeakerNameTMP.text = speakerName;
         dialogueContentTMP.text = dialogueLine;
+
+        if (currentDialogueAnchor == null) return;
+
+        if (speakerName == "Iman" || speakerName == "Game Manager")
+        {
+            currentDialogueAnchor = playerDialogueAnchor;
+        }
+        else
+        {
+            currentDialogueAnchor = dialogueAnchor;
+        }
     }
+
+    public void PlaceDialogueBoxInScreen()
+    {
+        // world position to screen
+        Vector2 dialogueScreenPosition = Camera.main.WorldToScreenPoint(currentDialogueAnchor.position);
+        dialogueBoxGroup.anchoredPosition = dialogueScreenPosition;
+    }
+
     #endregion
 
     #region phone ui box stuffsies
@@ -202,6 +228,13 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if (playerDialogueAnchor != null && dialogueAnchor != null)
+            currentDialogueAnchor = playerDialogueAnchor;
         HideInteractTutorial();
+    }
+
+    void Update()
+    {
+        if (currentDialogueAnchor != null) PlaceDialogueBoxInScreen();
     }
 }
