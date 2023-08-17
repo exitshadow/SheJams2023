@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Mission Indicator Reference")]
     [SerializeField] private TextMeshProUGUI missionPromptTMP;
+    [SerializeField] private TextMeshProUGUI missionPromptUnderlineTMP;
     [Header("Interact Tutorial Reference")]
     [SerializeField] private Canvas interactCanvas;
 
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
     public void ChangeMissionPrompt(string prompt)
     {
         missionPromptTMP.text = prompt;
+        missionPromptUnderlineTMP.text = prompt;
     }
 
     #endregion

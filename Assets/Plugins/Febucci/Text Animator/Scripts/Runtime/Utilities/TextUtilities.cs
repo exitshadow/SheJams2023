@@ -21,8 +21,9 @@ namespace Febucci.UI.Core
 
         #region Vector Utilities
 
-        internal const int fakeRandomsCount = 25; //18° angle difference
+        public const int fakeRandomsCount = 25; //18° angle difference
         internal static Vector3[] fakeRandoms;
+        public static Vector3[] FakeRandoms => fakeRandoms;
 
         static bool initialized = false;
         internal static void Initialize()
@@ -211,12 +212,5 @@ namespace Febucci.UI.Core
 
             return 0;
         }
-
-
-        public static bool IsTagLongEnough(string tag)
-        {
-            return tag.Length >= 3;
-        }
-
     }
 }
