@@ -129,12 +129,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowInteractTutorial()
+    public void ShowInteractionButton()
     {
         interactCanvas.gameObject.SetActive(true);
     }
 
-    public void HideInteractTutorial()
+    public void HideInteractionButton()
     {
         interactCanvas.gameObject.SetActive(false);
     }
@@ -230,7 +230,7 @@ public class UIManager : MonoBehaviour
     {
         if (playerDialogueAnchor != null && dialogueAnchor != null)
             currentDialogueAnchor = playerDialogueAnchor;
-        HideInteractTutorial();
+        HideInteractionButton();
     }
 
     void Update()
