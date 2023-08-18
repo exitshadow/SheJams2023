@@ -1,8 +1,7 @@
-using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.IO.LowLevel.Unsafe;
+
 
 [RequireComponent(typeof(Collider))]
 public class OffLimitsMessage : NPC
