@@ -14,8 +14,9 @@ public class UIManager : MonoBehaviour
     [Header("Mission Indicator Reference")]
     [SerializeField] private TextMeshProUGUI missionPromptTMP;
     [SerializeField] private TextMeshProUGUI missionPromptUnderlineTMP;
-    [Header("Interact Tutorial Reference")]
-    [SerializeField] private Canvas interactCanvas;
+
+    [Header("Interaction Prompt Reference")]
+    [SerializeField] private GameObject interactionPromptGroup;
 
     [Header("Dialogue Box References")]
     [SerializeField] private RectTransform dialogueBoxGroup;
@@ -131,12 +132,12 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteractionButton()
     {
-        interactCanvas.gameObject.SetActive(true);
+        interactionPromptGroup.SetActive(true);
     }
 
     public void HideInteractionButton()
     {
-        interactCanvas.gameObject.SetActive(false);
+        interactionPromptGroup.SetActive(false);
     }
 
     /// <summary>
