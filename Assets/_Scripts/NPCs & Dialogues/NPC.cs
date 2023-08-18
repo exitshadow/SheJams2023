@@ -83,7 +83,7 @@ public abstract class NPC : MonoBehaviour
             if (!isPlayingDialogue)
             {
                 FetchDialogue(FindCurrentDialogue());
-                uiManager.HideInteractTutorial();
+                uiManager.HideInteractionButton();
             }
 
             InjectDialogue();
@@ -109,11 +109,11 @@ public abstract class NPC : MonoBehaviour
     #endregion
 
     #region trigger events
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            uiManager.ShowInteractTutorial();
+            uiManager.ShowInteractionButton();
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
             Debug.Log("player slot occupied");
@@ -124,7 +124,7 @@ public abstract class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            uiManager.HideInteractTutorial();
+            uiManager.HideInteractionButton();
             PlayerController pc = other.GetComponent<PlayerController>();
             pc.currentInteractingNPC = null;
         }
