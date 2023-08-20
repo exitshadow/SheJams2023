@@ -152,16 +152,23 @@ public class UIManager : MonoBehaviour
 
     #region phone prompt
 
-    private void OpenPhoneIndicator()
+    private void InitializePhoneIndicator()
     {
         phoneIconGroup.gameObject.SetActive(true);
         phoneNotificationGroup.gameObject.SetActive(false);
-
+        phoneStatusIndicator.text = idleStatusText;
     }
 
     private void ClosePhoneIndicator()
     {
         phoneIconGroup.gameObject.SetActive(false);
+    }
+
+    public void ShowNotificationOnPhone()
+    {
+        phoneIconGroup.gameObject.SetActive(true);
+        phoneNotificationGroup.gameObject.SetActive(true);
+        phoneStatusIndicator.text = newMessageStatusText;
     }
 
     public void OpenPhoneUI()
@@ -174,10 +181,10 @@ public class UIManager : MonoBehaviour
         phoneUIBoxGroup.gameObject.SetActive(false);
     }
 
-    public void ShowNotificationOnPhone()
+    public void DisplayReadingMessagesOnPhone()
     {
-        phoneNotificationGroup.gameObject.SetActive(true);
-        phoneStatusIndicator.text = newMessageStatusText;
+        phoneNotificationGroup.gameObject.SetActive(false);
+        phoneStatusIndicator.text = $"reading a message from {senderName.text}";
     }
 
     public void EraseNotificationsOnPhone()
@@ -290,10 +297,11 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        ClosePhoneUI();
         CloseControlsHelp();
         HideInteractionButton();
 
-        if(showPhoneAtStart) OpenPhoneIndicator();
+        if(showPhoneAtStart) InitializePhoneIndicator();
         else ClosePhoneIndicator();
 
         if (showControlsPromptAtStart) OpenControlsPrompt();
