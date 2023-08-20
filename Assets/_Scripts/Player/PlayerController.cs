@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
         {
             // Debug.Log("Interact Unity Event Called");
 
+            animator.SetFloat("walkingSpeed", 0);
+
             if (currentInteractingNPC != null && !phone.IsReadingPhone)
             {
                 currentInteractingNPC.Talk(context);
