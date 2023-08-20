@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using JetBrains.Annotations;
 
 /// <summary>
 /// Dispatches all the texts in the game into their right places in the UI and manages opening and closing UI groups.
@@ -11,6 +12,18 @@ using TMPro;
 ///
 public class UIManager : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private bool showMissionStatusAtStart;
+    [SerializeField] private bool showInteractionPromptAtStart;
+    [SerializeField] private bool showControlsPromptAtStart;
+    [SerializeField] private bool showPhoneAtStart;
+    [SerializeField] private bool showDialogueBoxAtStart;
+
+    [Header("Controls prompt references")]
+    [SerializeField] private RectTransform showControlsPromptGroup;
+    [SerializeField] private RectTransform controlsHelpGroup;
+    [HideInInspector] public bool isControlHelpDisplayed;
+
     [Header("Mission Indicator Reference")]
     [SerializeField] private TextMeshProUGUI missionPromptTMP;
 
@@ -24,10 +37,15 @@ public class UIManager : MonoBehaviour
     public Transform dialogueAnchor;
     public Transform playerDialogueAnchor;
 
-    [Header("Annoying Phone References")]
+    [Header("Phone prompt references")]
     [SerializeField] private RectTransform phoneNotificationGroup;
     [SerializeField] private RectTransform phoneIconGroup;
     [SerializeField] private RectTransform phoneUIBoxGroup;
+    [SerializeField] private TextMeshProUGUI phoneStatusIndicator;
+    [SerializeField] private string idleStatusText = "no new message";
+    [SerializeField] private string newMessageStatusText = "read new message!";
+
+    [Header("Phone messages references")]
     [SerializeField] private Image senderAvatar;
     [SerializeField] private TextMeshProUGUI senderName;
     [SerializeField] private VerticalLayoutGroup messageTextArea;
@@ -46,6 +64,32 @@ public class UIManager : MonoBehaviour
 
 
     private Transform currentDialogueAnchor;
+
+    #region show controls prompt
+    public void OpenControlsPrompt()
+    {
+        showControlsPromptGroup.gameObject.SetActive(true);
+        isControlHelpDisplayed = true;
+    }
+
+    public void CloseControlsPromt()
+    {
+        showControlsPromptGroup.gameObject.SetActive(false);
+        isControlHelpDisplayed = false;
+    }
+
+    public void OpenControlsHelp()
+    {
+        controlsHelpGroup.gameObject.SetActive(true);
+        isControlHelpDisplayed = true;
+    }
+
+    public void CloseControlsHelp()
+    {
+        controlsHelpGroup.gameObject.SetActive(false);
+        isControlHelpDisplayed = false;
+    }
+    #endregion
 
     #region mission prompt
     public void ChangeMissionPrompt(string prompt)
@@ -89,12 +133,51 @@ public class UIManager : MonoBehaviour
     {
         // world position to screen
         Vector2 dialogueScreenPosition = Camera.main.WorldToScreenPoint(currentDialogueAnchor.position);
+        
+        if (currentDialogueAnchor == playerDialogueAnchor)
+        {
+            dialogueBoxGroup.pivot = new Vector2(0, 0); // pivot bottom left 
+        }
+        else dialogueBoxGroup.pivot = new Vector2(1, 0); // pivot bottom right
+        
         dialogueBoxGroup.anchoredPosition = dialogueScreenPosition;
     }
 
     #endregion
 
-    #region phone ui box stuffsies
+    #region interaction prompt
+    public void ShowInteractionButton()
+    {
+        interactionPromptGroup.SetActive(true);
+    }
+
+    public void HideInteractionButton()
+    {
+        interactionPromptGroup.SetActive(false);
+    }
+    #endregion
+
+    #region phone prompt
+
+    private void InitializePhoneIndicator()
+    {
+        phoneIconGroup.gameObject.SetActive(true);
+        phoneNotificationGroup.gameObject.SetActive(false);
+        phoneStatusIndicator.text = idleStatusText;
+    }
+
+    private void ClosePhoneIndicator()
+    {
+        phoneIconGroup.gameObject.SetActive(false);
+    }
+
+    public void ShowNotificationOnPhone()
+    {
+        phoneIconGroup.gameObject.SetActive(true);
+        phoneNotificationGroup.gameObject.SetActive(true);
+        phoneStatusIndicator.text = newMessageStatusText;
+    }
+
     public void OpenPhoneUI()
     {
         phoneUIBoxGroup.gameObject.SetActive(true);
@@ -105,20 +188,22 @@ public class UIManager : MonoBehaviour
         phoneUIBoxGroup.gameObject.SetActive(false);
     }
 
-    public void SetSender(Sprite avatar, string name)
+    public void DisplayReadingMessagesOnPhone()
     {
-        senderAvatar.sprite = avatar;
-        senderName.text = name;
-    }
-
-    public void ShowNotificationOnPhone()
-    {
-        phoneNotificationGroup.gameObject.SetActive(true);
+        phoneNotificationGroup.gameObject.SetActive(false);
+        phoneStatusIndicator.text = $"reading a message from {senderName.text}";
     }
 
     public void EraseNotificationsOnPhone()
     {
         phoneNotificationGroup.gameObject.SetActive(false);
+        phoneStatusIndicator.text = idleStatusText;
+    }
+
+    public void SetSender(Sprite avatar, string name)
+    {
+        senderAvatar.sprite = avatar;
+        senderName.text = name;
     }
 
     public void ClearMessageBox()
@@ -129,15 +214,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowInteractionButton()
-    {
-        interactionPromptGroup.SetActive(true);
-    }
-
-    public void HideInteractionButton()
-    {
-        interactionPromptGroup.SetActive(false);
-    }
 
     /// <summary>
     /// Instantiates a message inside of the phone box vertical group
@@ -228,9 +304,23 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        ClosePhoneUI();
+        CloseControlsHelp();
+        HideInteractionButton();
+
+        if(showPhoneAtStart) InitializePhoneIndicator();
+        else ClosePhoneIndicator();
+
+        if (showControlsPromptAtStart) OpenControlsPrompt();
+
+        if (showDialogueBoxAtStart) OpenDialogueBox();
+        else CloseDialogueBox();
+
+        // refactor & correct
         if (playerDialogueAnchor != null && dialogueAnchor != null)
             currentDialogueAnchor = playerDialogueAnchor;
-        HideInteractionButton();
+            
+
     }
 
     void Update()

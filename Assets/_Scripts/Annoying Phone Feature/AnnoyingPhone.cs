@@ -44,9 +44,9 @@ public class AnnoyingPhone : MonoBehaviour
             Debug.Log("picking phone up");
             if (hasNewMessages)
             {
-                uiManager.EraseNotificationsOnPhone();
                 uiManager.OpenPhoneUI();
                 uiManager.SetSender(currentConvo.conversationAvatar, currentConvo.conversationName);
+                uiManager.DisplayReadingMessagesOnPhone();
 
                 GetNewMessage();
 
@@ -65,6 +65,7 @@ public class AnnoyingPhone : MonoBehaviour
     {
         if (queuedTextMessages.Count == 0)
         {
+            uiManager.EraseNotificationsOnPhone();
             uiManager.ClearMessageBox();
             uiManager.ClosePhoneUI();
             player.MakeTypeOnPhone(false);

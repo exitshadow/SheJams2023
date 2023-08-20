@@ -31,6 +31,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3489551290419898624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &60440642265502988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896097509994726899}
+  m_Layer: 0
+  m_Name: Iman.HandTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896097509994726899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60440642265502988}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5762462, y: 0.8083574, z: -0.08257282, w: 0.087637894}
+  m_LocalPosition: {x: -0.000057356727, y: 0.00029682874, z: -0.0001506464}
+  m_LocalScale: {x: 0.01, y: 0.0100000035, z: 0.010000001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2309588904566416249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1985286337923682863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9078651508490885539}
+  m_Layer: 0
+  m_Name: Other Dialogue Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9078651508490885539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985286337923682863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.655, y: 1.569, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3489551291734799640}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3489551290419898655
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +142,7 @@ GameObject:
   m_Layer: 0
   m_Name: ImanTestController
   m_TagString: Player
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -100,6 +162,7 @@ Transform:
   - {fileID: 4028427073120771014}
   - {fileID: 3489551290419898624}
   - {fileID: 8665436215968291455}
+  - {fileID: 9078651508490885539}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!114 &3489551291734799641
@@ -227,6 +290,30 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e7227717-fe29-4e65-b18f-95f00deba378
     m_ActionName: Player/Help / Controls[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02bc9bae-a5e7-4c81-9931-810fda87868e
+    m_ActionName: Jeep/Interact[/Keyboard/e,/Keyboard/enter,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a2f6800b-784a-4e37-8025-29c610e656d1
+    m_ActionName: Jeep/Honk[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c66a5fd3-e0eb-479e-8750-e17ca29e5413
+    m_ActionName: Jeep/Brake[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 61621543-0347-468b-a2ec-0f0003a66169
+    m_ActionName: Jeep/Forward[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2133ec30-d708-4a55-8a26-8cd96dbe2731
+    m_ActionName: Jeep/Reverse[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a1b2544e-7079-42e7-bab8-d5ce0bb60109
+    m_ActionName: Jeep/Steer[/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -265,11 +352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92be7b4df6e0d3e4da20139d0daa995e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
   phone: {fileID: 0}
   walkSpeed: 3
-  runSpeed: 20
+  runSpeed: 5
   steeringSpeed: 2
-  controlsCanvas: {fileID: 0}
   currentInteractingNPC: {fileID: 0}
 --- !u!136 &1456264314
 CapsuleCollider:
@@ -346,7 +433,7 @@ Transform:
   m_GameObject: {fileID: 8355625833742341186}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.61, y: 0.717, z: 0}
+  m_LocalPosition: {x: 0.61, y: 0.718, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -434,9 +521,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7677980372172586363, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1896097509994726899}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}
+--- !u!4 &2309588904566416249 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7677980372172586363, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}
+  m_PrefabInstance: {fileID: 5368542162711076354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4028427073120771014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9036259018011035076, guid: 78d4e5e6c11dee146a0a53fd1c45238a, type: 3}

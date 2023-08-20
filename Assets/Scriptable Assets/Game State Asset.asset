@@ -17,7 +17,7 @@ MonoBehaviour:
   hasVisitedNeighbour: 0
   hasFoundTreeBranch: 0
   hasCapturedButterflies: 0
-  hasEncounteredCat: 0
+  hasEncounteredCat: 1
   hasFoundTuna: 0
   hasSpokenToVet: 0
   hasFedCat: 0
