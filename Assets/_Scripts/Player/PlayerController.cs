@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private UIManager ui;
     [SerializeField] private AnnoyingPhone phone;
 
     #region controls
@@ -17,8 +18,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runSpeed;
     private float moveSpeed;
     [SerializeField] private float steeringSpeed;
-    [SerializeField] private Canvas controlsCanvas;
-    private bool isEnabled = false;
 
     private ImanActions actions;
     private InputAction playerMove;
@@ -113,8 +112,8 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            isEnabled = !isEnabled;
-            controlsCanvas.enabled = isEnabled;
+            if (ui.isControlHelpDisplayed) ui.CloseControlsHelp();
+            else ui.OpenControlsHelp();
         }
     }
 
