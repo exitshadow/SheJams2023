@@ -59,10 +59,20 @@ public class PlayerController : MonoBehaviour
         if(moveDirection != Vector2.zero)
         {
             transform.Rotate(0, moveDirection.x * steeringSpeed * Time.deltaTime * 100, 0);
-            animator.SetFloat("walkingSpeed", walkSpeed);
+            SetWalkSpeedToNormal();
         }
-        else animator.SetFloat("walkingSpeed", 0);
+        else SetWalkSpeedToZero();
 
+    }
+
+    public void SetWalkSpeedToZero()
+    {
+        animator.SetFloat("walkingSpeed", 0);
+    }
+
+    public void SetWalkSpeedToNormal()
+    {
+        animator.SetFloat("walkingSpeed", walkSpeed);
     }
 
     public void Run(InputAction.CallbackContext context)

@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void SwitchCamera(GameObject camera)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // switch to camera
     }
 }
