@@ -57,6 +57,7 @@ public abstract class NPC : MonoBehaviour
         if (QueuedDialogue.Count == 0)
         {
             uiManager.CloseDialogueBox();
+            // camera manager switch camera (todo)
             isPlayingDialogue = false;
             return;
         }
@@ -66,6 +67,7 @@ public abstract class NPC : MonoBehaviour
         if (!isPlayingDialogue)
         {
             uiManager.OpenDialogueBox();
+            // camera manager switch camera (todo)
             isPlayingDialogue = true;
         }
 
@@ -116,6 +118,7 @@ public abstract class NPC : MonoBehaviour
             uiManager.ShowInteractionButton();
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
+            // target group = this; (todo)
             Debug.Log("player slot occupied");
         }
     }
