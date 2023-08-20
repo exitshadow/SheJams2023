@@ -133,6 +133,13 @@ public class UIManager : MonoBehaviour
     {
         // world position to screen
         Vector2 dialogueScreenPosition = Camera.main.WorldToScreenPoint(currentDialogueAnchor.position);
+        
+        if (currentDialogueAnchor == playerDialogueAnchor)
+        {
+            dialogueBoxGroup.pivot = new Vector2(0, 0); // pivot bottom left 
+        }
+        else dialogueBoxGroup.pivot = new Vector2(1, 0); // pivot bottom right
+        
         dialogueBoxGroup.anchoredPosition = dialogueScreenPosition;
     }
 
