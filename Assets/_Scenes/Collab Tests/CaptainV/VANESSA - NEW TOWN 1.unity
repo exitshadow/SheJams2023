@@ -154,7 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   feedingCatTimeline: {fileID: 2035466478}
   vetCatLeaveTimeline: {fileID: 297578187}
-  playerController: {fileID: 1312017490}
   catCollider: {fileID: 2099798023}
 --- !u!4 &34883049
 Transform:
@@ -917,15 +916,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 809371419210178049, guid: 7768d7c67679ccd4aa1436ebad26f280, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 809371419210178049, guid: 7768d7c67679ccd4aa1436ebad26f280, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 809371419210178049, guid: 7768d7c67679ccd4aa1436ebad26f280, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 809371419210178049, guid: 7768d7c67679ccd4aa1436ebad26f280, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1586,6 +1585,14 @@ PrefabInstance:
     - target: {fileID: 6709687544824867340, guid: 7768d7c67679ccd4aa1436ebad26f280, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.00884705
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763100218500940923, guid: 7768d7c67679ccd4aa1436ebad26f280, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763100218500940923, guid: 7768d7c67679ccd4aa1436ebad26f280, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7584121825490763501, guid: 7768d7c67679ccd4aa1436ebad26f280, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2688,7 +2695,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 45
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -2714,8 +2721,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709492677}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18219267, y: 0.00000001465176, z: -0.0000000027148825, w: 0.98326284}
-  m_LocalPosition: {x: -165, y: 46.753613, z: -89.90917}
+  m_LocalRotation: {x: 0.18816271, y: -0.5829064, z: 0.14101993, w: 0.77777135}
+  m_LocalPosition: {x: -158.68, y: 50.3, z: -63.699997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3664,11 +3671,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000021503939
+      value: -0.000000002150393
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.172005e-11
+      value: 4.1720034e-11
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -7608,6 +7615,8 @@ PlayableDirector:
     value: {fileID: 2099798025}
   - key: {fileID: -3009082549186285434, guid: 086e47e04af1c4044bf344939d995c4c, type: 2}
     value: {fileID: 2099798025}
+  - key: {fileID: -6646513787120196079, guid: 086e47e04af1c4044bf344939d995c4c, type: 2}
+    value: {fileID: 894932597}
   m_ExposedReferences:
     m_References:
     - 5e05b6dea7d65b1498a0c317625c02d4: {fileID: 376932153}
@@ -7643,6 +7652,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f875d01d178eed641ab6f2f6935d7ee1, type: 2}
     - {fileID: 11400000, guid: a05732e50c68a1b49968a30ef99f0fc6, type: 2}
     - {fileID: 11400000, guid: 9b3ef147aff376b4cbb36ea061131e7d, type: 2}
+    - {fileID: 11400000, guid: 6561dfd3b374f0943b2699ab0bd4e523, type: 2}
+    - {fileID: 11400000, guid: ab9b3f0d323935b48b3a3d4409f4fce0, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -7678,6 +7689,34 @@ MonoBehaviour:
         - m_Target: {fileID: 34883048}
           m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
           m_MethodName: DisableCatCollider
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1797267336}
+          m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+          m_MethodName: MoveTowardsPlayer
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 34883048}
+          m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
+          m_MethodName: StopCatCutscene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8817,6 +8856,14 @@ PrefabInstance:
     - target: {fileID: 6539608985206013158, guid: c29c51583895e864b8790214e9b988ee, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.007531477
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015546963689462273, guid: c29c51583895e864b8790214e9b988ee, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015546963689462273, guid: c29c51583895e864b8790214e9b988ee, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7267884269854491022, guid: c29c51583895e864b8790214e9b988ee, type: 3}
       propertyPath: m_LocalPosition.x

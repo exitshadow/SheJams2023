@@ -64,13 +64,13 @@ public abstract class NPC : MonoBehaviour
             isPlayingDialogue = false;
             if (gameManager.HasFedCat() && !catCutscenePlayed && cutsceneManager != null)
             {
-                cutsceneManager.PlayCatCutscene();
                 catCutscenePlayed = true;
+                cutsceneManager.PlayCatCutscene();
             }
             if (!gameManager.HasSpokenToVet() && !vetCutscenePlayed && cutsceneManager != null)
             {
-                cutsceneManager.PlayVetLeave();
                 vetCutscenePlayed = true;
+                cutsceneManager.PlayVetLeave();
             }
             return;
         }

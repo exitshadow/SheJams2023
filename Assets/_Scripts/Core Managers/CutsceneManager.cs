@@ -7,31 +7,32 @@ public class CutsceneManager : MonoBehaviour
 {
     public PlayableDirector feedingCatTimeline;
     public PlayableDirector vetCatLeaveTimeline;
+    private bool hasPlayedCatCutscene = false;
 
-    [SerializeField] private PlayerController playerController;
     [SerializeField] private SphereCollider catCollider;
 
     public void PlayCatCutscene()
     {
+        if (hasPlayedCatCutscene) return;
+        // switch action map to cutscene where only Interact works >> add new marker and method?
         feedingCatTimeline.Play();
-        playerController.SetWalkSpeedToZero();
-        //once vet dialogue closed, stop? and play next cutscene (do through signals? first check code once vet nearby)
+        hasPlayedCatCutscene = true;
     }
 
     public void PlayVetLeave()
     {
-        vetCatLeaveTimeline.Play();
-        // once done, stop cutscene (through signals) >> check if camera back to normal or end last cutscene with camera switch
+        // vetCatLeaveTimeline.Play();
     }
 
-    private void StopCutscene(PlayableDirector timeline)
+    public void StopCatCutscene()
     {
-        timeline.Stop(); 
-        playerController.SetWalkSpeedToNormal();
+        feedingCatTimeline.Stop();
+        // switch back action map
     }
 
     public void DisableCatCollider()
     {
-        catCollider.isTrigger = false;
+        // catCollider.isTrigger = false;
+        // or disable collider, but then cat might walk through Iman
     }
 }
