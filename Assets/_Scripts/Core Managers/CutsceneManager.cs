@@ -6,32 +6,46 @@ using UnityEngine;
 public class CutsceneManager : MonoBehaviour
 {
     public PlayableDirector feedingCatTimeline;
+    public PlayableDirector vetAppearsTimeline;
     public PlayableDirector vetCatLeaveTimeline;
 
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private SphereCollider catCollider;
+
+    // void Start()
+    // {
+    //     timeline = GetComponent<PlayableDirector>();
+    // }
 
     public void PlayCatCutscene()
     {
+        // start timeline
         feedingCatTimeline.Play();
+        // set walkingspeed to 0
         playerController.SetWalkSpeedToZero();
-        //once vet dialogue closed, stop? and play next cutscene (do through signals? first check code once vet nearby)
+        //once dialogue closed, stop and play next cutscene
     }
 
-    public void PlayVetLeave()
+    private void PlayVetCutscene()
     {
+        // start timeline
+        vetAppearsTimeline.Play();
+        // trigger dialogue with vet
+        //once dialogue closed, stop and play next cutscene
+    }
+
+    private void PlayVetLeave()
+    {
+        // start timeline
         vetCatLeaveTimeline.Play();
-        // once done, stop cutscene (through signals) >> check if camera back to normal or end last cutscene with camera switch
+        // once done, stop cutscene
     }
 
-    private void StopCutscene(PlayableDirector timeline)
+    private void StopCutscene()
     {
-        timeline.Stop(); 
+        // end timeline
+        vetCatLeaveTimeline.Stop();
+        // switch back to main camera
+        // set walkingspeed back
         playerController.SetWalkSpeedToNormal();
-    }
-
-    public void DisableCatCollider()
-    {
-        catCollider.isTrigger = false;
     }
 }

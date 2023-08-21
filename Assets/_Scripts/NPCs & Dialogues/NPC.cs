@@ -16,7 +16,6 @@ public abstract class NPC : MonoBehaviour
     [SerializeField] protected NPCDialogueAsset dialogueData;
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected UIManager uiManager;
-    [SerializeField] protected CutsceneManager cutsceneManager;
 
     #endregion
 
@@ -28,8 +27,6 @@ public abstract class NPC : MonoBehaviour
 
     #region dialogue tracking
     [HideInInspector] public bool isPlayingDialogue = false;
-    private bool catCutscenePlayed = false;
-    private bool vetCutscenePlayed = false;
     protected Queue<NPCDialogueAsset.DialogueSegment> QueuedDialogue = new Queue<NPCDialogueAsset.DialogueSegment>();
     
     #endregion
@@ -62,16 +59,6 @@ public abstract class NPC : MonoBehaviour
             uiManager.CloseDialogueBox();
             // camera manager switch camera (todo)
             isPlayingDialogue = false;
-            if (gameManager.HasFedCat() && !catCutscenePlayed && cutsceneManager != null)
-            {
-                cutsceneManager.PlayCatCutscene();
-                catCutscenePlayed = true;
-            }
-            if (!gameManager.HasSpokenToVet() && !vetCutscenePlayed && cutsceneManager != null)
-            {
-                cutsceneManager.PlayVetLeave();
-                vetCutscenePlayed = true;
-            }
             return;
         }
 

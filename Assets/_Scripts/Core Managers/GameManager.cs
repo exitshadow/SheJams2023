@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private GameStateAsset gameStateData;
 
     [SerializeField] private UIManager uiManager;
+    // [SerializeField] private CameraManager cameraManager;
     [SerializeField] private CutsceneManager cutsceneManager;
 
     #region dad’s quest
@@ -140,6 +141,8 @@ public class GameManager : MonoBehaviour
     public void ConfirmCatIsFed()
     {
         gameStateData.hasFedCat = true;
+        // cameraManager.SwitchCamera(dialogueCamera);
+        cutsceneManager.PlayCatCutscene();
         uiManager.ChangeMissionPrompt("Oh right, the butterfly tree.");
     }
 
