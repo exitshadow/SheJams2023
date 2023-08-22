@@ -9,12 +9,18 @@ public class CutsceneManager : MonoBehaviour
     public PlayableDirector vetCatLeaveTimeline;
     private bool hasPlayedCatCutscene = false;
 
+    [SerializeField] protected UIManager uiManager;
+    [SerializeField] protected NPC npc;
     [SerializeField] private SphereCollider catCollider;
+    [SerializeField] private PlayerController pc;
+    [SerializeField] private Vet vetNPC;
 
     public void PlayCatCutscene()
     {
         if (hasPlayedCatCutscene) return;
-        // switch action map to cutscene where only Interact works >> add new marker and method?
+        // switch action map where only Interact works
+        DisableCatCollider();
+        MakeVetCurrentNPC();
         feedingCatTimeline.Play();
         hasPlayedCatCutscene = true;
     }
@@ -31,9 +37,13 @@ public class CutsceneManager : MonoBehaviour
         // switch back action map
     }
 
+    public void MakeVetCurrentNPC()
+    {
+        pc.currentInteractingNPC = vetNPC;
+    }
+
     public void DisableCatCollider()
     {
-        // catCollider.isTrigger = false;
-        // or disable collider, but then cat might walk through Iman
+        catCollider.enabled = false;
     }
 }

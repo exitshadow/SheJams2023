@@ -97,6 +97,17 @@ public abstract class NPC : MonoBehaviour
     {
 
     }
+
+    public virtual void ForceTalk()
+    {
+        if (!isPlayingDialogue)
+        {
+            FetchDialogue(FindCurrentDialogue());
+            uiManager.HideInteractionButton();
+        }
+
+        InjectDialogue();
+    }
     #endregion
 
     #region unity events
