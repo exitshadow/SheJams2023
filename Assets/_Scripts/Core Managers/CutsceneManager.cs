@@ -21,6 +21,7 @@ public class CutsceneManager : MonoBehaviour
 
     public void PlayVetLeave()
     {
+        // use bool
         // vetCatLeaveTimeline.Play();
     }
 
