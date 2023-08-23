@@ -30,4 +30,29 @@ public class Cat : NPC
 
         return currentDialogue;
     }
+
+    public override void InjectDialogue()
+    {
+        if (QueuedDialogue.Count == 0)
+        {
+            uiManager.CloseDialogueBox();
+            isPlayingDialogue = false;
+            if (gameManager.HasFedCat() && cutsceneManager != null)
+            {
+                cutsceneManager.PlayCatCutscene();
+            }
+            return;
+        }
+
+        NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
+
+        if (!isPlayingDialogue)
+        {
+            uiManager.OpenDialogueBox();
+            isPlayingDialogue = true;
+        }
+
+        uiManager.InjectDialogueLine(   currentDialogue.speakerName,
+                                        currentDialogue.dialogueText    );
+    }
 }

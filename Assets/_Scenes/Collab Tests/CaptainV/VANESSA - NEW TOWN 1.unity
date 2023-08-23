@@ -154,7 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   feedingCatTimeline: {fileID: 2035466478}
   vetCatLeaveTimeline: {fileID: 297578187}
+  uiManager: {fileID: 577848780}
+  npc: {fileID: 0}
   catCollider: {fileID: 2099798023}
+  pc: {fileID: 1312017490}
+  vetNPC: {fileID: 1797267336}
 --- !u!4 &34883049
 Transform:
   m_ObjectHideFlags: 0
@@ -2695,7 +2699,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 45
+  field of view: 60
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -2721,8 +2725,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709492677}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18816271, y: -0.5829064, z: 0.14101993, w: 0.77777135}
-  m_LocalPosition: {x: -158.68, y: 50.3, z: -63.699997}
+  m_LocalRotation: {x: 0.18219267, y: 0.00000001465176, z: -0.0000000027148825, w: 0.98326284}
+  m_LocalPosition: {x: -165, y: 46.753613, z: -89.90917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3671,11 +3675,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000002150393
+      value: 0.0000000021503939
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.1720034e-11
+      value: -4.172005e-11
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -7659,7 +7663,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1797267336}
           m_TargetAssemblyTypeName: NPC, Assembly-CSharp
-          m_MethodName: InjectDialogue
+          m_MethodName: ForceTalk
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

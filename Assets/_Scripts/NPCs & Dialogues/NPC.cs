@@ -28,8 +28,6 @@ public abstract class NPC : MonoBehaviour
 
     #region dialogue tracking
     [HideInInspector] public bool isPlayingDialogue = false;
-    private bool catCutscenePlayed = false;
-    private bool vetCutscenePlayed = false;
     protected Queue<NPCDialogueAsset.DialogueSegment> QueuedDialogue = new Queue<NPCDialogueAsset.DialogueSegment>();
     
     #endregion
@@ -62,16 +60,6 @@ public abstract class NPC : MonoBehaviour
             uiManager.CloseDialogueBox();
             // camera manager switch camera (todo)
             isPlayingDialogue = false;
-            if (gameManager.HasFedCat() && !catCutscenePlayed && cutsceneManager != null)
-            {
-                catCutscenePlayed = true;
-                cutsceneManager.PlayCatCutscene();
-            }
-            if (!gameManager.HasSpokenToVet() && !vetCutscenePlayed && cutsceneManager != null)
-            {
-                vetCutscenePlayed = true;
-                cutsceneManager.PlayVetLeave();
-            }
             return;
         }
 
@@ -108,6 +96,17 @@ public abstract class NPC : MonoBehaviour
     public virtual void InitializeDialogue()
     {
 
+    }
+
+    public virtual void ForceTalk()
+    {
+        if (!isPlayingDialogue)
+        {
+            FetchDialogue(FindCurrentDialogue());
+            uiManager.HideInteractionButton();
+        }
+
+        InjectDialogue();
     }
     #endregion
 
