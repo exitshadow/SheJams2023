@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3782f3a9d93827347bcc0540997b2df0, type: 3}
   m_Name: Game State Asset
   m_EditorClassIdentifier: 
-  hasSpokenToDadAtHome: 0
-  hasReceivedNeighbourFirstCall: 0
+  hasSpokenToDadAtHome: 1
+  hasReceivedNeighbourFirstCall: 1
   hasVisitedNeighbour: 0
   hasFoundTreeBranch: 0
   hasCapturedButterflies: 0
   hasEncounteredCat: 0
-  hasFoundTuna: 0
+  hasFoundTuna: 1
   hasSpokenToVet: 0
   hasFedCat: 0
   hasResetDadsComputer: 0
