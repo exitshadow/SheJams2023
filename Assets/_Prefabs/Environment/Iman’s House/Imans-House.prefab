@@ -303,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6098364296509997118}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 5.2221093, y: 3.0823593, z: 6.071129}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -315,7 +315,7 @@ Transform:
   - {fileID: 3561492301923252869}
   - {fileID: 7457744163205463470}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &4992310886857219690
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6098364296509997118}
-  m_Mesh: {fileID: -7715443469527631559, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
+  m_Mesh: {fileID: 8724219964570732634, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
 --- !u!23 &1893096643520099389
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -503,6 +503,9 @@ GameObject:
   - component: {fileID: 7457744163205463470}
   - component: {fileID: 7454474537429547459}
   - component: {fileID: 4078386085389069305}
+  - component: {fileID: 2815531725925640336}
+  - component: {fileID: 8937956043999006014}
+  - component: {fileID: 2091724381025124453}
   m_Layer: 0
   m_Name: Iman.House.Interior.Staircase
   m_TagString: Untagged
@@ -553,7 +556,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18641cb5cf4be54468e3d3dc2030c447, type: 2}
+  - {fileID: 2100000, guid: 95ad7281558730d4e89d184a6e5bfc1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -575,6 +578,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2815531725925640336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203410870594448529}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.013486652, y: 0.035325028, z: 0.037124388}
+  m_Center: {x: -0.056209855, y: -0.028418312, z: -0.018562205}
+--- !u!65 &8937956043999006014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203410870594448529}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.015886974, y: 0.00006436587, z: 0.037124388}
+  m_Center: {x: -0.05500949, y: -0.035251517, z: -0.018562205}
+--- !u!114 &2091724381025124453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203410870594448529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff3dfc9df44194f93191d786ebb2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueData: {fileID: 11400000, guid: 5919e89a3a2a5b74cb1efe0688b088cc, type: 2}
+  gameManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  cutsceneManager: {fileID: 0}
+  isPlayingDialogue: 0
 --- !u!1 &7521187127063429103
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +648,8 @@ GameObject:
   - component: {fileID: 5234964178801377000}
   - component: {fileID: 3254711870124423486}
   - component: {fileID: 6628812795525471604}
+  - component: {fileID: 8267379368218561561}
+  - component: {fileID: 1356409947063781884}
   m_Layer: 0
   m_Name: Iman.HouseDoor
   m_TagString: Untagged
@@ -658,6 +722,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8267379368218561561
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521187127063429103}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.009999998
+  m_Center: {x: 0.002, y: 0, z: -0.0000000018626451}
+--- !u!114 &1356409947063781884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521187127063429103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae77d2233e6499543a15453d0e056d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 0}
 --- !u!1 &8279444966476475663
 GameObject:
   m_ObjectHideFlags: 0

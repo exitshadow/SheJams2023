@@ -10,6 +10,7 @@ public class HouseDoorOutside : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("changing scene");
             StartCoroutine(sceneLoader.LoadScene(1));
         }
     }
