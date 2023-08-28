@@ -204,7 +204,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadingGradeMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: caaf742fd9840b5418b2efc36b43f3f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -251,9 +251,9 @@ Material:
     m_Floats:
     - _1st2nd_Shades_Feather: 0.0001
     - _1st_ShadeColor_Feather: 0.0001
-    - _1st_ShadeColor_Step: 0.435
+    - _1st_ShadeColor_Step: 0.321
     - _2nd_ShadeColor_Feather: 0.0001
-    - _2nd_ShadeColor_Step: 0.45
+    - _2nd_ShadeColor_Step: 0.341
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ARSampler_AlphaOn: 0
@@ -283,14 +283,14 @@ Material:
     - _AutoRenderQueue: 1
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
-    - _BaseColor_Step: 0.435
+    - _BaseColor_Step: 0.321
     - _BaseShade_Feather: 0.0001
     - _Base_Speed: 0
     - _Blend: 0
     - _BlendMode: 0
     - _BlendModePreserveSpecular: 1
     - _BlurLevelMatcap: 0
-    - _BlurLevelSGM: 0
+    - _BlurLevelSGM: 7.12
     - _BumpScale: 1
     - _BumpScaleMatcap: 1
     - _CameraRolling_Stabilizer: 0
@@ -378,7 +378,7 @@ Material:
     - _Is_BlendAddToMatCap: 1
     - _Is_BlendBaseColor: 0
     - _Is_ColorShift: 0
-    - _Is_Filter_HiCutPointLightColor: 0
+    - _Is_Filter_HiCutPointLightColor: 1
     - _Is_Filter_LightColor: 1
     - _Is_LightColor_1st_Shade: 1
     - _Is_LightColor_2nd_Shade: 1
@@ -446,7 +446,7 @@ Material:
     - _SecondShadeOverridden: 0
     - _SecondShadeVisible: 1
     - _Set_SystemShadowsToBase: 1
-    - _ShadeColor_Step: 0.45
+    - _ShadeColor_Step: 0.341
     - _Smoothness: 0.59999996
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -472,7 +472,7 @@ Material:
     - _StencilWriteMaskDistortionVec: 64
     - _StencilWriteMaskGBuffer: 3
     - _StencilWriteMaskMV: 128
-    - _StepOffset: 0.5
+    - _StepOffset: 0.294
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
     - _Surface: 0
@@ -498,8 +498,8 @@ Material:
     - _Tweak_MatCapUV: 0
     - _Tweak_MatcapMaskLevel: 0
     - _Tweak_RimLightMaskLevel: 0
-    - _Tweak_ShadingGradeMapLevel: 0
-    - _Tweak_SystemShadowsLevel: -0.047
+    - _Tweak_ShadingGradeMapLevel: 0.141
+    - _Tweak_SystemShadowsLevel: -0.061
     - _Tweak_transparency: 0
     - _UVBase: 0
     - _UVDetail: 0
