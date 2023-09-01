@@ -156,24 +156,25 @@ public class UIManager : MonoBehaviour
         // world position to screen
         Vector2 dialogueScreenPosition = Camera.main.WorldToScreenPoint(currentDialogueAnchor.position);
 
-        // space/distance around the coordinates
-        float spaceLeft = dialogueScreenPosition.x - boundLeft;
-        float spaceRight = boundRight - dialogueScreenPosition.x;
-        float spaceTop = dialogueScreenPosition.y - boundBottom;
-        float spaceBottom = boundTop - dialogueScreenPosition.y;
-
         float pivotX;
         float pivotY;
 
         float posX = dialogueScreenPosition.x / (Camera.main.pixelWidth / (boundRight + screenMargin));
         float posY = dialogueScreenPosition.y / (Camera.main.pixelHeight / (boundTop + screenMargin));
 
+        // space/distance around the coordinates
+        float distToTop = boundTop - posY - boundBottom;
+        float distToRight = boundRight - posX - boundLeft;
+        float distToLeft = posX - boundLeft;
+        float distToBottom = posY - boundBottom;
+
+
         // setting the pivots
-        if (spaceLeft > spaceRight)
+        if (distToLeft > distToRight)
             pivotX = 0;
         else pivotX = 1;
 
-        if (spaceTop > spaceBottom)
+        if (distToTop > distToBottom)
             pivotY = 0;
         else pivotY = 1;
 
