@@ -157,8 +157,6 @@ public class UIManager : MonoBehaviour
     #region dialogue box dynamic placing
     public void PlaceDialogueBoxInScreen()
     {
-        // world position to screen
-        Vector2 dialogueScreenPosition = Camera.main.WorldToScreenPoint(currentDialogueAnchor.position);
         
         // bounds of the player collider
         Vector3 pC = playerCollider.bounds.center;
@@ -184,7 +182,7 @@ public class UIManager : MonoBehaviour
         // convert world corner points to screen corners and scale
         for (int i = 0; i < pCornersWS.Length; i++)
         {
-            pCornersCS[i] = WorldToCanvasPoint(pCornersWS[i], Camera.main);
+            pCornersCS[i] = WorldToCanvasPoint(pCornersWS[i]);
         }
 
         // initialize canvas space bounds
@@ -210,16 +208,14 @@ public class UIManager : MonoBehaviour
         }
 
 
-
-        // scale screen position to canvas position
-        float posX = ScaleToScreen(dialogueScreenPosition).x;
-        float posY = ScaleToScreen(dialogueScreenPosition).y;
-
+        // world position to screen
+        Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
+        
         // space/distance around the coordinates
-        float distToTop = boundTop - posY - boundBottom;
-        float distToRight = boundRight - posX - boundLeft;
-        float distToLeft = posX - boundLeft;
-        float distToBottom = posY - boundBottom;
+        float distToTop = boundTop - screenPos.y - boundBottom;
+        float distToRight = boundRight - screenPos.x - boundLeft;
+        float distToLeft = screenPos.x - boundLeft;
+        float distToBottom = screenPos.y - boundBottom;
 
         float pivotX;
         float pivotY;
@@ -237,7 +233,7 @@ public class UIManager : MonoBehaviour
         dialogueBoxGroup.pivot = new Vector2(pivotX, pivotY);
         
         // assigning the position
-        dialogueBoxGroup.anchoredPosition = new Vector2(posX, posY);
+        dialogueBoxGroup.anchoredPosition = new Vector2(screenPos.x, screenPos.y);
 
     }
 
@@ -529,12 +525,12 @@ public class UIManager : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    private Vector2 WorldToCanvasPoint(Vector3 position, Camera camera)
+    private Vector2 WorldToCanvasPoint(Vector3 position)
     {
-        Vector2 coordinate = camera.WorldToScreenPoint(position);
+        Vector2 coordinate = Camera.main.WorldToScreenPoint(position);
 
-        float x = coordinate.x / Camera.main.pixelWidth / (boundRight + screenMargin);
-        float y = coordinate.y / Camera.main.pixelHeight / (boundTop + screenMargin);
+        float x = coordinate.x / (Camera.main.pixelWidth / (boundRight + screenMargin));
+        float y = coordinate.y / (Camera.main.pixelHeight / (boundTop + screenMargin));
 
         return new Vector2(x, y);
     }
