@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 /// <summary>
 /// Dispatches all the texts in the game into their right places in the UI and manages opening and closing UI groups.
 /// </summary>
@@ -56,6 +57,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private RectTransform dialogueBoxGroup;
     [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
     [SerializeField] private TextMeshProUGUI dialogueContentTMP;
+    [SerializeField] private Collider playerCollider;
     public Transform dialogueAnchor;
     public Transform playerDialogueAnchor;
 
@@ -150,17 +152,68 @@ public class UIManager : MonoBehaviour
             currentDialogueAnchor = dialogueAnchor;
         }
     }
+    #endregion
 
+    #region dialogue box dynamic placing
     public void PlaceDialogueBoxInScreen()
     {
         // world position to screen
         Vector2 dialogueScreenPosition = Camera.main.WorldToScreenPoint(currentDialogueAnchor.position);
+        
+        // bounds of the player collider
+        Vector3 pC = playerCollider.bounds.center;
+        Vector3 pE = playerCollider.bounds.extents;
 
-        float pivotX;
-        float pivotY;
+        // bounds corners positions in world space
+        Vector3[] pCornersWS = new []
+        {
+            new Vector3( pC.x + pE.x, pC.y + pE.y, pC.z + pE.z ),
+            new Vector3( pC.x + pE.x, pC.y + pE.y, pC.z - pE.z ),
+            new Vector3( pC.x + pE.x, pC.y - pE.y, pC.z + pE.z ),
+            new Vector3( pC.x + pE.x, pC.y - pE.y, pC.z - pE.z ),
+            new Vector3( pC.x - pE.x, pC.y + pE.y, pC.z + pE.z ),
+            new Vector3( pC.x - pE.x, pC.y + pE.y, pC.z - pE.z ),
+            new Vector3( pC.x - pE.x, pC.y - pE.y, pC.z + pE.z ),
+            new Vector3( pC.x - pE.x, pC.y - pE.y, pC.z - pE.z )
+        };
 
-        float posX = dialogueScreenPosition.x / (Camera.main.pixelWidth / (boundRight + screenMargin));
-        float posY = dialogueScreenPosition.y / (Camera.main.pixelHeight / (boundTop + screenMargin));
+        // bounds corners positions in canvas space
+        Vector2[] pCornersCS = new Vector2[8];
+
+
+        // convert world corner points to screen corners and scale
+        for (int i = 0; i < pCornersWS.Length; i++)
+        {
+            pCornersCS[i] = WorldToCanvasPoint(pCornersWS[i], Camera.main);
+        }
+
+        // initialize canvas space bounds
+        float playerBoundRight = pCornersCS[0].x;
+        float playerBoundLeft = pCornersCS[0].x;
+        float playerBoundBottom = pCornersCS[0].y;
+        float playerBoundTop = pCornersCS[0].y;
+
+        // find extremes
+        for (int i = 1; i < pCornersCS.Length; i++)
+        {
+            if (pCornersCS[i].x > playerBoundRight)
+                playerBoundRight = pCornersCS[i].x;
+            
+            if (pCornersCS[i].x < playerBoundLeft)
+                playerBoundLeft = pCornersCS[i].x;
+            
+            if (pCornersCS[i].y > playerBoundTop)
+                playerBoundTop = pCornersCS[i].y;
+
+            if (pCornersCS[i].y < playerBoundBottom)
+                playerBoundBottom = pCornersCS[i].y;
+        }
+
+
+
+        // scale screen position to canvas position
+        float posX = ScaleToScreen(dialogueScreenPosition).x;
+        float posY = ScaleToScreen(dialogueScreenPosition).y;
 
         // space/distance around the coordinates
         float distToTop = boundTop - posY - boundBottom;
@@ -168,6 +221,8 @@ public class UIManager : MonoBehaviour
         float distToLeft = posX - boundLeft;
         float distToBottom = posY - boundBottom;
 
+        float pivotX;
+        float pivotY;
 
         // setting the pivots
         if (distToLeft > distToRight)
@@ -466,5 +521,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private Vector2 ScaleToScreen(Vector2 coordinate)
+    {
+        float x = coordinate.x / Camera.main.pixelWidth / (boundRight + screenMargin);
+        float y = coordinate.y / Camera.main.pixelHeight / (boundTop + screenMargin);
 
+        return new Vector2(x, y);
+    }
+
+    private Vector2 WorldToCanvasPoint(Vector3 position, Camera camera)
+    {
+        Vector2 coordinate = camera.WorldToScreenPoint(position);
+
+        float x = coordinate.x / Camera.main.pixelWidth / (boundRight + screenMargin);
+        float y = coordinate.y / Camera.main.pixelHeight / (boundTop + screenMargin);
+
+        return new Vector2(x, y);
+    }
 }
