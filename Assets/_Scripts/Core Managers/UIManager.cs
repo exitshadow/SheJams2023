@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     [Header("Dialogue Box Behaviour Settings")]
     [Tooltip("Safe margin area between the dialogue box and the screen limits")]
     [SerializeField] private float screenMargin = 15f;
+
     private float boundTop;
     private float boundRight;
     private float boundBottom;
@@ -85,10 +86,6 @@ public class UIManager : MonoBehaviour
     #endregion
 
     private Transform currentDialogueAnchor;
-    private Vector2 bottomLeft = new Vector2(0,0);
-    private Vector2 bottomRight = new Vector2(1,0);
-    private Vector2 topLeft = new Vector2(0,1);
-    private Vector2 topRight = new Vector2(1,1);
 
     #region show controls prompt
     public void OpenControlsPrompt()
@@ -158,25 +155,34 @@ public class UIManager : MonoBehaviour
     {
         // world position to screen
         Vector2 dialogueScreenPosition = Camera.main.WorldToScreenPoint(currentDialogueAnchor.position);
-        
-        if (currentDialogueAnchor == playerDialogueAnchor)
-        {
-            dialogueBoxGroup.pivot = new Vector2(0, 0); // pivot bottom left 
-        }
-        else dialogueBoxGroup.pivot = new Vector2(1, 0); // pivot bottom right
-        
-        dialogueBoxGroup.anchoredPosition = dialogueScreenPosition;
 
-        if (debug)
-        {
-            if (currentDialogueAnchor == playerDialogueAnchor)
-            {
-                anchorIndicator.pivot = new Vector2(0, 0); // pivot bottom left 
-            }
-            else anchorIndicator.pivot = new Vector2(1, 0); // pivot bottom right
+        // space/distance around the coordinates
+        float spaceLeft = dialogueScreenPosition.x - boundLeft;
+        float spaceRight = boundRight - dialogueScreenPosition.x;
+        float spaceTop = dialogueScreenPosition.y - boundBottom;
+        float spaceBottom = boundTop - dialogueScreenPosition.y;
 
-            anchorIndicator.anchoredPosition = dialogueScreenPosition;
-        }
+        float pivotX;
+        float pivotY;
+
+        float posX = dialogueScreenPosition.x / (Camera.main.pixelWidth / (boundRight + screenMargin));
+        float posY = dialogueScreenPosition.y / (Camera.main.pixelHeight / (boundTop + screenMargin));
+
+        // setting the pivots
+        if (spaceLeft > spaceRight)
+            pivotX = 0;
+        else pivotX = 1;
+
+        if (spaceTop > spaceBottom)
+            pivotY = 0;
+        else pivotY = 1;
+
+        // assigning the pivot
+        dialogueBoxGroup.pivot = new Vector2(pivotX, pivotY);
+        
+        // assigning the position
+        dialogueBoxGroup.anchoredPosition = new Vector2(posX, posY);
+
     }
 
     private void GetScreenBoundsWithMargins()
@@ -258,8 +264,6 @@ public class UIManager : MonoBehaviour
             if (boxBoundBottom < boundBottom)
                 newY = boundBottom + dialogueBoxGroup.rect.height;
         }
-
-        
 
         dialogueBoxGroup.anchoredPosition = new Vector2(newX, newY);
     }
