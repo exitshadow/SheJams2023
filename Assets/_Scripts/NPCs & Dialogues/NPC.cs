@@ -88,7 +88,7 @@ public abstract class NPC : MonoBehaviour
             if (!isPlayingDialogue)
             {
                 FetchDialogue(FindCurrentDialogue());
-                if (dialogueRunner) dialogueRunner.StartDialogue("DadQuest");
+                if (dialogueRunner) dialogueRunner.StartDialogue("DadQuest1");
                 uiManager.HideInteractionButton();
             }
 

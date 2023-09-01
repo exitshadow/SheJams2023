@@ -1,4 +1,4 @@
-﻿title: DadQuest
+﻿title: DadQuest1
 tags: dad dialogue in the beginning of the game
 position: 0, 0
 ---
@@ -25,10 +25,12 @@ Iman: I'll take a look at your computer when I get back!
         Dad: Yes. My computer is broken, can you take a look at it?
         Iman: It worked fine yesterday. What did you do?
     <<endif>>
-    Dad: Ah, my daughter, you're back!
-    Iman: Using the daughter card, I see.
-    Dad: Yes. Will you check my computer now?
-    Iman: You said it was broken, right? It worked fine yesterday. What did you do?
+    <<if $hasMetDad is true>>
+        Dad: Ah, my daughter, you're back!
+        Iman: Using the daughter card, I see.
+        Dad: Yes. Will you check my computer now?
+        Iman: You said it was broken, right? It worked fine yesterday. What did you do?
+    <<endif>>
     Dad: Nothing! I turned it on and there's images that keep appearing!
     Iman: Hm, you mean spam? Maybe it caught a virus.
     Dad: So my computer is sick? Can you take a look?
@@ -73,9 +75,9 @@ Iman: I'll take a look at your computer when I get back!
     Dad: She said you could meet her at the edge of town.
 <<endif>>
 ===
-title: DadDialogue
+title: DadQuest2
 tags: dad dialogue after coming back from the farm
 position: 0, 200
 ---
-
+Dad: How was your trip?
 ===
