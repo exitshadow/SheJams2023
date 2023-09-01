@@ -283,3 +283,5 @@ Then also change our code that replaces the boxes:
 ```
 
 Now, no matter where the box is placed on the screen or what is its pivot, it will always be constrained within the screen.
+
+The next step is making the dialogue box avoid covering the characters on screen. To do it so, we are first going to test it with the player only.
