@@ -11,21 +11,19 @@ using TMPro;
 ///
 public class UIManager : MonoBehaviour
 {
-    [Header("Behaviour Settings")]
+    [Header("Settings")]
     [SerializeField] private bool showMissionStatusAtStart;
     [SerializeField] private bool showInteractionPromptAtStart;
     [SerializeField] private bool showControlsPromptAtStart;
     [SerializeField] private bool showPhoneAtStart;
     [SerializeField] private bool showDialogueBoxAtStart;
-
-    [Header("Debug Settings")]
     [SerializeField] private bool debug = false;
     private RectTransform anchorIndicator;
     private GameObject anchorDebug;
 
-    [Header("Dialogue Box Behaviour Settings")]
+    [Header("Dialogue Box")]
     [Tooltip("Safe margin area between the dialogue box and the screen limits")]
-    [SerializeField] private float screenMargin = 15f;
+    [SerializeField] private float screenMargin = 45f;
 
     private float boundTop;
     private float boundRight;
@@ -52,6 +50,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Interaction Prompt Reference")]
     [SerializeField] private GameObject interactionPromptGroup;
+    [SerializeField] private TextMeshProUGUI interactionPromptTMP;
 
     [Header("Dialogue Box References")]
     [SerializeField] private RectTransform dialogueBoxGroup;
@@ -325,6 +324,12 @@ public class UIManager : MonoBehaviour
     public void ShowInteractionButton()
     {
         interactionPromptGroup.SetActive(true);
+    }
+
+    public void ShowInteractionButton(string interactionText)
+    {
+        interactionPromptGroup.SetActive(true);
+        interactionPromptTMP.text = interactionText;
     }
 
     public void HideInteractionButton()

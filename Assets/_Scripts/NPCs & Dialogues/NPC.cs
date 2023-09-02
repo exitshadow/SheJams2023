@@ -11,17 +11,17 @@ using Yarn.Unity;
 [RequireComponent(typeof(Collider))]
 public abstract class NPC : MonoBehaviour
 {
-    #region member fields
-    #region global references
+    [Header("Settings")]
+    [SerializeField] protected string promptText = "Talk";
+
+    [Header("Dialogue Anchor")]
+    [SerializeField] protected Transform dialogueAnchor;
+
     [Header("Manager References")]
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected UIManager uiManager;
     [SerializeField] protected CutsceneManager cutsceneManager;
 
-    [Header("Dialogue Anchor")]
-    [SerializeField] protected Transform dialogueAnchor;
-
-    #endregion
 
     [Header("Yarn References & Settings")]
     [SerializeField] protected DialogueRunner dialogueRunner;
@@ -39,10 +39,8 @@ public abstract class NPC : MonoBehaviour
 
     #region dialogue tracking
     [HideInInspector] public bool isPlayingDialogue = false;
-
     protected Queue<NPCDialogueAsset.DialogueSegment> QueuedDialogue = new Queue<NPCDialogueAsset.DialogueSegment>();
     
-    #endregion
     #endregion
 
     #region dialogue methods
@@ -169,9 +167,10 @@ public abstract class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            uiManager.ShowInteractionButton();
+            uiManager.ShowInteractionButton(promptText);
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
+
             // target group = this; (todo)
             Debug.Log("player slot occupied");
         }
