@@ -476,3 +476,6 @@ public void PlaceDialogueBoxInScreen()
     }
 ```
 
+Now that we have the bounding box of our player, we can offset the dialogue box anchor outside of it.
+
+For this, we need to know how far is our anchor point from the bound that is on the same side as the side that has the largest area between the anchor and the screen bounds. That is a lot of intricate comparisons, but we’ve already done a few of them!

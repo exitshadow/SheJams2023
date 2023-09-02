@@ -13,14 +13,20 @@ public abstract class NPC : MonoBehaviour
 {
     #region member fields
     #region global references
-    [Header("GlobalReferences")]
-    [SerializeField] protected NPCDialogueAsset dialogueData;
-    [SerializeField] protected DialogueRunner dialogueRunner;
+    [Header("Global References")]
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected UIManager uiManager;
     [SerializeField] protected CutsceneManager cutsceneManager;
 
     #endregion
+
+    [Header("Yarn References & Settings")]
+    [SerializeField] protected DialogueRunner dialogueRunner;
+    [SerializeField] protected bool useYarn;
+
+
+    [Header("Old Dialogue System References")]
+    [SerializeField] protected NPCDialogueAsset dialogueData;
 
     #region inner references
     protected Animator animator;
@@ -30,6 +36,7 @@ public abstract class NPC : MonoBehaviour
 
     #region dialogue tracking
     [HideInInspector] public bool isPlayingDialogue = false;
+
     protected Queue<NPCDialogueAsset.DialogueSegment> QueuedDialogue = new Queue<NPCDialogueAsset.DialogueSegment>();
     
     #endregion
@@ -57,25 +64,33 @@ public abstract class NPC : MonoBehaviour
     /// </summary>
     public virtual void InjectDialogue()
     {
-        if (QueuedDialogue.Count == 0)
+        if (!useYarn)
         {
-            uiManager.CloseDialogueBox();
-            // camera manager switch camera (todo)
-            isPlayingDialogue = false;
-            return;
+            if (QueuedDialogue.Count == 0)
+            {
+                uiManager.CloseDialogueBox();
+                // camera manager switch camera (todo)
+                isPlayingDialogue = false;
+                return;
+            }
+
+            NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
+
+            if (!isPlayingDialogue)
+            {
+                uiManager.OpenDialogueBox();
+                // camera manager switch camera (todo)
+                isPlayingDialogue = true;
+            }
+
+            uiManager.InjectDialogueLine(   currentDialogue.speakerName,
+                                            currentDialogue.dialogueText    );
         }
-
-        NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
-
-        if (!isPlayingDialogue)
+        else
         {
-            uiManager.OpenDialogueBox();
-            // camera manager switch camera (todo)
-            isPlayingDialogue = true;
         }
-
-        uiManager.InjectDialogueLine(   currentDialogue.speakerName,
-                                        currentDialogue.dialogueText    );
+        Debug.Log("Requesting View advancement");
+        dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
     }
 
     /// <summary>
@@ -85,14 +100,30 @@ public abstract class NPC : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!isPlayingDialogue)
+            if (useYarn)
             {
-                FetchDialogue(FindCurrentDialogue());
-                if (dialogueRunner) dialogueRunner.StartDialogue("DadQuest1");
-                uiManager.HideInteractionButton();
+                if (!dialogueRunner.IsDialogueRunning)
+                {
+                    dialogueRunner.StartDialogue("DadQuest1");
+                    Debug.Log("starting dialogue with yarn");
+                    InjectDialogue();
+                }
+                else
+                {
+                    Debug.Log("entering dialogue running condition");
+                    InjectDialogue();
+                } 
             }
+            else
+            {
+                if (!isPlayingDialogue)
+                {
+                    FetchDialogue(FindCurrentDialogue());
+                    uiManager.HideInteractionButton();
+                }
 
-            InjectDialogue();
+                InjectDialogue();
+            }
         }
     }
 

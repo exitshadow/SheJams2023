@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Dad : NPC
 {
+    [Header("Dad Character Specific References")]
     [SerializeField] private SceneLoader sceneLoader;
 
     protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
@@ -39,24 +40,32 @@ public class Dad : NPC
 
     public override void InjectDialogue()
     {
-        if (QueuedDialogue.Count == 0)
+        if (!useYarn)
         {
-            uiManager.CloseDialogueBox();
-            isPlayingDialogue = false;
-           if (gameManager.HasResetDadsComputer()) sceneLoader.Credits();
-            return;
+            if (QueuedDialogue.Count == 0)
+            {
+                uiManager.CloseDialogueBox();
+                isPlayingDialogue = false;
+            if (gameManager.HasResetDadsComputer()) sceneLoader.Credits();
+                return;
+            }
+
+            NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
+
+            if (!isPlayingDialogue)
+            {
+                uiManager.OpenDialogueBox();
+                isPlayingDialogue = true;
+            }
+
+            uiManager.InjectDialogueLine(   currentDialogue.speakerName,
+                                            currentDialogue.dialogueText    );
         }
-
-        NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
-
-        if (!isPlayingDialogue)
+        else
         {
-            uiManager.OpenDialogueBox();
-            isPlayingDialogue = true;
+            Debug.Log("Requesting View advancement");
+            dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
         }
-
-        uiManager.InjectDialogueLine(   currentDialogue.speakerName,
-                                        currentDialogue.dialogueText    );
     }
 
     protected override void Awake()
