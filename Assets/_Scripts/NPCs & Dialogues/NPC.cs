@@ -116,6 +116,7 @@ public abstract class NPC : MonoBehaviour
                     dialogueRunner.StartDialogue("DadQuest1");
                     Debug.Log("starting dialogue with yarn");
                     InjectDialogue();
+                    uiManager.HideInteractionButton();
                 }
                 else
                 {
@@ -170,6 +171,7 @@ public abstract class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            uiManager.dialogueAnchor = dialogueAnchor;
             uiManager.ShowInteractionButton();
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;

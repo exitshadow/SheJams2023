@@ -539,7 +539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.009214088, y: 0.93794805, z: -0.024995828, w: -0.34575108}
+  m_LocalRotation: {x: -0.009214089, y: 0.93794805, z: -0.024995824, w: -0.34575114}
   m_LocalPosition: {x: 2.4457705, y: 0.514215, z: 2.3016539}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1042,6 +1042,10 @@ PrefabInstance:
       propertyPath: uiCanvas
       value: 
       objectReference: {fileID: 1454804659}
+    - target: {fileID: 577848780, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: screenMargin
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 577848780, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: dialogueAnchor
       value: 
@@ -1555,7 +1559,7 @@ MonoBehaviour:
   startAutomatically: 0
   runSelectedOptionAsLine: 0
   lineProvider: {fileID: 0}
-  verboseLogging: 1
+  verboseLogging: 0
   onNodeStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1977,6 +1981,7 @@ MonoBehaviour:
   gameManager: {fileID: 960215368}
   uiManager: {fileID: 594829370}
   cutsceneManager: {fileID: 0}
+  dialogueAnchor: {fileID: 430134321}
   dialogueRunner: {fileID: 2124876059}
   useYarn: 1
   dialogueData: {fileID: 11400000, guid: 946e1f0600d1d034293df196b2d4458b, type: 2}
@@ -2570,11 +2575,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.026640024
+      value: -0.026640022
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000059604645
+      value: 0.000000029802322
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2614,7 +2619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.019397458
+      value: -0.019397462
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2622,7 +2627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 9.313226e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y

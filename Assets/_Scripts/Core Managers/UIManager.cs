@@ -331,6 +331,12 @@ public class UIManager : MonoBehaviour
     {
         interactionPromptGroup.SetActive(false);
     }
+
+    private void PlaceInteractionButtonOnScreen()
+    {
+        Vector2 screenPos = WorldToCanvasPoint(dialogueAnchor.position);
+        interactionPromptGroup.GetComponent<RectTransform>().anchoredPosition = screenPos;
+    }
     #endregion
 
     #region phone prompt
@@ -524,6 +530,11 @@ public class UIManager : MonoBehaviour
             PlaceDialogueBoxInScreen();
             TrackDialogueBoxBounds();
             RepositionDialogueBoxOnScreen();
+        }
+
+        if (dialogueAnchor != null)
+        {
+            PlaceInteractionButtonOnScreen();
         }
     }
 
