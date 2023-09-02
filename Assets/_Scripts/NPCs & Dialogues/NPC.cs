@@ -67,8 +67,6 @@ public abstract class NPC : MonoBehaviour
     /// </summary>
     public virtual void InjectDialogue()
     {
-        uiManager.dialogueAnchor = dialogueAnchor;
-        Debug.Log(uiManager.currentDialogueAnchor);
 
         if (!useYarn)
         {
@@ -171,7 +169,6 @@ public abstract class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            uiManager.dialogueAnchor = dialogueAnchor;
             uiManager.ShowInteractionButton();
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;

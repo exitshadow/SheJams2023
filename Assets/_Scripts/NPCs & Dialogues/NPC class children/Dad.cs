@@ -40,9 +40,6 @@ public class Dad : NPC
 
     public override void InjectDialogue()
     {
-        uiManager.currentDialogueAnchor = dialogueAnchor;
-        Debug.Log(uiManager.currentDialogueAnchor);
-
         if (!useYarn)
         {
             if (QueuedDialogue.Count == 0)

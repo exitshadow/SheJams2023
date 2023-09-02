@@ -1098,6 +1098,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1886760976, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 96553252075694013, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1132,7 +1136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332266229423240607, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3177117467077395541, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1172,7 +1176,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5547680538696016767, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5547680538696016767, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: typewriterStartsAutomatically
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5851854293770942402, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1266,7 +1274,9 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2332266229423240607, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+    - {fileID: 5547680538696016767, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1531,11 +1541,11 @@ MonoBehaviour:
   lineText: {fileID: 2106428227}
   showCharacterNameInLineView: 1
   characterNameText: {fileID: 1823036716}
-  useTypewriterEffect: 0
+  useTypewriterEffect: 1
   onCharacterTyped:
     m_PersistentCalls:
       m_Calls: []
-  typewriterEffectSpeed: 0
+  typewriterEffectSpeed: 40
   continueButton: {fileID: 0}
   holdTime: 1
   autoAdvance: 0
