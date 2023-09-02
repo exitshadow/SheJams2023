@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private CutsceneManager cutsceneManager;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     #region dad’s quest
     public bool DidSpeakToDadFirstTime()
     {
