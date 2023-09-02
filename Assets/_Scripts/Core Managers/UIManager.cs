@@ -123,6 +123,12 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region dialogue box
+
+    public void TriggerPop()
+    {
+        dialogueBoxGroup.GetComponent<Animator>().SetTrigger("Pop");
+    }
+
     public void OpenDialogueBox()
     {
         dialogueBoxGroup.gameObject.SetActive(true);

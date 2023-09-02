@@ -93,6 +93,7 @@ public abstract class NPC : MonoBehaviour
         {
             Debug.Log("Requesting View advancement");
             dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
+            uiManager.TriggerPop();
             
             if (!dialogueRunner.IsDialogueRunning) uiManager.currentDialogueAnchor = null;
         }
@@ -154,6 +155,16 @@ public abstract class NPC : MonoBehaviour
     protected virtual void Awake()
     {
         FetchDialogue(dialogueData.questStartingDialogueSegments);
+    }
+
+    protected virtual void OnEnable()
+    {
+        (dialogueRunner.dialogueViews[0] as LineView).requestInterrupt += OnRequestInterrupt;
+    }
+
+    protected virtual void OnRequestInterrupt()
+    {
+        uiManager.TriggerPop();
     }
 
     protected virtual void Start()

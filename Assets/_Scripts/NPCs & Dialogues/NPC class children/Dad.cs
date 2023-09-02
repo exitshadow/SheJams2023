@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 /// <summary>
 /// Inherits from the NPC abstract class.
@@ -65,6 +66,10 @@ public class Dad : NPC
         {
             Debug.Log("Requesting View advancement");
             dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
+            
+            
+            //uiManager.TriggerPop();
+
             if (!dialogueRunner.IsDialogueRunning) uiManager.currentDialogueAnchor = null;
         }
     }
