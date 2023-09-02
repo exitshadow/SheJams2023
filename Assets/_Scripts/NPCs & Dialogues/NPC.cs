@@ -13,10 +13,13 @@ public abstract class NPC : MonoBehaviour
 {
     #region member fields
     #region global references
-    [Header("Global References")]
+    [Header("Manager References")]
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected UIManager uiManager;
     [SerializeField] protected CutsceneManager cutsceneManager;
+
+    [Header("Dialogue Anchor")]
+    [SerializeField] protected Transform dialogueAnchor;
 
     #endregion
 
@@ -64,6 +67,9 @@ public abstract class NPC : MonoBehaviour
     /// </summary>
     public virtual void InjectDialogue()
     {
+        uiManager.dialogueAnchor = dialogueAnchor;
+        Debug.Log(uiManager.currentDialogueAnchor);
+
         if (!useYarn)
         {
             if (QueuedDialogue.Count == 0)
@@ -71,6 +77,7 @@ public abstract class NPC : MonoBehaviour
                 uiManager.CloseDialogueBox();
                 // camera manager switch camera (todo)
                 isPlayingDialogue = false;
+                uiManager.currentDialogueAnchor = null;
                 return;
             }
 
@@ -88,9 +95,11 @@ public abstract class NPC : MonoBehaviour
         }
         else
         {
+            Debug.Log("Requesting View advancement");
+            dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
+            
+            if (!dialogueRunner.IsDialogueRunning) uiManager.currentDialogueAnchor = null;
         }
-        Debug.Log("Requesting View advancement");
-        dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
     }
 
     /// <summary>

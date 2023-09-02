@@ -40,6 +40,9 @@ public class Dad : NPC
 
     public override void InjectDialogue()
     {
+        uiManager.currentDialogueAnchor = dialogueAnchor;
+        Debug.Log(uiManager.currentDialogueAnchor);
+
         if (!useYarn)
         {
             if (QueuedDialogue.Count == 0)
@@ -65,6 +68,7 @@ public class Dad : NPC
         {
             Debug.Log("Requesting View advancement");
             dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
+            if (!dialogueRunner.IsDialogueRunning) uiManager.currentDialogueAnchor = null;
         }
     }
 

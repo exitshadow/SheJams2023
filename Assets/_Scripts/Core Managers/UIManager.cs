@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Collider playerCollider;
     public Transform dialogueAnchor;
     public Transform playerDialogueAnchor;
+    [HideInInspector] public Transform currentDialogueAnchor;
 
     [Header("Phone prompt references")]
     [SerializeField] private RectTransform phoneNotificationGroup;
@@ -87,7 +88,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float messageSpacingBetweenSenders = 10f;
     #endregion
 
-    private Transform currentDialogueAnchor;
 
     #region show controls prompt
     public void OpenControlsPrompt()
@@ -478,6 +478,16 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    void OnEnable()
+    {
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
+    }
+
+    void OnDisable()
+    {
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
+    }
+
     void Start()
     {
         if (debug)
@@ -517,6 +527,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+#region utils
     private Vector2 ScaleToScreen(Vector2 coordinate)
     {
         float x = coordinate.x / Camera.main.pixelWidth / (boundRight + screenMargin);
@@ -534,4 +545,21 @@ public class UIManager : MonoBehaviour
 
         return new Vector2(x, y);
     }
+
+    private void OnTextChanged(Object objectChanged)
+    {
+        if (objectChanged == dialogueSpeakerNameTMP)
+        {
+            if (dialogueSpeakerNameTMP.text == "Iman")
+            {
+                currentDialogueAnchor = playerDialogueAnchor;
+            }
+            else
+            {
+                currentDialogueAnchor = dialogueAnchor;
+            }
+        }
+    }
 }
+
+#endregion
