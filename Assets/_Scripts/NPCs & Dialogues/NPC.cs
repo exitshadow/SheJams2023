@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using Yarn.Unity;
 
 /// <summary>
 /// abstract class NPC of which they inherit common behaviour such as the lines of the dialogue and the management of their animations
@@ -14,6 +15,7 @@ public abstract class NPC : MonoBehaviour
     #region global references
     [Header("GlobalReferences")]
     [SerializeField] protected NPCDialogueAsset dialogueData;
+    [SerializeField] protected DialogueRunner dialogueRunner;
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected UIManager uiManager;
     [SerializeField] protected CutsceneManager cutsceneManager;
@@ -86,6 +88,7 @@ public abstract class NPC : MonoBehaviour
             if (!isPlayingDialogue)
             {
                 FetchDialogue(FindCurrentDialogue());
+                if (dialogueRunner) dialogueRunner.StartDialogue("DadQuest1");
                 uiManager.HideInteractionButton();
             }
 

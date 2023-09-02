@@ -1,0 +1,83 @@
+﻿title: DadQuest1
+tags: dad dialogue in the beginning of the game
+position: 0, 0
+---
+//talking to dad for the first time
+Dad: TEST
+Dad: Iman! Can you come check my computer? It's broken again!
+Iman: Ah, uh, sorry, dad… I have to, uh, go see our neighbor! Yes.
+Iman: She called earlier saying she needed help with something. I couldn't understand what it was, though…
+Dad: Mrs Al-Qadiri always has had very strange problems.
+Dad: I wish you good luck my daughter! I am waiting for you here when you're done.
+Iman: I'll take a look at your computer when I get back!
+<<set $hasMetDad to true>>
+
+//talking to dad before helping the neighbor
+<<if $hasMetDad is true and $hasHelpedNeighbor is false>>
+    Dad: Come back when you're done.
+<<endif>>
+
+//talking to dad after helping the neighbor
+<<if $hasHelpedNeighbor is true>>
+    <<if $hasMetDad is false>>
+        Dad: Ah, my daughter, there you are!
+        Iman: Using the daughter card, I see.
+        Dad: Yes. My computer is broken, can you take a look at it?
+        Iman: It worked fine yesterday. What did you do?
+    <<endif>>
+    <<if $hasMetDad is true>>
+        Dad: Ah, my daughter, you're back!
+        Iman: Using the daughter card, I see.
+        Dad: Yes. Will you check my computer now?
+        Iman: You said it was broken, right? It worked fine yesterday. What did you do?
+    <<endif>>
+    Dad: Nothing! I turned it on and there's images that keep appearing!
+    Iman: Hm, you mean spam? Maybe it caught a virus.
+    Dad: So my computer is sick? Can you take a look?
+    Iman: It's not really my area…
+    Dad: My daughter has a diploma in computer science and can't even help her own dad?
+    Iman: Okay, fine! I'll take a look.
+    <<set $isHelpingDad to true>>
+<<endif>>
+
+//helping dad with his computer
+<<if $isHelpingDad is true>>
+    Iman: Hm, I see.
+    Dad: What?
+    Iman: So if I do this, and I download that, and I delete some stuff…
+    Dad: What are you doing?
+    Iman: …
+    Dad: …
+    Iman: Let me try something else.
+    Dad: …
+    Iman: There we go!
+    Dad: Did you do it?
+    Iman: Yes. I just reset to factory settings.
+    <<set $hasRepairedComputer to true>>
+<<endif>>
+
+//when the computer is fixed
+<<if $hasRepairedComputer is true>>
+    Dad: Ah, I have such a smart daughter! I knew it. I said to myself: “She can do it!”
+    Iman: Don't mention it.
+    Dad: I know you will do great things. Reach for the stars, my daughter!
+    Iman: Alright, alright. I think that's enough for today.
+    Dad: Ah, your friend Nour was searching for you earlier.
+    Iman: Really? What did she want?
+    Dad: You'll have to ask her! She said you could meet her at the edge of town.
+    Iman: I wonder what this is about…
+    <<set $hasHelpedDad to true>>
+<<endif>>
+
+//talking to dad after computer quest
+<<if $hasHelpedDad is true>>
+    Dad: Your friend Nour was searching for you earlier.
+    Dad: She said you could meet her at the edge of town.
+<<endif>>
+===
+title: DadQuest2
+tags: dad dialogue after coming back from the farm
+position: 0, 200
+---
+Dad: How was your trip?
+===
