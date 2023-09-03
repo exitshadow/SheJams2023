@@ -1,31 +1,37 @@
-﻿title: DadQuest1
+﻿title: DadQuest
 tags: dad dialogue in the beginning of the game
 position: 0, 0
 ---
+<<declare $hasSpokenToDadAtHome = false as bool>>
+<<declare $hasResetDadsComputer = false as bool>>
+<<declare $hasFinishedDadQuest = false as bool>>
+
 //talking to dad for the first time
-Dad: TEST
-Dad: Iman! Can you come check my computer? It's broken again!
-Iman: Ah, uh, sorry, dad… I have to, uh, go see our neighbor! Yes.
-Iman: She called earlier saying she needed help with something. I couldn't understand what it was, though…
-Dad: Mrs Al-Qadiri always has had very strange problems.
-Dad: I wish you good luck my daughter! I am waiting for you here when you're done.
-Iman: I'll take a look at your computer when I get back!
-<<set $hasMetDad to true>>
+<<if $hasSpokenToDadAtHome is false>>
+    Dad: Iman! Can you come check my computer? It's broken again!
+    Iman: Ah, uh, sorry, dad… I have to, uh, go see our neighbor! Yes.
+    Iman: She called earlier saying she needed help with something. I couldn't understand what it was, though…
+    Dad: Mrs Al-Qadiri always has had very strange problems.
+    Dad: I wish you good luck my daughter! I am waiting for you here when you're done.
+    Iman: I'll take a look at your computer when I get back!
+    <<set $hasSpokenToDadAtHome to true>>
+    <<stop>>
+<<endif>>
 
 //talking to dad before helping the neighbor
-<<if $hasMetDad is true and $hasHelpedNeighbor is false>>
+<<if $hasCapturedButterflies is false>>
     Dad: Come back when you're done.
+    <<stop>>
 <<endif>>
 
 //talking to dad after helping the neighbor
-<<if $hasHelpedNeighbor is true>>
-    <<if $hasMetDad is false>>
+<<if $hasCapturedButterflies is true>>
+    <<if $hasSpokenToDadAtHome is false>>
         Dad: Ah, my daughter, there you are!
         Iman: Using the daughter card, I see.
         Dad: Yes. My computer is broken, can you take a look at it?
         Iman: It worked fine yesterday. What did you do?
-    <<endif>>
-    <<if $hasMetDad is true>>
+    <<else>>
         Dad: Ah, my daughter, you're back!
         Iman: Using the daughter card, I see.
         Dad: Yes. Will you check my computer now?
@@ -37,11 +43,7 @@ Iman: I'll take a look at your computer when I get back!
     Iman: It's not really my area…
     Dad: My daughter has a diploma in computer science and can't even help her own dad?
     Iman: Okay, fine! I'll take a look.
-    <<set $isHelpingDad to true>>
-<<endif>>
-
-//helping dad with his computer
-<<if $isHelpingDad is true>>
+        // add command(s) that start(s) computer cutscene
     Iman: Hm, I see.
     Dad: What?
     Iman: So if I do this, and I download that, and I delete some stuff…
@@ -53,11 +55,12 @@ Iman: I'll take a look at your computer when I get back!
     Iman: There we go!
     Dad: Did you do it?
     Iman: Yes. I just reset to factory settings.
-    <<set $hasRepairedComputer to true>>
+    <<set $hasResetDadsComputer to true>>
+    <<stop>>
 <<endif>>
 
 //when the computer is fixed
-<<if $hasRepairedComputer is true>>
+<<if $hasResetDadsComputer is true and $hasFinishedDadQuest is false>>
     Dad: Ah, I have such a smart daughter! I knew it. I said to myself: “She can do it!”
     Iman: Don't mention it.
     Dad: I know you will do great things. Reach for the stars, my daughter!
@@ -66,18 +69,19 @@ Iman: I'll take a look at your computer when I get back!
     Iman: Really? What did she want?
     Dad: You'll have to ask her! She said you could meet her at the edge of town.
     Iman: I wonder what this is about…
-    <<set $hasHelpedDad to true>>
+    <<set $hasFinishedDadQuest to true>>
+    <<stop>>
 <<endif>>
 
 //talking to dad after computer quest
-<<if $hasHelpedDad is true>>
+<<if $hasFinishedDadQuest is true>>
     Dad: Your friend Nour was searching for you earlier.
     Dad: She said you could meet her at the edge of town.
 <<endif>>
 ===
-title: DadQuest2
-tags: dad dialogue after coming back from the farm
+title: Staircase
+tags: when Iman tries to go upstairs
 position: 0, 200
 ---
-Dad: How was your trip?
+Iman: Well, it's not really the moment to get back to bed.
 ===
