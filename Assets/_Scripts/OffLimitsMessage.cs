@@ -25,7 +25,7 @@ public class OffLimitsMessage : NPC
                 uiManager.HideInteractionButton();
             }
 
-            InjectDialogue();
+            ContinueDialogue();
         }
     }
 }

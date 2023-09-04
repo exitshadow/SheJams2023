@@ -8508,7 +8508,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709492677}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18219264, y: -0, z: -0, w: 0.98326284}
+  m_LocalRotation: {x: 0.18219267, y: 0.00000001465176, z: -0.0000000027148825, w: 0.98326284}
   m_LocalPosition: {x: -165, y: 46.753613, z: -89.90917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11234,11 +11234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -8.37683e-24
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.143361e-26
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11246,11 +11246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18219262
+      value: 0.18219265
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
@@ -11278,15 +11278,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.019397477
+      value: 0.019397479
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000010755503
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.0866886e-11
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -24971,11 +24971,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7515bfa24f539c2409f22615dbb6b76d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: c4161ae7bd6836f4fb7decc403d0e7ad, type: 2}
-  dialogueRunner: {fileID: 0}
+  promptText: Talk
+  dialogueAnchor: {fileID: 0}
   gameManager: {fileID: 1120697847}
   uiManager: {fileID: 577848780}
   cutsceneManager: {fileID: 0}
+  dialogueSystem: {fileID: 0}
+  dialogueRunner: {fileID: 0}
+  useYarn: 0
+  dialogueNode: 
+  dialogueData: {fileID: 11400000, guid: c4161ae7bd6836f4fb7decc403d0e7ad, type: 2}
   isPlayingDialogue: 0
 --- !u!135 &2099798023
 SphereCollider:
@@ -25750,6 +25755,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 577848780}
     - target: {fileID: 3474157001628936087, guid: c29c51583895e864b8790214e9b988ee, type: 3}
+      propertyPath: promptText
+      value: Iman, I need your help!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474157001628936087, guid: c29c51583895e864b8790214e9b988ee, type: 3}
       propertyPath: targetHand
       value: 
       objectReference: {fileID: 602930453}
@@ -25988,6 +25997,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1758770767848515427, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758770767848515427, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2220316168636999282, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -26028,11 +26045,27 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4495809164042939365, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495809164042939365, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5310308400683706087, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5310308400683706087, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695448386281400310, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695448386281400310, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}

@@ -39,7 +39,7 @@ public class Dad : NPC
 
     }
 
-    public override void InjectDialogue()
+    public override void ContinueDialogue()
     {
         if (!useYarn)
         {

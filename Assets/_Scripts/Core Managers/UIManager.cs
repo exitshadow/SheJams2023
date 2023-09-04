@@ -132,6 +132,7 @@ public class UIManager : MonoBehaviour
     public void OpenDialogueBox()
     {
         dialogueBoxGroup.gameObject.SetActive(true);
+        dialogueBoxGroup.GetComponent<CanvasGroup>().alpha = 1.0f;
         PlaceDialogueBoxInScreen();
     }
 

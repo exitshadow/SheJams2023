@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Yarn.Unity;
+using System;
 
 /// <summary>
 /// abstract class NPC of which they inherit common behaviour such as the lines of the dialogue and the management of their animations
@@ -11,6 +13,7 @@ using Yarn.Unity;
 [RequireComponent(typeof(Collider))]
 public abstract class NPC : MonoBehaviour
 {
+    #region exposed fields
     [Header("Settings")]
     [SerializeField] protected string promptText = "Talk";
 
@@ -24,18 +27,24 @@ public abstract class NPC : MonoBehaviour
 
 
     [Header("Yarn References & Settings")]
+    [SerializeField] protected DialogueSystem dialogueSystem;
     [SerializeField] protected DialogueRunner dialogueRunner;
     [SerializeField] protected bool useYarn;
+    [SerializeField] protected string dialogueNode;
 
 
     [Header("Old Dialogue System References")]
     [SerializeField] protected NPCDialogueAsset dialogueData;
+    #endregion
 
-    #region inner references
+    public event Action<string> OnStartDialogue;
+
+    #region component references
     protected Animator animator;
     protected Collider triggerCollider;
     protected NavMeshAgent navMeshAgent;
     #endregion
+
 
     #region dialogue tracking
     [HideInInspector] public bool isPlayingDialogue = false;
@@ -50,6 +59,7 @@ public abstract class NPC : MonoBehaviour
     /// </summary>
     public void FetchDialogue(List<NPCDialogueAsset.DialogueSegment> dialogueSegment)
     {
+        Debug.Log("Fetching dialogue lines...");
         QueuedDialogue.Clear();
         foreach (NPCDialogueAsset.DialogueSegment dialogue in dialogueSegment)
         {
@@ -63,39 +73,16 @@ public abstract class NPC : MonoBehaviour
     /// <summary>
     /// Dequeues the first dialogue line from the current lines in queue and sends it to the UI Manager.
     /// </summary>
-    public virtual void InjectDialogue()
+    public virtual void ContinueDialogue()
     {
 
-        if (!useYarn)
+        if (useYarn)
         {
-            if (QueuedDialogue.Count == 0)
-            {
-                uiManager.CloseDialogueBox();
-                // camera manager switch camera (todo)
-                isPlayingDialogue = false;
-                uiManager.currentDialogueAnchor = null;
-                return;
-            }
-
-            NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
-
-            if (!isPlayingDialogue)
-            {
-                uiManager.OpenDialogueBox();
-                // camera manager switch camera (todo)
-                isPlayingDialogue = true;
-            }
-
-            uiManager.InjectDialogueLine(   currentDialogue.speakerName,
-                                            currentDialogue.dialogueText    );
+            GetYarnLine();
         }
         else
         {
-            Debug.Log("Requesting View advancement");
-            dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
-            uiManager.TriggerPop();
-            
-            if (!dialogueRunner.IsDialogueRunning) uiManager.currentDialogueAnchor = null;
+            GetOldDialogueLine();
         }
     }
 
@@ -108,35 +95,80 @@ public abstract class NPC : MonoBehaviour
         {
             if (useYarn)
             {
-                if (!dialogueRunner.IsDialogueRunning)
-                {
-                    dialogueRunner.StartDialogue("DadQuest1");
-                    Debug.Log("starting dialogue with yarn");
-                    InjectDialogue();
-                    uiManager.HideInteractionButton();
-                }
-                else
-                {
-                    Debug.Log("entering dialogue running condition");
-                    InjectDialogue();
-                } 
+                StartYarnDialogue();
             }
             else
             {
-                if (!isPlayingDialogue)
-                {
-                    FetchDialogue(FindCurrentDialogue());
-                    uiManager.HideInteractionButton();
-                }
-
-                InjectDialogue();
+                StartOldDialogue();
             }
+            ContinueDialogue();
         }
     }
 
-    public virtual void InitializeDialogue()
+    protected virtual void StartOldDialogue()
     {
+        Debug.Log("calling old dialogue start");
+        if (!isPlayingDialogue)
+        {
+            FetchDialogue(FindCurrentDialogue());
+            uiManager.HideInteractionButton();
+            Debug.Log("old dialogue has started");
+        }
+    }
 
+    protected virtual void GetOldDialogueLine()
+    {
+        Debug.Log("Getting dialogue lines, old system");
+        
+        if (QueuedDialogue.Count == 0)
+            {
+                Debug.Log("closed dialogue box, old system");
+                uiManager.CloseDialogueBox();
+                // camera manager switch camera (todo)
+                isPlayingDialogue = false;
+                uiManager.currentDialogueAnchor = null;
+                return;
+            }
+
+            NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
+
+            if (!isPlayingDialogue)
+            {
+                uiManager.OpenDialogueBox();
+                isPlayingDialogue = true;
+            }
+
+            uiManager.InjectDialogueLine(   currentDialogue.speakerName,
+                                            currentDialogue.dialogueText    );
+    }
+
+    protected virtual void StartYarnDialogue()
+    {
+            if (!dialogueRunner.IsDialogueRunning)
+            {
+                Debug.Log("starting dialogue with yarn");
+
+                dialogueRunner.StartDialogue(dialogueNode);
+                uiManager.HideInteractionButton();
+                isPlayingDialogue = true;
+            }
+            else
+            {
+                Debug.Log("entering dialogue running condition");
+            }
+    }
+
+    protected virtual void GetYarnLine()
+    {
+        Debug.Log("Requesting View advancement");
+        dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
+        uiManager.TriggerPop();
+        
+        if (!dialogueRunner.IsDialogueRunning)
+        {
+            uiManager.currentDialogueAnchor = null;
+            isPlayingDialogue = false;
+        }
     }
 
     public virtual void ForceTalk()
@@ -147,7 +179,7 @@ public abstract class NPC : MonoBehaviour
             uiManager.HideInteractionButton();
         }
 
-        InjectDialogue();
+        ContinueDialogue();
     }
     #endregion
 
@@ -155,11 +187,18 @@ public abstract class NPC : MonoBehaviour
     protected virtual void Awake()
     {
         FetchDialogue(dialogueData.questStartingDialogueSegments);
+
+        if (!dialogueSystem)
+            dialogueSystem = FindObjectOfType<DialogueSystem>();
+
+        if (dialogueSystem)
+            dialogueSystem.AddNPC(this);
     }
 
     protected virtual void OnEnable()
     {
-        (dialogueRunner.dialogueViews[0] as LineView).requestInterrupt += OnRequestInterrupt;
+        if (dialogueRunner)
+            (dialogueRunner.dialogueViews[0] as LineView).requestInterrupt += OnRequestInterrupt;
     }
 
     protected virtual void OnRequestInterrupt()

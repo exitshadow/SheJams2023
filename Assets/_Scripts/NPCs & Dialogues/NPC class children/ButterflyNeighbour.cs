@@ -34,7 +34,7 @@ public class ButterflyNeighbour : NPC
         return currentDialogue;
     }
 
-    public override void InjectDialogue()
+    public override void ContinueDialogue()
     {
         if (QueuedDialogue.Count == 0)
         {
