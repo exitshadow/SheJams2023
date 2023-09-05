@@ -8,7 +8,7 @@ public class ButterflyNeighbour : NPC
     [SerializeField] private Transform targetHand;
     [SerializeField] private GameObject treeBranchObject;
 
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
@@ -47,8 +47,8 @@ public class ButterflyNeighbour : NPC
             if (gameManager.HasFoundTheButterflyBranch())
             {
                 treeBranchObject.transform.SetParent(targetHand);
-                treeBranchObject.transform.localRotation = Quaternion.identity;
-                treeBranchObject.transform.localPosition = new Vector3(0, 0, -.1f);
+                treeBranchObject.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                treeBranchObject.transform.localPosition = new Vector3(0, 0, 0.001f);
             }
 
             return;

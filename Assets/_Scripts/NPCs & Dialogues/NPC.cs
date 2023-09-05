@@ -68,22 +68,19 @@ public abstract class NPC : MonoBehaviour
         }
     }
 
-    protected abstract List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue();
+/// <summary>
+/// Method that has to be implemented by any child class. Deprecated in favour of yarn system
+/// but maintained in order to make a smooth transition. 
+/// </summary>
+    protected abstract List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem();
 
     /// <summary>
     /// Dequeues the first dialogue line from the current lines in queue and sends it to the UI Manager.
     /// </summary>
-    public virtual void ContinueDialogue()
+    public void ContinueDialogue()
     {
-
-        if (useYarn)
-        {
-            GetYarnLine();
-        }
-        else
-        {
-            GetOldDialogueLine();
-        }
+        if (useYarn) GetYarnLine();
+        else  GetOldDialogueLine();
     }
 
     /// <summary>
@@ -93,17 +90,11 @@ public abstract class NPC : MonoBehaviour
     {
         if (context.performed)
         {
-            if (dialogueAnchor)
-                uiManager.currentDialogueAnchor = dialogueAnchor;
+            if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
 
-            if (useYarn)
-            {
-                StartYarnDialogue();
-            }
-            else
-            {
-                StartOldDialogue();
-            }
+            if (useYarn) StartYarnDialogue();
+            else StartOldDialogue();
+
             ContinueDialogue();
         }
     }
@@ -113,7 +104,7 @@ public abstract class NPC : MonoBehaviour
         Debug.Log("calling old dialogue start");
         if (!isPlayingDialogue)
         {
-            FetchDialogue(FindCurrentDialogue());
+            FetchDialogue(FindCurrentDialogueOldSystem());
             uiManager.HideInteractionButton();
             Debug.Log("old dialogue has started");
         }
@@ -155,10 +146,6 @@ public abstract class NPC : MonoBehaviour
                 uiManager.HideInteractionButton();
                 isPlayingDialogue = true;
             }
-            else
-            {
-                Debug.Log("entering dialogue running condition");
-            }
     }
 
     protected virtual void GetYarnLine()
@@ -178,7 +165,7 @@ public abstract class NPC : MonoBehaviour
     {
         if (!isPlayingDialogue)
         {
-            FetchDialogue(FindCurrentDialogue());
+            FetchDialogue(FindCurrentDialogueOldSystem());
             uiManager.HideInteractionButton();
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TunaCan : NPC
 {
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
@@ -22,7 +22,7 @@ public class TunaCan : NPC
 
     }
 
-    public override void ContinueDialogue()
+    protected override void GetOldDialogueLine()
     {
         if (QueuedDialogue.Count == 0)
         {
