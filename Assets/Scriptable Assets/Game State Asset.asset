@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Game State Asset
   m_EditorClassIdentifier: 
   missionStatusText: 
-  hasSpokenToDadAtHome: 1
+  hasSpokenToDadAtHome: 0
   hasReceivedNeighbourFirstCall: 0
-  hasVisitedNeighbour: 1
-  hasFoundTreeBranch: 1
-  hasCapturedButterflies: 1
-  hasEncounteredCat: 1
-  hasFoundTuna: 1
+  hasVisitedNeighbour: 0
+  hasFoundTreeBranch: 0
+  hasCapturedButterflies: 0
+  hasEncounteredCat: 0
+  hasFoundTuna: 0
   hasSpokenToVet: 0
   hasFedCat: 0
   hasResetDadsComputer: 0
