@@ -14,9 +14,9 @@ public class GameVariablesStorage : ScriptableObject
     [SerializeField] private List<FloatVariable> floatValues;
 
     // non serialized fields
-    public Dictionary<string, bool> boolVariables;
-    public Dictionary<string, float> floatVariables;
-    public Dictionary<string, string> stringVariables;
+    public Dictionary<string, bool> boolVariables = new Dictionary<string, bool>();
+    public Dictionary<string, float> floatVariables = new Dictionary<string, float>();
+    public Dictionary<string, string> stringVariables = new Dictionary<string, string>();
 
     public void GenerateDictionaries()
     {

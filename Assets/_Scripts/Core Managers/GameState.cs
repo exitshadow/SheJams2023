@@ -27,7 +27,14 @@ public class GameState : MonoBehaviour
     {
         foreach (var gameVar in gameState.boolVariables)
         {
-            yarnState.SetValue(gameVar.Key, gameVar.Value);
+            if (yarnState.TryGetValue(gameVar.Key, out bool b))
+                yarnState.SetValue(gameVar.Key, gameVar.Value);
+
+            if (yarnState.TryGetValue(gameVar.Key, out float f))
+                yarnState.SetValue(gameVar.Key, gameVar.Value);
+            
+            if (yarnState.TryGetValue(gameVar.Key, out string s))
+                yarnState.SetValue(gameVar.Key, gameVar.Value);
         }
     }
 
