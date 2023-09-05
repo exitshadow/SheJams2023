@@ -91,29 +91,35 @@ public class GameState : MonoBehaviour
         {
             if (gameState.boolVariables.TryGetValue(yarnBool.Key, out bool b))
             {
-                gameState.boolVariables[yarnBool.Key] = b;
+                gameState.boolVariables[yarnBool.Key] = yarnBool.Value;
             }
+            else gameState.boolVariables.Add(yarnBool.Key, yarnBool.Value);
         }
 
         foreach (var yarnFloat in floats)
         {
             if (gameState.floatVariables.TryGetValue(yarnFloat.Key, out float f))
             {
-                gameState.floatVariables[yarnFloat.Key] = f;
+                gameState.floatVariables[yarnFloat.Key] = yarnFloat.Value;
             }
+            else gameState.floatVariables.Add(yarnFloat.Key, yarnFloat.Value);
         }
 
         foreach (var yarnString in strings)
         {
             if (gameState.stringVariables.TryGetValue(yarnString.Key, out string s))
             {
-                gameState.stringVariables[yarnString.Key] = s;
+                gameState.stringVariables[yarnString.Key] = yarnString.Value;
             }
+            else gameState.stringVariables.Add(yarnString.Key, yarnString.Value);
         }
         
         onSetValuesFromYarnToGame?.Invoke();
     }
 
+    /// <summary>
+    /// Set a boolean value in both yarn and game memory
+    /// </summary>
     public void SetValue(string key, bool value)
     {
         if (gameState.boolVariables.TryGetValue(key, out bool result))
@@ -125,6 +131,9 @@ public class GameState : MonoBehaviour
         else Debug.Log($"No variable with the key {key} has been found in yarn storage");
     }
 
+/// <summary>
+/// Set a string value in both yarn and game memory
+/// </summary>
     public void SetValue(string key, string value)
     {
         if (gameState.stringVariables.TryGetValue(key, out string result))
@@ -136,6 +145,9 @@ public class GameState : MonoBehaviour
         else Debug.Log($"No variable with the key {key} has been found in yarn storage");
     }
 
+    /// <summary>
+    /// Set a float value in both yarn and game memory
+    /// </summary>
     public void SetValue(string key, float value)
     {
         if (gameState.floatVariables.TryGetValue(key, out float result))
