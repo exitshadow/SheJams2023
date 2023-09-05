@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class TreeBranch : NPC
 {
@@ -16,7 +17,6 @@ public class TreeBranch : NPC
             currentDialogue = dialogueData.questProgressingDialogueSegments;
             gameManager.ConfirmFoundTreeBranch();
 
-            //! this will need a yarn implementation!
             PassTreeBranchToPlayer();
         }
         else
@@ -27,11 +27,18 @@ public class TreeBranch : NPC
         return currentDialogue;
     }
 
-    private void PassTreeBranchToPlayer()
+    [YarnCommand("pass_tree_branch_to_player")]
+    public void PassTreeBranchToPlayer()
     {
         treeBranchObject.transform.SetParent(targetHand);
         treeBranchObject.transform.localRotation = Quaternion.identity;
         treeBranchObject.transform.localPosition = new Vector3(0, 0, -.1f);
+    }
+
+    [YarnCommand("disable_tree_branch")]
+    public void DisableTreeBranch()
+    {
+        this.gameObject.SetActive(false);
     }
 
     protected override void OnTriggerExit(Collider other)

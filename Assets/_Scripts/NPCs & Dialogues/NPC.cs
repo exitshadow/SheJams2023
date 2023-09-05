@@ -118,7 +118,7 @@ public abstract class NPC : MonoBehaviour
             {
                 Debug.Log("closed dialogue box, old system");
                 uiManager.CloseDialogueBox();
-                // camera manager switch camera (todo)
+
                 isPlayingDialogue = false;
                 uiManager.currentDialogueAnchor = null;
                 return;
@@ -213,7 +213,6 @@ public abstract class NPC : MonoBehaviour
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
 
-            // target group = this; (todo)
             Debug.Log("player slot occupied");
         }
     }
