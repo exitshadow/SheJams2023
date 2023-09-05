@@ -12,6 +12,11 @@ public class GameState : MonoBehaviour
     private InMemoryVariableStorage yarnState;
     [SerializeField] private GameVariablesStorage gameState;
 
+    private void Start()
+    {
+        
+    }
+
     public string MissionStatusText
     {
         get { return gameState.missionStatusText; }
