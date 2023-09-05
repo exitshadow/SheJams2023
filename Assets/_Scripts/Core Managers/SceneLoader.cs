@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using System;
 
 ///<summary>
 /// This needs to be put in each scene of the build. In build settings, order the index acordingly (menu at index 0, etc.)
@@ -16,8 +17,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private Animator transitionAnim;
     [SerializeField] private AudioMixerSnapshot loadingAudioMixer;
     [SerializeField] private AudioMixerSnapshot walkingAudioMixer;
-
-    public UnityEvent onLoadScene;
+    public event Action onLoadScene;
 
 
     public void StartGame()

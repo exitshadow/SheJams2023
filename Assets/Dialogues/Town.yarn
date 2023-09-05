@@ -8,7 +8,7 @@ position: 0, 0
 <<declare $hasFinishedNeighborQuest = false as bool>>
 
 //talking to the neighbor for the first time
-<<if $hasVisitedNeighbour is false>>
+<<if $hasVisitedNeighbour is false && $hasSpokenToDadAtHome>>
     Neighbor: You're here! Finally, finally!
     Iman: I am, I am! What's the matter?
     Neighbor: Butterflies, Iman! Butterflies everywhere!
@@ -24,17 +24,18 @@ position: 0, 0
 <<endif>>
 
 //talking to neighbor before finding the branch
-<<if $hasFoundTreeBranch is false>>
+<<if $hasFoundTreeBranch is false && $hasVisitedNeighbour is true>>
     Neighbor: Please come back with a branch from that blooming tree in the park!
 <<endif>>
 
 //talking to neighbor after finding the branch
-<<if $hasFoundTreeBranch is true>>
+<<if $hasFoundTreeBranch is true && $hasCapturedButterflies is false>>
     Iman: Here's the branch.
     Neighbor: Wonderful, wonderful! Here, I'll open the door, and you get them out, yes?
     Iman: I mean, it's not going to happen by itself, right? That would be nice…
-    Neighbor: …
-    Iman: Just give me that, please.
+    Neighbor: ...
+    Neighbor: Just give me that, please.
+    <<give_branch_to_neighbour NEIGHBOUR>>
     <<set $hasCapturedButterflies to true>>
     <<stop>>
 <<endif>>
@@ -46,7 +47,6 @@ position: 0, 0
     Neighbor: I can finally go back inside. Have a nice day, Iman!
     Iman: I feel like it's sarcastic, at this point. Well, time to go home.
     <<set $hasFinishedNeighborQuest to true>>
-    <<give_branch_to_neighbour NEIGHBOUR>>
     <<stop>>
 <<endif>>
 
@@ -79,7 +79,6 @@ position: 250, 0
     Iman: Whoa, a butterfly tree. It is no joke, it attracks so many of them.
     Iman: Thinking of it, it is a bit disgusting.
     Iman: Didn't the neighbour say something about fear of butterflies once?
-    <<set $hasFoundTreeBranch to true>>
 <<endif>>
 ===
 

@@ -59,12 +59,12 @@ public abstract class NPC : MonoBehaviour
     /// </summary>
     public void FetchDialogue(List<NPCDialogueAsset.DialogueSegment> dialogueSegment)
     {
-        Debug.Log("Fetching dialogue lines...");
+        // Debug.Log("Fetching dialogue lines...");
         QueuedDialogue.Clear();
         foreach (NPCDialogueAsset.DialogueSegment dialogue in dialogueSegment)
         {
             QueuedDialogue.Enqueue(dialogue);
-            Debug.Log("Queued all initial dialogue lines");
+            //Debug.Log("Queued all initial dialogue lines");
         }
     }
 
@@ -101,22 +101,22 @@ public abstract class NPC : MonoBehaviour
 
     protected virtual void StartOldDialogue()
     {
-        Debug.Log("calling old dialogue start");
+        //Debug.Log("calling old dialogue start");
         if (!isPlayingDialogue)
         {
             FetchDialogue(FindCurrentDialogueOldSystem());
             uiManager.HideInteractionButton();
-            Debug.Log("old dialogue has started");
+            //Debug.Log("old dialogue has started");
         }
     }
 
     protected virtual void GetOldDialogueLine()
     {
-        Debug.Log("Getting dialogue lines, old system");
+        //Debug.Log("Getting dialogue lines, old system");
 
         if (QueuedDialogue.Count == 0)
             {
-                Debug.Log("closed dialogue box, old system");
+                //Debug.Log("closed dialogue box, old system");
                 uiManager.CloseDialogueBox();
 
                 isPlayingDialogue = false;
@@ -150,7 +150,7 @@ public abstract class NPC : MonoBehaviour
 
     protected virtual void GetYarnLine()
     {
-        Debug.Log("Requesting View advancement");
+        //Debug.Log("Requesting View advancement");
         dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
         uiManager.TriggerPop();
         

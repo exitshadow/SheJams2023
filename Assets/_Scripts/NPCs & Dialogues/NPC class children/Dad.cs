@@ -78,4 +78,10 @@ public class Dad : NPC
         animator = GetComponent<Animator>();
         animator.SetLayerWeight(2, 0);
     }
+
+    [YarnCommand("start_credits_roll")]
+    public void CreditsRoll()
+    {
+        sceneLoader.Credits();
+    }
 }

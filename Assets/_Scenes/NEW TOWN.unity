@@ -11966,7 +11966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
@@ -11994,15 +11994,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.019397477
+      value: 0.019397475
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000010751969
+      value: 0.000000002150393
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.0860027e-11
+      value: -4.1720034e-11
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -17322,6 +17322,7 @@ Transform:
   - {fileID: 214718307}
   - {fileID: 1821447713}
   - {fileID: 1106362388}
+  - {fileID: 1567045493}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1375842812
@@ -19360,8 +19361,20 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1370017937}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100.000015
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100.00002
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.12
@@ -19376,19 +19389,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6992092
+      value: 0.69920915
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6992092
+      value: -0.69920915
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.10538767
+      value: -0.10538766
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10538768
+      value: -0.105387665
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19492,6 +19505,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.09476791, y: 0.054658152, z: 0.066208236}
   m_Center: {x: -0.037383955, y: -0.042136624, z: 0.033104114}
+--- !u!4 &1567045493 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 68dd56eb7bcd28f4d9da99bfb308ec9f, type: 3}
+  m_PrefabInstance: {fileID: 1567045486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1567876945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27468,11 +27486,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1120697845}
+  - {fileID: 1652322270}
   - {fileID: 5851854294143036330}
   - {fileID: 653117919}
   - {fileID: 2059800200}
   - {fileID: 998772533}
   - {fileID: 1370017937}
   - {fileID: 1878231666}
-  - {fileID: 1652322270}
-  - {fileID: 1567045486}

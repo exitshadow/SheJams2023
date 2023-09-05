@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
-using UnityEngine.EventSystems;
-using UnityEngine.Events;
 using System;
 
 /// <summary>
@@ -14,6 +12,8 @@ public class GameState : MonoBehaviour
 {
     [SerializeField] private InMemoryVariableStorage yarnState;
     [SerializeField] private GameVariablesStorage gameState;
+
+    private SceneLoader sceneLoader;
 
     public event Action onSetValuesFromGameToYarn;
     public event Action onSetValuesFromYarnToGame;
@@ -34,6 +34,12 @@ public class GameState : MonoBehaviour
         onSetValue -= OnDataChange;
         onSetValuesFromGameToYarn -= OnDataChange;
         onSetValuesFromYarnToGame -= OnDataChange;
+    }
+
+    void Awake()
+    {
+        sceneLoader = FindFirstObjectByType<SceneLoader>();
+        sceneLoader.onLoadScene += SetValuesFromYarnToGame;
     }
 
     private void Start()
@@ -61,39 +67,29 @@ public class GameState : MonoBehaviour
 
     public void SetValuesFromGameToYarn()
     {
-        foreach (var gameVar in gameState.boolVariables)
-        {
-            if (yarnState.TryGetValue(gameVar.Key, out bool b))
-                yarnState.SetValue(gameVar.Key, gameVar.Value);
+        Debug.LogWarning("Updated values from game to yarn:");
 
-        }
-
-        foreach (var gameVar in gameState.floatVariables)
-        {
-            if (yarnState.TryGetValue(gameVar.Key, out float f))
-                yarnState.SetValue(gameVar.Key, gameVar.Value);
-        }
-
-        foreach(var gameVar in gameState.stringVariables)
-        {
-            if (yarnState.TryGetValue(gameVar.Key, out string s))
-                yarnState.SetValue(gameVar.Key, gameVar.Value);
-        }
+        yarnState.SetAllVariables(gameState.floatVariables, gameState.stringVariables, gameState.boolVariables);
 
         onSetValuesFromGameToYarn?.Invoke();
     }
 
     public void SetValuesFromYarnToGame()
     { 
+        Debug.LogWarning("Updated values from yarn to game:");
+
         (var floats, var strings, var bools) = yarnState.GetAllVariables();
 
         foreach (var yarnBool in bools)
         {
             if (gameState.boolVariables.TryGetValue(yarnBool.Key, out bool b))
             {
+                Debug.Log("gamestate bool variables exist with key");
                 gameState.boolVariables[yarnBool.Key] = yarnBool.Value;
             }
             else gameState.boolVariables.Add(yarnBool.Key, yarnBool.Value);
+
+            Debug.Log($"{yarnBool.Key} - yarn: {yarnBool.Value} game: {gameState.boolVariables[yarnBool.Key]}");
         }
 
         foreach (var yarnFloat in floats)
