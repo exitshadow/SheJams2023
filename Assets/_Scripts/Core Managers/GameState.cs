@@ -9,12 +9,12 @@ using Yarn.Unity;
 /// </summary>
 public class GameState : MonoBehaviour
 {
-    private InMemoryVariableStorage yarnState;
+    [SerializeField] private InMemoryVariableStorage yarnState;
     [SerializeField] private GameVariablesStorage gameState;
 
     private void Start()
     {
-        
+        SetValuesFromGameToYarn();
     }
 
     public string MissionStatusText
@@ -30,33 +30,35 @@ public class GameState : MonoBehaviour
             if (yarnState.TryGetValue(gameVar.Key, out bool b))
                 yarnState.SetValue(gameVar.Key, gameVar.Value);
 
+        }
+
+        foreach (var gameVar in gameState.floatVariables)
+        {
             if (yarnState.TryGetValue(gameVar.Key, out float f))
                 yarnState.SetValue(gameVar.Key, gameVar.Value);
-            
+        }
+
+        foreach(var gameVar in gameState.stringVariables)
+        {
             if (yarnState.TryGetValue(gameVar.Key, out string s))
                 yarnState.SetValue(gameVar.Key, gameVar.Value);
         }
+            
     }
 
     public void SetValuesFromYarnToGame()
     {
-        foreach (var yarnVar in yarnState)
+        (var floats, var strings, var bools) = yarnState.GetAllVariables();
+
+        foreach (var yarnBool in bools)
         {
-            if (yarnState.TryGetValue(yarnVar.Key, out bool b))
+            if (gameState.boolVariables.TryGetValue(yarnBool.Key, out bool b))
             {
-                gameState.boolVariables[yarnVar.Key] = b;
-            }
-
-            if (yarnState.TryGetValue(yarnVar.Key, out float f))
-            {
-                gameState.floatVariables[yarnVar.Key] = f;
-            }
-
-            if (yarnState.TryGetValue(yarnVar.Key, out string s))
-            {
-                gameState.stringVariables[yarnVar.Key] = s;
+                gameState.boolVariables[yarnBool.Key] = b;
             }
         }
+
+        
     }
 
     public void SetValue(string key, bool value)

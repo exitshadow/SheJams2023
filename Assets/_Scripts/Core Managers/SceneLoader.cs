@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 ///<summary>
 /// This needs to be put in each scene of the build. In build settings, order the index acordingly (menu at index 0, etc.)
@@ -15,6 +17,9 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private AudioMixerSnapshot loadingAudioMixer;
     [SerializeField] private AudioMixerSnapshot walkingAudioMixer;
 
+    public UnityEvent onLoadScene;
+
+
     public void StartGame()
     {
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
@@ -22,6 +27,7 @@ public class SceneLoader : MonoBehaviour
 
     public IEnumerator LoadScene(int sceneIndex)
     {
+        onLoadScene?.Invoke();
         transitionAnim.SetTrigger("StartTrigger");
         loadingAudioMixer.TransitionTo(0.5f);
         yield return new WaitForSeconds(transitionTime);
