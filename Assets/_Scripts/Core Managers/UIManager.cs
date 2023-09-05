@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Collider playerCollider;
     public Transform dialogueAnchor;
     public Transform playerDialogueAnchor;
-    [HideInInspector] public Transform currentDialogueAnchor;
+    public Transform currentDialogueAnchor;
 
     [Header("Phone prompt references")]
     [SerializeField] private RectTransform phoneNotificationGroup;
@@ -346,7 +346,11 @@ public class UIManager : MonoBehaviour
 
     private void PlaceInteractionButtonOnScreen()
     {
-        Vector2 screenPos = WorldToCanvasPoint(dialogueAnchor.position);
+        if (!interactionPromptGroup.activeSelf) return;
+        
+        if (!currentDialogueAnchor) currentDialogueAnchor = dialogueAnchor;
+        
+        Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
         interactionPromptGroup.GetComponent<RectTransform>().anchoredPosition = screenPos;
     }
     #endregion
@@ -579,7 +583,8 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                currentDialogueAnchor = dialogueAnchor;
+                if (currentDialogueAnchor == null)
+                    currentDialogueAnchor = dialogueAnchor;
             }
         }
     }

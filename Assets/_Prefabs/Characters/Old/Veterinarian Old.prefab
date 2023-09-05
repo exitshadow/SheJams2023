@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1797267335}
   - component: {fileID: 7661387774086422332}
   m_Layer: 0
-  m_Name: Veterinarian
+  m_Name: Veterinarian Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

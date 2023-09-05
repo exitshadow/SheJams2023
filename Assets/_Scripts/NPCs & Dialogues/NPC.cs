@@ -93,6 +93,9 @@ public abstract class NPC : MonoBehaviour
     {
         if (context.performed)
         {
+            if (dialogueAnchor)
+                uiManager.currentDialogueAnchor = dialogueAnchor;
+
             if (useYarn)
             {
                 StartYarnDialogue();
@@ -119,7 +122,7 @@ public abstract class NPC : MonoBehaviour
     protected virtual void GetOldDialogueLine()
     {
         Debug.Log("Getting dialogue lines, old system");
-        
+
         if (QueuedDialogue.Count == 0)
             {
                 Debug.Log("closed dialogue box, old system");
@@ -217,6 +220,8 @@ public abstract class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
+
             uiManager.ShowInteractionButton(promptText);
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
@@ -231,6 +236,8 @@ public abstract class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             uiManager.HideInteractionButton();
+            uiManager.currentDialogueAnchor = null;
+            
             PlayerController pc = other.GetComponent<PlayerController>();
             pc.currentInteractingNPC = null;
         }

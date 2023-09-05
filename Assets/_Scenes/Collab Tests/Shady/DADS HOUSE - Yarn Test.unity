@@ -1865,8 +1865,10 @@ MonoBehaviour:
   gameManager: {fileID: 960215368}
   uiManager: {fileID: 594829370}
   cutsceneManager: {fileID: 0}
+  dialogueSystem: {fileID: 0}
   dialogueRunner: {fileID: 2124876059}
   useYarn: 1
+  dialogueNode: DadQuest
   dialogueData: {fileID: 11400000, guid: 946e1f0600d1d034293df196b2d4458b, type: 2}
   isPlayingDialogue: 0
   sceneLoader: {fileID: 111528600}

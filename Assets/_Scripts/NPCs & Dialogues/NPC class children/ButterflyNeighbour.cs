@@ -34,7 +34,8 @@ public class ButterflyNeighbour : NPC
         return currentDialogue;
     }
 
-    public override void ContinueDialogue()
+
+    protected override void GetOldDialogueLine()
     {
         if (QueuedDialogue.Count == 0)
         {
