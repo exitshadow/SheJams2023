@@ -62,6 +62,7 @@ position: 250, 0
 <<if $hasFoundTreeBranch is false>>
     Iman: Oh, lucky! There's a branch already on the ground.
 <<else>>
+    // this bit doesn’t make sense? why would she worry about her neighbour and not pick the branch?
     Iman: Better bring this back before she has a heart attack. Ugh, why am I doing this again? Oh, right. Avoiding my dad. And his broken computer. I'm sure he just forgot to plug it in, anyway.
 <<endif>>
 ===
