@@ -4796,6 +4796,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 584713442}
     m_Modifications:
     - target: {fileID: 376172846, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+      propertyPath: useYarn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376172846, guid: 1be61187b5d765449be824463642cb0f, type: 3}
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 577848780}
@@ -4807,6 +4811,14 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1120697847}
+    - target: {fileID: 376172846, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+      propertyPath: dialogueNode
+      value: TreeBranch
+      objectReference: {fileID: 0}
+    - target: {fileID: 376172846, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 1509099210}
     - target: {fileID: 1276862051916332, guid: 1be61187b5d765449be824463642cb0f, type: 3}
       propertyPath: m_Name
       value: Butterfly Tree Branch
@@ -11377,11 +11389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000010751976
+      value: 0.0000000010751969
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.086004e-11
+      value: -2.0860027e-11
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -25124,9 +25136,9 @@ MonoBehaviour:
   uiManager: {fileID: 577848780}
   cutsceneManager: {fileID: 0}
   dialogueSystem: {fileID: 0}
-  dialogueRunner: {fileID: 0}
-  useYarn: 0
-  dialogueNode: 
+  dialogueRunner: {fileID: 1509099210}
+  useYarn: 1
+  dialogueNode: CatQuest
   dialogueData: {fileID: 11400000, guid: c4161ae7bd6836f4fb7decc403d0e7ad, type: 2}
   isPlayingDialogue: 0
 --- !u!135 &2099798023
@@ -26152,6 +26164,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 584713442}
     m_Modifications:
     - target: {fileID: 4987310554720502933, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
+      propertyPath: useYarn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987310554720502933, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 577848780}
@@ -26159,6 +26175,14 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1120697847}
+    - target: {fileID: 4987310554720502933, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
+      propertyPath: dialogueNode
+      value: TunaCan
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987310554720502933, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 1509099210}
     - target: {fileID: 5265398722213746887, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
       propertyPath: m_Name
       value: Tuna Can
