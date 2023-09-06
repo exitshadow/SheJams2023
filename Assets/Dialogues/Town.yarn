@@ -23,6 +23,7 @@ position: 0, 0
     Neighbor: Yes, yes! Thank you!
     Iman: Well, off I go, I guess.
     <<set $hasVisitedNeighbour to true>>
+    <<change_mission_prompt UIManager "Find the butterfly tree branch in the park">>
     <<stop>>
 <<endif>>
 
@@ -39,6 +40,7 @@ position: 0, 0
     Neighbor: ...
     Neighbor: Just give me that, please.
     <<give_branch_to_neighbour NEIGHBOUR>>
+    <<change_mission_prompt UIManager "Now it is time to fix Dad's computer.">>
     <<set $hasCapturedButterflies to true>>
     <<stop>>
 <<endif>>
@@ -75,6 +77,7 @@ position: 250, 0
     Iman: ...why am I doing this again?
     Iman: Oh, right. Avoiding Dad. And his broken computer.
     Iman: I'm sure he just forgot to plug it in, anyway.
+    <<change_mission_prompt UIManager "Go catch the neighbour's butterflies to avoid performing your duties.">>
 <<endif>>
 
 // player has no knowledge of either trees or neighbours
@@ -103,6 +106,7 @@ position: 0, 200
         Iman: I know! I'll go buy some tuna. Cats love tuna, right? I'll just hop by the market.
         Iman: I'm definitely not using this as an excuse to do some shopping.
         <<set $hasEncounteredCat to true>>
+        <<change_secondary_mission_prompt UIManager "Find something for the cat to eat. Like tuna!">>
         <<stop>>
     <<else>> // has found tuna before encountering cat first time
         Cat: *MEOW! MEOW! MEOW!*
@@ -120,6 +124,7 @@ position: 0, 200
         Iman: Take it if that makes you so happy!
         Cat: *purrs furiously*
         <<set $hasGivenTuna to true>>
+        <<change_secondary_mission_prompt UIManager "">>
         <<stop>>
     <<endif>>
 <<else>> // has already encountered cat
@@ -130,6 +135,7 @@ position: 0, 200
     <<else>> // has found tuna after having encountered cat first time
         Iman: Here you go, kitty.
         <<set $hasGivenTuna to true>>
+        <<change_secondary_mission_prompt UIManager "">>
     <<endif>>
 <<endif>>
 ===
@@ -145,7 +151,10 @@ position: 250, 200
     Iman: What is this?
     Iman: "Tuna, Import Type (super tasty)"
     Iman: People really leave crazy things on the floor.
+    Iman: Well, I guess I just got a free tuna can. Why not.
     <<set $hasFoundTuna to true>>
+    <<disable_tuna_can "TUNA CAN">>
+    <<change_secondary_mission_prompt UIManager "Find something to do with this important tuna can">>
     <<stop>>
 <<endif>>
 
@@ -159,6 +168,7 @@ position: 250, 200
     Iman: … What?
     <<set $hasFoundTuna to true>>
     <<disable_tuna_can "TUNA CAN">>
+    <<change_secondary_mission_prompt UIManager "Great powers mean great responsibilities. Great tuna means... a great kitten?">>
     <<stop>>
 <<endif>>
 ===

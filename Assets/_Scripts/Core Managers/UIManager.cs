@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Yarn.Unity;
 
 
 /// <summary>
@@ -47,6 +48,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Mission Indicator Reference")]
     [SerializeField] private TextMeshProUGUI missionPromptTMP;
+    [SerializeField] private TextMeshProUGUI secondaryMissionTMP;
 
     [Header("Interaction Prompt Reference")]
     [SerializeField] private GameObject interactionPromptGroup;
@@ -115,10 +117,20 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region mission prompt
+    [YarnCommand("change_mission_prompt")]
     public void ChangeMissionPrompt(string prompt)
     {
         missionPromptTMP.text = prompt;
     }
+
+    [YarnCommand("change_secondary_mission_prompt")]
+    public void ChangeSecondaryMissionPrompt(string prompt)
+    {
+        secondaryMissionTMP.text = prompt;
+    }
+
+    public string MissionPrompt { get { return missionPromptTMP.text; }}
+    public string SecondaryMissionPrompt { get { return secondaryMissionTMP.text; }}
 
     #endregion
 

@@ -14,6 +14,7 @@ position: 0, 0
             Iman: She's been having trouble with... butterflies.
         <<else>>
             Iman: She called earlier saying she needed help with something. I couldn't understand what it was, though…
+            <<change_mission_prompt UIManager "Go find your neighbour to make sense of what is going on">>
         <<endif>>
     Dad: Mrs Al-Qadiri always has had very strange problems.
     Dad: I wish you good luck my daughter! I am waiting for you here when you're done.
@@ -82,6 +83,7 @@ position: 0, 0
     Dad: Like and subscribe in the link at the end of the credits!
     // command iman looks at camera
     Dad: And never forget to reach for your dreams!
+    <<change_mission_prompt UIManager "">>
     <<start_credits_roll DAD>> // add a bit of a delay before credits roll
 <<endif>>
 
