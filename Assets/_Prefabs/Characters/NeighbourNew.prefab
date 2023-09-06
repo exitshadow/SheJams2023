@@ -190,6 +190,37 @@ Transform:
   - {fileID: 1575632149658232125}
   m_Father: {fileID: 7089992535234693508}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1283174322030227327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9222306418352203356}
+  m_Layer: 0
+  m_Name: Neighbour Dialogue Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9222306418352203356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283174322030227327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.279, y: 1.443, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4605257273199108325}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1359486653101473211
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +781,7 @@ Transform:
   - {fileID: 2757323636371541849}
   - {fileID: 4969462010848126747}
   - {fileID: 4353525630927896531}
+  - {fileID: 9222306418352203356}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -139.191, z: 0}
 --- !u!95 &3014296918137618298
@@ -829,10 +861,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039da8339b010914180e0ca080cf9c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: 17236b53ac91e8e47a3e626fac590254, type: 2}
+  promptText: Talk
+  dialogueAnchor: {fileID: 0}
   gameManager: {fileID: 0}
   uiManager: {fileID: 0}
   cutsceneManager: {fileID: 0}
+  dialogueSystem: {fileID: 0}
+  dialogueRunner: {fileID: 0}
+  useYarn: 0
+  dialogueNode: 
+  dialogueData: {fileID: 11400000, guid: 17236b53ac91e8e47a3e626fac590254, type: 2}
   isPlayingDialogue: 0
   targetHand: {fileID: 3472093864559411960}
   treeBranchObject: {fileID: 0}

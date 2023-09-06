@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class TreeBranch : NPC
 {
     [Tooltip("Has to be the one with the renderer on it!")]
     [SerializeField] private GameObject treeBranchObject;
     [SerializeField] private Transform targetHand;
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
-        if (gameManager.HasFedCat())
+        if (!gameManager.HasFoundTheButterflyBranch())
         {
             currentDialogue = dialogueData.questProgressingDialogueSegments;
             gameManager.ConfirmFoundTreeBranch();
+
+            PassTreeBranchToPlayer();
         }
         else
         {
@@ -24,46 +27,23 @@ public class TreeBranch : NPC
         return currentDialogue;
     }
 
-    public override void ContinueDialogue()
+    [YarnCommand("pass_tree_branch_to_player")]
+    public void PassTreeBranchToPlayer()
     {
-        if (QueuedDialogue.Count == 0)
-        {
-            uiManager.CloseDialogueBox();
-            isPlayingDialogue = false;
+        treeBranchObject.transform.SetParent(targetHand);
+        treeBranchObject.transform.localRotation = Quaternion.identity;
+        treeBranchObject.transform.localPosition = new Vector3(0, 0, -.1f);
+    }
 
-            // todo
-            // abstract this bit in another virtual method in the parent class
-            if (gameManager.HasFoundTheButterflyBranch())
-            {
-                treeBranchObject.transform.SetParent(targetHand);
-                treeBranchObject.transform.localRotation = Quaternion.identity;
-                treeBranchObject.transform.localPosition = new Vector3(0, 0, -.1f);
-            }
-
-            return;
-        }
-
-        NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
-
-        if (!isPlayingDialogue)
-        {
-            uiManager.OpenDialogueBox();
-            isPlayingDialogue = true;
-        }
-
-        uiManager.InjectDialogueLine(   currentDialogue.speakerName,
-                                        currentDialogue.dialogueText    );
+    [YarnCommand("disable_tree_branch")]
+    public void DisableTreeBranch()
+    {
+        this.gameObject.SetActive(false);
     }
 
     protected override void OnTriggerExit(Collider other)
     {
         Debug.Log("exiting branch trigger");
         base.OnTriggerExit(other);
-
-        if (gameManager.HasFoundTheButterflyBranch())
-        {
-            gameObject.SetActive(false);
-            Debug.Log("Destroying tree branch");
-        }
     }
 }

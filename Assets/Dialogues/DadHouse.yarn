@@ -55,12 +55,10 @@ position: 0, 0
     Iman: There we go!
     Dad: Did you do it?
     Iman: Yes. I just reset to factory settings.
-    <<set $hasResetDadsComputer to true>>
-    <<stop>>
-<<endif>>
-
-//when the computer is fixed
-<<if $hasResetDadsComputer is true and $hasFinishedDadQuest is false>>
+    Dad: ...
+    Iman: ...
+    Dad: Oooh!
+    Iman: See!
     Dad: Ah, I have such a smart daughter! I knew it. I said to myself: “She can do it!”
     Iman: Don't mention it.
     Dad: I know you will do great things. Reach for the stars, my daughter!
@@ -69,8 +67,16 @@ position: 0, 0
     Iman: Really? What did she want?
     Dad: You'll have to ask her! She said you could meet her at the edge of town.
     Iman: I wonder what this is about…
-    <<set $hasFinishedDadQuest to true>>
-    <<stop>>
+    Dad: I guess we'll find out...
+    // command dad looks at camera
+    Iman: ???
+    Dad: In the next DLC!
+    Dad: Thank you for playing, we hope you enjoyed your experience and will leave us a nice review!
+    Iman: What?
+    Dad: Like and subscribe in the link at the end of the credits!
+    // command iman looks at camera
+    Dad: And never forget to reach for your dreams!
+    <<start_credits_roll DAD>> // add a bit of a delay before credits roll
 <<endif>>
 
 //talking to dad after computer quest

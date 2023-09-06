@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 /// <summary>
 /// The Game Manager is a script that interfaces with a Game State Asset.
@@ -12,13 +13,21 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private GameStateAsset gameStateData;
+    private InMemoryVariableStorage yarnVariablesStorage;
 
     [SerializeField] private UIManager uiManager;
     [SerializeField] private CutsceneManager cutsceneManager;
 
     private void Start()
     {
+        
+
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void SetAllYarnVariables()
+    {
+        
     }
 
     #region dad’s quest

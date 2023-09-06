@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class ButterflyNeighbour : NPC
 {
@@ -8,7 +9,7 @@ public class ButterflyNeighbour : NPC
     [SerializeField] private Transform targetHand;
     [SerializeField] private GameObject treeBranchObject;
 
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
@@ -34,7 +35,8 @@ public class ButterflyNeighbour : NPC
         return currentDialogue;
     }
 
-    public override void ContinueDialogue()
+
+    protected override void GetOldDialogueLine()
     {
         if (QueuedDialogue.Count == 0)
         {
@@ -45,9 +47,7 @@ public class ButterflyNeighbour : NPC
             // abstract this bit in another virtual method in the parent class
             if (gameManager.HasFoundTheButterflyBranch())
             {
-                treeBranchObject.transform.SetParent(targetHand);
-                treeBranchObject.transform.localRotation = Quaternion.identity;
-                treeBranchObject.transform.localPosition = new Vector3(0, 0, -.1f);
+                GiveBranchToNeighbour();
             }
 
             return;
@@ -71,5 +71,13 @@ public class ButterflyNeighbour : NPC
 
         animator = GetComponent<Animator>();
         animator.SetLayerWeight(2, 0);
+    }
+
+    [YarnCommand("give_branch_to_neighbour")]
+    public void GiveBranchToNeighbour()
+    {
+        treeBranchObject.transform.SetParent(targetHand);
+        treeBranchObject.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        treeBranchObject.transform.localPosition = new Vector3(0, 0, 0.001f);
     }
 }

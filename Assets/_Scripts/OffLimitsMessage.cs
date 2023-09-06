@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class OffLimitsMessage : NPC
 {
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         return dialogueData.questStartingDialogueSegments;
     }
@@ -21,7 +21,7 @@ public class OffLimitsMessage : NPC
 
             if (!isPlayingDialogue)
             {
-                FetchDialogue(FindCurrentDialogue());
+                FetchDialogue(FindCurrentDialogueOldSystem());
                 uiManager.HideInteractionButton();
             }
 

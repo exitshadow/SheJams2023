@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Collider playerCollider;
     public Transform dialogueAnchor;
     public Transform playerDialogueAnchor;
-    [HideInInspector] public Transform currentDialogueAnchor;
+    public Transform currentDialogueAnchor;
 
     [Header("Phone prompt references")]
     [SerializeField] private RectTransform phoneNotificationGroup;
@@ -163,13 +163,45 @@ public class UIManager : MonoBehaviour
     #region dialogue box dynamic placing
     public void PlaceDialogueBoxInScreen()
     {
-        
+        if (playerCollider) CalculatePlayerBounds();
+
+        // world position to screen
+        Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
+
+        // space/distance around the coordinates
+        float distToTop = boundTop - screenPos.y - boundBottom;
+        float distToRight = boundRight - screenPos.x - boundLeft;
+        float distToLeft = screenPos.x - boundLeft;
+        float distToBottom = screenPos.y - boundBottom;
+
+        float pivotX;
+        float pivotY;
+
+        // setting the pivots
+        if (distToLeft > distToRight)
+            pivotX = 0;
+        else pivotX = 1;
+
+        if (distToTop > distToBottom)
+            pivotY = 0;
+        else pivotY = 1;
+
+        // assigning the pivot
+        dialogueBoxGroup.pivot = new Vector2(pivotX, pivotY);
+
+        // assigning the position
+        dialogueBoxGroup.anchoredPosition = new Vector2(screenPos.x, screenPos.y);
+
+    }
+
+    private void CalculatePlayerBounds()
+    {
         // bounds of the player collider
         Vector3 pC = playerCollider.bounds.center;
         Vector3 pE = playerCollider.bounds.extents;
 
         // bounds corners positions in world space
-        Vector3[] pCornersWS = new []
+        Vector3[] pCornersWS = new[]
         {
             new Vector3( pC.x + pE.x, pC.y + pE.y, pC.z + pE.z ),
             new Vector3( pC.x + pE.x, pC.y + pE.y, pC.z - pE.z ),
@@ -202,45 +234,16 @@ public class UIManager : MonoBehaviour
         {
             if (pCornersCS[i].x > playerBoundRight)
                 playerBoundRight = pCornersCS[i].x;
-            
+
             if (pCornersCS[i].x < playerBoundLeft)
                 playerBoundLeft = pCornersCS[i].x;
-            
+
             if (pCornersCS[i].y > playerBoundTop)
                 playerBoundTop = pCornersCS[i].y;
 
             if (pCornersCS[i].y < playerBoundBottom)
                 playerBoundBottom = pCornersCS[i].y;
         }
-
-
-        // world position to screen
-        Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
-        
-        // space/distance around the coordinates
-        float distToTop = boundTop - screenPos.y - boundBottom;
-        float distToRight = boundRight - screenPos.x - boundLeft;
-        float distToLeft = screenPos.x - boundLeft;
-        float distToBottom = screenPos.y - boundBottom;
-
-        float pivotX;
-        float pivotY;
-
-        // setting the pivots
-        if (distToLeft > distToRight)
-            pivotX = 0;
-        else pivotX = 1;
-
-        if (distToTop > distToBottom)
-            pivotY = 0;
-        else pivotY = 1;
-
-        // assigning the pivot
-        dialogueBoxGroup.pivot = new Vector2(pivotX, pivotY);
-        
-        // assigning the position
-        dialogueBoxGroup.anchoredPosition = new Vector2(screenPos.x, screenPos.y);
-
     }
 
     private void GetScreenBoundsWithMargins()
@@ -346,7 +349,11 @@ public class UIManager : MonoBehaviour
 
     private void PlaceInteractionButtonOnScreen()
     {
-        Vector2 screenPos = WorldToCanvasPoint(dialogueAnchor.position);
+        if (!interactionPromptGroup.activeSelf) return;
+        
+        if (!currentDialogueAnchor) currentDialogueAnchor = dialogueAnchor;
+        
+        Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
         interactionPromptGroup.GetComponent<RectTransform>().anchoredPosition = screenPos;
     }
     #endregion
@@ -579,7 +586,8 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                currentDialogueAnchor = dialogueAnchor;
+                if (currentDialogueAnchor == null)
+                    currentDialogueAnchor = dialogueAnchor;
             }
         }
     }

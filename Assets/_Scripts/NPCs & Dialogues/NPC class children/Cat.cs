@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Cat : NPC
 {
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
@@ -31,7 +31,7 @@ public class Cat : NPC
         return currentDialogue;
     }
 
-    public override void ContinueDialogue()
+    protected override void GetOldDialogueLine()
     {
         if (QueuedDialogue.Count == 0)
         {

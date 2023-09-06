@@ -11,7 +11,7 @@ public class Dad : NPC
     [Header("Dad Character Specific References")]
     [SerializeField] private SceneLoader sceneLoader;
 
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
@@ -39,15 +39,23 @@ public class Dad : NPC
 
     }
 
-    public override void ContinueDialogue()
+    protected override void GetOldDialogueLine()
     {
-        if (!useYarn)
-        {
-            if (QueuedDialogue.Count == 0)
+        Debug.Log("Getting dialogue lines, old system");
+
+        if (QueuedDialogue.Count == 0)
             {
+                Debug.Log("closed dialogue box, old system");
                 uiManager.CloseDialogueBox();
+                // camera manager switch camera (todo)
                 isPlayingDialogue = false;
-            if (gameManager.HasResetDadsComputer()) sceneLoader.Credits();
+                uiManager.currentDialogueAnchor = null;
+
+                //! again, not implemented by yarn yet
+                if (gameManager.HasResetDadsComputer())
+                {
+                    sceneLoader.Credits();
+                }
                 return;
             }
 
@@ -61,17 +69,6 @@ public class Dad : NPC
 
             uiManager.InjectDialogueLine(   currentDialogue.speakerName,
                                             currentDialogue.dialogueText    );
-        }
-        else
-        {
-            Debug.Log("Requesting View advancement");
-            dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
-            
-            
-            //uiManager.TriggerPop();
-
-            if (!dialogueRunner.IsDialogueRunning) uiManager.currentDialogueAnchor = null;
-        }
     }
 
     protected override void Awake()
@@ -80,5 +77,11 @@ public class Dad : NPC
 
         animator = GetComponent<Animator>();
         animator.SetLayerWeight(2, 0);
+    }
+
+    [YarnCommand("start_credits_roll")]
+    public void CreditsRoll()
+    {
+        sceneLoader.Credits();
     }
 }

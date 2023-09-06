@@ -59,31 +59,28 @@ public abstract class NPC : MonoBehaviour
     /// </summary>
     public void FetchDialogue(List<NPCDialogueAsset.DialogueSegment> dialogueSegment)
     {
-        Debug.Log("Fetching dialogue lines...");
+        // Debug.Log("Fetching dialogue lines...");
         QueuedDialogue.Clear();
         foreach (NPCDialogueAsset.DialogueSegment dialogue in dialogueSegment)
         {
             QueuedDialogue.Enqueue(dialogue);
-            Debug.Log("Queued all initial dialogue lines");
+            //Debug.Log("Queued all initial dialogue lines");
         }
     }
 
-    protected abstract List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue();
+/// <summary>
+/// Method that has to be implemented by any child class. Deprecated in favour of yarn system
+/// but maintained in order to make a smooth transition. 
+/// </summary>
+    protected abstract List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem();
 
     /// <summary>
     /// Dequeues the first dialogue line from the current lines in queue and sends it to the UI Manager.
     /// </summary>
-    public virtual void ContinueDialogue()
+    public void ContinueDialogue()
     {
-
-        if (useYarn)
-        {
-            GetYarnLine();
-        }
-        else
-        {
-            GetOldDialogueLine();
-        }
+        if (useYarn) GetYarnLine();
+        else  GetOldDialogueLine();
     }
 
     /// <summary>
@@ -93,38 +90,35 @@ public abstract class NPC : MonoBehaviour
     {
         if (context.performed)
         {
-            if (useYarn)
-            {
-                StartYarnDialogue();
-            }
-            else
-            {
-                StartOldDialogue();
-            }
+            if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
+
+            if (useYarn) StartYarnDialogue();
+            else StartOldDialogue();
+
             ContinueDialogue();
         }
     }
 
     protected virtual void StartOldDialogue()
     {
-        Debug.Log("calling old dialogue start");
+        //Debug.Log("calling old dialogue start");
         if (!isPlayingDialogue)
         {
-            FetchDialogue(FindCurrentDialogue());
+            FetchDialogue(FindCurrentDialogueOldSystem());
             uiManager.HideInteractionButton();
-            Debug.Log("old dialogue has started");
+            //Debug.Log("old dialogue has started");
         }
     }
 
     protected virtual void GetOldDialogueLine()
     {
-        Debug.Log("Getting dialogue lines, old system");
-        
+        //Debug.Log("Getting dialogue lines, old system");
+
         if (QueuedDialogue.Count == 0)
             {
-                Debug.Log("closed dialogue box, old system");
+                //Debug.Log("closed dialogue box, old system");
                 uiManager.CloseDialogueBox();
-                // camera manager switch camera (todo)
+
                 isPlayingDialogue = false;
                 uiManager.currentDialogueAnchor = null;
                 return;
@@ -152,15 +146,11 @@ public abstract class NPC : MonoBehaviour
                 uiManager.HideInteractionButton();
                 isPlayingDialogue = true;
             }
-            else
-            {
-                Debug.Log("entering dialogue running condition");
-            }
     }
 
     protected virtual void GetYarnLine()
     {
-        Debug.Log("Requesting View advancement");
+        //Debug.Log("Requesting View advancement");
         dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
         uiManager.TriggerPop();
         
@@ -175,7 +165,7 @@ public abstract class NPC : MonoBehaviour
     {
         if (!isPlayingDialogue)
         {
-            FetchDialogue(FindCurrentDialogue());
+            FetchDialogue(FindCurrentDialogueOldSystem());
             uiManager.HideInteractionButton();
         }
 
@@ -217,11 +207,12 @@ public abstract class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
+
             uiManager.ShowInteractionButton(promptText);
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
 
-            // target group = this; (todo)
             Debug.Log("player slot occupied");
         }
     }
@@ -231,6 +222,8 @@ public abstract class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             uiManager.HideInteractionButton();
+            uiManager.currentDialogueAnchor = null;
+            
             PlayerController pc = other.GetComponent<PlayerController>();
             pc.currentInteractingNPC = null;
         }

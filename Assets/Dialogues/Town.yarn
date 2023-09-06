@@ -8,7 +8,7 @@ position: 0, 0
 <<declare $hasFinishedNeighborQuest = false as bool>>
 
 //talking to the neighbor for the first time
-<<if $hasVisitedNeighbour is false>>
+<<if $hasVisitedNeighbour is false && $hasSpokenToDadAtHome>>
     Neighbor: You're here! Finally, finally!
     Iman: I am, I am! What's the matter?
     Neighbor: Butterflies, Iman! Butterflies everywhere!
@@ -24,17 +24,18 @@ position: 0, 0
 <<endif>>
 
 //talking to neighbor before finding the branch
-<<if $hasFoundTreeBranch is false>>
+<<if $hasFoundTreeBranch is false && $hasVisitedNeighbour is true>>
     Neighbor: Please come back with a branch from that blooming tree in the park!
 <<endif>>
 
 //talking to neighbor after finding the branch
-<<if $hasFoundTreeBranch is true>>
+<<if $hasFoundTreeBranch is true && $hasCapturedButterflies is false>>
     Iman: Here's the branch.
     Neighbor: Wonderful, wonderful! Here, I'll open the door, and you get them out, yes?
     Iman: I mean, it's not going to happen by itself, right? That would be nice…
-    Neighbor: …
-    Iman: Just give me that, please.
+    Neighbor: ...
+    Neighbor: Just give me that, please.
+    <<give_branch_to_neighbour NEIGHBOUR>>
     <<set $hasCapturedButterflies to true>>
     <<stop>>
 <<endif>>
@@ -55,15 +56,29 @@ position: 0, 0
 <<endif>>
 ===
 
-title: Iman
-tags: what Iman says to herself
+title: TreeBranch
 position: 250, 0
 ---
-//when finding the branch
-<<if $hasFoundTreeBranch is false>>
+// player already heard mrs al qadiri complaints
+<<if $hasVisitedNeighbour is true && $hasFoundTreeBranch is false>>
     Iman: Oh, lucky! There's a branch already on the ground.
-<<else>>
-    Iman: Better bring this back before she has a heart attack. Ugh, why am I doing this again? Oh, right. Avoiding my dad. And his broken computer. I'm sure he just forgot to plug it in, anyway.
+    Iman: ...
+    Iman: I hope I won't get plagued by the butterflies myself now.
+    <<set $hasFoundTreeBranch to true>>
+    <<pass_tree_branch_to_player "TREE BRANCH">>
+    <<disable_tree_branch "TREE BRANCH">>
+    Iman: Better bring this back before she has a heart attack!
+    Iman: ...
+    Iman: ...why am I doing this again?
+    Iman: Oh, right. Avoiding Dad. And his broken computer.
+    Iman: I'm sure he just forgot to plug it in, anyway.
+<<endif>>
+
+// player has no knowledge of either trees or neighbours
+<<if $hasVisitedNeighbour is false && $hasFoundTreeBranch is false>>
+    Iman: Whoa, a butterfly tree. It is no joke, it attracks so many of them.
+    Iman: Thinking of it, it is a bit disgusting.
+    Iman: Didn't the neighbour say something about fear of butterflies once?
 <<endif>>
 ===
 
@@ -74,8 +89,8 @@ position: 0, 200
 <<declare $hasEncounteredCat = false as bool>>
 <<declare $hasGivenTuna = false as bool>>
 
-<<if $hasFoundTuna is false>>
-    <<if $hasEncounteredCat is false>>
+<<if $hasEncounteredCat is false>>
+    <<if $hasFoundTuna is false>>
         Cat: *mrew*
         Iman: Oh, kitty, kitty!
         Iman: Well, would you look at that?
@@ -86,15 +101,34 @@ position: 0, 200
         Iman: I'm definitely not using this as an excuse to do some shopping.
         <<set $hasEncounteredCat to true>>
         <<stop>>
-    <<else>>
+    <<else>> // has found tuna before encountering cat first time
+        Cat: *MEOW! MEOW! MEOW!*
+        Iman: Dear lord, what is going with you?
+        Cat: *MEEEEOW! MEOW MEOW! MEOOW! MEOOOOOOOOOOOOW!!!*
+        Iman: Do you really like me that much?
+        Cat: *purrrrrrr purrrrrrrr purrrrr*
+        Iman: Awww, cutie pie! Have some pets!
+        Cat: *hiss!*
+        Iman: Hey!
+        Cat: *purrrrs purrrrs purrrrrrrrrrrs*
+        Iman: Oh, I see.
+        Iman: Of course, that wasn't because of my great looks.
+        Iman: I had that tuna can on me.
+        Iman: Take it if that makes you so happy!
+        Cat: *purrs furiously*
+        <<set $hasGivenTuna to true>>
+        <<stop>>
+    <<endif>>
+<<else>> // has already encountered cat
+    <<if $hasFoundTuna is false>>
         Iman: No, I just can't leave this poor cat to starve!
         Iman: Also, my wallet is burning with buyer's fever.
         Iman: To the market!
+    <<else>> // has found tuna after having encountered cat first time
+        Iman: Here you go, kitty.
+        <<set $hasGivenTuna to true>>
     <<endif>>
 <<endif>>
-
-Iman: Here you go, kitty.
-<<set $hasGivenTuna to true>>
 ===
 
 title: TunaCan
@@ -103,14 +137,26 @@ position: 250, 200
 ---
 <<declare $hasFoundTuna = false as bool>>
 
-<<if $hasFoundTuna is false>>
+// player knows nothing about cats or tuna cans
+<<if $hasFoundTuna is false && $hasEncounteredCat is false>>
+    Iman: What is this?
+    Iman: "Tuna, Import Type (super tasty)"
+    Iman: People really leave crazy things on the floor.
+    <<set $hasFoundTuna to true>>
+    <<stop>>
+<<endif>>
+
+// player has encountered cat already, but has no prior knowledge of the tuna can
+<<if $hasFoundTuna is false && $hasEncounteredCat is true>>
     Iman: Oh, how curious.
-    Iman: A tuna can has been left there just for my own convenience.
+    Iman: So that tuna can has been left there just for my own convenience.
     Iman: Lol I don't think so.
-    Iman: But it's marked “import type”, which is kinda neat.
+    Iman: But it's marked really is kinda neat.
     Game Manager: You got: 1 tuna can(s).
     Iman: … What?
     <<set $hasFoundTuna to true>>
+    <<disable_tuna_can "TUNA CAN">>
+    <<stop>>
 <<endif>>
 ===
 
@@ -119,7 +165,8 @@ tags: When interacting with the tuna
 position: 0, 400
 ---
 <<if $hasGivenTuna is true>>
-    Vet: Hey, you can't give that cat tuna!
+    Vet: Hey!
+    Vet: You can't give tuna to that cat!
     Iman: What, why? Don't cats like fish?
     Vet: They do, but this is tuna. They might like the strong smell, but it's not a well-balanced food. Also, this cat is allergic to tuna.
     Iman: Oh, no!

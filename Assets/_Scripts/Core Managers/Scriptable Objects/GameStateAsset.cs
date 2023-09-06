@@ -9,6 +9,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Handiman Data Assets/Game State Asset", fileName = "Game State Asset")]
 public class GameStateAsset : ScriptableObject
 {
+    public string missionStatusText;
+    
     [Header("Game State Tracking Variables — Exposed for debugging purposes only")]
     [Header("Butterfly Neighbour Quest")]
     public bool hasSpokenToDadAtHome = false;
