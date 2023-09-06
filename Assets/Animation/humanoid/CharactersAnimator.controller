@@ -547,7 +547,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: MG2_Butterflies
     m_StateMachine: {fileID: 5260633580299070014}
-    m_Mask: {fileID: 31900000, guid: f549345270297434ca5f5a08ec1a08e7, type: 2}
+    m_Mask: {fileID: 31900000, guid: 50f409c86fe00a949b8eef6e7c5cb3f3, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
