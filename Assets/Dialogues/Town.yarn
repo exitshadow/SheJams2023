@@ -33,7 +33,7 @@ position: 0, 0
 <<endif>>
 
 //talking to neighbor after finding the branch
-<<if $hasFoundTreeBranch is true && $hasCapturedButterflies is false>>
+<<if $hasFoundTreeBranch && !$hasCapturedButterflies>>
     Iman: Here's the branch.
     Neighbor: Wonderful, wonderful! Here, I'll open the door, and you get them out, yes?
     Iman: I mean, it's not going to happen by itself, right? That would be nice…
@@ -46,7 +46,7 @@ position: 0, 0
 <<endif>>
 
 //after helping neighbor with the butterflies
-<<if $hasCapturedButterflies is true>>
+<<if $hasCapturedButterflies>>
     Neighbor: Iman, thank you, thank you!
     Iman: Don't worry about it.
     Neighbor: I can finally go back inside. Have a nice day, Iman!
@@ -56,7 +56,7 @@ position: 0, 0
 <<endif>>
 
 //talking to neighbor after butterfly quest
-<<if $hasFinishedNeighborQuest is true>>
+<<if $hasFinishedNeighborQuest>>
     Neighbor: Thanks again!
 <<endif>>
 ===
@@ -64,27 +64,27 @@ position: 0, 0
 title: TreeBranch
 position: 250, 0
 ---
-// player already heard mrs al qadiri complaints
-<<if $hasVisitedNeighbour is true && $hasFoundTreeBranch is false>>
-    Iman: Oh, lucky! There's a branch already on the ground.
-    Iman: ...
-    Iman: I hope I won't get plagued by the butterflies myself now.
-    <<set $hasFoundTreeBranch to true>>
-    <<pass_tree_branch_to_player "TREE BRANCH">>
-    <<disable_tree_branch "TREE BRANCH">>
-    Iman: Better bring this back before she has a heart attack!
-    Iman: ...
-    Iman: ...why am I doing this again?
-    Iman: Oh, right. Avoiding Dad. And his broken computer.
-    Iman: I'm sure he just forgot to plug it in, anyway.
-    <<change_mission_prompt UIManager "Go catch the neighbour's butterflies to avoid performing your duties.">>
-<<endif>>
-
-// player has no knowledge of either trees or neighbours
-<<if $hasVisitedNeighbour is false && $hasFoundTreeBranch is false>>
-    Iman: Whoa, a butterfly tree. It is no joke, it attracks so many of them.
-    Iman: Thinking of it, it is a bit disgusting.
-    Iman: Didn't the neighbour say something about being scared of butterflies?
+<<if !$hasFoundTreeBranch>>
+    <<if !$hasVisitedNeighbour>>
+        // player has no knowledge of neighbour's problem
+        Iman: Whoa, a butterfly tree. It is no joke, it attracks so many of them.
+        Iman: Thinking of it, it is a bit disgusting.
+        Iman: Didn't the neighbour say something about being scared of butterflies?
+    <<else>>
+        // player already heard mrs al qadiri complaints
+        Iman: Oh, lucky! There's a branch already on the ground.
+        Iman: ...
+        Iman: I hope I won't get plagued by the butterflies myself now.
+        <<set $hasFoundTreeBranch to true>>
+        <<pass_tree_branch_to_player "TREE BRANCH">>
+        <<disable_tree_branch "TREE BRANCH">>
+        Iman: Better bring this back before she has a heart attack!
+        Iman: ...
+        Iman: ...why am I doing this again?
+        Iman: Oh, right. Avoiding Dad. And his broken computer.
+        Iman: I'm sure he just forgot to plug it in, anyway.
+        <<change_mission_prompt UIManager "Go catch the neighbour's butterflies to avoid performing your duties.">>
+    <<endif>>
 <<endif>>
 ===
 
@@ -95,8 +95,8 @@ position: 0, 200
 <<declare $hasEncounteredCat = false as bool>>
 <<declare $hasGivenTuna = false as bool>>
 
-<<if $hasEncounteredCat is false>>
-    <<if $hasFoundTuna is false>>
+<<if !$hasEncounteredCat>>
+    <<if !$hasFoundTuna>>
         Cat: *mrew*
         Iman: Oh, kitty, kitty!
         Iman: Well, would you look at that?
@@ -128,7 +128,7 @@ position: 0, 200
         <<stop>>
     <<endif>>
 <<else>> // has already encountered cat
-    <<if $hasFoundTuna is false>>
+    <<if !$hasFoundTuna>>
         Iman: No, I just can't leave this poor cat to starve!
         Iman: Also, my wallet is burning with buyer's fever.
         Iman: To the market!
@@ -146,30 +146,24 @@ position: 250, 200
 ---
 <<declare $hasFoundTuna = false as bool>>
 
-// player knows nothing about cats or tuna cans
-<<if $hasFoundTuna is false && $hasEncounteredCat is false>>
-    Iman: What is this?
-    Iman: "Tuna, Import Type (super tasty)"
-    Iman: People really leave crazy things on the floor.
-    Iman: Well, I guess I just got a free tuna can. Why not.
-    <<set $hasFoundTuna to true>>
-    <<disable_tuna_can "TUNA CAN">>
-    <<change_secondary_mission_prompt UIManager "Find something to do with this important tuna can">>
-    <<stop>>
-<<endif>>
-
-// player has encountered cat already, but has no prior knowledge of the tuna can
-<<if $hasFoundTuna is false && $hasEncounteredCat is true>>
-    Iman: Oh, how curious.
-    Iman: So that tuna can has been left there just for my own convenience.
-    Iman: Lol I don't think so.
-    Iman: But it's marked "import type", which is kinda neat.
-    Game Manager: You got: 1 tuna can(s).
-    Iman: … What?
+<<if !$hasFoundTuna>>
+    <<if !$hasEncounteredCat>>
+        // player knows nothing about cats or tuna cans
+        Iman: What is this?
+        Iman: "Tuna, Import Type (super tasty)"
+        Iman: People really leave crazy things on the floor.
+    <<else>>
+        // player has encountered cat already, but has no prior knowledge of the tuna can
+        Iman: Oh, how curious.
+        Iman: So that tuna can has been left there just for my own convenience.
+        Iman: Lol I don't think so.
+        Iman: But it's marked "import type", which is kinda neat.
+        Game Manager: You got: 1 tuna can(s).
+        Iman: … What?
+    <<endif>>
     <<set $hasFoundTuna to true>>
     <<disable_tuna_can "TUNA CAN">>
     <<change_secondary_mission_prompt UIManager "Great powers mean great responsibilities. Great tuna means... a great kitten?">>
-    <<stop>>
 <<endif>>
 ===
 
@@ -179,7 +173,7 @@ position: 0, 400
 ---
 <<declare $hasInterruptedCatFeeding = false as bool>>
 
-<<if $hasGivenTuna is true>>
+<<if $hasGivenTuna>>
     <<if $hasInterruptedCatFeeding>>
         Vet: No need to worry.
     <<else>>
@@ -194,7 +188,6 @@ position: 0, 400
     Iman: Okay… Goodbye, doctor. Sorry, kittycat.
     <<set $hasInterruptedCatFeeding to true>>
     <<endif>>
-    // set new bool to true
 <<else>>
     Vet: ...
     Iman: May I ask you, what have you been looking at for so long?
