@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class TunaCan : NPC
 {
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
@@ -22,7 +23,7 @@ public class TunaCan : NPC
 
     }
 
-    public override void InjectDialogue()
+    protected override void GetOldDialogueLine()
     {
         if (QueuedDialogue.Count == 0)
         {
@@ -42,6 +43,12 @@ public class TunaCan : NPC
 
         uiManager.InjectDialogueLine(   currentDialogue.speakerName,
                                         currentDialogue.dialogueText    );
+    }
+
+    [YarnCommand("disable_tuna_can")]
+    public void DisableTunaCan()
+    {
+        this.gameObject.SetActive(false);
     }
 }
     

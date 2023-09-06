@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 /// <summary>
 /// Inherits from the NPC abstract class.
 /// </summary>
 public class Dad : NPC
 {
+    [Header("Dad Character Specific References")]
     [SerializeField] private SceneLoader sceneLoader;
 
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogue()
+    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
         List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
@@ -37,26 +39,36 @@ public class Dad : NPC
 
     }
 
-    public override void InjectDialogue()
+    protected override void GetOldDialogueLine()
     {
+        Debug.Log("Getting dialogue lines, old system");
+
         if (QueuedDialogue.Count == 0)
-        {
-            uiManager.CloseDialogueBox();
-            isPlayingDialogue = false;
-           if (gameManager.HasResetDadsComputer()) sceneLoader.Credits();
-            return;
-        }
+            {
+                Debug.Log("closed dialogue box, old system");
+                uiManager.CloseDialogueBox();
+                // camera manager switch camera (todo)
+                isPlayingDialogue = false;
+                uiManager.currentDialogueAnchor = null;
 
-        NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
+                //! again, not implemented by yarn yet
+                if (gameManager.HasResetDadsComputer())
+                {
+                    sceneLoader.Credits();
+                }
+                return;
+            }
 
-        if (!isPlayingDialogue)
-        {
-            uiManager.OpenDialogueBox();
-            isPlayingDialogue = true;
-        }
+            NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
 
-        uiManager.InjectDialogueLine(   currentDialogue.speakerName,
-                                        currentDialogue.dialogueText    );
+            if (!isPlayingDialogue)
+            {
+                uiManager.OpenDialogueBox();
+                isPlayingDialogue = true;
+            }
+
+            uiManager.InjectDialogueLine(   currentDialogue.speakerName,
+                                            currentDialogue.dialogueText    );
     }
 
     protected override void Awake()
@@ -65,5 +77,11 @@ public class Dad : NPC
 
         animator = GetComponent<Animator>();
         animator.SetLayerWeight(2, 0);
+    }
+
+    [YarnCommand("start_credits_roll")]
+    public void CreditsRoll()
+    {
+        sceneLoader.Credits();
     }
 }

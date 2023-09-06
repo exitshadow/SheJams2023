@@ -4,27 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 /// <summary>
 /// Dispatches all the texts in the game into their right places in the UI and manages opening and closing UI groups.
 /// </summary>
 ///
 public class UIManager : MonoBehaviour
 {
-    [Header("Behaviour Settings")]
+    [Header("Settings")]
     [SerializeField] private bool showMissionStatusAtStart;
     [SerializeField] private bool showInteractionPromptAtStart;
     [SerializeField] private bool showControlsPromptAtStart;
     [SerializeField] private bool showPhoneAtStart;
     [SerializeField] private bool showDialogueBoxAtStart;
-
-    [Header("Debug Settings")]
     [SerializeField] private bool debug = false;
     private RectTransform anchorIndicator;
     private GameObject anchorDebug;
 
-    [Header("Dialogue Box Behaviour Settings")]
+    [Header("Dialogue Box")]
     [Tooltip("Safe margin area between the dialogue box and the screen limits")]
-    [SerializeField] private float screenMargin = 15f;
+    [SerializeField] private float screenMargin = 45f;
 
     private float boundTop;
     private float boundRight;
@@ -51,13 +50,16 @@ public class UIManager : MonoBehaviour
 
     [Header("Interaction Prompt Reference")]
     [SerializeField] private GameObject interactionPromptGroup;
+    [SerializeField] private TextMeshProUGUI interactionPromptTMP;
 
     [Header("Dialogue Box References")]
     [SerializeField] private RectTransform dialogueBoxGroup;
     [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
     [SerializeField] private TextMeshProUGUI dialogueContentTMP;
+    [SerializeField] private Collider playerCollider;
     public Transform dialogueAnchor;
     public Transform playerDialogueAnchor;
+    public Transform currentDialogueAnchor;
 
     [Header("Phone prompt references")]
     [SerializeField] private RectTransform phoneNotificationGroup;
@@ -85,7 +87,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float messageSpacingBetweenSenders = 10f;
     #endregion
 
-    private Transform currentDialogueAnchor;
 
     #region show controls prompt
     public void OpenControlsPrompt()
@@ -122,9 +123,16 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region dialogue box
+
+    public void TriggerPop()
+    {
+        dialogueBoxGroup.GetComponent<Animator>().SetTrigger("Pop");
+    }
+
     public void OpenDialogueBox()
     {
         dialogueBoxGroup.gameObject.SetActive(true);
+        dialogueBoxGroup.GetComponent<CanvasGroup>().alpha = 1.0f;
         PlaceDialogueBoxInScreen();
     }
 
@@ -150,39 +158,92 @@ public class UIManager : MonoBehaviour
             currentDialogueAnchor = dialogueAnchor;
         }
     }
+    #endregion
 
+    #region dialogue box dynamic placing
     public void PlaceDialogueBoxInScreen()
     {
+        if (playerCollider) CalculatePlayerBounds();
+
         // world position to screen
-        Vector2 dialogueScreenPosition = Camera.main.WorldToScreenPoint(currentDialogueAnchor.position);
+        Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
 
         // space/distance around the coordinates
-        float spaceLeft = dialogueScreenPosition.x - boundLeft;
-        float spaceRight = boundRight - dialogueScreenPosition.x;
-        float spaceTop = dialogueScreenPosition.y - boundBottom;
-        float spaceBottom = boundTop - dialogueScreenPosition.y;
+        float distToTop = boundTop - screenPos.y - boundBottom;
+        float distToRight = boundRight - screenPos.x - boundLeft;
+        float distToLeft = screenPos.x - boundLeft;
+        float distToBottom = screenPos.y - boundBottom;
 
         float pivotX;
         float pivotY;
 
-        float posX = dialogueScreenPosition.x / (Camera.main.pixelWidth / (boundRight + screenMargin));
-        float posY = dialogueScreenPosition.y / (Camera.main.pixelHeight / (boundTop + screenMargin));
-
         // setting the pivots
-        if (spaceLeft > spaceRight)
+        if (distToLeft > distToRight)
             pivotX = 0;
         else pivotX = 1;
 
-        if (spaceTop > spaceBottom)
+        if (distToTop > distToBottom)
             pivotY = 0;
         else pivotY = 1;
 
         // assigning the pivot
         dialogueBoxGroup.pivot = new Vector2(pivotX, pivotY);
-        
-        // assigning the position
-        dialogueBoxGroup.anchoredPosition = new Vector2(posX, posY);
 
+        // assigning the position
+        dialogueBoxGroup.anchoredPosition = new Vector2(screenPos.x, screenPos.y);
+
+    }
+
+    private void CalculatePlayerBounds()
+    {
+        // bounds of the player collider
+        Vector3 pC = playerCollider.bounds.center;
+        Vector3 pE = playerCollider.bounds.extents;
+
+        // bounds corners positions in world space
+        Vector3[] pCornersWS = new[]
+        {
+            new Vector3( pC.x + pE.x, pC.y + pE.y, pC.z + pE.z ),
+            new Vector3( pC.x + pE.x, pC.y + pE.y, pC.z - pE.z ),
+            new Vector3( pC.x + pE.x, pC.y - pE.y, pC.z + pE.z ),
+            new Vector3( pC.x + pE.x, pC.y - pE.y, pC.z - pE.z ),
+            new Vector3( pC.x - pE.x, pC.y + pE.y, pC.z + pE.z ),
+            new Vector3( pC.x - pE.x, pC.y + pE.y, pC.z - pE.z ),
+            new Vector3( pC.x - pE.x, pC.y - pE.y, pC.z + pE.z ),
+            new Vector3( pC.x - pE.x, pC.y - pE.y, pC.z - pE.z )
+        };
+
+        // bounds corners positions in canvas space
+        Vector2[] pCornersCS = new Vector2[8];
+
+
+        // convert world corner points to screen corners and scale
+        for (int i = 0; i < pCornersWS.Length; i++)
+        {
+            pCornersCS[i] = WorldToCanvasPoint(pCornersWS[i]);
+        }
+
+        // initialize canvas space bounds
+        float playerBoundRight = pCornersCS[0].x;
+        float playerBoundLeft = pCornersCS[0].x;
+        float playerBoundBottom = pCornersCS[0].y;
+        float playerBoundTop = pCornersCS[0].y;
+
+        // find extremes
+        for (int i = 1; i < pCornersCS.Length; i++)
+        {
+            if (pCornersCS[i].x > playerBoundRight)
+                playerBoundRight = pCornersCS[i].x;
+
+            if (pCornersCS[i].x < playerBoundLeft)
+                playerBoundLeft = pCornersCS[i].x;
+
+            if (pCornersCS[i].y > playerBoundTop)
+                playerBoundTop = pCornersCS[i].y;
+
+            if (pCornersCS[i].y < playerBoundBottom)
+                playerBoundBottom = pCornersCS[i].y;
+        }
     }
 
     private void GetScreenBoundsWithMargins()
@@ -275,9 +336,25 @@ public class UIManager : MonoBehaviour
         interactionPromptGroup.SetActive(true);
     }
 
+    public void ShowInteractionButton(string interactionText)
+    {
+        interactionPromptGroup.SetActive(true);
+        interactionPromptTMP.text = interactionText;
+    }
+
     public void HideInteractionButton()
     {
         interactionPromptGroup.SetActive(false);
+    }
+
+    private void PlaceInteractionButtonOnScreen()
+    {
+        if (!interactionPromptGroup.activeSelf) return;
+        
+        if (!currentDialogueAnchor) currentDialogueAnchor = dialogueAnchor;
+        
+        Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
+        interactionPromptGroup.GetComponent<RectTransform>().anchoredPosition = screenPos;
     }
     #endregion
 
@@ -426,6 +503,16 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    void OnEnable()
+    {
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
+    }
+
+    void OnDisable()
+    {
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
+    }
+
     void Start()
     {
         if (debug)
@@ -463,7 +550,47 @@ public class UIManager : MonoBehaviour
             TrackDialogueBoxBounds();
             RepositionDialogueBoxOnScreen();
         }
+
+        if (dialogueAnchor != null)
+        {
+            PlaceInteractionButtonOnScreen();
+        }
     }
 
+#region utils
+    private Vector2 ScaleToScreen(Vector2 coordinate)
+    {
+        float x = coordinate.x / Camera.main.pixelWidth / (boundRight + screenMargin);
+        float y = coordinate.y / Camera.main.pixelHeight / (boundTop + screenMargin);
 
+        return new Vector2(x, y);
+    }
+
+    private Vector2 WorldToCanvasPoint(Vector3 position)
+    {
+        Vector2 coordinate = Camera.main.WorldToScreenPoint(position);
+
+        float x = coordinate.x / (Camera.main.pixelWidth / (boundRight + screenMargin));
+        float y = coordinate.y / (Camera.main.pixelHeight / (boundTop + screenMargin));
+
+        return new Vector2(x, y);
+    }
+
+    private void OnTextChanged(Object objectChanged)
+    {
+        if (objectChanged == dialogueSpeakerNameTMP)
+        {
+            if (dialogueSpeakerNameTMP.text == "Iman")
+            {
+                currentDialogueAnchor = playerDialogueAnchor;
+            }
+            else
+            {
+                if (currentDialogueAnchor == null)
+                    currentDialogueAnchor = dialogueAnchor;
+            }
+        }
+    }
 }
+
+#endregion
