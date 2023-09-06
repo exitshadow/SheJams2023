@@ -8,7 +8,8 @@ position: 0, 0
 <<declare $hasFinishedNeighborQuest = false as bool>>
 
 //talking to the neighbor for the first time
-<<if $hasVisitedNeighbour is false && $hasSpokenToDadAtHome>>
+// i removed "&& $hasSpokenToDadAtHome" because a lot of people will miss talking to the dad at first and i don't want that to be a 'blocker'
+<<if !$hasVisitedNeighbour>>
     Neighbor: You're here! Finally, finally!
     Iman: I am, I am! What's the matter?
     Neighbor: Butterflies, Iman! Butterflies everywhere!
@@ -16,7 +17,9 @@ position: 0, 0
     Neighbor: No, no. They're in my house! My house is full of butterflies! I have a chronic fear of them.
     Iman: Aren't you wearing a butterfly pattern?
     Neighbor: It's called exposure therapy! But anyways, what can I do? You're so smart, Iman. Surely you can help me…
-    Iman: I don't really-- fine. Better this than dealing with another of dad's computer questions. Hm… Butterflies… Oh, there's this tree in the park, it grows flowers that attract butterflies! If I bring a branch, I could lead them out of the house.
+    Iman: I don't really-- fine. Better this than dealing with another of dad's computer questions.
+    Iman: Hm… Butterflies… Oh, there's this tree in the park, it grows flowers that attract butterflies!
+    Iman: If I bring a branch, I could lead them out of the house.
     Neighbor: Yes, yes! Thank you!
     Iman: Well, off I go, I guess.
     <<set $hasVisitedNeighbour to true>>
@@ -24,7 +27,7 @@ position: 0, 0
 <<endif>>
 
 //talking to neighbor before finding the branch
-<<if $hasFoundTreeBranch is false && $hasVisitedNeighbour is true>>
+<<if !$hasFoundTreeBranch && $hasVisitedNeighbour>>
     Neighbor: Please come back with a branch from that blooming tree in the park!
 <<endif>>
 
@@ -78,7 +81,7 @@ position: 250, 0
 <<if $hasVisitedNeighbour is false && $hasFoundTreeBranch is false>>
     Iman: Whoa, a butterfly tree. It is no joke, it attracks so many of them.
     Iman: Thinking of it, it is a bit disgusting.
-    Iman: Didn't the neighbour say something about fear of butterflies once?
+    Iman: Didn't the neighbour say something about being scared of butterflies?
 <<endif>>
 ===
 
@@ -151,7 +154,7 @@ position: 250, 200
     Iman: Oh, how curious.
     Iman: So that tuna can has been left there just for my own convenience.
     Iman: Lol I don't think so.
-    Iman: But it's marked really is kinda neat.
+    Iman: But it's marked "import type", which is kinda neat.
     Game Manager: You got: 1 tuna can(s).
     Iman: … What?
     <<set $hasFoundTuna to true>>
@@ -164,14 +167,24 @@ title: VetSermon
 tags: When interacting with the tuna
 position: 0, 400
 ---
+<<declare $hasInterruptedCatFeeding = false as bool>>
+
 <<if $hasGivenTuna is true>>
+    <<if $hasInterruptedCatFeeding>>
+        Vet: No need to worry.
+    <<else>>
     Vet: Hey!
     Vet: You can't give tuna to that cat!
     Iman: What, why? Don't cats like fish?
-    Vet: They do, but this is tuna. They might like the strong smell, but it's not a well-balanced food. Also, this cat is allergic to tuna.
+    Vet: They do, but this is tuna. They might like the strong smell, but it's not a well-balanced food.
+    Vet: Also, this cat is allergic to tuna.
     Iman: Oh, no!
-    Vet: It's fine, it just means there's going to be some hair loss and a ton of farting. I'm bringing it for observation, but no need to worry.
+    Vet: It's fine, it just means there's going to be some hair loss and a ton of farting.
+    Vet: I'm bringing it for observation, but no need to worry.
     Iman: Okay… Goodbye, doctor. Sorry, kittycat.
+    <<set $hasInterruptedCatFeeding to true>>
+    <<endif>>
+    // set new bool to true
 <<else>>
     Vet: ...
     Iman: May I ask you, what have you been looking at for so long?

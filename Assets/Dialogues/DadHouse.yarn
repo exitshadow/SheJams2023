@@ -6,11 +6,15 @@ position: 0, 0
 <<declare $hasResetDadsComputer = false as bool>>
 <<declare $hasFinishedDadQuest = false as bool>>
 
-//talking to dad for the first time
-<<if $hasSpokenToDadAtHome is false>>
+//talking to dad in the beginning of the game
+<<if $hasSpokenToDadAtHome is false && $hasCapturedButterflies is false>>
     Dad: Iman! Can you come check my computer? It's broken again!
-    Iman: Ah, uh, sorry, dad… I have to, uh, go see our neighbor! Yes.
-    Iman: She called earlier saying she needed help with something. I couldn't understand what it was, though…
+    Iman: Ah, uh, sorry, dad… I have to, uh, help our neighbor! Yes.
+        <<if $hasVisitedNeighbour is true>>
+            Iman: She's been having trouble with... butterflies.
+        <<else>>
+            Iman: She called earlier saying she needed help with something. I couldn't understand what it was, though…
+        <<endif>>
     Dad: Mrs Al-Qadiri always has had very strange problems.
     Dad: I wish you good luck my daughter! I am waiting for you here when you're done.
     Iman: I'll take a look at your computer when I get back!
@@ -26,11 +30,13 @@ position: 0, 0
 
 //talking to dad after helping the neighbor
 <<if $hasCapturedButterflies is true>>
+    // if you hadn't talked to dad first:
     <<if $hasSpokenToDadAtHome is false>>
         Dad: Ah, my daughter, there you are!
         Iman: Using the daughter card, I see.
         Dad: Yes. My computer is broken, can you take a look at it?
         Iman: It worked fine yesterday. What did you do?
+        <<set $hasSpokenToDadAtHome to true>>
     <<else>>
         Dad: Ah, my daughter, you're back!
         Iman: Using the daughter card, I see.
