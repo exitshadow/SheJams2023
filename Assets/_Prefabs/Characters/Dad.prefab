@@ -77,7 +77,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7681675848111675145}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: aeb9a6d2748f0ca428ac74d8dd1128e0, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 73a58017eabb6e141971ffc4bdfdcf30, type: 3}
   m_Controller: {fileID: 9100000, guid: c05e639a2056b8b4981a41d64b231e70, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   cutsceneManager: {fileID: 0}
   dialogueSystem: {fileID: 0}
   dialogueRunner: {fileID: 0}
-  useYarn: 0
+  useYarn: 1
   dialogueNode: DadQuest
   dialogueData: {fileID: 11400000, guid: 946e1f0600d1d034293df196b2d4458b, type: 2}
   isPlayingDialogue: 0

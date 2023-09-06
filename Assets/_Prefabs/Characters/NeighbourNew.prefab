@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Neighbour Dialogue Anchor
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -77,7 +77,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3913764417976076355}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c8c55954c0fab9b4aaa6f07a36d6a08d, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 2a85b959952e0d94296a6af3ace56f87, type: 3}
   m_Controller: {fileID: 9100000, guid: c05e639a2056b8b4981a41d64b231e70, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -145,15 +145,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039da8339b010914180e0ca080cf9c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: Talk
-  dialogueAnchor: {fileID: 0}
+  promptText: Iman, I need your help!!!
+  dialogueAnchor: {fileID: 9222306418352203356}
   gameManager: {fileID: 0}
   uiManager: {fileID: 0}
   cutsceneManager: {fileID: 0}
   dialogueSystem: {fileID: 0}
   dialogueRunner: {fileID: 0}
-  useYarn: 0
-  dialogueNode: 
+  useYarn: 1
+  dialogueNode: NeighborQuest
   dialogueData: {fileID: 11400000, guid: 17236b53ac91e8e47a3e626fac590254, type: 2}
   isPlayingDialogue: 0
   targetHand: {fileID: 0}
@@ -210,7 +210,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MrsAlQadiriGeoRig
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 2a85b959952e0d94296a6af3ace56f87, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5265398722213746887}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.6426653, y: 0.29492587, z: 0.29492587, w: 0.6426653}
+  m_LocalRotation: {x: -0.6426648, y: 0.29492712, z: 0.29492712, w: 0.6426648}
   m_LocalPosition: {x: -146.96, y: 45.099, z: -36.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -142,8 +142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5497546c6433484a9bcb25a50589d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: 50d8b53fa6edf4143a31318d89e0dfef, type: 2}
+  promptText: Interact
+  dialogueAnchor: {fileID: 0}
   gameManager: {fileID: 0}
   uiManager: {fileID: 0}
   cutsceneManager: {fileID: 0}
+  dialogueSystem: {fileID: 0}
+  dialogueRunner: {fileID: 0}
+  useYarn: 1
+  dialogueNode: TunaCan
+  dialogueData: {fileID: 11400000, guid: 50d8b53fa6edf4143a31318d89e0dfef, type: 2}
   isPlayingDialogue: 0
