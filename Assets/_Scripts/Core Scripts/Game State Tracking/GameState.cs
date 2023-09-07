@@ -22,6 +22,20 @@ public class GameState : MonoBehaviour
     [HideInInspector] public List<string> variableNames = new List<string>();
     [HideInInspector] public List<string> variableValues = new List<string>();
 
+    public string MissionStatusText
+    {
+        get { return gameState.missionStatusText; }
+        set { gameState.missionStatusText = value; }
+    }
+
+    public string SecondaryMissionStatusText
+    {
+        get { return gameState.secondaryMissionStatusText; }
+        set { gameState.missionStatusText = value; }
+    }
+
+
+
     private void OnEnable()
     {
         onSetValue += OnDataChange;
@@ -40,31 +54,40 @@ public class GameState : MonoBehaviour
     {
         sceneLoader = FindFirstObjectByType<SceneLoader>();
         sceneLoader.onLoadScene += SetValuesFromYarnToGame;
+        sceneLoader.onLoadScene += SaveMissionsText;
     }
 
     private void Start()
     {
+        LoadMissionsText();
         SetValuesFromGameToYarn();
         RefreshVariablesViewingLists();
     }
 
-    private void RefreshVariablesViewingLists()
+    #region mission status tracking
+    public void LoadMissionsText()
     {
-        variableNames.Clear();
-        variableValues.Clear();
-        foreach (var boolVar in gameState.boolVariables)
-        {
-            variableValues.Add(boolVar.Key);
-            variableNames.Add(boolVar.Value.ToString());
-        }
+        FindFirstObjectByType<UIManager>().ChangeMissionPrompt(MissionStatusText);
+        FindAnyObjectByType<UIManager>().ChangeSecondaryMissionPrompt(SecondaryMissionStatusText);
+
+        Debug.Log("load " + MissionStatusText);
     }
 
-    public string MissionStatusText
+    public void SaveMissionsText()
     {
-        get { return gameState.missionStatusText; }
-        set { gameState.missionStatusText = value; }
-    }
+        Debug.Log("text found: " + FindAnyObjectByType<UIManager>().MissionPrompt);
+        string mission = FindAnyObjectByType<UIManager>().MissionPrompt;
+        string secMission = FindAnyObjectByType<UIManager>().SecondaryMissionPrompt;
 
+        gameState.missionStatusText = mission;
+        gameState.secondaryMissionStatusText= secMission;
+
+        Debug.Log("save " + MissionStatusText);
+    }
+    #endregion
+
+
+    #region game state tracking
     public void SetValuesFromGameToYarn()
     {
         Debug.LogWarning("Updated values from game to yarn:");
@@ -112,7 +135,9 @@ public class GameState : MonoBehaviour
         
         onSetValuesFromYarnToGame?.Invoke();
     }
+    #endregion
 
+    #region Methods to Change State by Script
     /// <summary>
     /// Set a boolean value in both yarn and game memory
     /// </summary>
@@ -154,9 +179,22 @@ public class GameState : MonoBehaviour
         }
         else Debug.Log($"No variable with the key {key} has been found in yarn storage");
     }
+    #endregion
 
+    #region Editor UI Tools
+    private void RefreshVariablesViewingLists()
+    {
+        variableNames.Clear();
+        variableValues.Clear();
+        foreach (var boolVar in gameState.boolVariables)
+        {
+            variableValues.Add(boolVar.Key);
+            variableNames.Add(boolVar.Value.ToString());
+        }
+    }
     public void OnDataChange()
     {
         RefreshVariablesViewingLists();
     }
+    #endregion
 }

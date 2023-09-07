@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameVariablesStorage : ScriptableObject
 {
     public string missionStatusText;
+    public string secondaryMissionStatusText;
 
     [Header("Variables Lists")]
     [SerializeField] private List<BoolVariable> boolValues;
