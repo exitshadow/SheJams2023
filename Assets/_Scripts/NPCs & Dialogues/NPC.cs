@@ -15,34 +15,35 @@ public abstract class NPC : MonoBehaviour
 {
     #region exposed fields
     [Header("Settings")]
+    [SerializeField] protected bool useInteractionPrompt = true;
     [SerializeField] protected string promptText = "Talk";
-
-    [Header("Dialogue Anchor")]
     [SerializeField] protected Transform dialogueAnchor;
+
+    [Header("Yarn Settings")]
+    [SerializeField] protected DialogueRunner dialogueRunner;
+    [SerializeField] protected bool useYarn;
+    [SerializeField] protected string dialogueNode;
+    protected DialogueSystem dialogueSystem;
+
+    [Header("NPC Events")]
+    public UnityEvent onDialogueStarted;
 
     [Header("Manager References")]
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected UIManager uiManager;
-    [SerializeField] protected CutsceneManager cutsceneManager;
-
-
-    [Header("Yarn References & Settings")]
-    [SerializeField] protected DialogueSystem dialogueSystem;
-    [SerializeField] protected DialogueRunner dialogueRunner;
-    [SerializeField] protected bool useYarn;
-    [SerializeField] protected string dialogueNode;
-
+    protected CutsceneManager cutsceneManager;
 
     [Header("Old Dialogue System References")]
     [SerializeField] protected NPCDialogueAsset dialogueData;
     #endregion
 
-    public event Action<string> OnStartDialogue;
+    public event Action<string> onDialogueRequest;
+
 
     #region component references
-    protected Animator animator;
     protected Collider triggerCollider;
     protected NavMeshAgent navMeshAgent;
+    protected PlayerController player;
     #endregion
 
 
@@ -70,8 +71,9 @@ public abstract class NPC : MonoBehaviour
 
 /// <summary>
 /// Method that has to be implemented by any child class. Deprecated in favour of yarn system
-/// but maintained in order to make a smooth transition. 
+/// but maintained in order to make a smooth transition.
 /// </summary>
+    [Obsolete("Please use yarn methods instead")]
     protected abstract List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem();
 
     /// <summary>
@@ -90,18 +92,26 @@ public abstract class NPC : MonoBehaviour
     {
         if (context.performed)
         {
-            if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
-
-            if (useYarn) StartYarnDialogue();
-            else StartOldDialogue();
-
-            ContinueDialogue();
+            RequestDialogueStart();
         }
+    }
+
+    protected void RequestDialogueStart()
+    {
+        // todo for future integration with DialogueSystem
+        onDialogueRequest?.Invoke(dialogueNode);
+        // todo end
+
+        if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
+
+        if (useYarn) StartYarnDialogue();
+        else StartOldDialogue();
+
+        ContinueDialogue();
     }
 
     protected virtual void StartOldDialogue()
     {
-        //Debug.Log("calling old dialogue start");
         if (!isPlayingDialogue)
         {
             FetchDialogue(FindCurrentDialogueOldSystem());
@@ -110,6 +120,7 @@ public abstract class NPC : MonoBehaviour
         }
     }
 
+    [Obsolete("to replace by yarn system")]
     protected virtual void GetOldDialogueLine()
     {
         //Debug.Log("Getting dialogue lines, old system");
@@ -128,6 +139,7 @@ public abstract class NPC : MonoBehaviour
 
             if (!isPlayingDialogue)
             {
+                onDialogueStarted?.Invoke();
                 uiManager.OpenDialogueBox();
                 isPlayingDialogue = true;
             }
@@ -140,8 +152,8 @@ public abstract class NPC : MonoBehaviour
     {
             if (!dialogueRunner.IsDialogueRunning)
             {
-                Debug.Log("starting dialogue with yarn");
-
+                //Debug.Log("starting dialogue with yarn");
+                onDialogueStarted?.Invoke();
                 dialogueRunner.StartDialogue(dialogueNode);
                 uiManager.HideInteractionButton();
                 isPlayingDialogue = true;
@@ -160,23 +172,12 @@ public abstract class NPC : MonoBehaviour
             isPlayingDialogue = false;
         }
     }
-
-    public virtual void ForceTalk()
-    {
-        if (!isPlayingDialogue)
-        {
-            FetchDialogue(FindCurrentDialogueOldSystem());
-            uiManager.HideInteractionButton();
-        }
-
-        ContinueDialogue();
-    }
     #endregion
 
     #region unity events
     protected virtual void Awake()
     {
-        FetchDialogue(dialogueData.questStartingDialogueSegments);
+        if (!useYarn) FetchDialogue(dialogueData.questStartingDialogueSegments);
 
         if (!dialogueSystem)
             dialogueSystem = FindObjectOfType<DialogueSystem>();
@@ -188,34 +189,26 @@ public abstract class NPC : MonoBehaviour
     protected virtual void OnEnable()
     {
         if (dialogueRunner)
+        {
             (dialogueRunner.dialogueViews[0] as LineView).requestInterrupt += OnRequestInterrupt;
-    }
-
-    protected virtual void OnRequestInterrupt()
-    {
-        uiManager.TriggerPop();
-    }
-
-    protected virtual void Start()
-    {
-
+            dialogueRunner.onDialogueComplete.AddListener(ClearPlayerSlot);
+        }
     }
     #endregion
 
     #region trigger events
     public virtual void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        player = other.GetComponent<PlayerController>();
+
+        if (player)
         {
             if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
-
-            uiManager.ShowInteractionButton(promptText);
-            PlayerController pc = other.GetComponent<PlayerController>();
-            if (pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
-
-            Debug.Log("player slot occupied");
+            if (useInteractionPrompt) uiManager.ShowInteractionButton(promptText);
+            OccupyPlayerSlot();
         }
     }
+
 
     protected virtual void OnTriggerExit(Collider other)
     {
@@ -223,11 +216,38 @@ public abstract class NPC : MonoBehaviour
         {
             uiManager.HideInteractionButton();
             uiManager.currentDialogueAnchor = null;
-            
-            PlayerController pc = other.GetComponent<PlayerController>();
-            pc.currentInteractingNPC = null;
+
+            ClearPlayerSlot();
         }
     }
 
+    [YarnCommand("clear_player_slot")]
+    public void ClearPlayerSlot()
+    {
+        if (player) player.currentInteractingNPC = null;
+    }
+
     #endregion
+
+    protected void OccupyPlayerSlot()
+    {
+        if (player) player.currentInteractingNPC = this;
+    }
+
+    protected virtual void OnRequestInterrupt()
+    {
+        uiManager.TriggerPop();
+    }
+
+    //! pending review
+    public virtual void ForceTalk()
+    {
+        if (!isPlayingDialogue)
+        {
+            FetchDialogue(FindCurrentDialogueOldSystem());
+            uiManager.HideInteractionButton();
+        }
+
+        ContinueDialogue();
+    }
 }

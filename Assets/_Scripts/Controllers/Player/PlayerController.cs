@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         {
             // Debug.Log("Interact Unity Event Called");
 
-            animator.SetFloat("walkingSpeed", 0);
+            StopWalkingAnimation();
 
             if (currentInteractingNPC != null && !phone.IsReadingPhone)
             {
@@ -100,6 +100,11 @@ public class PlayerController : MonoBehaviour
                 phone.GetNewMessage();
             }
         }
+    }
+
+    public void StopWalkingAnimation()
+    {
+        animator.SetFloat("walkingSpeed", 0);
     }
 
     public void PickUpPhone(InputAction.CallbackContext context)

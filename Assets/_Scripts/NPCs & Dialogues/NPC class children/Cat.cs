@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Cat : NPC
+public class Cat : AnimatedNPC
 {
     protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
     {
@@ -54,5 +54,10 @@ public class Cat : NPC
 
         uiManager.InjectDialogueLine(   currentDialogue.speakerName,
                                         currentDialogue.dialogueText    );
+    }
+
+    protected override void SetAnimator()
+    {
+        animator = GetComponent<Animator>();
     }
 }

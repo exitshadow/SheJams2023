@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
-public class ButterflyNeighbour : NPC
+public class ButterflyNeighbour : AnimatedNPC
 {
     [Header("Butterfly Neighbour special fields")]
     [SerializeField] private Transform targetHand;
@@ -63,14 +63,6 @@ public class ButterflyNeighbour : NPC
 
         uiManager.InjectDialogueLine(   currentDialogue.speakerName,
                                         currentDialogue.dialogueText    );
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        animator = GetComponent<Animator>();
-        animator.SetLayerWeight(2, 0);
     }
 
     [YarnCommand("give_branch_to_neighbour")]

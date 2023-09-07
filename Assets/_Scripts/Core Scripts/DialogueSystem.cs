@@ -60,7 +60,7 @@ public class DialogueSystem : MonoBehaviour
     {
         foreach (NPC nPC in nPCs)
         {
-            nPC.OnStartDialogue += OnStartDialogue;
+            nPC.onDialogueRequest += OnStartDialogue;
         }
     }
 

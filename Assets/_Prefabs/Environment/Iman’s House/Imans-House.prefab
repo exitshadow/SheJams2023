@@ -505,7 +505,6 @@ GameObject:
   - component: {fileID: 4078386085389069305}
   - component: {fileID: 2815531725925640336}
   - component: {fileID: 8937956043999006014}
-  - component: {fileID: 2091724381025124453}
   m_Layer: 0
   m_Name: Iman.House.Interior.Staircase
   m_TagString: Untagged
@@ -620,23 +619,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.015886974, y: 0.00006436587, z: 0.037124388}
   m_Center: {x: -0.05500949, y: -0.035251517, z: -0.018562205}
---- !u!114 &2091724381025124453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7203410870594448529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58ff3dfc9df44194f93191d786ebb2f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: 5919e89a3a2a5b74cb1efe0688b088cc, type: 2}
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  cutsceneManager: {fileID: 0}
-  isPlayingDialogue: 0
 --- !u!1 &7521187127063429103
 GameObject:
   m_ObjectHideFlags: 0

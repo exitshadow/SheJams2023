@@ -6,7 +6,7 @@ using Yarn.Unity;
 /// <summary>
 /// Inherits from the NPC abstract class.
 /// </summary>
-public class Dad : NPC
+public class Dad : AnimatedNPC
 {
     [Header("Dad Character Specific References")]
     [SerializeField] private SceneLoader sceneLoader;
@@ -69,14 +69,6 @@ public class Dad : NPC
 
             uiManager.InjectDialogueLine(   currentDialogue.speakerName,
                                             currentDialogue.dialogueText    );
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        animator = GetComponent<Animator>();
-        animator.SetLayerWeight(2, 0);
     }
 
     [YarnCommand("start_credits_roll")]
