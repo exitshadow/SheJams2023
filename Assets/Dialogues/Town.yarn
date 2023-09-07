@@ -195,3 +195,38 @@ position: 0, 400
     Iman: Oh dear.
 <<endif>>
 ===
+
+title: NorthWestPathBlocking
+tags: path blocking
+---
+Iman: Oh.
+Iman: The mountain part of the desert is from here.
+Iman: I don't want to end up being a fried stick.
+Iman: Better stay in town!
+===
+
+title: SouthWestPathBlocking
+tags: path blocking
+---
+Iman: From here, the endless, glorious desert!
+Iman: Not that there is much to do with all this sand.
+Iman: And I promised I was going to take care of all those things.
+Iman: Ugh.
+===
+
+title: SouthEastPathBlocking
+tags: path blocking
+---
+Iman: This is such a lovely part of the mountain.
+Iman: I remember camping here with Mom and Dad.
+Iman: It would be nice doing that again, one day.
+Iman: But now there is a lot left to do.
+===
+
+title: EastPathBlocking
+tags: path blocking
+---
+Iman: Well, the roads of all adventures.
+Iman: Also, Nour's street.
+Iman: I really have to finish what I have to do first.
+===
