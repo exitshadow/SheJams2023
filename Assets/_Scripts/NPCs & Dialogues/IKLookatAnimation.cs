@@ -18,7 +18,14 @@ public class IKLookatAnimation : MonoBehaviour
     void Start()
     {
         headRig = GetComponent<Rig>();
+        Debug.LogWarning(headRig);
         //sources = headRig.data.sourceObjects;
+    }
+
+    void Update()
+    {
+        //todo wtf??????????????????????
+        // headRig.weight += Time.deltaTime;
     }
 
     IEnumerator TurnHead(float targetWeight)
@@ -51,6 +58,8 @@ public class IKLookatAnimation : MonoBehaviour
             StopCoroutine(currentCoroutine); 
         }
         currentCoroutine = StartCoroutine(TurnHead(1));
+
+        headRig.weight = 1f;
     }
 
     public void DeactivateLookat()
@@ -61,6 +70,8 @@ public class IKLookatAnimation : MonoBehaviour
             StopCoroutine(currentCoroutine); 
         }
         currentCoroutine = StartCoroutine(TurnHead(0));
+
+        headRig.weight = 0f;
     }
      #endregion
 }
