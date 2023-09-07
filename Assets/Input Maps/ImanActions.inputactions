@@ -496,7 +496,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "New action",
+                    "name": "Any Key",
                     "type": "Button",
                     "id": "e6574ba3-6954-41fc-a679-9c182f521b3f",
                     "expectedControlType": "Button",
@@ -773,11 +773,11 @@
                 {
                     "name": "",
                     "id": "89ceb9af-6279-4dfe-9a41-9276f754f6a3",
-                    "path": "",
+                    "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Any Key",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

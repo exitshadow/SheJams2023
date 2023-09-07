@@ -518,7 +518,7 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Any Key"",
                     ""type"": ""Button"",
                     ""id"": ""e6574ba3-6954-41fc-a679-9c182f521b3f"",
                     ""expectedControlType"": ""Button"",
@@ -795,11 +795,11 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""89ceb9af-6279-4dfe-9a41-9276f754f6a3"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/anyKey"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Any Key"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1117,7 +1117,7 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
         m_UIPhone_LeaveUI = m_UIPhone.FindAction("Leave UI", throwIfNotFound: true);
         m_UIPhone_Pause = m_UIPhone.FindAction("Pause", throwIfNotFound: true);
         m_UIPhone_Move = m_UIPhone.FindAction("Move", throwIfNotFound: true);
-        m_UIPhone_Newaction = m_UIPhone.FindAction("New action", throwIfNotFound: true);
+        m_UIPhone_AnyKey = m_UIPhone.FindAction("Any Key", throwIfNotFound: true);
         // Jeep
         m_Jeep = asset.FindActionMap("Jeep", throwIfNotFound: true);
         m_Jeep_Interact = m_Jeep.FindAction("Interact", throwIfNotFound: true);
@@ -1286,7 +1286,7 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UIPhone_LeaveUI;
     private readonly InputAction m_UIPhone_Pause;
     private readonly InputAction m_UIPhone_Move;
-    private readonly InputAction m_UIPhone_Newaction;
+    private readonly InputAction m_UIPhone_AnyKey;
     public struct UIPhoneActions
     {
         private @ImanActions m_Wrapper;
@@ -1296,7 +1296,7 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
         public InputAction @LeaveUI => m_Wrapper.m_UIPhone_LeaveUI;
         public InputAction @Pause => m_Wrapper.m_UIPhone_Pause;
         public InputAction @Move => m_Wrapper.m_UIPhone_Move;
-        public InputAction @Newaction => m_Wrapper.m_UIPhone_Newaction;
+        public InputAction @AnyKey => m_Wrapper.m_UIPhone_AnyKey;
         public InputActionMap Get() { return m_Wrapper.m_UIPhone; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1321,9 +1321,9 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @AnyKey.started += instance.OnAnyKey;
+            @AnyKey.performed += instance.OnAnyKey;
+            @AnyKey.canceled += instance.OnAnyKey;
         }
 
         private void UnregisterCallbacks(IUIPhoneActions instance)
@@ -1343,9 +1343,9 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @AnyKey.started -= instance.OnAnyKey;
+            @AnyKey.performed -= instance.OnAnyKey;
+            @AnyKey.canceled -= instance.OnAnyKey;
         }
 
         public void RemoveCallbacks(IUIPhoneActions instance)
@@ -1466,7 +1466,7 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
         void OnLeaveUI(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnAnyKey(InputAction.CallbackContext context);
     }
     public interface IJeepActions
     {
