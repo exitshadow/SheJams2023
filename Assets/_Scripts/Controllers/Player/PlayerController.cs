@@ -39,8 +39,16 @@ public class PlayerController : MonoBehaviour
     {
         // animator.SetBool("isTexting", isTexting);
 
-        if (isTexting) animator.SetLayerWeight(2, 100);
-        else animator.SetLayerWeight(2,0);
+        if (isTexting)
+        {
+            animator.SetBool("isTexting", true);
+            animator.SetLayerWeight(2, 100);
+        }
+        else
+        {
+            animator.SetBool("isTexting", false);
+            animator.SetLayerWeight(2,0);
+        }
     }
 
     private void Move()
