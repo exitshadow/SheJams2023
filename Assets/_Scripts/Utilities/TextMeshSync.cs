@@ -32,7 +32,7 @@ public class TextMeshSync : MonoBehaviour
         {
             currentTMP.SetText(textToCopy.text);
             currentTMP.ForceMeshUpdate(true);
-            Debug.Log("updating text");
+            //Debug.Log("updating text");
         }
     }
 }
