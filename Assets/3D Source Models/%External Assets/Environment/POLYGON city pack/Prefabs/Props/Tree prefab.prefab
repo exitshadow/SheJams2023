@@ -139,6 +139,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4497626398616652}
+  - {fileID: 2455086168786329883}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &376172847
@@ -160,8 +161,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 6
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 4.03
+  m_Center: {x: 0, y: 3.34, z: -0.56}
 --- !u!114 &376172846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,19 +175,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6925c2133b333449a97b8bee364839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: Interact
-  dialogueAnchor: {fileID: 0}
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  cutsceneManager: {fileID: 0}
-  dialogueSystem: {fileID: 0}
+  useInteractionPrompt: 1
+  promptText: Examine
+  dialogueAnchor: {fileID: 2455086168786329883}
   dialogueRunner: {fileID: 0}
   useYarn: 1
   dialogueNode: TreeBranch
+  onDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  gameManager: {fileID: 0}
+  uiManager: {fileID: 0}
   dialogueData: {fileID: 11400000, guid: 02f3e8d29b4ec634b987e9d16af2710f, type: 2}
   isPlayingDialogue: 0
   treeBranchObject: {fileID: 1121850211589678}
   targetHand: {fileID: 0}
+--- !u!1 &4471974064820982379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2455086168786329883}
+  m_Layer: 0
+  m_Name: Tree Branch Dialogue Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2455086168786329883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471974064820982379}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 4.82, z: -1.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4379673244704792}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &840703877641839325
 PrefabInstance:
   m_ObjectHideFlags: 0
