@@ -7,11 +7,6 @@ public class InanimatedNPC : NPC
     [Header("Generic Inanimate Object Options")]
     [SerializeField] private bool startDialogueOnContact;
 
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
-    {
-        return dialogueData.questStartingDialogueSegments;
-    }
-
     public override void OnTriggerEnter(Collider other)
     {
         if (!startDialogueOnContact) base.OnTriggerEnter(other);

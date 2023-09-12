@@ -19,7 +19,7 @@ public class OffLimitsMessage : NPC
             if(pc.currentInteractingNPC == null) pc.currentInteractingNPC = this;
             Debug.Log("player slot occupied");
 
-            if (!isPlayingDialogue)
+            if (!IsPlayingDialogue)
             {
                 FetchDialogue(FindCurrentDialogueOldSystem());
                 uiManager.HideInteractionButton();

@@ -9,62 +9,6 @@ public class ButterflyNeighbour : AnimatedNPC
     [SerializeField] private Transform targetHand;
     [SerializeField] private GameObject treeBranchObject;
 
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
-    {
-        List<NPCDialogueAsset.DialogueSegment> currentDialogue;
-
-        if (!gameManager.HasVisitedNeighbour())
-        {
-            currentDialogue = dialogueData.questStartingDialogueSegments;
-            gameManager.ConfirmVisitNeighbourFirstTime();
-        }
-        else if (gameManager.HasFoundTheButterflyBranch() && !gameManager.HasCapturedAllButterfies())
-        {
-            currentDialogue = dialogueData.questProgressingDialogueSegments;
-            gameManager.ConfirmButterflyCapture();
-        }
-        else if(gameManager.HasCapturedAllButterfies())
-        {
-            currentDialogue = dialogueData.questEndingDialogueSegments;
-        }
-        else
-        {
-            currentDialogue = dialogueData.questWaitingDialogueSegments;
-        }
-
-        return currentDialogue;
-    }
-
-
-    protected override void GetOldDialogueLine()
-    {
-        if (QueuedDialogue.Count == 0)
-        {
-            uiManager.CloseDialogueBox();
-            isPlayingDialogue = false;
-
-            // todo
-            // abstract this bit in another virtual method in the parent class
-            if (gameManager.HasFoundTheButterflyBranch())
-            {
-                GiveBranchToNeighbour();
-            }
-
-            return;
-        }
-
-        NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
-
-        if (!isPlayingDialogue)
-        {
-            uiManager.OpenDialogueBox();
-            isPlayingDialogue = true;
-        }
-
-        uiManager.InjectDialogueLine(   currentDialogue.speakerName,
-                                        currentDialogue.dialogueText    );
-    }
-
     [YarnCommand("give_branch_to_neighbour")]
     public void GiveBranchToNeighbour()
     {

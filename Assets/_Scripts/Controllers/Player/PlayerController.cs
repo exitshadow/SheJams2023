@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (    currentInteractingNPC == null
-            || !currentInteractingNPC.isPlayingDialogue)
+            || !currentInteractingNPC.IsPlayingDialogue)
         {
             //if (!phone.IsReadingPhone)
                 Move();

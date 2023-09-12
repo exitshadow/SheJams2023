@@ -8,24 +8,7 @@ public class TreeBranch : NPC
     [Tooltip("Has to be the one with the renderer on it!")]
     [SerializeField] private GameObject treeBranchObject;
     [SerializeField] private Transform targetHand;
-    protected override List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem()
-    {
-        List<NPCDialogueAsset.DialogueSegment> currentDialogue;
 
-        if (!gameManager.HasFoundTheButterflyBranch())
-        {
-            currentDialogue = dialogueData.questProgressingDialogueSegments;
-            gameManager.ConfirmFoundTreeBranch();
-
-            PassTreeBranchToPlayer();
-        }
-        else
-        {
-            currentDialogue = dialogueData.questWaitingDialogueSegments;
-        }
-
-        return currentDialogue;
-    }
 
     [YarnCommand("pass_tree_branch_to_player")]
     public void PassTreeBranchToPlayer()

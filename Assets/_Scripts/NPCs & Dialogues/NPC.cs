@@ -21,7 +21,6 @@ public abstract class NPC : MonoBehaviour
 
     [Header("Yarn Settings")]
     [SerializeField] protected DialogueRunner dialogueRunner;
-    [SerializeField] protected bool useYarn;
     [SerializeField] protected string dialogueNode;
     protected DialogueSystem dialogueSystem;
 
@@ -48,41 +47,20 @@ public abstract class NPC : MonoBehaviour
 
 
     #region dialogue tracking
-    [HideInInspector] public bool isPlayingDialogue = false;
-    protected Queue<NPCDialogueAsset.DialogueSegment> QueuedDialogue = new Queue<NPCDialogueAsset.DialogueSegment>();
+
+    public bool IsPlayingDialogue { get { return dialogueRunner.IsDialogueRunning ; } }
     
     #endregion
 
     #region dialogue methods
 
-    /// <summary>
-    /// Finds the asked dialogue segment and drops all the lines into a queue for further usage.
-    /// </summary>
-    public void FetchDialogue(List<NPCDialogueAsset.DialogueSegment> dialogueSegment)
-    {
-        // Debug.Log("Fetching dialogue lines...");
-        QueuedDialogue.Clear();
-        foreach (NPCDialogueAsset.DialogueSegment dialogue in dialogueSegment)
-        {
-            QueuedDialogue.Enqueue(dialogue);
-            //Debug.Log("Queued all initial dialogue lines");
-        }
-    }
-
-/// <summary>
-/// Method that has to be implemented by any child class. Deprecated in favour of yarn system
-/// but maintained in order to make a smooth transition.
-/// </summary>
-    [Obsolete("Please use yarn methods instead")]
-    protected abstract List<NPCDialogueAsset.DialogueSegment> FindCurrentDialogueOldSystem();
 
     /// <summary>
     /// Dequeues the first dialogue line from the current lines in queue and sends it to the UI Manager.
     /// </summary>
     public void ContinueDialogue()
     {
-        if (useYarn) GetYarnLine();
-        else  GetOldDialogueLine();
+        GetYarnLine();
     }
 
     /// <summary>
@@ -104,59 +82,17 @@ public abstract class NPC : MonoBehaviour
 
         if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
 
-        if (useYarn) StartYarnDialogue();
-        else StartOldDialogue();
-
+        StartYarnDialogue();
         ContinueDialogue();
-    }
-
-    protected virtual void StartOldDialogue()
-    {
-        if (!isPlayingDialogue)
-        {
-            FetchDialogue(FindCurrentDialogueOldSystem());
-            uiManager.HideInteractionButton();
-            //Debug.Log("old dialogue has started");
-        }
-    }
-
-    [Obsolete("to replace by yarn system")]
-    protected virtual void GetOldDialogueLine()
-    {
-        //Debug.Log("Getting dialogue lines, old system");
-
-        if (QueuedDialogue.Count == 0)
-            {
-                //Debug.Log("closed dialogue box, old system");
-                uiManager.CloseDialogueBox();
-
-                isPlayingDialogue = false;
-                uiManager.currentDialogueAnchor = null;
-                return;
-            }
-
-            NPCDialogueAsset.DialogueSegment currentDialogue = QueuedDialogue.Dequeue();
-
-            if (!isPlayingDialogue)
-            {
-                onDialogueStarted?.Invoke();
-                uiManager.OpenDialogueBox();
-                isPlayingDialogue = true;
-            }
-
-            uiManager.InjectDialogueLine(   currentDialogue.speakerName,
-                                            currentDialogue.dialogueText    );
     }
 
     protected virtual void StartYarnDialogue()
     {
             if (!dialogueRunner.IsDialogueRunning)
             {
-                //Debug.Log("starting dialogue with yarn");
                 onDialogueStarted?.Invoke();
                 dialogueRunner.StartDialogue(dialogueNode);
                 uiManager.HideInteractionButton();
-                isPlayingDialogue = true;
             }
     }
 
@@ -169,16 +105,14 @@ public abstract class NPC : MonoBehaviour
         if (!dialogueRunner.IsDialogueRunning)
         {
             uiManager.currentDialogueAnchor = null;
-            isPlayingDialogue = false;
         }
     }
+
     #endregion
 
     #region unity events
     protected virtual void Awake()
     {
-        if (!useYarn) FetchDialogue(dialogueData.questStartingDialogueSegments);
-
         if (!dialogueSystem)
             dialogueSystem = FindObjectOfType<DialogueSystem>();
 
@@ -239,15 +173,4 @@ public abstract class NPC : MonoBehaviour
         uiManager.TriggerPop();
     }
 
-    //! pending review
-    public virtual void ForceTalk()
-    {
-        if (!isPlayingDialogue)
-        {
-            FetchDialogue(FindCurrentDialogueOldSystem());
-            uiManager.HideInteractionButton();
-        }
-
-        ContinueDialogue();
-    }
 }
