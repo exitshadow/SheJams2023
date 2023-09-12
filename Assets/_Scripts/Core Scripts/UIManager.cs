@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Yarn.Unity;
+using UnityEngine.UI.ProceduralImage;
 
 
 /// <summary>
@@ -454,11 +455,7 @@ public class UIManager : MonoBehaviour
 
         }
 
-        // calculates box size for said message (no need to do it for app messages)
-        if (message.senderName != "")
-        {
-            CalculateAndApplyBoxSize(messageSnippetBox, message.textContent);
-        }
+        CalculateAndApplyBoxSize(messageSnippetBox, message.textContent);
 
         // append as child to the vertical layout group
         messageSnippetBox.transform.SetParent(messageTextArea.transform);
@@ -494,21 +491,29 @@ public class UIManager : MonoBehaviour
 
         RectTransform verticalGroupRT = messageTextArea.GetComponent<RectTransform>();
 
-        Debug.Log("found message box: " + (childRT != null));
+        TextMeshProUGUI messageBoxTMP = messageBox.GetComponentInChildren<TextMeshProUGUI>();
+        // messageBoxTMP.margin = new Vector4 (    (messageVerticalMargin / 3) * uiCanvas.scaleFactor,
+        //                                         (messageHorizontalMargin / 3) * uiCanvas.scaleFactor,
+        //                                         (messageVerticalMargin / 3) * uiCanvas.scaleFactor,
+        //                                         (messageHorizontalMargin / 3) * uiCanvas.scaleFactor);
+
+        int maxCharsFirstLine;
+        int nbLines = (int)Mathf.Ceil(text.Length / maxCharsPerLine);
+        Debug.Log(Mathf.Ceil(text.Length / maxCharsPerLine));
+        Debug.Log(nbLines);
 
         float newWidth;
         float newHeight;
 
-        int maxCharsFirstLine;
+        charHeight = messageBoxTMP.fontSize;
 
-        int nbLines = (int)Mathf.Ceil(text.Length / maxCharsPerLine);
-
-        if (nbLines < 2 ) maxCharsFirstLine = text.Length;
+        if (nbLines < 1 ) maxCharsFirstLine = text.Length;
         else maxCharsFirstLine = maxCharsPerLine;
 
         newWidth = (charWidth * maxCharsFirstLine) + (2 * messageHorizontalMargin);
         newHeight = (nbLines * charHeight * 2) + (2 * messageVerticalMargin);
 
+        parentRT.localScale *= uiCanvas.scaleFactor;
         parentRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
         childRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
         verticalGroupRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, verticalGroupRT.sizeDelta.y + newHeight);
