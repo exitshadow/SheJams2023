@@ -75,7 +75,7 @@ GameObject:
   m_Layer: 0
   m_Name: mixamorig:LeftHand
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -711,7 +711,7 @@ GameObject:
   m_Layer: 0
   m_Name: mixamorig:RightHand
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1197,6 +1197,7 @@ GameObject:
   - component: {fileID: 1456264315}
   - component: {fileID: 5485419530515765299}
   - component: {fileID: 3399809334080891024}
+  - component: {fileID: 5041103516280353398}
   m_Layer: 0
   m_Name: IMAN
   m_TagString: Player
@@ -1545,6 +1546,21 @@ MonoBehaviour:
   - m_Rig: {fileID: 4294993250271962394}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &5041103516280353398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489551291734799639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b4ae976aa2c724d977df4179efc574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbingAnchors:
+  - {fileID: 7359647625035656389}
+  - {fileID: 2714387000286594766}
 --- !u!1 &3521733011267880023
 GameObject:
   m_ObjectHideFlags: 0

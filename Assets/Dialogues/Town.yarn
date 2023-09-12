@@ -76,17 +76,23 @@ position: 250, 0
         Iman: ...
         Iman: I hope I won't get plagued by the butterflies myself now.
         <<set $hasFoundTreeBranch to true>>
-        <<pass_tree_branch_to_player "TREE BRANCH">>
-        <<disable_tree_branch "TREE BRANCH">>
+        <<set_grabbable "TREE BRANCH">>
+        <<set_grabber "PLAYER IMAN" 0>>
+        <<grab "GRAB MANAGER">>
         Iman: Better bring this back before she has a heart attack!
         Iman: ...
         Iman: ...why am I doing this again?
         Iman: Oh, right. Avoiding Dad. And his broken computer.
         Iman: I'm sure he just forgot to plug it in, anyway.
+        <<disable_tree_branch "TREE BRANCH">>
         <<change_mission_prompt UIManager "Go catch the neighbour's butterflies to avoid performing your duties.">>
     <<endif>>
 <<endif>>
 ===
+
+// <<set_grabbable "TREE BRANCH">>
+// <<set_grabber IMAN index>>
+// <<grab GrabManager>>
 
 title: CatQuest
 tags: Iman's dialogue regarding the cat

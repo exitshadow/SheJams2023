@@ -8,6 +8,7 @@ public class TreeBranch : NPC
     [Tooltip("Has to be the one with the renderer on it!")]
     [SerializeField] private GameObject treeBranchObject;
     [SerializeField] private Transform targetHand;
+    public bool isTriggerActive = true;
 
 
     [YarnCommand("pass_tree_branch_to_player")]
@@ -21,11 +22,30 @@ public class TreeBranch : NPC
     [YarnCommand("disable_tree_branch")]
     public void DisableTreeBranch()
     {
-        this.gameObject.SetActive(false);
+        if (player) player.currentInteractingNPC = null;
+        isTriggerActive = false;
+
+    }
+
+    [YarnCommand("enable_tree_branch")]
+    public void EnableTreeBranch()
+    {
+        isTriggerActive = true;
+    }
+
+    public override void OnTriggerEnter(Collider other)
+    {
+        if (isTriggerActive)
+        {
+            base.OnTriggerEnter(other);
+        }
     }
 
     protected override void OnTriggerExit(Collider other)
     {
-        base.OnTriggerExit(other);
+        if (isTriggerActive)
+        {
+            base.OnTriggerExit(other);
+        }
     }
 }

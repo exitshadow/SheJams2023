@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9250763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1276862051916332, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+  m_PrefabInstance: {fileID: 376172843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &54745576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2688652541289607498, guid: 7abd085036ac22d43ab6c58241e871db, type: 3}
@@ -277,13 +282,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1276862051916332, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 376172847}
   m_SourcePrefab: {fileID: 100100000, guid: 1be61187b5d765449be824463642cb0f, type: 3}
 --- !u!4 &376172844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4379673244704792, guid: 1be61187b5d765449be824463642cb0f, type: 3}
   m_PrefabInstance: {fileID: 376172843}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &376172847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9250763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ccb13f8bd18fd24982958888e68405d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &431906512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,11 +758,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 7.916741e-16
+      value: -3.4361426e-31
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.1996375e-17
+      value: 8.746915e-33
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.w
@@ -750,15 +770,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18219265
+      value: 0.18219262
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.1e-44
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 3e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006083588206, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -786,11 +806,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1.3346191e-37
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.79607e-39
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -1102,7 +1122,7 @@ PrefabInstance:
       objectReference: {fileID: 1120697846}
     - target: {fileID: 3489551291734799639, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
       propertyPath: m_Name
-      value: Player Iman
+      value: PLAYER IMAN
       objectReference: {fileID: 0}
     - target: {fileID: 3489551291734799640, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1175,6 +1195,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6280239007233191508, guid: 719715cd974c3484598691e1b8a432db, type: 3}
   m_PrefabInstance: {fileID: 894932596}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1471983052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1471983054}
+  - component: {fileID: 1471983053}
+  m_Layer: 0
+  m_Name: GRAB MANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1471983053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471983052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0e82fae60ebe14594bedcd39000a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbers: []
+  grabbables: []
+  grabberTarget: {fileID: 0}
+  grabbableTarget: {fileID: 0}
+--- !u!4 &1471983054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471983052}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.16707, y: -0.124179214, z: -27.961872}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1509099210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8209525452627189371, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
@@ -1858,15 +1926,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18219267
+      value: 0.18219264
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001465176
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000027148825
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2449,16 +2517,14 @@ MonoBehaviour:
   useInteractionPrompt: 0
   promptText: Talk
   dialogueAnchor: {fileID: 1312017491}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 0}
   dialogueRunner: {fileID: 1509099210}
-  useYarn: 1
   dialogueNode: EastPathBlocking
+  uiManager: {fileID: 577848780}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 1120697847}
-  uiManager: {fileID: 577848780}
-  dialogueData: {fileID: 0}
-  isPlayingDialogue: 0
   startDialogueOnContact: 1
 --- !u!114 &7410827830416182171
 MonoBehaviour:
@@ -2475,16 +2541,14 @@ MonoBehaviour:
   useInteractionPrompt: 0
   promptText: Talk
   dialogueAnchor: {fileID: 1312017491}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 0}
   dialogueRunner: {fileID: 1509099210}
-  useYarn: 1
   dialogueNode: SouthEastPathBlocking
+  uiManager: {fileID: 577848780}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 1120697847}
-  uiManager: {fileID: 577848780}
-  dialogueData: {fileID: 0}
-  isPlayingDialogue: 0
   startDialogueOnContact: 1
 --- !u!114 &7410827830416182172
 MonoBehaviour:
@@ -2501,16 +2565,14 @@ MonoBehaviour:
   useInteractionPrompt: 0
   promptText: Talk
   dialogueAnchor: {fileID: 1312017491}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 0}
   dialogueRunner: {fileID: 1509099210}
-  useYarn: 1
   dialogueNode: SouthWestPathBlocking
+  uiManager: {fileID: 577848780}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 1120697847}
-  uiManager: {fileID: 577848780}
-  dialogueData: {fileID: 0}
-  isPlayingDialogue: 0
   startDialogueOnContact: 1
 --- !u!114 &7410827830416182173
 MonoBehaviour:
@@ -2527,22 +2589,21 @@ MonoBehaviour:
   useInteractionPrompt: 0
   promptText: Talk
   dialogueAnchor: {fileID: 1312017491}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 0}
   dialogueRunner: {fileID: 1509099210}
-  useYarn: 1
   dialogueNode: NorthWestPathBlocking
+  uiManager: {fileID: 577848780}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 1120697847}
-  uiManager: {fileID: 577848780}
-  dialogueData: {fileID: 0}
-  isPlayingDialogue: 0
   startDialogueOnContact: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1120697845}
+  - {fileID: 1471983054}
   - {fileID: 1652322270}
   - {fileID: 5851854294143036330}
   - {fileID: 653117919}
