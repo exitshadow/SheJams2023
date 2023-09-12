@@ -30,7 +30,6 @@ RectTransform:
   m_Children:
   - {fileID: 3180862724133603094}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -68,7 +67,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3180862724133603094}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -184,7 +182,7 @@ GameObject:
   - component: {fileID: 3180862724133603094}
   - component: {fileID: 2683769109464077772}
   - component: {fileID: 2731032362634480555}
-  - component: {fileID: 309622603333885678}
+  - component: {fileID: 2133695954235219684}
   m_Layer: 5
   m_Name: MessageBox
   m_TagString: Untagged
@@ -206,7 +204,6 @@ RectTransform:
   m_Children:
   - {fileID: 4890989362685820117}
   m_Father: {fileID: 979204517198837662}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -253,7 +250,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
   borderWidth: 0
   falloffDistance: 1
---- !u!114 &309622603333885678
+--- !u!114 &2133695954235219684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,7 +259,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7517717666470283816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68356c3764ad390429ddad9e48ce8c31, type: 3}
+  m_Script: {fileID: 11500000, guid: 8714c362c0c8a6449a9559a31cdab9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: {x: 48, y: 48, z: 48, w: 48}
+  radius: 48
