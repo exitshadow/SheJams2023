@@ -43,7 +43,6 @@ public class TreeBranch : NPC
 
     protected override void OnTriggerExit(Collider other)
     {
-        Debug.Log("exiting branch trigger");
         base.OnTriggerExit(other);
     }
 }
