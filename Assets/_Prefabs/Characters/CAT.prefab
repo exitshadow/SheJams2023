@@ -146,6 +146,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccab66db55ac78e4c860627779bb997c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5591795032980207658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7638786196391376867}
+  m_Layer: 0
+  m_Name: Cat Dialogue Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 4dcabbf66aa86bf48820927196202b9c, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7638786196391376867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5591795032980207658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.84, z: 0.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2688652541289607498}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2511524529452996257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,6 +245,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac13172d27cf595409730b4167d51519, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3271620692708066269}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac13172d27cf595409730b4167d51519, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7638786196391376867}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac13172d27cf595409730b4167d51519, type: 3}
       insertIndex: -1
@@ -321,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useInteractionPrompt: 1
   promptText: pstpspst
-  dialogueAnchor: {fileID: 0}
+  dialogueAnchor: {fileID: 7638786196391376867}
   dialogueRunner: {fileID: 0}
   useYarn: 1
   dialogueNode: CatQuest
@@ -332,6 +366,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   dialogueData: {fileID: 11400000, guid: c4161ae7bd6836f4fb7decc403d0e7ad, type: 2}
   isPlayingDialogue: 0
+  useLookAtOnTrigger: 0
 --- !u!114 &7025293372086825599
 MonoBehaviour:
   m_ObjectHideFlags: 0

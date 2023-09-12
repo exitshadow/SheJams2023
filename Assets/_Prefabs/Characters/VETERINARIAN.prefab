@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8135773963004131480}
   - component: {fileID: 1860550373807109482}
+  - component: {fileID: 1295713071064016502}
   m_Layer: 0
   m_Name: LookIK
   m_TagString: Untagged
@@ -48,6 +49,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Effectors: []
+--- !u!114 &1295713071064016502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575195759569210995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccab66db55ac78e4c860627779bb997c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2201867966443426169
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +73,7 @@ GameObject:
   m_Layer: 0
   m_Name: Veterinarian Dialogue Anchor
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2800000, guid: 4dcabbf66aa86bf48820927196202b9c, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -373,6 +386,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   dialogueData: {fileID: 11400000, guid: b3d4d0eacb241d04ca999c816e5f685c, type: 2}
   isPlayingDialogue: 0
+  useLookAtOnTrigger: 0
 --- !u!114 &6241106118863006416
 MonoBehaviour:
   m_ObjectHideFlags: 0

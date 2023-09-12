@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
+[RequireComponent(typeof(Rig))]
 public class IKLookatAnimation : MonoBehaviour
 {
     #region Variables

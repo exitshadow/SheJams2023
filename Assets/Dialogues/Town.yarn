@@ -175,8 +175,10 @@ position: 0, 400
 
 <<if $hasGivenTuna>>
     <<if $hasInterruptedCatFeeding>>
+        <<enable_look_at VETERINARIAN>>
         Vet: No need to worry.
     <<else>>
+    <<enable_look_at VETERINARIAN>>
     Vet: Hey!
     Vet: You can't give tuna to that cat!
     Iman: What, why? Don't cats like fish?
