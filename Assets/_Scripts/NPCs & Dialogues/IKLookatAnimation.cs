@@ -7,16 +7,21 @@ using UnityEngine.Animations.Rigging;
 public class IKLookatAnimation : MonoBehaviour
 {
     #region Variables
+    [SerializeField] private RigBuilder rigBuilder; 
     private Rig headRig;
+    private MultiAimConstraint multiAimConstraint;
     //private float targetWeight;
 
     private Coroutine currentCoroutine;
     #endregion
 
     #region Méthodes
-    void Start()
+    void Awake()
     {
         headRig = GetComponent<Rig>();
+        multiAimConstraint = GetComponentInChildren<MultiAimConstraint>();
+
+        if (!rigBuilder) Debug.LogWarning("Please provide a Rig Builder reference!");
     }
 
 
@@ -55,6 +60,14 @@ public class IKLookatAnimation : MonoBehaviour
             StopCoroutine(currentCoroutine); 
         }
         currentCoroutine = StartCoroutine(TurnHead(0));
+    }
+
+    public void SetAimtarget(Transform target)
+    {   
+        var data = multiAimConstraint.data.sourceObjects;
+        data.SetTransform(0, target);
+        multiAimConstraint.data.sourceObjects = data;
+        rigBuilder.Build();
     }
      #endregion
 }

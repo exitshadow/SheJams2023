@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccab66db55ac78e4c860627779bb997c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigBuilder: {fileID: 6196439355467695183}
 --- !u!1 &5591795032980207658
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,15 +192,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac13172d27cf595409730b4167d51519, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -166.22972
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac13172d27cf595409730b4167d51519, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 45.086605
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac13172d27cf595409730b4167d51519, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -63.217743
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac13172d27cf595409730b4167d51519, type: 3}
       propertyPath: m_LocalRotation.w
@@ -366,7 +367,8 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   dialogueData: {fileID: 11400000, guid: c4161ae7bd6836f4fb7decc403d0e7ad, type: 2}
   isPlayingDialogue: 0
-  useLookAtOnTrigger: 0
+  useLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 3891565566342386460}
 --- !u!114 &7025293372086825599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,6 +1347,10 @@ PrefabInstance:
     - target: {fileID: -3778876341559753081, guid: fc363af440405fa45920e69a4eabb455, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3719174652017461253, guid: fc363af440405fa45920e69a4eabb455, type: 3}
+      propertyPath: m_TagString
+      value: CharacterNeckTarget
       objectReference: {fileID: 0}
     - target: {fileID: -3630942382551011442, guid: fc363af440405fa45920e69a4eabb455, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3598,6 +3604,11 @@ Transform:
 --- !u!4 &3596250473790172999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7276152258314368143, guid: fc363af440405fa45920e69a4eabb455, type: 3}
+  m_PrefabInstance: {fileID: 3093296550308471862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3891565566342386460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7139324087504390358, guid: fc363af440405fa45920e69a4eabb455, type: 3}
   m_PrefabInstance: {fileID: 3093296550308471862}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &3912101647716652099 stripped

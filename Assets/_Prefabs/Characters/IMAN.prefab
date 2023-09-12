@@ -777,7 +777,7 @@ GameObject:
   m_Layer: 0
   m_Name: Other Dialogue Anchor
   m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2800000, guid: 946bf1391031f304cb4b82a4dbadabb7, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1688,7 +1688,7 @@ GameObject:
   - component: {fileID: 964011066949321909}
   m_Layer: 0
   m_Name: AimTarget
-  m_TagString: Untagged
+  m_TagString: ImanNeckTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1782,10 +1782,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1522293844136987251}
   - component: {fileID: 3523016700424886278}
+  - component: {fileID: 50810689729758370}
   m_Layer: 0
   m_Name: LookatIK
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: ffa47233496aa17499bd680b1ab86a91, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1820,6 +1821,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Effectors: []
+--- !u!114 &50810689729758370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656714381708558702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccab66db55ac78e4c860627779bb997c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigBuilder: {fileID: 3399809334080891024}
 --- !u!1 &4698693916677395713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,7 +2308,7 @@ GameObject:
   m_Layer: 0
   m_Name: BranchSocket
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2573,7 +2587,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player Dialogue Anchor
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2800000, guid: 9acf97b0b93ba0e47989919a97356dca, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2765,6 +2779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TREE BRANCH
       objectReference: {fileID: 0}
+    - target: {fileID: 1276862051916332, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4379673244704792, guid: 1be61187b5d765449be824463642cb0f, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.2999999
@@ -2813,6 +2831,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -84.529
       objectReference: {fileID: 0}
+    - target: {fileID: 4471974064820982379, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 4dcabbf66aa86bf48820927196202b9c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

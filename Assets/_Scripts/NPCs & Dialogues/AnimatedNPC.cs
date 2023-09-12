@@ -9,15 +9,17 @@ public abstract class AnimatedNPC : NPC
 {
     [Header("IK LookAt Options")]
     [SerializeField] protected bool useLookAtOnTrigger;
+    [SerializeField] protected Transform playerLookAimTarget;
     protected Animator animator;
     protected IKLookatAnimation lookAt;
+    protected IKLookatAnimation playerLookAt;
 
     protected override void Awake()
     {
         base.Awake();
 
         SetAnimator();
-        GetIKRig();
+        GetIKRigs();
 
     }
 
@@ -27,7 +29,7 @@ public abstract class AnimatedNPC : NPC
         animator.SetLayerWeight(2, 0);
     }
 
-    protected void GetIKRig()
+    protected void GetIKRigs()
     {
         lookAt = GetComponentInChildren<IKLookatAnimation>();
     }
@@ -52,6 +54,10 @@ public abstract class AnimatedNPC : NPC
         {
             EnableLookAt();
         }
+        
+        playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
+        playerLookAt.SetAimtarget(playerLookAimTarget);
+        playerLookAt.ActivateLookat();
     }
 
     protected override void OnTriggerExit(Collider other)
@@ -61,6 +67,7 @@ public abstract class AnimatedNPC : NPC
         if (player)
         {
             DisableLookAt();
+            playerLookAt.DeactivateLookat();
         }
     }
 }

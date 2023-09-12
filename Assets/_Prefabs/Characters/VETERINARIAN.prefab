@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0
   m_Effectors: []
 --- !u!114 &1295713071064016502
 MonoBehaviour:
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccab66db55ac78e4c860627779bb997c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigBuilder: {fileID: 6241106118863006416}
 --- !u!1 &2201867966443426169
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +306,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4744334378648363385}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ce6567a63ff58084f9ca217d18359cd6, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 584a2c89deaba7c45a34b2ba9c2eaa13, type: 3}
   m_Controller: {fileID: 9100000, guid: c05e639a2056b8b4981a41d64b231e70, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -387,6 +388,7 @@ MonoBehaviour:
   dialogueData: {fileID: 11400000, guid: b3d4d0eacb241d04ca999c816e5f685c, type: 2}
   isPlayingDialogue: 0
   useLookAtOnTrigger: 0
+  playerLookAimTarget: {fileID: 3405959741061423545}
 --- !u!114 &6241106118863006416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +513,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 584a2c89deaba7c45a34b2ba9c2eaa13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5195048882033904264, guid: 584a2c89deaba7c45a34b2ba9c2eaa13, type: 3}
+      propertyPath: m_TagString
+      value: CharacterNeckTarget
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 584a2c89deaba7c45a34b2ba9c2eaa13, type: 3}
       propertyPath: m_Name
