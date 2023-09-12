@@ -22,22 +22,13 @@ public abstract class NPC : MonoBehaviour
     [Header("Yarn Settings")]
     [SerializeField] protected DialogueRunner dialogueRunner;
     [SerializeField] protected string dialogueNode;
-    protected DialogueSystem dialogueSystem;
 
     [Header("NPC Events")]
     public UnityEvent onDialogueStarted;
 
     [Header("Manager References")]
-    [SerializeField] protected GameManager gameManager;
     [SerializeField] protected UIManager uiManager;
-    protected CutsceneManager cutsceneManager;
-
-    [Header("Old Dialogue System References")]
-    [SerializeField] protected NPCDialogueAsset dialogueData;
     #endregion
-
-    public event Action<string> onDialogueRequest;
-
 
     #region component references
     protected Collider triggerCollider;
@@ -46,10 +37,9 @@ public abstract class NPC : MonoBehaviour
     #endregion
 
 
-    #region dialogue tracking
-
+    #region dialogue tracking tools
+    public event Action<string> onDialogueRequest;
     public bool IsPlayingDialogue { get { return dialogueRunner.IsDialogueRunning ; } }
-    
     #endregion
 
     #region dialogue methods
@@ -76,9 +66,7 @@ public abstract class NPC : MonoBehaviour
 
     protected void RequestDialogueStart()
     {
-        // todo for future integration with DialogueSystem
         onDialogueRequest?.Invoke(dialogueNode);
-        // todo end
 
         if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
 
@@ -113,11 +101,7 @@ public abstract class NPC : MonoBehaviour
     #region unity events
     protected virtual void Awake()
     {
-        if (!dialogueSystem)
-            dialogueSystem = FindObjectOfType<DialogueSystem>();
 
-        if (dialogueSystem)
-            dialogueSystem.AddNPC(this);
     }
 
     protected virtual void OnEnable()
