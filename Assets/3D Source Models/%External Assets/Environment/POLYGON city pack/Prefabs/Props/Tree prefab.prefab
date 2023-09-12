@@ -178,16 +178,14 @@ MonoBehaviour:
   useInteractionPrompt: 1
   promptText: Examine
   dialogueAnchor: {fileID: 2455086168786329883}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 5246033218268499654}
   dialogueRunner: {fileID: 0}
-  useYarn: 1
   dialogueNode: TreeBranch
+  uiManager: {fileID: 0}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  dialogueData: {fileID: 11400000, guid: 02f3e8d29b4ec634b987e9d16af2710f, type: 2}
-  isPlayingDialogue: 0
   treeBranchObject: {fileID: 1121850211589678}
   targetHand: {fileID: 0}
 --- !u!1 &4471974064820982379
@@ -285,5 +283,10 @@ PrefabInstance:
 --- !u!4 &873837714609259830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 164d0bc6e0beb8442bc91c5bee3d9fe2, type: 3}
+  m_PrefabInstance: {fileID: 840703877641839325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5246033218268499654 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4366414858067268581, guid: 164d0bc6e0beb8442bc91c5bee3d9fe2, type: 3}
   m_PrefabInstance: {fileID: 840703877641839325}
   m_PrefabAsset: {fileID: 0}

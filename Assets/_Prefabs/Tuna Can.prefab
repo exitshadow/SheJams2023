@@ -177,13 +177,11 @@ MonoBehaviour:
   useInteractionPrompt: 1
   promptText: Examine
   dialogueAnchor: {fileID: 6015375378576287208}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 9213060879917458230}
   dialogueRunner: {fileID: 0}
-  useYarn: 1
   dialogueNode: TunaCan
+  uiManager: {fileID: 0}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  dialogueData: {fileID: 11400000, guid: 50d8b53fa6edf4143a31318d89e0dfef, type: 2}
-  isPlayingDialogue: 0

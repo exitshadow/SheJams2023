@@ -8,17 +8,15 @@ public abstract class AnimatedNPC : NPC
 {
     [Header("IK LookAt Options")]
     [SerializeField] protected bool useLookAtOnTrigger;
-    [SerializeField] protected Transform playerLookAimTarget;
     protected Animator animator;
     protected IKLookatAnimation lookAt;
-    protected IKLookatAnimation playerLookAt;
 
     protected override void Awake()
     {
         base.Awake();
 
         SetAnimator();
-        GetIKRigs();
+        GetNPCRig();
 
     }
 
@@ -28,19 +26,19 @@ public abstract class AnimatedNPC : NPC
         animator.SetLayerWeight(2, 0);
     }
 
-    protected void GetIKRigs()
+    protected virtual void GetNPCRig()
     {
         lookAt = GetComponentInChildren<IKLookatAnimation>();
     }
 
     [YarnCommand("enable_look_at")]
-    public void EnableLookAt()
+    public void EnableNPCLookAt()
     {
         lookAt.ActivateLookat();
     }
 
     [YarnCommand("disable_look_at")]
-    public void DisableLookAt()
+    public void DisableNPCLookAt()
     {
         lookAt.DeactivateLookat();
     }
@@ -48,25 +46,20 @@ public abstract class AnimatedNPC : NPC
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        
+
         if (player && useLookAtOnTrigger)
         {
-            EnableLookAt();
+            EnableNPCLookAt();
         }
-        
-        playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
-        playerLookAt.SetAimtarget(playerLookAimTarget);
-        playerLookAt.ActivateLookat();
     }
 
     protected override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
 
-        if (player)
+        if (other.CompareTag("Player"))
         {
-            DisableLookAt();
-            playerLookAt.DeactivateLookat();
+            DisableNPCLookAt();
         }
     }
 }

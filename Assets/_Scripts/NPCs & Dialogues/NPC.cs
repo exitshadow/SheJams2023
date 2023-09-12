@@ -14,26 +14,32 @@ using System;
 public abstract class NPC : MonoBehaviour
 {
     #region exposed fields
-    [Header("Settings")]
+    [Header("Interaction Prompt")]
     [SerializeField] protected bool useInteractionPrompt = true;
     [SerializeField] protected string promptText = "Talk";
     [SerializeField] protected Transform dialogueAnchor;
+    [Tooltip("Yarn dialogue runner component. One per scene")]
+
+    [Header("Look At Options")]
+    [SerializeField] protected bool usePlayerLookAtOnTrigger = true;
+    [SerializeField] protected Transform playerLookAimTarget;
 
     [Header("Yarn Settings")]
+    [Tooltip("Anchor used to place dialogue boxes and interaction prompt")]
     [SerializeField] protected DialogueRunner dialogueRunner;
     [SerializeField] protected string dialogueNode;
 
-    [Header("NPC Events")]
-    public UnityEvent onDialogueStarted;
-
-    [Header("Manager References")]
+    [Header("Graphics")]
+    [Tooltip("UI Manager to manage all the graphics")]
     [SerializeField] protected UIManager uiManager;
+
+    [Header("NPC / Dialogue Events")]
+    public UnityEvent onDialogueStarted;
     #endregion
 
     #region component references
-    protected Collider triggerCollider;
-    protected NavMeshAgent navMeshAgent;
     protected PlayerController player;
+    protected IKLookatAnimation playerLookAt;
     #endregion
 
 
@@ -123,6 +129,7 @@ public abstract class NPC : MonoBehaviour
         {
             if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
             if (useInteractionPrompt) uiManager.ShowInteractionButton(promptText);
+            if (usePlayerLookAtOnTrigger) EnablePlayerLookAt();
             OccupyPlayerSlot();
         }
     }
@@ -134,10 +141,12 @@ public abstract class NPC : MonoBehaviour
         {
             uiManager.HideInteractionButton();
             uiManager.currentDialogueAnchor = null;
-
+            DisablePlayerLookAt();
             ClearPlayerSlot();
         }
     }
+    #endregion
+
 
     [YarnCommand("clear_player_slot")]
     public void ClearPlayerSlot()
@@ -145,7 +154,19 @@ public abstract class NPC : MonoBehaviour
         if (player) player.currentInteractingNPC = null;
     }
 
-    #endregion
+    protected void EnablePlayerLookAt()
+    {
+        playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
+        playerLookAt.SetAimTarget(playerLookAimTarget);
+        playerLookAt.ActivateLookat();
+    }
+
+    protected void DisablePlayerLookAt()
+    {
+        playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
+        playerLookAt.DeactivateLookat();
+    }
+
 
     protected void OccupyPlayerSlot()
     {

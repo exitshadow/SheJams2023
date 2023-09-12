@@ -62,7 +62,7 @@ public class IKLookatAnimation : MonoBehaviour
         currentCoroutine = StartCoroutine(TurnHead(0));
     }
 
-    public void SetAimtarget(Transform target)
+    public void SetAimTarget(Transform target)
     {   
         var data = multiAimConstraint.data.sourceObjects;
         data.SetTransform(0, target);
