@@ -754,15 +754,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.027643548
+      value: 0.027643543
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3.4361426e-31
+      value: 9.168625e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 8.746915e-33
+      value: -2.5354779e-11
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.w
@@ -774,11 +774,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -1.9379941e-29
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 2.9004496e-30
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006083588206, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -802,15 +802,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.019397479
+      value: 0.019397475
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: 0.0000000017053943
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -3.3086568e-11
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_FollowOffset.y
@@ -1112,6 +1112,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2059800200}
     m_Modifications:
+    - target: {fileID: 2198777471878946891, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2800000, guid: ffa47233496aa17499bd680b1ab86a91, type: 3}
     - target: {fileID: 2329569983424723825, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
       propertyPath: ui
       value: 
@@ -1164,6 +1168,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4294993250271962394, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+      propertyPath: m_Weight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041103516280353398, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+      propertyPath: useGrabRigAnimation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041103516280353398, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+      propertyPath: grabbingRigs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041103516280353398, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+      propertyPath: grabbingRigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1312017492}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1185,6 +1205,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8665436215968291455, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
   m_PrefabInstance: {fileID: 1312017489}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1312017492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4294993250271962394, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+  m_PrefabInstance: {fileID: 1312017489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &1312017493 stripped
 CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 1456264314, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
@@ -1228,6 +1259,9 @@ MonoBehaviour:
   grabbables: []
   grabberTarget: {fileID: 0}
   grabbableTarget: {fileID: 0}
+  currentIndex: 0
+  previousGrabberTarget: {fileID: 0}
+  previousIndex: 0
 --- !u!4 &1471983054
 Transform:
   m_ObjectHideFlags: 0
