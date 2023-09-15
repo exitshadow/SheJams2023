@@ -79,13 +79,11 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = runSpeed;
             animator.SetBool("isShiftPressed", true);
-            Debug.Log(animator.GetBool("isShiftPressed"));
         }
         else
         {
             moveSpeed = walkSpeed;
             animator.SetBool("isShiftPressed", false);
-            Debug.Log(animator.GetBool("isShiftPressed"));
         }
     }
 
