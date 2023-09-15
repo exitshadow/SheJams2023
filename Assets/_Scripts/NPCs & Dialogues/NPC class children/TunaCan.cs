@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
-public class TunaCan : NPC
+public class TunaCan : InanimatedNPC
 {
     [YarnCommand("disable_tuna_can")]
     public void DisableTunaCan()

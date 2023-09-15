@@ -137,7 +137,9 @@ public abstract class NPC : MonoBehaviour
 
     protected virtual void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        player = other.GetComponent<PlayerController>();
+
+        if (player)
         {
             uiManager.HideInteractionButton();
             uiManager.currentDialogueAnchor = null;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
-public class TreeBranch : NPC
+public class TreeBranch : InanimatedNPC
 {
     [Tooltip("Has to be the one with the renderer on it!")]
     [SerializeField] private GameObject treeBranchObject;
