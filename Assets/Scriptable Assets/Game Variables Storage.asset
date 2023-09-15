@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb37fff5d0f4364db84796473e0e594, type: 3}
   m_Name: Game Variables Storage
   m_EditorClassIdentifier: 
-  missionStatusText: Just chilling home
+  missionStatusText: Dad wanted something
+  secondaryMissionStatusText: 
   boolValues:
   - Key: $hasSpokenToDadAtHome
     Value: 0
