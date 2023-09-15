@@ -34,5 +34,8 @@ public class GrabManager : MonoBehaviour
 
         onGrab?.Invoke(previousGrabberTarget, previousIndex, false);
         onGrab?.Invoke(grabberTarget, currentIndex, true);
+
+        previousGrabberTarget = grabberTarget;
+        previousIndex = currentIndex;
     }
 }

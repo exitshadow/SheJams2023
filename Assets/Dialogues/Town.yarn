@@ -39,7 +39,9 @@ position: 0, 0
     Iman: I mean, it's not going to happen by itself, right? That would be nice…
     Neighbor: ...
     Neighbor: Just give me that, please.
-    <<give_branch_to_neighbour NEIGHBOUR>>
+    <<set_grabbable "TREE BRANCH">>
+    <<set_grabber NEIGHBOUR 0>>
+    <<grab  "GRAB MANAGER">>
     <<change_mission_prompt UIManager "Now it is time to fix Dad's computer.">>
     <<set $hasCapturedButterflies to true>>
     <<stop>>
