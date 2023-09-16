@@ -81,6 +81,7 @@ position: 250, 0
         <<set_grabbable "TREE BRANCH">>
         <<set_grabber "PLAYER IMAN" 0>>
         <<grab "GRAB MANAGER">>
+        <<disable_player_lookat "TREE BRANCH">>
         Iman: Better bring this back before she has a heart attack!
         Iman: ...
         Iman: ...why am I doing this again?

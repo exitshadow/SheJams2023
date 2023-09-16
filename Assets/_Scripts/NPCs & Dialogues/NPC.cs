@@ -156,14 +156,16 @@ public abstract class NPC : MonoBehaviour
         if (player) player.currentInteractingNPC = null;
     }
 
-    protected void EnablePlayerLookAt()
+    [YarnCommand("enable_player_lookat")]
+    public void EnablePlayerLookAt()
     {
         playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
         playerLookAt.SetAimTarget(playerLookAimTarget);
         playerLookAt.ActivateLookat();
     }
 
-    protected void DisablePlayerLookAt()
+    [YarnCommand("disable_player_lookat")]
+    public void DisablePlayerLookAt()
     {
         playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
         playerLookAt.DeactivateLookat();
