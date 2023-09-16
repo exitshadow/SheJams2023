@@ -721,6 +721,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2329569983424723825, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
     - {fileID: 3489551291734799641, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+    - {fileID: 5041103516280353398, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3489551291734799640, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
@@ -1422,6 +1423,14 @@ PrefabInstance:
     - target: {fileID: 1139265343998268524, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579050260521791348, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 566933982322724404, guid: 7e00fa0f51110174b9566b400d530fda, type: 3}
+    - target: {fileID: 1579050260521791348, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
       objectReference: {fileID: 0}
     - target: {fileID: 2600568536192629813, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
       propertyPath: m_SizeDelta.x
