@@ -217,3 +217,4 @@ MonoBehaviour:
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
+  startDialogueOnContact: 0

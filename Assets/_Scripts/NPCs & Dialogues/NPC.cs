@@ -130,6 +130,7 @@ public abstract class NPC : MonoBehaviour
             if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
             if (useInteractionPrompt) uiManager.ShowInteractionButton(promptText);
             if (usePlayerLookAtOnTrigger) EnablePlayerLookAt();
+            uiManager.CurrentInteractingNPCCollider = GetComponent<CapsuleCollider>();
             OccupyPlayerSlot();
         }
     }
