@@ -26,16 +26,26 @@ public class UIManager : MonoBehaviour
     [Header("Dialogue Box")]
     [Tooltip("Safe margin area between the dialogue box and the screen limits")]
     [SerializeField] private float screenMargin = 45f;
+    [SerializeField] private float maskBoxMargin = 15f;
 
-    private float boundTop;
-    private float boundRight;
-    private float boundBottom;
-    private float boundLeft;
+    private float screenBoundTop;
+    private float screenBoundRight;
+    private float screenBoundBottom;
+    private float screenBoundLeft;
 
-    private float boxBoundTop;
-    private float boxBoundRight;
-    private float boxBoundBottom;
-    private float boxBoundLeft;
+    private float dialogueBoxTop;
+    private float dialogueBoxRight;
+    private float dialogueBoxBottom;
+    private float dialogueBoxLeft;
+
+    private float maskBoundRight;
+    private float maskBoundLeft;
+    private float maskBoundBottom;
+    private float maskBoundTop;
+
+    private GameObject placeHolderBox;
+    private RectTransform placeHolderBoxRect;
+    private ProceduralImage placeHolderImg;
 
 
     #region exposed references
@@ -60,6 +70,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
     [SerializeField] private TextMeshProUGUI dialogueContentTMP;
     [SerializeField] private Collider playerCollider;
+    [HideInInspector] public Collider CurrentInteractingNPCCollider;
     public Transform dialogueAnchor;
     public Transform playerDialogueAnchor;
     public Transform currentDialogueAnchor;
@@ -176,28 +187,61 @@ public class UIManager : MonoBehaviour
     #region dialogue box dynamic placing
     public void PlaceDialogueBoxInScreen()
     {
-        if (playerCollider) CalculatePlayerBounds();
-
-        // world position to screen
+        // initial values;
         Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
+        float pivotX = 0;
+        float pivotY = 0;
 
-        // space/distance around the coordinates
-        float distToTop = boundTop - screenPos.y - boundBottom;
-        float distToRight = boundRight - screenPos.x - boundLeft;
-        float distToLeft = screenPos.x - boundLeft;
-        float distToBottom = screenPos.y - boundBottom;
+        // PLACING AFTER CONTROLLING FOR MASKING BOX
+        if (playerCollider && CurrentInteractingNPCCollider)
+        {
+            CalculateMaskBoxBounds();
+            
+            // when anchor x axis falls inside mask bounds
+            if (screenPos.x < maskBoundRight && screenPos.x > maskBoundLeft)
+            {
+                if (screenPos.y < maskBoundTop && screenPos.y > maskBoundBottom)
+                {
+                    float rightDist = maskBoundRight - screenPos.x;
+                    float leftDist = screenPos.x - maskBoundLeft;
 
-        float pivotX;
-        float pivotY;
+                    if (rightDist < leftDist)
+                    {
+                        // assign pivot to left side
+                        pivotX = 0;
 
-        // setting the pivots
-        if (distToLeft > distToRight)
-            pivotX = 0;
-        else pivotX = 1;
+                        // assign position to right side of masking box
+                        screenPos.x = maskBoundRight;
+                    }
+                    else
+                    {
+                        // assign pivot to right side
+                        pivotX = 1;
 
-        if (distToTop > distToBottom)
-            pivotY = 0;
-        else pivotY = 1;
+                        // assign position to left side of masking box
+                        screenPos.x = maskBoundLeft;
+                    }
+
+
+                }
+            }
+        }
+
+        // // space/distance around the coordinates
+        float distToTop = screenBoundTop - screenPos.y - screenBoundBottom;
+        // float distToRight = screenBoundRight - screenPos.x - screenBoundLeft;
+        // float distToLeft = screenPos.x - screenBoundLeft;
+        float distToBottom = screenPos.y - screenBoundBottom;
+
+
+        // // setting the pivots
+        // if (distToLeft > distToRight)
+        //     pivotX = 0;
+        // else pivotX = 1;
+
+        // if (distToTop > distToBottom)
+        //     pivotY = 0;
+        // else pivotY = 1;
 
         // assigning the pivot
         dialogueBoxGroup.pivot = new Vector2(pivotX, pivotY);
@@ -207,13 +251,16 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void CalculatePlayerBounds()
+    private void CalculateMaskBoxBounds()
     {
         // bounds of the player collider
         Vector3 pC = playerCollider.bounds.center;
         Vector3 pE = playerCollider.bounds.extents;
 
-        // bounds corners positions in world space
+        Vector3 npC = CurrentInteractingNPCCollider.bounds.center;
+        Vector3 npE = CurrentInteractingNPCCollider.bounds.extents;
+
+        // player collider bounds in world space
         Vector3[] pCornersWS = new[]
         {
             new Vector3( pC.x + pE.x, pC.y + pE.y, pC.z + pE.z ),
@@ -226,45 +273,100 @@ public class UIManager : MonoBehaviour
             new Vector3( pC.x - pE.x, pC.y - pE.y, pC.z - pE.z )
         };
 
+        // current npc collider bounds in world space
+        Vector3[] npCornersWS = new[]
+        {
+            new Vector3( npC.x + npE.x, pC.y + npE.y, npC.z + npE.z ),
+            new Vector3( npC.x + npE.x, pC.y + npE.y, npC.z - npE.z ),
+            new Vector3( npC.x + npE.x, pC.y - npE.y, npC.z + npE.z ),
+            new Vector3( npC.x + npE.x, pC.y - npE.y, npC.z - npE.z ),
+            new Vector3( npC.x - npE.x, pC.y + npE.y, npC.z + npE.z ),
+            new Vector3( npC.x - npE.x, pC.y + npE.y, npC.z - npE.z ),
+            new Vector3( npC.x - npE.x, pC.y - npE.y, npC.z + npE.z ),
+            new Vector3( npC.x - npE.x, pC.y - npE.y, npC.z - npE.z )
+        };
+
         // bounds corners positions in canvas space
         Vector2[] pCornersCS = new Vector2[8];
-
+        Vector2[] npCornersCS = new Vector2[8];
 
         // convert world corner points to screen corners and scale
         for (int i = 0; i < pCornersWS.Length; i++)
         {
             pCornersCS[i] = WorldToCanvasPoint(pCornersWS[i]);
+            npCornersCS[i] = WorldToCanvasPoint(npCornersWS[i]);
         }
 
         // initialize canvas space bounds
-        float playerBoundRight = pCornersCS[0].x;
-        float playerBoundLeft = pCornersCS[0].x;
-        float playerBoundBottom = pCornersCS[0].y;
-        float playerBoundTop = pCornersCS[0].y;
+        maskBoundRight = pCornersCS[0].x;
+        maskBoundLeft = pCornersCS[0].x;
+        maskBoundBottom = pCornersCS[0].y;
+        maskBoundTop = pCornersCS[0].y;
 
         // find extremes
-        for (int i = 1; i < pCornersCS.Length; i++)
+        // note that it starts at 0 because we need to compare with npc points
+        for (int i = 0; i < pCornersCS.Length; i++)
         {
-            if (pCornersCS[i].x > playerBoundRight)
-                playerBoundRight = pCornersCS[i].x;
+            // find max across all points x
+            if (pCornersCS[i].x > maskBoundRight)
+                maskBoundRight = pCornersCS[i].x;
+            if (npCornersCS[i].x > maskBoundRight)
+                maskBoundRight = npCornersCS[i].x;
 
-            if (pCornersCS[i].x < playerBoundLeft)
-                playerBoundLeft = pCornersCS[i].x;
+            // find min across all points x
+            if (pCornersCS[i].x < maskBoundLeft)
+                maskBoundLeft = pCornersCS[i].x;
+            if (npCornersCS[i].x < maskBoundLeft)
+                maskBoundLeft = npCornersCS[i].x;
 
-            if (pCornersCS[i].y > playerBoundTop)
-                playerBoundTop = pCornersCS[i].y;
+            // find max across all points y
+            if (pCornersCS[i].y > maskBoundTop)
+                maskBoundTop = pCornersCS[i].y;
+            if (npCornersCS[i].y > maskBoundTop)
+                maskBoundTop = npCornersCS[i].y;
 
-            if (pCornersCS[i].y < playerBoundBottom)
-                playerBoundBottom = pCornersCS[i].y;
+            // find min across all points y
+            if (pCornersCS[i].y < maskBoundBottom)
+                maskBoundBottom = pCornersCS[i].y;
+            if (npCornersCS[i].y < maskBoundBottom)
+                maskBoundBottom = npCornersCS[i].y;
+        }
+
+        // maskBoundBottom *=  uiCanvas.scaleFactor;
+        // maskBoundRight *= uiCanvas.scaleFactor;
+        // maskBoundTop *= uiCanvas.scaleFactor;
+        // maskBoundLeft *= uiCanvas.scaleFactor;
+
+        // draw placeholder to debug
+        if (debug)
+        {
+            if (!placeHolderBox)
+            {
+                placeHolderBox = new GameObject("debug placeholder box");
+                placeHolderBox.transform.parent = uiCanvas.transform;
+                placeHolderBoxRect = placeHolderBox.AddComponent<RectTransform>();
+                placeHolderImg = placeHolderBox.AddComponent<ProceduralImage>();
+                placeHolderImg.BorderWidth = 3;
+                placeHolderBoxRect.pivot = new Vector2(0, 0);
+                placeHolderBoxRect.anchorMin = new Vector2(0, 0);
+                placeHolderBoxRect.anchorMax = new Vector2(0, 0);
+            }
+
+            placeHolderBoxRect.anchoredPosition = new Vector2(maskBoundLeft, maskBoundBottom);
+
+            placeHolderBoxRect.SetSizeWithCurrentAnchors(   RectTransform.Axis.Horizontal, 
+                                                            (maskBoundRight - maskBoundLeft) * uiCanvas.scaleFactor);
+            placeHolderBoxRect.SetSizeWithCurrentAnchors(   RectTransform.Axis.Vertical, 
+                                                            (maskBoundTop - maskBoundBottom) * uiCanvas.scaleFactor);
         }
     }
 
     private void GetScreenBoundsWithMargins()
     {
-        boundTop = uiCanvas.GetComponent<RectTransform>().rect.height - screenMargin;
-        boundRight = uiCanvas.GetComponent<RectTransform>().rect.width - screenMargin;
-        boundBottom = screenMargin;
-        boundLeft = screenMargin;
+        screenBoundTop = uiCanvas.GetComponent<RectTransform>().rect.height - screenMargin;
+        screenBoundRight = uiCanvas.GetComponent<RectTransform>().rect.width - screenMargin;
+        screenBoundBottom = screenMargin;
+        screenBoundLeft = screenMargin;
     }
 
     private void TrackDialogueBoxBounds()
@@ -273,25 +375,25 @@ public class UIManager : MonoBehaviour
         // pivot horizontal
         if (dialogueBoxGroup.pivot.x < 0.5f)
         {
-            boxBoundLeft = dialogueBoxGroup.anchoredPosition.x;
-            boxBoundRight = dialogueBoxGroup.anchoredPosition.x + dialogueBoxGroup.rect.width;
+            dialogueBoxLeft = dialogueBoxGroup.anchoredPosition.x;
+            dialogueBoxRight = dialogueBoxGroup.anchoredPosition.x + dialogueBoxGroup.rect.width;
         }
         else
         {
-            boxBoundLeft = dialogueBoxGroup.anchoredPosition.x - dialogueBoxGroup.rect.width;
-            boxBoundRight = dialogueBoxGroup.anchoredPosition.x;
+            dialogueBoxLeft = dialogueBoxGroup.anchoredPosition.x - dialogueBoxGroup.rect.width;
+            dialogueBoxRight = dialogueBoxGroup.anchoredPosition.x;
         }
 
         // pivot vertical
         if (dialogueBoxGroup.pivot.y < 0.5f)
         {
-            boxBoundTop = dialogueBoxGroup.anchoredPosition.y + dialogueBoxGroup.rect.height;
-            boxBoundBottom = dialogueBoxGroup.anchoredPosition.y;
+            dialogueBoxTop = dialogueBoxGroup.anchoredPosition.y + dialogueBoxGroup.rect.height;
+            dialogueBoxBottom = dialogueBoxGroup.anchoredPosition.y;
         }
         else
         {
-            boxBoundTop = dialogueBoxGroup.anchoredPosition.y;
-            boxBoundBottom = dialogueBoxGroup.anchoredPosition.y - dialogueBoxGroup.rect.height;
+            dialogueBoxTop = dialogueBoxGroup.anchoredPosition.y;
+            dialogueBoxBottom = dialogueBoxGroup.anchoredPosition.y - dialogueBoxGroup.rect.height;
         }
     }
 
@@ -301,43 +403,45 @@ public class UIManager : MonoBehaviour
         float newX = dialogueBoxGroup.anchoredPosition.x;
         float newY = dialogueBoxGroup.anchoredPosition.y;
 
+        // GENERAL PLACING ACCORDING TO PIVOT
         // rules for left pivot
         if (dialogueBoxGroup.pivot.x < 0.5)
         {
-            if (boxBoundRight > boundRight)
-                newX = dialogueBoxGroup.anchoredPosition.x - (boxBoundRight - boundRight);
+            if (dialogueBoxRight > screenBoundRight)
+                newX = dialogueBoxGroup.anchoredPosition.x - (dialogueBoxRight - screenBoundRight);
 
-            if (boxBoundLeft < boundLeft)
-                newX = boundLeft;
+            if (dialogueBoxLeft < screenBoundLeft)
+                newX = screenBoundLeft;
         }
         // rules for right pivot
         else
         {
-            if (boxBoundRight > boundRight)
-                newX = boundRight;
+            if (dialogueBoxRight > screenBoundRight)
+                newX = screenBoundRight;
 
-            if (boxBoundLeft < boundLeft)
-                newX = boundLeft + dialogueBoxGroup.rect.width;
+            if (dialogueBoxLeft < screenBoundLeft)
+                newX = screenBoundLeft + dialogueBoxGroup.rect.width;
         }
 
         // rules for bottom pivot
         if (dialogueBoxGroup.pivot.y < 0.5)
         {
-            if (boxBoundTop > boundTop)
-             newY = dialogueBoxGroup.anchoredPosition.y - (boxBoundTop - boundTop);
+            if (dialogueBoxTop > screenBoundTop)
+             newY = dialogueBoxGroup.anchoredPosition.y - (dialogueBoxTop - screenBoundTop);
 
-            if (boxBoundBottom < boundBottom)
-                newY = boundBottom;
+            if (dialogueBoxBottom < screenBoundBottom)
+                newY = screenBoundBottom;
         }
         // rules for top pivot
         else
         {
-            if (boxBoundTop > boundTop)
-                newY = boundTop;
+            if (dialogueBoxTop > screenBoundTop)
+                newY = screenBoundTop;
             
-            if (boxBoundBottom < boundBottom)
-                newY = boundBottom + dialogueBoxGroup.rect.height;
+            if (dialogueBoxBottom < screenBoundBottom)
+                newY = screenBoundBottom + dialogueBoxGroup.rect.height;
         }
+
 
         dialogueBoxGroup.anchoredPosition = new Vector2(newX, newY);
     }
@@ -367,6 +471,7 @@ public class UIManager : MonoBehaviour
         if (!currentDialogueAnchor) currentDialogueAnchor = dialogueAnchor;
         
         Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
+        screenPos.y += 100f;
         interactionPromptGroup.GetComponent<RectTransform>().anchoredPosition = screenPos;
     }
     #endregion
@@ -532,15 +637,10 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        if (debug)
-        {
-            anchorDebug = new GameObject();
-            anchorDebug.name = "Dialogue Anchor Debug Transform (UI MANAGER)";
-            anchorDebug.transform.parent = uiCanvas.transform;
-            anchorIndicator = anchorDebug.gameObject.AddComponent<RectTransform>();
-        }
-
+        // todo to be refactored in a dialogue box method
+        playerCollider = FindObjectOfType<PlayerController>().GetComponent<CapsuleCollider>();
         GetScreenBoundsWithMargins();
+        // todo end
 
         ClosePhoneUI();
         CloseControlsHelp();
@@ -577,8 +677,8 @@ public class UIManager : MonoBehaviour
 #region utils
     private Vector2 ScaleToScreen(Vector2 coordinate)
     {
-        float x = coordinate.x / Camera.main.pixelWidth / (boundRight + screenMargin);
-        float y = coordinate.y / Camera.main.pixelHeight / (boundTop + screenMargin);
+        float x = coordinate.x / Camera.main.pixelWidth / (screenBoundRight + screenMargin);
+        float y = coordinate.y / Camera.main.pixelHeight / (screenBoundTop + screenMargin);
 
         return new Vector2(x, y);
     }
@@ -587,8 +687,8 @@ public class UIManager : MonoBehaviour
     {
         Vector2 coordinate = Camera.main.WorldToScreenPoint(position);
 
-        float x = coordinate.x / (Camera.main.pixelWidth / (boundRight + screenMargin));
-        float y = coordinate.y / (Camera.main.pixelHeight / (boundTop + screenMargin));
+        float x = coordinate.x / (Camera.main.pixelWidth / (screenBoundRight + screenMargin));
+        float y = coordinate.y / (Camera.main.pixelHeight / (screenBoundTop + screenMargin));
 
         return new Vector2(x, y);
     }

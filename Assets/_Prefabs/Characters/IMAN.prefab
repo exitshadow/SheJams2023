@@ -865,7 +865,7 @@ GameObject:
   m_Layer: 0
   m_Name: BranchLeftArm
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: ffa47233496aa17499bd680b1ab86a91, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0
   m_Effectors:
   - m_Transform: {fileID: 121891751626240852}
     m_Style:
@@ -1561,6 +1561,10 @@ MonoBehaviour:
   grabbingAnchors:
   - {fileID: 7359647625035656389}
   - {fileID: 2714387000286594766}
+  useGrabRigAnimation: 1
+  grabbingRigs:
+  - {fileID: 4294993250271962394}
+  animationDuration: 1
 --- !u!1 &3521733011267880023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,7 +2620,7 @@ Transform:
   m_GameObject: {fileID: 8355625833742341186}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.347, y: 0.782, z: 0}
+  m_LocalPosition: {x: 0.184, y: 1.392, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 376172847}
   - component: {fileID: 376172846}
   - component: {fileID: 3599585641906568654}
+  - component: {fileID: 2994251092815747347}
   m_Layer: 0
   m_Name: Tree prefab
   m_TagString: Untagged
@@ -187,6 +188,7 @@ MonoBehaviour:
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
+  startDialogueOnContact: 0
   treeBranchObject: {fileID: 1121850211589678}
   targetHand: {fileID: 0}
   isTriggerActive: 1
@@ -202,6 +204,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccb13f8bd18fd24982958888e68405d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &2994251092815747347
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276862051916332}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 7.03
+  m_Direction: 0
+  m_Center: {x: 0.6, y: 0, z: 0}
 --- !u!1 &4471974064820982379
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +252,7 @@ Transform:
   m_GameObject: {fileID: 4471974064820982379}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 4.82, z: -1.91}
+  m_LocalPosition: {x: 3.09, y: 0.33, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
