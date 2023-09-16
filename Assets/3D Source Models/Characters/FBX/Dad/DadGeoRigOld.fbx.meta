@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fca7a2bcea7903f4aaf5448336d24960
+guid: 73a58017eabb6e141971ffc4bdfdcf30
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -433,12 +433,12 @@ ModelImporter:
     - name: mixamorig:Spine1
       parentName: mixamorig:Spine
       position: {x: -0, y: 0.15477297, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 3.509322e-26, y: -5.1493376e-14, z: 6.8150943e-13, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Spine2
       parentName: mixamorig:Spine1
       position: {x: -0, y: 0.17688352, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 1.488975e-29, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Neck
       parentName: mixamorig:Spine2
