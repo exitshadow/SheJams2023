@@ -255,9 +255,6 @@ PrefabInstance:
       addedObject: {fileID: 5385800237110678032}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac13172d27cf595409730b4167d51519, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5785731983322631108}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac13172d27cf595409730b4167d51519, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1489788772417579177}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac13172d27cf595409730b4167d51519, type: 3}
       insertIndex: -1
@@ -268,6 +265,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac13172d27cf595409730b4167d51519, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6196439355467695183}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac13172d27cf595409730b4167d51519, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9130025059376474451}
   m_SourcePrefab: {fileID: 100100000, guid: ac13172d27cf595409730b4167d51519, type: 3}
 --- !u!4 &2688652541289607498 stripped
 Transform:
@@ -300,27 +300,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &5785731983322631108
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3322481771361397744}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0.25, z: 0.15}
 --- !u!95 &1489788772417579177
 Animator:
   serializedVersion: 5
@@ -357,18 +336,15 @@ MonoBehaviour:
   useInteractionPrompt: 1
   promptText: pstpspst
   dialogueAnchor: {fileID: 7638786196391376867}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 3891565566342386460}
   dialogueRunner: {fileID: 0}
-  useYarn: 1
   dialogueNode: CatQuest
+  uiManager: {fileID: 0}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  dialogueData: {fileID: 11400000, guid: c4161ae7bd6836f4fb7decc403d0e7ad, type: 2}
-  isPlayingDialogue: 0
   useLookAtOnTrigger: 1
-  playerLookAimTarget: {fileID: 3891565566342386460}
 --- !u!114 &7025293372086825599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +436,29 @@ MonoBehaviour:
   - m_Rig: {fileID: 40101580650804822}
     m_Active: 1
   m_Effectors: []
+--- !u!136 &9130025059376474451
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322481771361397744}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 1
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.33, z: 0}
 --- !u!1001 &3093296550308471862
 PrefabInstance:
   m_ObjectHideFlags: 0

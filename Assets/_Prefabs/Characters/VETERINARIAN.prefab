@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 2201867966443426169}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.412, y: 1.775, z: -0.069}
+  m_LocalPosition: {x: 0.27, y: 1.494, z: -0.069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -377,18 +377,15 @@ MonoBehaviour:
   useInteractionPrompt: 1
   promptText: Talk
   dialogueAnchor: {fileID: 4060013382767156115}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 3405959741061423545}
   dialogueRunner: {fileID: 0}
-  useYarn: 1
   dialogueNode: VetSermon
+  uiManager: {fileID: 0}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  dialogueData: {fileID: 11400000, guid: b3d4d0eacb241d04ca999c816e5f685c, type: 2}
-  isPlayingDialogue: 0
   useLookAtOnTrigger: 0
-  playerLookAimTarget: {fileID: 3405959741061423545}
 --- !u!114 &6241106118863006416
 MonoBehaviour:
   m_ObjectHideFlags: 0

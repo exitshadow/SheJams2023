@@ -81,6 +81,7 @@ position: 250, 0
         <<set_grabbable "TREE BRANCH">>
         <<set_grabber "PLAYER IMAN" 0>>
         <<grab "GRAB MANAGER">>
+        <<disable_player_lookat "TREE BRANCH">>
         Iman: Better bring this back before she has a heart attack!
         Iman: ...
         Iman: ...why am I doing this again?
@@ -170,6 +171,7 @@ position: 250, 200
         Iman: … What?
     <<endif>>
     <<set $hasFoundTuna to true>>
+    <<disable_player_lookat "TUNA CAN">>
     <<disable_tuna_can "TUNA CAN">>
     <<change_secondary_mission_prompt UIManager "Great powers mean great responsibilities. Great tuna means... a great kitten?">>
 <<endif>>

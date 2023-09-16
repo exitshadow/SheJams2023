@@ -64,9 +64,11 @@ public class IKLookatAnimation : MonoBehaviour
 
     public void SetAimTarget(Transform target)
     {   
+        Debug.Log($"setting aim target to {target}");
         var data = multiAimConstraint.data.sourceObjects;
         data.SetTransform(0, target);
         multiAimConstraint.data.sourceObjects = data;
+        Debug.Log(data[0]);
         rigBuilder.Build();
     }
      #endregion

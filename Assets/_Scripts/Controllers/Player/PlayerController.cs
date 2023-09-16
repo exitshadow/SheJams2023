@@ -125,8 +125,20 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            if (ui.isControlHelpDisplayed) ui.CloseControlsHelp();
-            else ui.OpenControlsHelp();
+            if (ui.isControlHelpDisplayed)
+            {
+                playerMove.Enable();
+                playerInteract.Enable();
+                playerPickUpPhone.Enable();
+                ui.CloseControlsHelp();
+            }
+            else
+            {
+                playerMove.Disable();
+                playerInteract.Disable();
+                playerPickUpPhone.Disable();
+                ui.OpenControlsHelp();
+            }
         }
     }
 
