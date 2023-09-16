@@ -45,7 +45,9 @@ public class WheelPhysicsSettings : MonoBehaviour
         Gizmos.DrawWireSphere(  transform.position + Vector3.down * (restLength - wheelRadius),
                                 wheelRadius );
 
+    #if UNITY_EDITOR
         if (!EditorApplication.isPlaying) return;
+    #endif
 
         // drawing debug raycasts
         Gizmos.color = Color.magenta;
