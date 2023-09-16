@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 4580829827945054027}
   - component: {fileID: 1720955128504322829}
   - component: {fileID: 2933414944624059915}
+  - component: {fileID: 1279528803321195224}
   m_Layer: 0
   m_Name: NEIGHBOUR
   m_TagString: Untagged
@@ -342,18 +343,15 @@ MonoBehaviour:
   useInteractionPrompt: 1
   promptText: Iman, I need your help!!!
   dialogueAnchor: {fileID: 9222306418352203356}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 577092485644597486}
   dialogueRunner: {fileID: 0}
-  useYarn: 1
   dialogueNode: NeighborQuest
+  uiManager: {fileID: 0}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  dialogueData: {fileID: 11400000, guid: 17236b53ac91e8e47a3e626fac590254, type: 2}
-  isPlayingDialogue: 0
   useLookAtOnTrigger: 1
-  playerLookAimTarget: {fileID: 577092485644597486}
   targetHand: {fileID: 0}
   treeBranchObject: {fileID: 0}
 --- !u!114 &1720955128504322829
@@ -453,6 +451,25 @@ MonoBehaviour:
   - {fileID: 5305377118968993254}
   - {fileID: 7026157041327856887}
   - {fileID: 1500600376091897790}
+--- !u!114 &1279528803321195224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913764417976076355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b4ae976aa2c724d977df4179efc574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbingAnchors:
+  - {fileID: 599594402608771391}
+  - {fileID: 5466217604908030772}
+  useGrabRigAnimation: 1
+  grabbingRigs:
+  - {fileID: 2906849237778318978}
+  animationDuration: 1
 --- !u!1 &4302656805748523199
 GameObject:
   m_ObjectHideFlags: 0

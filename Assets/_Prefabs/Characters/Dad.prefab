@@ -273,6 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424782539925722514}
   - component: {fileID: 3003643285439488873}
+  - component: {fileID: 1455062195342319737}
   m_Layer: 0
   m_Name: LookatIK
   m_TagString: Untagged
@@ -309,8 +310,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0
   m_Effectors: []
+--- !u!114 &1455062195342319737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366491918764659233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccab66db55ac78e4c860627779bb997c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigBuilder: {fileID: 8030059293251225625}
 --- !u!1 &5655839087346685266
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 5655839087346685266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.467, y: 1.624, z: 0.137}
+  m_LocalPosition: {x: -0.551, y: 1.679, z: 0.137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -530,8 +544,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.35
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &4513522449066066686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,16 +561,15 @@ MonoBehaviour:
   useInteractionPrompt: 1
   promptText: Talk
   dialogueAnchor: {fileID: 4075884451857974478}
+  usePlayerLookAtOnTrigger: 1
+  playerLookAimTarget: {fileID: 3361895919078118454}
   dialogueRunner: {fileID: 0}
-  useYarn: 1
   dialogueNode: DadQuest
+  uiManager: {fileID: 0}
   onDialogueStarted:
     m_PersistentCalls:
       m_Calls: []
-  gameManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  dialogueData: {fileID: 11400000, guid: 946e1f0600d1d034293df196b2d4458b, type: 2}
-  isPlayingDialogue: 0
+  useLookAtOnTrigger: 1
   sceneLoader: {fileID: 0}
 --- !u!114 &1094691339725555860
 MonoBehaviour:
