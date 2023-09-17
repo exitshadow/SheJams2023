@@ -32,6 +32,7 @@ public abstract class NPC : MonoBehaviour
     [Tooltip("Anchor used to place dialogue boxes and interaction prompt")]
     [SerializeField] protected DialogueRunner dialogueRunner;
     [SerializeField] protected string dialogueNode;
+    public string DialogueNode { get {return dialogueNode;} }
 
     [Header("Graphics")]
     [Tooltip("UI Manager to manage all the graphics")]

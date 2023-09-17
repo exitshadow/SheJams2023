@@ -150,18 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b622e5bac8151f2449ece68fdcd96dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1482010129}
+  speechDefaults: {fileID: 1482010130}
   intonationClips:
   - {fileID: 8300000, guid: 2b40c27024df0a942b5f8dd5cefb5e34, type: 3}
   - {fileID: 8300000, guid: b41c9741aaf774d438c303dc7e7ee5f2, type: 3}
   - {fileID: 8300000, guid: 7068192d4ec563f42be06a867531eed3, type: 3}
-  speechClips:
-  - {fileID: 8300000, guid: 93635a30280ace0418892f41c31d5fc7, type: 3}
-  - {fileID: 8300000, guid: da97c687de485be4aaaf604738de5f04, type: 3}
-  - {fileID: 8300000, guid: a448e6058fd441d4ca81ee345798205a, type: 3}
-  - {fileID: 8300000, guid: 2fb9d225f67ddac42a985e2a22ac13b6, type: 3}
-  - {fileID: 8300000, guid: 0a7f690c78e30284faa7acce08dbc275, type: 3}
-  - {fileID: 8300000, guid: 1e830f2e39176e3478f470d39b2edb00, type: 3}
+  typewritingClips: []
 --- !u!1 &92347601
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +778,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3913764417976076355, guid: a7c89bbef29cd8349bd294e09fc2fdd6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2144830855}
   m_SourcePrefab: {fileID: 100100000, guid: a7c89bbef29cd8349bd294e09fc2fdd6, type: 3}
 --- !u!1001 &894932596
 PrefabInstance:
@@ -824,7 +821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18529503
+      value: 0.18529502
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
@@ -876,7 +873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18529503
+      value: 0.18529502
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1408,6 +1405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482010128}
   - component: {fileID: 1482010129}
+  - component: {fileID: 1482010130}
   m_Layer: 0
   m_Name: Dialogues SFX
   m_TagString: Untagged
@@ -1526,6 +1524,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1482010130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482010127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87614f5fd801a41418d9c52c2d12e9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1482010129}
+  defaultIntonationClips:
+  - {fileID: 8300000, guid: 0f417d2073c7e9f479acf3c9dc32711c, type: 3}
+  defaultTypewritingClips:
+  - {fileID: 8300000, guid: e4d2da2daaca78f458ebcca292359d4a, type: 3}
+  - {fileID: 8300000, guid: 8a78dab0cb7ea854caf802bcfdcc48ab, type: 3}
+  - {fileID: 8300000, guid: 6421ed00eeab3b54695cf6cd003a57e1, type: 3}
+  - {fileID: 8300000, guid: bc6e098d2b3891c4c8d800df0d785974, type: 3}
 --- !u!114 &1509099210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8209525452627189371, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
@@ -2180,6 +2198,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1868634542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2144830853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3913764417976076355, guid: a7c89bbef29cd8349bd294e09fc2fdd6, type: 3}
+  m_PrefabInstance: {fileID: 798214896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2144830855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144830853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b622e5bac8151f2449ece68fdcd96dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechDefaults: {fileID: 1482010130}
+  intonationClips: []
+  typewritingClips: []
 --- !u!1001 &3306920855857253565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2210,7 +2248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18529503
+      value: 0.18529502
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2453,18 +2491,18 @@ PrefabInstance:
     - target: {fileID: 3241844304646507618, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: onCharacterTyped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 67621287}
+      objectReference: {fileID: 1482010130}
     - target: {fileID: 3241844304646507618, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: onCharacterTyped.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3241844304646507618, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: onCharacterTyped.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlaySpeechSounds
+      value: OnCharacterTyped
       objectReference: {fileID: 0}
     - target: {fileID: 3241844304646507618, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: onCharacterTyped.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Speech, Assembly-CSharp
+      value: SpeechDefaults, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3241844304646507618, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: onCharacterTyped.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
