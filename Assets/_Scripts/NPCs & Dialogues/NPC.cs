@@ -15,11 +15,13 @@ using System;
 public abstract class NPC : MonoBehaviour
 {
     #region exposed fields
-    [Header("Interaction Prompt")]
+    [Header("Interaction Prompt & Dialogue Anchors")]
     [SerializeField] protected bool useInteractionPrompt = true;
     [SerializeField] protected string promptText = "Talk";
     [SerializeField] protected Transform dialogueAnchor;
     [SerializeField] protected bool isTriggerActive = true;
+    [SerializeField] protected bool isMaskableByDialogueBoxes = false;
+
     [Tooltip("Yarn dialogue runner component. One per scene")]
 
     [Header("Look At Options")]
@@ -132,9 +134,11 @@ public abstract class NPC : MonoBehaviour
         if (player)
         {
             if (dialogueAnchor) uiManager.dialogueAnchor = this.dialogueAnchor;
+            else uiManager.dialogueAnchor = uiManager.playerDialogueAnchor;
+
             if (useInteractionPrompt) uiManager.ShowInteractionButton(promptText);
             if (usePlayerLookAtOnTrigger) EnablePlayerLookAt();
-            uiManager.CurrentInteractingNPCCollider = GetComponent<CapsuleCollider>();
+            if (!isMaskableByDialogueBoxes) uiManager.CurrentInteractingNPCCollider = GetComponent<CapsuleCollider>();
             OccupyPlayerSlot();
         }
     }
@@ -150,6 +154,7 @@ public abstract class NPC : MonoBehaviour
         {
             uiManager.HideInteractionButton();
             uiManager.currentDialogueAnchor = null;
+            uiManager.CurrentInteractingNPCCollider = null;
             DisablePlayerLookAt();
             ClearPlayerSlot();
         }

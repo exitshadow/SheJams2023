@@ -39,7 +39,6 @@ position: 0, 0
     Iman: I mean, it's not going to happen by itself, right? That would be nice…
     Neighbor: ...
     Neighbor: Just give me that, please.
-    <<enable_trigger_events "TREE BRANCH" false>>
     <<set_grabbable "TREE BRANCH">>
     <<set_grabber NEIGHBOUR 0>>
     <<grab  "GRAB MANAGER">>
@@ -79,6 +78,7 @@ position: 250, 0
         Iman: ...
         Iman: I hope I won't get plagued by the butterflies myself now.
         <<set $hasFoundTreeBranch to true>>
+        <<enable_trigger_events "TREE BRANCH" false>>
         <<set_grabbable "TREE BRANCH">>
         <<set_grabber "PLAYER IMAN" 0>>
         <<grab "GRAB MANAGER">>
@@ -88,7 +88,6 @@ position: 250, 0
         Iman: ...why am I doing this again?
         Iman: Oh, right. Avoiding Dad. And his broken computer.
         Iman: I'm sure he just forgot to plug it in, anyway.
-        <<disable_tree_branch "TREE BRANCH">>
         <<change_mission_prompt UIManager "Go catch the neighbour's butterflies to avoid performing your duties.">>
     <<endif>>
 <<endif>>
