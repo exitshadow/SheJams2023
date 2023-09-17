@@ -39,6 +39,7 @@ position: 0, 0
     Iman: I mean, it's not going to happen by itself, right? That would be nice…
     Neighbor: ...
     Neighbor: Just give me that, please.
+    <<enable_trigger_events "TREE BRANCH" false>>
     <<set_grabbable "TREE BRANCH">>
     <<set_grabber NEIGHBOUR 0>>
     <<grab  "GRAB MANAGER">>

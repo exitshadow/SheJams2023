@@ -72,6 +72,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Collider playerCollider;
     [HideInInspector] public Collider CurrentInteractingNPCCollider;
     public Transform dialogueAnchor;
+    [Tooltip("default dialogue anchor")]
+    public Transform otherDialogueAnchor;
     public Transform playerDialogueAnchor;
     public Transform currentDialogueAnchor;
 
@@ -468,7 +470,7 @@ public class UIManager : MonoBehaviour
     {
         if (!interactionPromptGroup.activeSelf) return;
         
-        if (!currentDialogueAnchor) currentDialogueAnchor = dialogueAnchor;
+        if (dialogueAnchor) currentDialogueAnchor = dialogueAnchor;
         
         Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
         screenPos.y += 100f;
@@ -655,8 +657,8 @@ public class UIManager : MonoBehaviour
         else CloseDialogueBox();
 
         // todo refactor & correct
-        if (playerDialogueAnchor != null && dialogueAnchor != null)
-            currentDialogueAnchor = playerDialogueAnchor;
+        // if (playerDialogueAnchor != null && dialogueAnchor != null)
+        //     currentDialogueAnchor = playerDialogueAnchor;
     }
 
     void Update()
@@ -703,8 +705,8 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                if (currentDialogueAnchor == null)
-                    currentDialogueAnchor = dialogueAnchor;
+                if (dialogueAnchor) currentDialogueAnchor = dialogueAnchor;
+                else currentDialogueAnchor = otherDialogueAnchor;
             }
         }
     }

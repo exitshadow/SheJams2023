@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public abstract class NPC : MonoBehaviour
     [SerializeField] protected bool useInteractionPrompt = true;
     [SerializeField] protected string promptText = "Talk";
     [SerializeField] protected Transform dialogueAnchor;
+    [SerializeField] protected bool isTriggerActive = true;
     [Tooltip("Yarn dialogue runner component. One per scene")]
 
     [Header("Look At Options")]
@@ -74,7 +76,7 @@ public abstract class NPC : MonoBehaviour
     {
         onDialogueRequest?.Invoke(dialogueNode);
 
-        if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
+        if (dialogueAnchor) uiManager.dialogueAnchor = dialogueAnchor;
 
         StartYarnDialogue();
         ContinueDialogue();
@@ -98,7 +100,7 @@ public abstract class NPC : MonoBehaviour
         
         if (!dialogueRunner.IsDialogueRunning)
         {
-            uiManager.currentDialogueAnchor = null;
+            uiManager.dialogueAnchor = null;
         }
     }
 
@@ -123,11 +125,13 @@ public abstract class NPC : MonoBehaviour
     #region trigger events
     public virtual void OnTriggerEnter(Collider other)
     {
+        if (!isTriggerActive) return;
+
         player = other.GetComponent<PlayerController>();
 
         if (player)
         {
-            if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
+            if (dialogueAnchor) uiManager.dialogueAnchor = this.dialogueAnchor;
             if (useInteractionPrompt) uiManager.ShowInteractionButton(promptText);
             if (usePlayerLookAtOnTrigger) EnablePlayerLookAt();
             uiManager.CurrentInteractingNPCCollider = GetComponent<CapsuleCollider>();
@@ -138,6 +142,8 @@ public abstract class NPC : MonoBehaviour
 
     protected virtual void OnTriggerExit(Collider other)
     {
+        if (!isTriggerActive) return;
+
         player = other.GetComponent<PlayerController>();
 
         if (player)
@@ -170,6 +176,12 @@ public abstract class NPC : MonoBehaviour
     {
         playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
         playerLookAt.DeactivateLookat();
+    }
+
+    [YarnCommand("enable_trigger_events")]
+    public void EnableTriggerEvents(bool value)
+    {
+        isTriggerActive = value;
     }
 
 
