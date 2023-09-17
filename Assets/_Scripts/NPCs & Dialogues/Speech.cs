@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using TMPro;
 
 
 [RequireComponent(typeof(NPC))]
@@ -15,6 +16,7 @@ public class Speech : MonoBehaviour
     [SerializeField] private SpeechDefaults speechDefaults;
     [SerializeField] private List<AudioClip> intonationClips;
     [SerializeField] private List<AudioClip> typewritingClips;
+    [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
 
     private int currentSpeechClipIndex = 0;
 
@@ -64,12 +66,11 @@ public class Speech : MonoBehaviour
     {
         if (dialogueRunner.CurrentNodeName != npc.DialogueNode) return;
 
-        if (audioSource.isPlaying)
-        {
-            Debug.Log(audioSource.clip);
-            foreach (AudioClip intonationClip in intonationClips)
-                if (audioSource.clip == intonationClip) return;
+        if (dialogueSpeakerNameTMP.text == "Iman"){
+            audioSource.Stop();
+            return;
         }
+        if (audioSource.isPlaying) return;
 
         if (useTypeWritingClipDefaults)
         {
