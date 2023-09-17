@@ -606,8 +606,6 @@ public class UIManager : MonoBehaviour
 
         int maxCharsFirstLine;
         int nbLines = (int)Mathf.Ceil(text.Length / maxCharsPerLine);
-        Debug.Log(Mathf.Ceil(text.Length / maxCharsPerLine));
-        Debug.Log(nbLines);
 
         float newWidth;
         float newHeight;
