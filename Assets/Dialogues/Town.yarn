@@ -133,6 +133,7 @@ position: 0, 200
         Iman: Take it if that makes you so happy!
         Cat: *purrs furiously*
         <<set $hasGivenTuna to true>>
+        <<set $hasEncounteredCat to true>>
         <<change_secondary_mission_prompt UIManager "">>
         <<stop>>
     <<endif>>
