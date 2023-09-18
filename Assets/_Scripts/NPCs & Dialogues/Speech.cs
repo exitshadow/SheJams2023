@@ -16,7 +16,7 @@ public class Speech : MonoBehaviour
     [SerializeField] private SpeechDefaults speechDefaults;
     [SerializeField] private List<AudioClip> intonationClips;
     [SerializeField] private List<AudioClip> typewritingClips;
-    [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
+    // [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
 
     private int currentSpeechClipIndex = 0;
 
@@ -55,9 +55,16 @@ public class Speech : MonoBehaviour
         else speechDefaults.PlayClip(intonationClips[0]);
     }
 
+    // [YarnCommand("play_iman_intonation")]
+    // public void PlayImanIntonation()
+    // {
+    //     speechDefaults.PlayImanIntonation();
+    // }
+
     [YarnCommand("play_intonation_sound")]
     public void PlayIntonationSound(int index)
     {
+        // if (dialogueSpeakerNameTMP.text == "Iman") speechDefaults.PlayImanIntonation();
         if (useIntonationClipDefaults) speechDefaults.PlayDefaultIntonation(index);
         else speechDefaults.PlayClip(intonationClips[index]);   
     }
@@ -66,10 +73,6 @@ public class Speech : MonoBehaviour
     {
         if (dialogueRunner.CurrentNodeName != npc.DialogueNode) return;
 
-        if (dialogueSpeakerNameTMP.text == "Iman"){
-            audioSource.Stop();
-            return;
-        }
         if (audioSource.isPlaying) return;
 
         if (useTypeWritingClipDefaults)

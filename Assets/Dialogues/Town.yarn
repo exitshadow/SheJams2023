@@ -111,6 +111,7 @@ position: 0, 200
         Iman: Well, would you look at that?
         Iman: The cutest cat in the world has graced me with its presence!
         Iman: I should thank it with an offering. Hmmm…
+        <<play_intonation_sound CAT 0>>
         Cat: *mrew?*
         Iman: I know! I'll go buy some tuna. Cats love tuna, right? I'll just hop by the market.
         Iman: I'm definitely not using this as an excuse to do some shopping.
@@ -120,17 +121,22 @@ position: 0, 200
     <<else>> // has found tuna before encountering cat first time
         Cat: *MEOW! MEOW! MEOW!*
         Iman: Dear lord, what is going with you?
+        <<play_intonation_sound CAT 0>>
         Cat: *MEEEEOW! MEOW MEOW! MEOOW! MEOOOOOOOOOOOOW!!!*
         Iman: Do you really like me that much?
+        <<play_intonation_sound CAT 1>>
         Cat: *purrrrrrr purrrrrrrr purrrrr*
         Iman: Awww, cutie pie! Have some pets!
+        <<play_intonation_sound CAT 3>>
         Cat: *hiss!*
         Iman: Hey!
+        <<play_intonation_sound CAT 1>>
         Cat: *purrrrs purrrrs purrrrrrrrrrrs*
         Iman: Oh, I see.
         Iman: Of course, that wasn't because of my great looks.
         Iman: I had that tuna can on me.
         Iman: Take it if that makes you so happy!
+        <<play_intonation_sound CAT 1>>
         Cat: *purrs furiously*
         <<set $hasGivenTuna to true>>
         <<set $hasEncounteredCat to true>>

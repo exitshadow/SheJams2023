@@ -9,11 +9,12 @@ using TMPro;
 public class SpeechDefaults : MonoBehaviour
 {
     public AudioSource audioSource;
+    // [SerializeField] private AudioClip ImanIntonationClip;
     [SerializeField] private List<AudioClip> defaultIntonationClips;
     [SerializeField] private List<AudioClip> defaultTypewritingClips;
     private int currentTypewriterClipIndex = 0;
     public event Action onCharacterTyped;
-    [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
+    // [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
 
 
     void Awake()
@@ -30,15 +31,21 @@ public class SpeechDefaults : MonoBehaviour
 
     public void PlayDefaultIntonation(int index)
     {
-        if (dialogueSpeakerNameTMP.text == "Iman"){
-            audioSource.Stop();
-            return;
-        }
         if (audioSource.isPlaying) return;
+        // if (dialogueSpeakerNameTMP.text == "Iman"){
+        //     PlayImanIntonation();
+        //     return;
+        // }
         
         audioSource.clip = defaultIntonationClips[index];
         audioSource.Play();
     }
+
+    // public void PlayImanIntonation()
+    // {
+    //     audioSource.clip = ImanIntonationClip;
+    //     audioSource.Play();
+    // }
 
     public void PlayDefaultTypewriter()
     {

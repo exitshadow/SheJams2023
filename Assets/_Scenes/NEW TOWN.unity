@@ -155,8 +155,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2b40c27024df0a942b5f8dd5cefb5e34, type: 3}
   - {fileID: 8300000, guid: b41c9741aaf774d438c303dc7e7ee5f2, type: 3}
   - {fileID: 8300000, guid: 7068192d4ec563f42be06a867531eed3, type: 3}
+  - {fileID: 8300000, guid: 72966f804fc19e04f97c225ba73834d0, type: 3}
   typewritingClips: []
-  dialogueSpeakerNameTMP: {fileID: 855703512}
 --- !u!1 &92347601
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,13 +319,36 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 9208683593223522850, guid: 1be61187b5d765449be824463642cb0f, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1276862051916332, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 376172846}
   m_SourcePrefab: {fileID: 100100000, guid: 1be61187b5d765449be824463642cb0f, type: 3}
 --- !u!4 &376172844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4379673244704792, guid: 1be61187b5d765449be824463642cb0f, type: 3}
   m_PrefabInstance: {fileID: 376172843}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &376172845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1276862051916332, guid: 1be61187b5d765449be824463642cb0f, type: 3}
+  m_PrefabInstance: {fileID: 376172843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &376172846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376172845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b622e5bac8151f2449ece68fdcd96dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechDefaults: {fileID: 1482010130}
+  intonationClips: []
+  typewritingClips: []
 --- !u!1001 &431906512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -784,17 +807,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2144830855}
   m_SourcePrefab: {fileID: 100100000, guid: a7c89bbef29cd8349bd294e09fc2fdd6, type: 3}
---- !u!114 &855703512 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1309858466, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
-  m_PrefabInstance: {fileID: 5851854294143036330}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &894932596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -837,11 +849,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.035485286
+      value: -0.03548534
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0066956384
+      value: 0.0066956477
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517831, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LookAt
@@ -913,11 +925,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.035485286
+      value: -0.03548533
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0066956384
+      value: 0.006695647
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_BindingMode
@@ -1574,9 +1586,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1482010129}
   defaultIntonationClips:
-  - {fileID: 8300000, guid: a71c60a8a508d4446946e129bf9e4980, type: 3}
-  defaultTypewritingClips: []
-  dialogueSpeakerNameTMP: {fileID: 855703512}
+  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
+  defaultTypewritingClips:
+  - {fileID: 8300000, guid: 65d55c99013095a4aa066d5a8f44fb3d, type: 3}
+  - {fileID: 8300000, guid: 67dfbb61e2986d54f84ec760609bca69, type: 3}
+  - {fileID: 8300000, guid: c01b9e88fced1c547acb0d197662db73, type: 3}
+  - {fileID: 8300000, guid: e3ad25e5f5ed31648b7e4f2ae39a6934, type: 3}
+  - {fileID: 8300000, guid: 9b3ff23f11c27e94380b5dca695e99b4, type: 3}
+  - {fileID: 8300000, guid: 4951851babc10c14b8537ced5f749dd0, type: 3}
+  - {fileID: 8300000, guid: 0ab6ff8a5c6bdd84fb2c4fbddb50e208, type: 3}
 --- !u!114 &1509099210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8209525452627189371, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
@@ -1751,15 +1769,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1482010130}
   intonationClips:
-  - {fileID: 8300000, guid: a260b409bd44a8b4eb226cadc6e5bae4, type: 3}
-  typewritingClips:
-  - {fileID: 8300000, guid: 2acc85884893dae4b89f704d4423c5a7, type: 3}
-  - {fileID: 8300000, guid: 80d29fdf3e0483d47b5e6cf508737b81, type: 3}
-  - {fileID: 8300000, guid: efcf5e58a73176f42a9a9d52599b82f2, type: 3}
-  - {fileID: 8300000, guid: 578dd59179dfd214c82ac671fed4369c, type: 3}
-  - {fileID: 8300000, guid: 4774ee56c4c3ebf4a8acb13cf8a7a68e, type: 3}
-  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
-  dialogueSpeakerNameTMP: {fileID: 855703512}
+  - {fileID: 8300000, guid: 9cea16530d092264880c56d6cee874b6, type: 3}
+  typewritingClips: []
 --- !u!4 &1638649200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9213060879917458230, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
@@ -2281,15 +2292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1482010130}
   intonationClips:
-  - {fileID: 8300000, guid: 21f2ee09c4103e146851a75377cdbde7, type: 3}
-  typewritingClips:
-  - {fileID: 8300000, guid: 2acc85884893dae4b89f704d4423c5a7, type: 3}
-  - {fileID: 8300000, guid: 80d29fdf3e0483d47b5e6cf508737b81, type: 3}
-  - {fileID: 8300000, guid: efcf5e58a73176f42a9a9d52599b82f2, type: 3}
-  - {fileID: 8300000, guid: 578dd59179dfd214c82ac671fed4369c, type: 3}
-  - {fileID: 8300000, guid: 4774ee56c4c3ebf4a8acb13cf8a7a68e, type: 3}
-  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
-  dialogueSpeakerNameTMP: {fileID: 855703512}
+  - {fileID: 8300000, guid: e27f027e3960d8c4f84e0bb964da21c8, type: 3}
+  typewritingClips: []
 --- !u!1001 &3306920855857253565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2324,11 +2328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.035485286
+      value: -0.03548534
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0066956384
+      value: 0.0066956477
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2418,8 +2422,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5265398722213746887, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3971011849785698485}
   m_SourcePrefab: {fileID: 100100000, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
+--- !u!1 &3971011849785698484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5265398722213746887, guid: 1cca5b1256c52bb4e9a8a7ecfdef4c32, type: 3}
+  m_PrefabInstance: {fileID: 3971011849785698483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3971011849785698485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3971011849785698484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b622e5bac8151f2449ece68fdcd96dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechDefaults: {fileID: 1482010130}
+  intonationClips: []
+  typewritingClips: []
 --- !u!1001 &5851854294143036330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2877,8 +2904,100 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7746384133816363143, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7410827830416182173}
+    - targetCorrespondingSourceObject: {fileID: 257257579734215406, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7410827830416182172}
+    - targetCorrespondingSourceObject: {fileID: 678175010527913098, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7410827830416182171}
+    - targetCorrespondingSourceObject: {fileID: 6419443565079877306, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7410827830416182170}
   m_SourcePrefab: {fileID: 100100000, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+--- !u!1 &7410827830416182166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6419443565079877306, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+  m_PrefabInstance: {fileID: 7410827830416182165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7410827830416182167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 678175010527913098, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+  m_PrefabInstance: {fileID: 7410827830416182165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7410827830416182168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 257257579734215406, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+  m_PrefabInstance: {fileID: 7410827830416182165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7410827830416182169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7746384133816363143, guid: e3dd4ea108a4c1d4287ca6adf803778f, type: 3}
+  m_PrefabInstance: {fileID: 7410827830416182165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7410827830416182170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410827830416182166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b622e5bac8151f2449ece68fdcd96dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechDefaults: {fileID: 1482010130}
+  intonationClips: []
+  typewritingClips: []
+--- !u!114 &7410827830416182171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410827830416182167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b622e5bac8151f2449ece68fdcd96dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechDefaults: {fileID: 1482010130}
+  intonationClips: []
+  typewritingClips: []
+--- !u!114 &7410827830416182172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410827830416182168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b622e5bac8151f2449ece68fdcd96dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechDefaults: {fileID: 1482010130}
+  intonationClips: []
+  typewritingClips: []
+--- !u!114 &7410827830416182173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410827830416182169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b622e5bac8151f2449ece68fdcd96dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechDefaults: {fileID: 1482010130}
+  intonationClips: []
+  typewritingClips: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
