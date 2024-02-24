@@ -10,16 +10,16 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class AnnoyingPhone : MonoBehaviour
 {
-    [SerializeField] private AnnoyingTextMessageAsset textMessagesData;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private AudioSource source;
     [SerializeField] private PlayerController player;
+    public AnnoyingTextMessageAsset textMessagesData;
     
     private AnnoyingTextMessageAsset.TextMessageConversation currentConvo;
     private Queue<AnnoyingTextMessageAsset.TextMessage> queuedTextMessages = new Queue<AnnoyingTextMessageAsset.TextMessage>();
-    private bool hasNewMessages;
-    public bool IsReadingPhone { get; private set; }
+    private bool hasNewMessages; 
+    public static bool IsReadingPhone { get; private set; }
 
     public bool HasPhoneMessages()
     {
