@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] private CanvasGroup pressAnyKey;
     [SerializeField] private CanvasGroup buttons;
+    [SerializeField] private GameObject eventSystem;
 
     private ImanActions inputActions;
     private InputAction pressAnyKeyAction;
@@ -24,6 +26,7 @@ public class StartMenu : MonoBehaviour
     {
         pressAnyKey.gameObject.SetActive(true);
         buttons.gameObject.SetActive(false);
+        eventSystem.SetActive(false);
     }
 
     private void OnAnyKeyPressed(InputAction.CallbackContext action)
@@ -33,6 +36,8 @@ public class StartMenu : MonoBehaviour
             pressAnyKey.gameObject.SetActive(false);
             buttons.gameObject.SetActive(true);
             pressAnyKeyAction.Disable();
+
+            eventSystem.SetActive(true);
         }
     }
 }
