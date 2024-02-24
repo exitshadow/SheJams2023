@@ -96,12 +96,12 @@ public class PlayerController : MonoBehaviour
 
             StopWalkingAnimation();
 
-            if (currentInteractingNPC != null && !phone.IsReadingPhone)
+            if (currentInteractingNPC != null && !AnnoyingPhone.IsReadingPhone)
             {
                 currentInteractingNPC.Talk(context);
             }
 
-            if (phone.IsReadingPhone)
+            if (AnnoyingPhone.IsReadingPhone)
             {
                 phone.GetNewMessage();
             }
