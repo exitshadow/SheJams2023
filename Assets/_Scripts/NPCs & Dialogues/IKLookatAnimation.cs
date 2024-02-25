@@ -8,7 +8,7 @@ public class IKLookatAnimation : MonoBehaviour
 {
     #region Variables
     [SerializeField] private RigBuilder rigBuilder; 
-    private Rig headRig;
+    private Rig lookatRig;
     private MultiAimConstraint multiAimConstraint;
     //private float targetWeight;
 
@@ -18,7 +18,7 @@ public class IKLookatAnimation : MonoBehaviour
     #region Méthodes
     void Awake()
     {
-        headRig = GetComponent<Rig>();
+        lookatRig = GetComponent<Rig>();
         multiAimConstraint = GetComponentInChildren<MultiAimConstraint>();
 
         if (!rigBuilder) Debug.LogWarning("Please provide a Rig Builder reference!");
@@ -35,11 +35,11 @@ public class IKLookatAnimation : MonoBehaviour
         {
             float ratio = timer/actionTime;
             //yield return new WaitForEndOfFrame();
-            headRig.weight = Mathf.Lerp(headRig.weight, targetWeight, ratio);
+            lookatRig.weight = Mathf.Lerp(lookatRig.weight, targetWeight, ratio);
             timer += Time.deltaTime;
             yield return null;
         }
-        headRig.weight = targetWeight;
+        lookatRig.weight = targetWeight;
     }
 
   
@@ -64,11 +64,11 @@ public class IKLookatAnimation : MonoBehaviour
 
     public void SetAimTarget(Transform target)
     {   
-        Debug.Log($"setting aim target to {target}");
+        //Debug.Log($"setting aim target to {target}");
         var data = multiAimConstraint.data.sourceObjects;
         data.SetTransform(0, target);
         multiAimConstraint.data.sourceObjects = data;
-        Debug.Log(data[0]);
+        //Debug.Log(multiAimConstraint.data.sourceObjects[0].transform.name);
         rigBuilder.Build();
     }
      #endregion

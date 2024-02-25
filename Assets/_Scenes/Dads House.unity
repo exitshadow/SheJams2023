@@ -402,6 +402,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4075884451857974478, guid: f8661a0045b457f46af7f57118683bad, type: 3}
   m_PrefabInstance: {fileID: 7375667681793345768}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &509808933 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7185449140328727832, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
+  m_PrefabInstance: {fileID: 2007886299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &586071574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,11 +1935,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8665436215968291455, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
   m_PrefabInstance: {fileID: 2007886299}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2122789714 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7382149543647143188, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
-  m_PrefabInstance: {fileID: 2007886299}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2126938077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2893,6 +2893,38 @@ PrefabInstance:
       propertyPath: dialogueRunner
       value: 
       objectReference: {fileID: 1454804659}
+    - target: {fileID: 5232324284953721493, guid: f8661a0045b457f46af7f57118683bad, type: 3}
+      propertyPath: m_Data.m_MaxLimit
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232324284953721493, guid: f8661a0045b457f46af7f57118683bad, type: 3}
+      propertyPath: m_Data.m_MinLimit
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232324284953721493, guid: f8661a0045b457f46af7f57118683bad, type: 3}
+      propertyPath: m_Data.m_Offset.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232324284953721493, guid: f8661a0045b457f46af7f57118683bad, type: 3}
+      propertyPath: m_Data.m_WorldUpType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232324284953721493, guid: f8661a0045b457f46af7f57118683bad, type: 3}
+      propertyPath: m_Data.m_ConstrainedAxes.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232324284953721493, guid: f8661a0045b457f46af7f57118683bad, type: 3}
+      propertyPath: m_Data.m_ConstrainedAxes.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232324284953721493, guid: f8661a0045b457f46af7f57118683bad, type: 3}
+      propertyPath: m_Data.m_ConstrainedAxes.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232324284953721493, guid: f8661a0045b457f46af7f57118683bad, type: 3}
+      propertyPath: m_Data.m_SourceObjects.m_Item0.transform
+      value: 
+      objectReference: {fileID: 509808933}
     - target: {fileID: 7048445474475642291, guid: f8661a0045b457f46af7f57118683bad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.116
@@ -2936,7 +2968,7 @@ PrefabInstance:
     - target: {fileID: 7353445247920734903, guid: f8661a0045b457f46af7f57118683bad, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
-      objectReference: {fileID: 2122789714}
+      objectReference: {fileID: 0}
     - target: {fileID: 7681675848111675145, guid: f8661a0045b457f46af7f57118683bad, type: 3}
       propertyPath: m_Name
       value: DAD

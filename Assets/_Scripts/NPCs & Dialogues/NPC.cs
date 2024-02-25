@@ -24,7 +24,7 @@ public abstract class NPC : MonoBehaviour
 
     [Tooltip("Yarn dialogue runner component. One per scene")]
 
-    [Header("Look At Options")]
+    [Header("Player Look At Options")]
     [SerializeField] protected bool usePlayerLookAtOnTrigger = true;
     [SerializeField] protected Transform playerLookAimTarget;
 
@@ -175,6 +175,8 @@ public abstract class NPC : MonoBehaviour
         playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
         playerLookAt.SetAimTarget(playerLookAimTarget);
         playerLookAt.ActivateLookat();
+        Debug.Log("EnablePlayerLookAt() finish");
+        
     }
 
     [YarnCommand("disable_player_lookat")]
