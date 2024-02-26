@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(Animator))]
-public class PlayerController : MonoBehaviour
+public class TestController : MonoBehaviour
 {
     [SerializeField] private UIManager ui;
     [SerializeField] private AnnoyingPhone phone;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isTexting", false);
-            animator.SetLayerWeight(2, 0);
+            animator.SetLayerWeight(2,0);
         }
     }
 
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         Vector3 right = cameraTransform.right;
         forward.y = 0f;
         right.y = 0f;
-
+ 
         Vector3 desiredMoveDirection = forward * moveDirection.y + right * moveDirection.x;
 
         if (desiredMoveDirection != Vector3.zero)
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         transform.position += desiredMoveDirection * moveSpeed * Time.deltaTime;
 
         // steering (rotation) and walk/idle animation
-        if (moveDirection != Vector2.zero)
+        if(moveDirection != Vector2.zero)
         {
             transform.Rotate(0, moveDirection.x * steeringSpeed * Time.deltaTime * 100, 0);
             animator.SetFloat("walkingSpeed", walkSpeed);
@@ -185,11 +185,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentInteractingNPC == null
+        if (    currentInteractingNPC == null
             || !currentInteractingNPC.IsPlayingDialogue)
         {
             //if (!phone.IsReadingPhone)
-            Move();
+                Move();
         }
     }
 }
