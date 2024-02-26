@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: feff8358d67a8a042b4c948b04cf80b2
+guid: 9feae0d9b6558bd42ad3749ecfad2f20
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -24,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 0
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -33,18 +33,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: PickUp
+      name: SS_Idle
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 70
+      lastFrame: 400
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -391,6 +391,22 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: Left_GripEnd_jnt
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Left_IndexEnd_jnt
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     - boneName: Right_GripMiddle_jnt
       humanName: Right Middle Intermediate
       limit:
@@ -399,26 +415,37 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: Right_GripEnd_jnt
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Right_IndexEnd_jnt
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     skeleton:
-    - name: ImanPersonalRig_TPose(Clone)
+    - name: TPose(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ImanGeo
-      parentName: ImanPersonalRig_TPose(Clone)
+      parentName: TPose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: ROOT_jnt
-      parentName: ImanPersonalRig_TPose(Clone)
-      position: {x: 0, y: 0.7708658, z: 0}
-      rotation: {x: 0, y: 0, z: -0.7046122, w: 0.7095926}
       scale: {x: 1, y: 1, z: 1}
     - name: Pelvis_jnt
-      parentName: ROOT_jnt
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      parentName: TPose(Clone)
+      position: {x: 0, y: 0.7708658, z: 0}
+      rotation: {x: 0, y: 0, z: -0.7046122, w: 0.7095926}
       scale: {x: 1, y: 1, z: 1}
     - name: Left_Thigh_jnt
       parentName: Pelvis_jnt
@@ -528,7 +555,7 @@ ModelImporter:
     - name: Left_IndexBase_jnt
       parentName: Left_Wrist_jnt
       position: {x: -0.06075834, y: -1.1368684e-15, z: 0}
-      rotation: {x: 0.009740146, y: -0.21597871, z: 0.06338553, w: 0.9742898}
+      rotation: {x: 0.009740147, y: -0.21597871, z: 0.06338554, w: 0.9742898}
       scale: {x: 1, y: 1, z: 1}
     - name: Left_IndexMiddle_jnt
       parentName: Left_IndexBase_jnt
@@ -647,7 +674,7 @@ ModelImporter:
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 67e2801bb4f535a40b02634077786b7b, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 8551ef6104b0097409410ce15cb4f278, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1

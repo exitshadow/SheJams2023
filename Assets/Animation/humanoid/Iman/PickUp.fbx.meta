@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 67e2801bb4f535a40b02634077786b7b
+guid: c37ca3ab9737a664190617f022918e45
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,7 +31,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: PickUp
+      takeName: Take 001
+      internalID: 1827226128182048838
+      firstFrame: 0
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -371,25 +400,20 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: ImanPersonalRig_TPose(Clone)
+    - name: TPose(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ImanGeo
-      parentName: ImanPersonalRig_TPose(Clone)
+      parentName: TPose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: ROOT_jnt
-      parentName: ImanPersonalRig_TPose(Clone)
-      position: {x: 0, y: 0.7708658, z: 0}
-      rotation: {x: 0, y: 0, z: -0.7046122, w: 0.7095926}
       scale: {x: 1, y: 1, z: 1}
     - name: Pelvis_jnt
-      parentName: ROOT_jnt
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      parentName: TPose(Clone)
+      position: {x: 0, y: 0.7708658, z: 0}
+      rotation: {x: 0, y: 0, z: -0.7046122, w: 0.7095926}
       scale: {x: 1, y: 1, z: 1}
     - name: Left_Thigh_jnt
       parentName: Pelvis_jnt
@@ -618,11 +642,11 @@ ModelImporter:
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c7834203ab308eb4f9938cebad2324b5, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

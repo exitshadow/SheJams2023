@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c70b77285fd668248b10b20fb8eb298b
+guid: 63b351a44b9e0064a86f0ba4247d7adc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -21,7 +21,7 @@ ModelImporter:
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 1
+    animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
     animationCompression: 3
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
+      name: RS_Idle
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
@@ -400,25 +400,20 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: ImanPersonalRig_TPose(Clone)
+    - name: TPose(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ImanGeo
-      parentName: ImanPersonalRig_TPose(Clone)
+      parentName: TPose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: ROOT_jnt
-      parentName: ImanPersonalRig_TPose(Clone)
-      position: {x: 0, y: 0.7708658, z: 0}
-      rotation: {x: 0, y: 0, z: -0.7046122, w: 0.7095926}
       scale: {x: 1, y: 1, z: 1}
     - name: Pelvis_jnt
-      parentName: ROOT_jnt
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      parentName: TPose(Clone)
+      position: {x: 0, y: 0.7708658, z: 0}
+      rotation: {x: 0, y: 0, z: -0.7046122, w: 0.7095926}
       scale: {x: 1, y: 1, z: 1}
     - name: Left_Thigh_jnt
       parentName: Pelvis_jnt
@@ -647,7 +642,7 @@ ModelImporter:
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 67e2801bb4f535a40b02634077786b7b, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c7834203ab308eb4f9938cebad2324b5, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1

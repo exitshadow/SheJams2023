@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private InputAction playerPickUpPhone;
     private InputAction playerRun;
 
-    private CharacterController controller;
+    // private CharacterController controller;
     private Rigidbody rb;
     private Animator animator;
     #endregion
@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
             if (currentInteractingNPC != null && !phone.IsReadingPhone)
             {
+                Debug.Log($"Talking to {currentInteractingNPC}");
                 currentInteractingNPC.Talk(context);
             }
 
@@ -154,7 +155,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         actions = new ImanActions();
-        controller = GetComponent<CharacterController>();
+        // controller = GetComponent<CharacterController>();
 
         playerInteract = actions.Player.Interact;
         playerInteract.Enable();

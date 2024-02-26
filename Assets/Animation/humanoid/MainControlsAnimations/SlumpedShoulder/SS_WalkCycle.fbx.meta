@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e06aef8adf05eb541a5382f673b11ccc
+guid: 6a8b06297d1bf5e43af9a22135cb3e0a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -18,12 +18,13 @@ ModelImporter:
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'Right_Clavicle_jnt'
-      : position error = 5.946605 mm\n"
+      copied configuration does not match position in animation file:\n\t'Left_Clavicle_jnt'
+      : position error = 1.041068 mm\n\t'Right_Clavicle_jnt' : position error = 5.512560
+      mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 1
+    animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
     animationCompression: 3
@@ -35,10 +36,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walkcycle
+      name: SS_WalkCycle
       takeName: Take 001
       internalID: 1827226128182048838
-      firstFrame: 0
+      firstFrame: 1
       lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
@@ -393,6 +394,22 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: Left_GripEnd_jnt
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Left_IndexEnd_jnt
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     - boneName: Right_GripMiddle_jnt
       humanName: Right Middle Intermediate
       limit:
@@ -401,26 +418,37 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: Right_GripEnd_jnt
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Right_IndexEnd_jnt
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     skeleton:
-    - name: ImanPersonalRig_TPose(Clone)
+    - name: TPose(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ImanGeo
-      parentName: ImanPersonalRig_TPose(Clone)
+      parentName: TPose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: ROOT_jnt
-      parentName: ImanPersonalRig_TPose(Clone)
-      position: {x: 0, y: 0.7708658, z: 0}
-      rotation: {x: 0, y: 0, z: -0.7046122, w: 0.7095926}
       scale: {x: 1, y: 1, z: 1}
     - name: Pelvis_jnt
-      parentName: ROOT_jnt
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      parentName: TPose(Clone)
+      position: {x: 0, y: 0.7708658, z: 0}
+      rotation: {x: 0, y: 0, z: -0.7046122, w: 0.7095926}
       scale: {x: 1, y: 1, z: 1}
     - name: Left_Thigh_jnt
       parentName: Pelvis_jnt
@@ -530,7 +558,7 @@ ModelImporter:
     - name: Left_IndexBase_jnt
       parentName: Left_Wrist_jnt
       position: {x: -0.06075834, y: -1.1368684e-15, z: 0}
-      rotation: {x: 0.009740146, y: -0.21597871, z: 0.06338553, w: 0.9742898}
+      rotation: {x: 0.009740147, y: -0.21597871, z: 0.06338554, w: 0.9742898}
       scale: {x: 1, y: 1, z: 1}
     - name: Left_IndexMiddle_jnt
       parentName: Left_IndexBase_jnt
@@ -649,7 +677,7 @@ ModelImporter:
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 67e2801bb4f535a40b02634077786b7b, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 8551ef6104b0097409410ce15cb4f278, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
