@@ -9,19 +9,17 @@ public class PhoneTriggerArea : MonoBehaviour
     
     [SerializeField] private AnnoyingPhone phoneManager;
 
-    private bool hasBeenSent = false;
-
     private void OnTriggerEnter(Collider other)
     {
-        if (hasBeenSent) return;
+        if (phoneManager.textMessagesData.hasBeenRead[conversationIndex]) return;
 
         if (other.CompareTag("Player"))
         {
-            if (!phoneManager.HasPhoneMessages() && !phoneManager.IsReadingPhone)
+            if (!phoneManager.HasPhoneMessages() && !AnnoyingPhone.IsReadingPhone)
             {
                 phoneManager.FetchDialogue(conversationIndex);
                 phoneManager.ShowNotification();
-                hasBeenSent = true;
+                phoneManager.textMessagesData.hasBeenRead[conversationIndex] = true;
             }
         }
     }

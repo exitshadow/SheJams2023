@@ -77,10 +77,10 @@ position: 0, 0
     Dad: I guess we'll find out...
     // command dad looks at camera
     Iman: ???
-    Dad: In the next DLC!
+    Dad: In the next episode!
     Dad: Thank you for playing, we hope you enjoyed your experience and will leave us a nice review!
     Iman: What?
-    Dad: Like and subscribe in the link at the end of the credits!
+    // Dad: Like and subscribe in the link at the end of the credits!
     // command iman looks at camera
     Dad: And never forget to reach for your dreams!
     <<change_mission_prompt UIManager "">>

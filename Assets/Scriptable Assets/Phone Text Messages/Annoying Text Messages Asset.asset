@@ -172,3 +172,4 @@ MonoBehaviour:
       textContent: See you tonight!
     - senderName: Nour
       textContent: <3
+  hasBeenRead: 010000000000
