@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Yarn.Unity;
 
 /// <summary>
 /// This class offers methods that are to be called by the Unity Events of the Player Input attached to the same game object.
@@ -119,6 +120,12 @@ public class PlayerController : MonoBehaviour
         {
             phone.PickUpPhone(context);
         }
+    }
+
+    [YarnCommand("pickUpFromGround")]
+    public void PickUpFromGround()
+    {
+        animator.SetTrigger("isPickingUp");
     }
 
     public void HelpControls(InputAction.CallbackContext context)
