@@ -174,9 +174,7 @@ public abstract class NPC : MonoBehaviour
     {
         playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
         playerLookAt.SetAimTarget(playerLookAimTarget);
-        playerLookAt.ActivateLookat();
-        Debug.Log("EnablePlayerLookAt() finish");
-        
+        playerLookAt.ActivateLookat();        
     }
 
     [YarnCommand("disable_player_lookat")]

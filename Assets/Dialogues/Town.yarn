@@ -178,7 +178,7 @@ position: 250, 200
         Iman: … What?
     <<endif>>
     <<set $hasFoundTuna to true>>
-    <<pickUpFromGround "IMAN 1">>
+    <<pickUpFromGround "PLAYER IMAN">>
     <<disable_player_lookat "TUNA CAN">>
     <<disable_tuna_can "TUNA CAN">>
     <<change_secondary_mission_prompt UIManager "Great powers mean great responsibilities. Great tuna means... a great kitten?">>

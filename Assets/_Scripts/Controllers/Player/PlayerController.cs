@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
             if (currentInteractingNPC != null && !phone.IsReadingPhone)
             {
-                Debug.Log($"Talking to {currentInteractingNPC}");
+
                 currentInteractingNPC.Talk(context);
             }
 
