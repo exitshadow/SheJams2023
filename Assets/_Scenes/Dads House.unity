@@ -2259,7 +2259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1122790524}
-  intonationClips: []
+  intonationClips:
+  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!1001 &4041462716820658642
 PrefabInstance:
@@ -2591,11 +2593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.035090387
+      value: -0.03509038
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.12795156
+      value: -0.12795159
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2699,19 +2701,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.9916552
+      value: -0.9916551
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.015057344
+      value: -0.01505736
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.12802202
+      value: -0.12802196
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0019438928
+      value: 0.0019438943
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_BindingMode
@@ -2975,6 +2977,8 @@ MonoBehaviour:
   speechDefaults: {fileID: 1122790524}
   intonationClips:
   - {fileID: 8300000, guid: 31059fa68ffe6254a9ba2adf375ed7d5, type: 3}
+  - {fileID: 8300000, guid: 6568023712e42cc46b1f66cf2bc40e62, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!1001 &8028781278746923942
 PrefabInstance:
