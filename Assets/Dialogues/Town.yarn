@@ -42,6 +42,15 @@ position: 0, 0
     <<set_grabbable "TREE BRANCH">>
     <<set_grabber NEIGHBOUR 0>>
     <<grab  "GRAB MANAGER">>
+    Neighbor: I'll take care of this.
+    Neighbor: I've got a few words for them butterflies...
+    Iman: O-kaaaay...
+    Iman: Guess it's time to go back home, then.
+    <<if $hasEncounteredCat && !$hasGivenTuna || $hasFoundTuna && !$hasGivenTuna>>
+    Iman: Unless I still want to look around.
+    Iman: Finish some side quest, maybe?
+    Iman: Not to break the fourth wall or anything...
+    <<endif>>
     <<change_mission_prompt UIManager "Now it is time to fix Dad's computer.">>
     <<set $hasCapturedButterflies to true>>
     <<stop>>
