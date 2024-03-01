@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 /// <summary>
 /// This class offers methods that are to be called by the Unity Events of the Player Input attached to the same game object.
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private InputAction playerCancel;
     private InputAction playerPickUpPhone;
     private InputAction playerRun;
+    private InputAction playerLook; 
 
     private CharacterController controller;
     private Rigidbody rb;
@@ -55,10 +57,12 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        // read from inputs
+        // Lire les entrées du joueur
         Vector2 moveDirection = playerMove.ReadValue<Vector2>();
+        moveDirection.x = 0;    
+        Vector2 cameraLook = playerLook.ReadValue<Vector2>();
 
-        // rotation based on camera rotation
+        // Rotation basée sur la rotation de la caméra
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
         forward.y = 0f;
@@ -68,21 +72,26 @@ public class PlayerController : MonoBehaviour
 
         if (desiredMoveDirection != Vector3.zero)
         {
-            Quaternion desiredRotation = Quaternion.LookRotation(desiredMoveDirection);
+            // Calculer la rotation désirée avec la direction de mouvement et la rotation de la caméra
+            Quaternion desiredRotation = Quaternion.LookRotation(desiredMoveDirection, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, steeringSpeed * Time.deltaTime);
         }
 
-        // Move Character
-        transform.position += desiredMoveDirection * moveSpeed * Time.deltaTime;
+        // Déplacer le personnage
+        transform.position += desiredMoveDirection.normalized * moveSpeed * Time.deltaTime;
 
-        // steering (rotation) and walk/idle animation
+        // Appliquer la rotation de la caméra sur le joueur
+        transform.Rotate(Vector3.up, cameraLook.x * steeringSpeed * Time.deltaTime);
+
+        // Animation de marche/idle
         if (moveDirection != Vector2.zero)
         {
-            transform.Rotate(0, moveDirection.x * steeringSpeed * Time.deltaTime * 100, 0);
             animator.SetFloat("walkingSpeed", walkSpeed);
         }
-        else animator.SetFloat("walkingSpeed", 0);
-
+        else
+        {
+            animator.SetFloat("walkingSpeed", 0);
+        }
     }
 
     public void Run(InputAction.CallbackContext context)
@@ -175,6 +184,9 @@ public class PlayerController : MonoBehaviour
 
         playerMove = actions.Player.Move;
         playerMove.Enable();
+
+        playerLook = actions.Player.Look;
+        playerLook.Enable();
 
 
         moveSpeed = walkSpeed;
