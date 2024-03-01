@@ -57,12 +57,9 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        // Lire les entrées du joueur
         Vector2 moveDirection = playerMove.ReadValue<Vector2>();
-        moveDirection.x = 0;    
         Vector2 cameraLook = playerLook.ReadValue<Vector2>();
 
-        // Rotation basée sur la rotation de la caméra
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
         forward.y = 0f;
@@ -72,18 +69,14 @@ public class PlayerController : MonoBehaviour
 
         if (desiredMoveDirection != Vector3.zero)
         {
-            // Calculer la rotation désirée avec la direction de mouvement et la rotation de la caméra
             Quaternion desiredRotation = Quaternion.LookRotation(desiredMoveDirection, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, steeringSpeed * Time.deltaTime);
         }
 
-        // Déplacer le personnage
         transform.position += desiredMoveDirection.normalized * moveSpeed * Time.deltaTime;
 
-        // Appliquer la rotation de la caméra sur le joueur
         transform.Rotate(Vector3.up, cameraLook.x * steeringSpeed * Time.deltaTime);
 
-        // Animation de marche/idle
         if (moveDirection != Vector2.zero)
         {
             animator.SetFloat("walkingSpeed", walkSpeed);
