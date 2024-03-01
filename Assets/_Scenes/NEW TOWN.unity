@@ -156,6 +156,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b41c9741aaf774d438c303dc7e7ee5f2, type: 3}
   - {fileID: 8300000, guid: 7068192d4ec563f42be06a867531eed3, type: 3}
   - {fileID: 8300000, guid: 72966f804fc19e04f97c225ba73834d0, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!1 &92347601
 GameObject:
@@ -352,7 +353,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1482010130}
-  intonationClips: []
+  intonationClips:
+  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!1001 &431906512
 PrefabInstance:
@@ -1588,11 +1591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.035485324
+      value: -0.03548531
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0066956473
+      value: 0.006695644
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517831, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LookAt
@@ -1664,11 +1667,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0354853
+      value: -0.03548532
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0066956417
+      value: 0.0066956463
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_BindingMode
@@ -2284,12 +2287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2781836945021453561, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftArm'\n\tTransform
-        'mixamorig:LeftForeArm'\n\tTransform 'mixamorig:Neck'\n\tTransform 'mixamorig:Spine'\n\tTransform
-        'mixamorig:LeftHand'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftArm'\n\tTransform
-        'mixamorig:LeftForeArm'\n\tTransform 'mixamorig:Neck'\n\tand more ..."
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3489551291734799639, guid: 5cad12234eea2a840aa72bd6490b7f46, type: 3}
       propertyPath: m_Name
@@ -4326,6 +4324,8 @@ MonoBehaviour:
   speechDefaults: {fileID: 1482010130}
   intonationClips:
   - {fileID: 8300000, guid: 9cea16530d092264880c56d6cee874b6, type: 3}
+  - {fileID: 8300000, guid: 6568023712e42cc46b1f66cf2bc40e62, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!4 &1604357968 stripped
 Transform:
@@ -4864,6 +4864,8 @@ MonoBehaviour:
   speechDefaults: {fileID: 1482010130}
   intonationClips:
   - {fileID: 8300000, guid: e27f027e3960d8c4f84e0bb964da21c8, type: 3}
+  - {fileID: 8300000, guid: 6568023712e42cc46b1f66cf2bc40e62, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!1001 &3306920855857253565
 PrefabInstance:
@@ -4899,11 +4901,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.035485324
+      value: -0.03548531
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0066956473
+      value: 0.006695644
       objectReference: {fileID: 0}
     - target: {fileID: 6501397880405783347, guid: 914ccc14186a70b4b8c163a4c46af9ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5016,7 +5018,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1482010130}
-  intonationClips: []
+  intonationClips:
+  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
+  - {fileID: 8300000, guid: 6568023712e42cc46b1f66cf2bc40e62, type: 3}
   typewritingClips: []
 --- !u!1001 &5851854294143036330
 PrefabInstance:
@@ -5526,7 +5531,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1482010130}
-  intonationClips: []
+  intonationClips:
+  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!114 &7410827830416182171
 MonoBehaviour:
@@ -5541,7 +5548,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1482010130}
-  intonationClips: []
+  intonationClips:
+  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!114 &7410827830416182172
 MonoBehaviour:
@@ -5556,7 +5565,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1482010130}
-  intonationClips: []
+  intonationClips:
+  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!114 &7410827830416182173
 MonoBehaviour:
@@ -5571,7 +5582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechDefaults: {fileID: 1482010130}
-  intonationClips: []
+  intonationClips:
+  - {fileID: 8300000, guid: 91bd1c5d3463d9d4b922d6b5989d7391, type: 3}
+  - {fileID: 8300000, guid: a8aed7503fd960a4c9aba6718af6de84, type: 3}
   typewritingClips: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

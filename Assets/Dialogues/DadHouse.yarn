@@ -9,15 +9,21 @@ position: 0, 0
 //talking to dad in the beginning of the game
 <<if !$hasSpokenToDadAtHome && !$hasCapturedButterflies>>
     Dad: Iman! Can you come check my computer? It's broken again!
+    <<play_intonation_sound DAD 2>>
     Iman: Ah, uh, sorry, dad… I have to, uh, help our neighbor! Yes.
         <<if $hasVisitedNeighbour>>
+            <<play_intonation_sound DAD 2>>
             Iman: She's been having trouble with... butterflies.
         <<else>>
+            <<play_intonation_sound DAD 2>>
             Iman: She called earlier saying she needed help with something. I couldn't understand what it was, though…
             <<change_mission_prompt UIManager "Go find your neighbour to make sense of what is going on">>
         <<endif>>
+    <<play_intonation_sound DAD 1>>
     Dad: Mrs Al-Qadiri always has had very strange problems.
+    <<play_intonation_sound DAD 1>>
     Dad: I wish you good luck my daughter! I am waiting for you here when you're done.
+    <<play_intonation_sound DAD 2>>
     Iman: I'll take a look at your computer when I get back!
     <<set $hasSpokenToDadAtHome to true>>
     <<stop>>
@@ -34,54 +40,94 @@ position: 0, 0
     // if you hadn't talked to dad first:
     <<if !$hasSpokenToDadAtHome>>
         Dad: Ah, my daughter, there you are!
+        <<play_intonation_sound DAD 2>>
         Iman: Using the daughter card, I see.
+        <<play_intonation_sound DAD 1>>
         Dad: Yes. My computer is broken, can you take a look at it?
+        <<play_intonation_sound DAD 2>>
         Iman: It worked fine yesterday. What did you do?
         <<set $hasSpokenToDadAtHome to true>>
     <<else>>
         Dad: Ah, my daughter, you're back!
+        <<play_intonation_sound DAD 2>>
         Iman: Using the daughter card, I see.
+        <<play_intonation_sound DAD 1>>
         Dad: Yes. Will you check my computer now?
+        <<play_intonation_sound DAD 2>>
         Iman: You said it was broken, right? It worked fine yesterday. What did you do?
     <<endif>>
+    <<play_intonation_sound DAD 1>>
     Dad: Nothing! I turned it on and there's images that keep appearing!
+    <<play_intonation_sound DAD 2>>
     Iman: Hm, you mean spam? Maybe it caught a virus.
+    <<play_intonation_sound DAD 1>>
     Dad: So my computer is sick? Can you take a look?
+    <<play_intonation_sound DAD 2>>
     Iman: It's not really my area…
+    <<play_intonation_sound DAD 1>>
     Dad: My daughter has a diploma in computer science and can't even help her own dad?
+    <<play_intonation_sound DAD 2>>
     Iman: Okay, fine! I'll take a look.
         // add command(s) that start(s) computer cutscene
+    <<play_intonation_sound DAD 2>>
     Iman: Hm, I see.
+    <<play_intonation_sound DAD 1>>
     Dad: What?
+    <<play_intonation_sound DAD 2>>
     Iman: So if I do this, and I download that, and I delete some stuff…
+    <<play_intonation_sound DAD 1>>
     Dad: What are you doing?
+    <<play_intonation_sound DAD 2>>
     Iman: …
+    <<play_intonation_sound DAD 1>>
     Dad: …
+    <<play_intonation_sound DAD 2>>
     Iman: Let me try something else.
+    <<play_intonation_sound DAD 1>>
     Dad: …
+    <<play_intonation_sound DAD 2>>
     Iman: There we go!
+    <<play_intonation_sound DAD 1>>
     Dad: Did you do it?
+    <<play_intonation_sound DAD 2>>
     Iman: Yes. I just reset to factory settings.
+    <<play_intonation_sound DAD 1>>
     Dad: ...
+    <<play_intonation_sound DAD 2>>
     Iman: ...
+    <<play_intonation_sound DAD 1>>
     Dad: Oooh!
+    <<play_intonation_sound DAD 2>>
     Iman: See!
     Dad: Ah, I have such a smart daughter! I knew it. I said to myself: “She can do it!”
+    <<play_intonation_sound DAD 2>>
     Iman: Don't mention it.
+    <<play_intonation_sound DAD 1>>
     Dad: I know you will do great things. Reach for the stars, my daughter!
+    <<play_intonation_sound DAD 2>>
     Iman: Alright, alright. I think that's enough for today.
+    <<play_intonation_sound DAD 1>>
     Dad: Ah, your friend Nour was searching for you earlier.
+    <<play_intonation_sound DAD 2>>
     Iman: Really? What did she want?
+    <<play_intonation_sound DAD 1>>
     Dad: You'll have to ask her! She said you could meet her at the edge of town.
+    <<play_intonation_sound DAD 2>>
     Iman: I wonder what this is about…
+    <<play_intonation_sound DAD 1>>
     Dad: I guess we'll find out...
     // command dad looks at camera
+    <<play_intonation_sound DAD 2>>
     Iman: ???
+    <<play_intonation_sound DAD 1>>
     Dad: In the next episode!
+    <<play_intonation_sound DAD 1>>
     Dad: Thank you for playing, we hope you enjoyed your experience and will leave us a nice review!
+    <<play_intonation_sound DAD 2>>
     Iman: What?
     // Dad: Like and subscribe in the link at the end of the credits!
     // command iman looks at camera
+    <<play_intonation_sound DAD 1>>
     Dad: And never forget to reach for your dreams!
     <<change_mission_prompt UIManager "">>
     <<start_credits_roll DAD>> // add a bit of a delay before credits roll
@@ -90,6 +136,7 @@ position: 0, 0
 //talking to dad after computer quest
 <<if $hasFinishedDadQuest>>
     Dad: Your friend Nour was searching for you earlier.
+    <<play_intonation_sound DAD 1>>
     Dad: She said you could meet her at the edge of town.
 <<endif>>
 ===
@@ -104,6 +151,8 @@ title: TableMagazines
 tags: magazines rocket foreshadowing
 ---
 Iman: Oh, the science magazines of the month!
+<<play_intonation_sound CoffeeTableSet 1>>
 Iman: Apparently someone around is working on some type of new rocket.
+<<play_intonation_sound CoffeeTableSet 1>>
 Iman: It's crazy to think we live in the same small hole.
 ===
