@@ -17,7 +17,7 @@ position: 0, 0
         <<else>>
             <<play_intonation_sound DAD 2>>
             Iman: She called earlier saying she needed help with something. I couldn't understand what it was, though…
-            <<change_mission_prompt UIManager "Go find your neighbour to make sense of what is going on">>
+            <<change_mission_prompt UIManager "Go find your neighbor to make sense of what is going on">>
         <<endif>>
     <<play_intonation_sound DAD 1>>
     Dad: Mrs Al-Qadiri always has had very strange problems.

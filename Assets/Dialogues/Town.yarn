@@ -112,7 +112,7 @@ position: 250, 0
         <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: Thinking of it, it is a bit disgusting.
         <<play_intonation_sound "TREE BRANCH" 1>>
-        Iman: Didn't the neighbour say something about being scared of butterflies?
+        Iman: Didn't the neighbor say something about being scared of butterflies?
     <<else>>
         // player already heard mrs al qadiri complaints
         Iman: Oh, lucky! There's a branch already on the ground.
