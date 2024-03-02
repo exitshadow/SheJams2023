@@ -1598,20 +1598,20 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Move
 
-        Look / Turn
+        Look
 
         Run
 
         Interact
 
-        Pick
-        up phone
+        Pick up
+        phone
 
         Help / Controls'
       objectReference: {fileID: 0}
     - target: {fileID: 5851854293689266413, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_text
-      value: 'WS / up down
+      value: 'WASD / arrows
 
         Mouse cursor
 
