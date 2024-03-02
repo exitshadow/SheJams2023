@@ -1594,6 +1594,35 @@ PrefabInstance:
       propertyPath: m_FirstSelected
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5851854293047171965, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_text
+      value: 'Move
+
+        Look
+
+        Run
+
+        Interact
+
+        Pick up
+        phone
+
+        Help / Controls'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851854293689266413, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_text
+      value: 'WASD / arrows
+
+        Mouse cursor
+
+        Shift
+
+        E
+
+        R
+
+        Tab'
+      objectReference: {fileID: 0}
     - target: {fileID: 5851854293770942402, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1680,6 +1709,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8056342989325921940, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191905166149169729, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8209525452627189371, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
@@ -2597,7 +2630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0052628573
+      value: -0.0052628587
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2605,7 +2638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005844242283, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000021602493
+      value: -0.00002160354
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalPosition.x
