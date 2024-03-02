@@ -58,7 +58,7 @@ position: 0, 0
     <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: Just give me that, please.
     <<set_grabbable "TREE BRANCH">>
-    <<set_grabber NEIGHBOUR 1>>
+    <<set_grabber NEIGHBOUR 0>>
     <<grab  "GRAB MANAGER">>
     <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: I'll take care of this.
@@ -230,22 +230,22 @@ position: 250, 200
     <<if !$hasEncounteredCat>>
         // player knows nothing about cats or tuna cans
         Iman: What is this?
-        <<play_intonation_sound "TUNA CAN" 2>>
+        <<play_intonation_sound "TUNA CAN" 1>>
         Iman: "Tuna, Import Type (super tasty)"
-        <<play_intonation_sound "TUNA CAN" 2>>
+        <<play_intonation_sound "TUNA CAN" 1>>
         Iman: People really leave crazy things on the floor.
     <<else>>
         // player has encountered cat already, but has no prior knowledge of the tuna can
         Iman: Oh, how curious.
-        <<play_intonation_sound "TUNA CAN" 2>>
+        <<play_intonation_sound "TUNA CAN" 1>>
         Iman: So that tuna can has been left there just for my own convenience.
-        <<play_intonation_sound "TUNA CAN" 2>>
+        <<play_intonation_sound "TUNA CAN" 1>>
         Iman: Lol I don't think so.
-        <<play_intonation_sound "TUNA CAN" 2>>
+        <<play_intonation_sound "TUNA CAN" 1>>
         Iman: But it's marked "import type", which is kinda neat.
-        <<play_intonation_sound "TUNA CAN" 3>>
-        Game Manager: You got: 1 tuna can(s).
         <<play_intonation_sound "TUNA CAN" 2>>
+        Game Manager: You got: 1 tuna can(s).
+        <<play_intonation_sound "TUNA CAN" 1>>
         Iman: … What?
     <<endif>>
     <<set $hasFoundTuna to true>>
