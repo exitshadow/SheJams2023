@@ -700,7 +700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.020568676, y: 0.937992, z: -0.056512054, w: -0.34140062}
+  m_LocalRotation: {x: -0.020568686, y: 0.937992, z: -0.056512076, w: -0.34140068}
   m_LocalPosition: {x: 1.3040152, y: 0.37721038, z: 0.9755707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2725,11 +2725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0040971935
+      value: 0.0040971637
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006371755175, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00024684705
+      value: -0.0002468489
       objectReference: {fileID: 0}
     - target: {fileID: 6280239006840674828, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_BindingMode
@@ -2821,7 +2821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239007233191509, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_XAxis.m_MaxSpeed
-      value: 250
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 6280239007233191509, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_XAxis.m_MaxValue

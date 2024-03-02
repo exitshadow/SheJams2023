@@ -65,8 +65,8 @@ public class Speech : MonoBehaviour
     public void PlayIntonationSound(int index)
     {
         // if (dialogueSpeakerNameTMP.text == "Iman") speechDefaults.PlayImanIntonation();
-        if (useIntonationClipDefaults) speechDefaults.PlayDefaultIntonation(index);
-        else speechDefaults.PlayClip(intonationClips[index]);   
+        //if (useIntonationClipDefaults) speechDefaults.PlayDefaultIntonation(index);
+        //else speechDefaults.PlayClip(intonationClips[index]);   
     }
 
     public void PlaySpeechSounds()
