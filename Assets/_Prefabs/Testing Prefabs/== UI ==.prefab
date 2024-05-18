@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 6843938382050456265}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 6843938382119074127}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -732,6 +732,8 @@ MonoBehaviour:
   showDialogueBoxAtStart: 0
   debug: 0
   screenMargin: 40
+  screenMarginY: 200
+  maskBoxMargin: 15
   uiCanvas: {fileID: 5851854293208939377}
   showControlsPromptGroup: {fileID: 6241975615080682448}
   controlsHelpGroup: {fileID: 8191905166149169730}
@@ -744,7 +746,9 @@ MonoBehaviour:
   dialogueSpeakerNameTMP: {fileID: 1309858466}
   dialogueContentTMP: {fileID: 1886760976}
   playerCollider: {fileID: 0}
+  CurrentInteractingNPCCollider: {fileID: 0}
   dialogueAnchor: {fileID: 0}
+  otherDialogueAnchor: {fileID: 0}
   playerDialogueAnchor: {fileID: 0}
   currentDialogueAnchor: {fileID: 0}
   phoneNotificationGroup: {fileID: 8163713551589999063}
@@ -6867,16 +6871,13 @@ PrefabInstance:
     - {fileID: 1139265342814317403, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1139265343998268524, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 154935291}
     - targetCorrespondingSourceObject: {fileID: 1139265343416787167, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
       insertIndex: -1
       addedObject: {fileID: 219753475}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1139265343998268525, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1139265343998268524, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1916762566}
+      addedObject: {fileID: 154935291}
+    m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1139265343416787164, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1916762564}
@@ -6889,23 +6890,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1139265342814317406, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1916762563}
+    - targetCorrespondingSourceObject: {fileID: 1139265343998268525, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1916762566}
   m_SourcePrefab: {fileID: 100100000, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
 --- !u!224 &6843938382050456264 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1139265343416787167, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
   m_PrefabInstance: {fileID: 5851854293300285975}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6843938382050456265 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1139265343416787166, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
-  m_PrefabInstance: {fileID: 5851854293300285975}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6843938382050456267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6843938382050456267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1139265343416787164, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}

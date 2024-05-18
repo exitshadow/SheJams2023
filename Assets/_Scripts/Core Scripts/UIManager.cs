@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     [Header("Dialogue Box")]
     [Tooltip("Safe margin area between the dialogue box and the screen limits")]
     [SerializeField] private float screenMargin = 45f;
+    [SerializeField] private float screenMarginY = 100f;
     [SerializeField] private float maskBoxMargin = 15f;
 
     private float screenBoundTop;
@@ -365,9 +366,9 @@ public class UIManager : MonoBehaviour
 
     private void GetScreenBoundsWithMargins()
     {
-        screenBoundTop = uiCanvas.GetComponent<RectTransform>().rect.height - screenMargin;
+        screenBoundTop = uiCanvas.GetComponent<RectTransform>().rect.height - screenMarginY;
         screenBoundRight = uiCanvas.GetComponent<RectTransform>().rect.width - screenMargin;
-        screenBoundBottom = screenMargin;
+        screenBoundBottom = screenMarginY;
         screenBoundLeft = screenMargin;
     }
 
@@ -678,7 +679,7 @@ public class UIManager : MonoBehaviour
     private Vector2 ScaleToScreen(Vector2 coordinate)
     {
         float x = coordinate.x / Camera.main.pixelWidth / (screenBoundRight + screenMargin);
-        float y = coordinate.y / Camera.main.pixelHeight / (screenBoundTop + screenMargin);
+        float y = coordinate.y / Camera.main.pixelHeight / (screenBoundTop + screenMarginY);
 
         return new Vector2(x, y);
     }
@@ -688,7 +689,7 @@ public class UIManager : MonoBehaviour
         Vector2 coordinate = Camera.main.WorldToScreenPoint(position);
 
         float x = coordinate.x / (Camera.main.pixelWidth / (screenBoundRight + screenMargin));
-        float y = coordinate.y / (Camera.main.pixelHeight / (screenBoundTop + screenMargin));
+        float y = coordinate.y / (Camera.main.pixelHeight / (screenBoundTop + screenMarginY));
 
         return new Vector2(x, y);
     }
