@@ -58,7 +58,7 @@ position: 0, 0
     <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: Just give me that, please.
     <<set_grabbable "TREE BRANCH">>
-    <<set_grabber NEIGHBOUR 1>>
+    <<set_grabber NEIGHBOUR 0>>
     <<grab  "GRAB MANAGER">>
     <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: I'll take care of this.
