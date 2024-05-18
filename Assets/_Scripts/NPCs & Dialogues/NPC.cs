@@ -22,14 +22,14 @@ public abstract class NPC : MonoBehaviour
     [SerializeField] protected bool isTriggerActive = true;
     [SerializeField] protected bool isMaskableByDialogueBoxes = false;
 
-    [Tooltip("Yarn dialogue runner component. One per scene")]
 
     [Header("Look At Options")]
+    [Tooltip("Anchor used to place dialogue boxes and interaction prompt")]
     [SerializeField] protected bool usePlayerLookAtOnTrigger = true;
     [SerializeField] protected Transform playerLookAimTarget;
 
     [Header("Yarn Settings")]
-    [Tooltip("Anchor used to place dialogue boxes and interaction prompt")]
+    [Tooltip("Yarn dialogue runner component. One per scene")]
     [SerializeField] protected DialogueRunner dialogueRunner;
     [SerializeField] protected string dialogueNode;
     public string DialogueNode { get {return dialogueNode;} }
