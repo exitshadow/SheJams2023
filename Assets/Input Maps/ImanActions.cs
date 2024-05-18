@@ -541,6 +541,17 @@ public partial class @ImanActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""14027e53-eb4a-4caa-943d-4257d612d11c"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5d7bb937-2c8f-4042-9d74-532e4f6806fc"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",

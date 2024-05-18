@@ -47,7 +47,6 @@ public abstract class NPC : MonoBehaviour
     protected IKLookatAnimation playerLookAt;
     #endregion
 
-
     #region dialogue tracking tools
     public event Action<string> onDialogueRequest;
     public bool IsPlayingDialogue { get { return dialogueRunner.IsDialogueRunning ; } }
@@ -137,7 +136,7 @@ public abstract class NPC : MonoBehaviour
             if (dialogueAnchor) uiManager.dialogueAnchor = this.dialogueAnchor;
             else uiManager.dialogueAnchor = uiManager.playerDialogueAnchor;
 
-            if (useInteractionPrompt) uiManager.ShowInteractionButton(promptText);
+            if (useInteractionPrompt && !AnnoyingPhone.IsReadingPhone) uiManager.ShowInteractionButton(promptText);
             if (usePlayerLookAtOnTrigger) EnablePlayerLookAt();
             if (!isMaskableByDialogueBoxes) uiManager.CurrentInteractingNPCCollider = GetComponent<CapsuleCollider>();
             OccupyPlayerSlot();
@@ -180,7 +179,7 @@ public abstract class NPC : MonoBehaviour
     [YarnCommand("disable_player_lookat")]
     public void DisablePlayerLookAt()
     {
-        playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
+        if (player) playerLookAt = player.GetComponentInChildren<IKLookatAnimation>();
         playerLookAt.DeactivateLookat();
     }
 

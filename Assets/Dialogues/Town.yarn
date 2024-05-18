@@ -11,16 +11,27 @@ position: 0, 0
 // i removed "&& $hasSpokenToDadAtHome" because a lot of people will miss talking to the dad at first and i don't want that to be a 'blocker'
 <<if !$hasVisitedNeighbour>>
     Neighbor: You're here! Finally, finally!
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: I am, I am! What's the matter?
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: Butterflies, Iman! Butterflies everywhere!
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: Yes, summer is coming, there are going to be butterflies.
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: No, no. They're in my house! My house is full of butterflies! I have a chronic fear of them.
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: Aren't you wearing a butterfly pattern?
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: It's called exposure therapy! But anyways, what can I do? You're so smart, Iman. Surely you can help me…
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: I don't really-- fine. Better this than dealing with another of dad's computer questions.
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: Hm… Butterflies… Oh, there's this tree in the park, it grows flowers that attract butterflies!
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: If I bring a branch, I could lead them out of the house.
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: Yes, yes! Thank you!
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: Well, off I go, I guess.
     <<set $hasVisitedNeighbour to true>>
     <<change_mission_prompt UIManager "Find the butterfly tree branch in the park">>
@@ -29,19 +40,44 @@ position: 0, 0
 
 //talking to neighbor before finding the branch
 <<if !$hasFoundTreeBranch && $hasVisitedNeighbour>>
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: Please come back with a branch from that blooming tree in the park!
 <<endif>>
 
 //talking to neighbor after finding the branch
 <<if $hasFoundTreeBranch && !$hasCapturedButterflies>>
+    Neighbor: So?
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: Here's the branch.
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: Wonderful, wonderful! Here, I'll open the door, and you get them out, yes?
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: I mean, it's not going to happen by itself, right? That would be nice…
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: ...
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: Just give me that, please.
     <<set_grabbable "TREE BRANCH">>
-    <<set_grabber NEIGHBOUR 0>>
+    <<set_grabber NEIGHBOUR 1>>
     <<grab  "GRAB MANAGER">>
+    <<play_intonation_sound NEIGHBOUR 1>>
+    Neighbor: I'll take care of this.
+    <<play_intonation_sound NEIGHBOUR 1>>
+    Neighbor: I've got a few words for them butterflies...
+    <<play_intonation_sound NEIGHBOUR 2>>
+    Iman: O-kaaaay...
+    <<play_intonation_sound NEIGHBOUR 2>>
+    Iman: Guess it's time to go back home, then.
+    <<if !$hasGivenTuna>>
+        <<play_intonation_sound NEIGHBOUR 2>>
+        Iman: Unless I still want to look around.
+        <<if $hasEncounteredCat || $hasFoundTuna>>
+            <<play_intonation_sound NEIGHBOUR 2>>
+            Iman: Finish some side quest, maybe?
+            <<play_intonation_sound NEIGHBOUR 2>>
+            Iman: Not to break the fourth wall or anything...
+        <<endif>>
+    <<endif>>
     <<change_mission_prompt UIManager "Now it is time to fix Dad's computer.">>
     <<set $hasCapturedButterflies to true>>
     <<stop>>
@@ -49,9 +85,12 @@ position: 0, 0
 
 //after helping neighbor with the butterflies
 <<if $hasCapturedButterflies>>
-    Neighbor: Iman, thank you, thank you!
+    Neighbor: Really, Iman, thank you!
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: Don't worry about it.
+    <<play_intonation_sound NEIGHBOUR 1>>
     Neighbor: I can finally go back inside. Have a nice day, Iman!
+    <<play_intonation_sound NEIGHBOUR 2>>
     Iman: I feel like it's sarcastic, at this point. Well, time to go home.
     <<set $hasFinishedNeighborQuest to true>>
     <<stop>>
@@ -70,12 +109,16 @@ position: 250, 0
     <<if !$hasVisitedNeighbour>>
         // player has no knowledge of neighbour's problem
         Iman: Whoa, a butterfly tree. It is no joke, it attracks so many of them.
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: Thinking of it, it is a bit disgusting.
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: Didn't the neighbour say something about being scared of butterflies?
     <<else>>
         // player already heard mrs al qadiri complaints
         Iman: Oh, lucky! There's a branch already on the ground.
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: ...
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: I hope I won't get plagued by the butterflies myself now.
         <<set $hasFoundTreeBranch to true>>
         <<enable_trigger_events "TREE BRANCH" false>>
@@ -83,12 +126,17 @@ position: 250, 0
         <<set_grabber "PLAYER IMAN" 0>>
         <<grab "GRAB MANAGER">>
         <<disable_player_lookat "TREE BRANCH">>
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: Better bring this back before she has a heart attack!
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: ...
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: ...why am I doing this again?
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: Oh, right. Avoiding Dad. And his broken computer.
+        <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: I'm sure he just forgot to plug it in, anyway.
-        <<change_mission_prompt UIManager "Go catch the neighbour's butterflies to avoid performing your duties.">>
+        <<change_mission_prompt UIManager "Bring the branch back to avoid performing your duties.">>
     <<endif>>
 <<endif>>
 ===
@@ -107,39 +155,62 @@ position: 0, 200
 <<if !$hasEncounteredCat>>
     <<if !$hasFoundTuna>>
         Cat: *mrew*
+        <<play_intonation_sound CAT 4>>
         Iman: Oh, kitty, kitty!
+        <<play_intonation_sound CAT 4>>
         Iman: Well, would you look at that?
+        <<play_intonation_sound CAT 4>>
         Iman: The cutest cat in the world has graced me with its presence!
+        <<play_intonation_sound CAT 4>>
         Iman: I should thank it with an offering. Hmmm…
+        <<play_intonation_sound CAT 0>>
         Cat: *mrew?*
+        <<play_intonation_sound CAT 4>>
         Iman: I know! I'll go buy some tuna. Cats love tuna, right? I'll just hop by the market.
+        <<play_intonation_sound CAT 4>>
         Iman: I'm definitely not using this as an excuse to do some shopping.
         <<set $hasEncounteredCat to true>>
         <<change_secondary_mission_prompt UIManager "Find something for the cat to eat. Like tuna!">>
         <<stop>>
     <<else>> // has found tuna before encountering cat first time
         Cat: *MEOW! MEOW! MEOW!*
+        <<play_intonation_sound CAT 4>>
         Iman: Dear lord, what is going with you?
+        <<play_intonation_sound CAT 0>>
         Cat: *MEEEEOW! MEOW MEOW! MEOOW! MEOOOOOOOOOOOOW!!!*
+        <<play_intonation_sound CAT 4>>
         Iman: Do you really like me that much?
+        <<play_intonation_sound CAT 1>>
         Cat: *purrrrrrr purrrrrrrr purrrrr*
+        <<play_intonation_sound CAT 4>>
         Iman: Awww, cutie pie! Have some pets!
+        <<play_intonation_sound CAT 3>>
         Cat: *hiss!*
+        <<play_intonation_sound CAT 4>>
         Iman: Hey!
+        <<play_intonation_sound CAT 1>>
         Cat: *purrrrs purrrrs purrrrrrrrrrrs*
+        <<play_intonation_sound CAT 4>>
         Iman: Oh, I see.
+        <<play_intonation_sound CAT 4>>
         Iman: Of course, that wasn't because of my great looks.
+        <<play_intonation_sound CAT 4>>
         Iman: I had that tuna can on me.
+        <<play_intonation_sound CAT 4>>
         Iman: Take it if that makes you so happy!
+        <<play_intonation_sound CAT 1>>
         Cat: *purrs furiously*
         <<set $hasGivenTuna to true>>
+        <<set $hasEncounteredCat to true>>
         <<change_secondary_mission_prompt UIManager "">>
         <<stop>>
     <<endif>>
 <<else>> // has already encountered cat
     <<if !$hasFoundTuna>>
         Iman: No, I just can't leave this poor cat to starve!
+        <<play_intonation_sound CAT 4>>
         Iman: Also, my wallet is burning with buyer's fever.
+        <<play_intonation_sound CAT 4>>
         Iman: To the market!
     <<else>> // has found tuna after having encountered cat first time
         Iman: Here you go, kitty.
@@ -159,15 +230,22 @@ position: 250, 200
     <<if !$hasEncounteredCat>>
         // player knows nothing about cats or tuna cans
         Iman: What is this?
+        <<play_intonation_sound "TUNA CAN" 2>>
         Iman: "Tuna, Import Type (super tasty)"
+        <<play_intonation_sound "TUNA CAN" 2>>
         Iman: People really leave crazy things on the floor.
     <<else>>
         // player has encountered cat already, but has no prior knowledge of the tuna can
         Iman: Oh, how curious.
+        <<play_intonation_sound "TUNA CAN" 2>>
         Iman: So that tuna can has been left there just for my own convenience.
+        <<play_intonation_sound "TUNA CAN" 2>>
         Iman: Lol I don't think so.
+        <<play_intonation_sound "TUNA CAN" 2>>
         Iman: But it's marked "import type", which is kinda neat.
+        <<play_intonation_sound "TUNA CAN" 3>>
         Game Manager: You got: 1 tuna can(s).
+        <<play_intonation_sound "TUNA CAN" 2>>
         Iman: … What?
     <<endif>>
     <<set $hasFoundTuna to true>>
@@ -190,20 +268,31 @@ position: 0, 400
     <<else>>
     <<enable_look_at VETERINARIAN>>
     Vet: Hey!
+    <<play_intonation_sound VETERINARIAN 1>>
     Vet: You can't give tuna to that cat!
+    <<play_intonation_sound VETERINARIAN 2>>
     Iman: What, why? Don't cats like fish?
+    <<play_intonation_sound VETERINARIAN 1>>
     Vet: They do, but this is tuna. They might like the strong smell, but it's not a well-balanced food.
+    <<play_intonation_sound VETERINARIAN 1>>
     Vet: Also, this cat is allergic to tuna.
+    <<play_intonation_sound VETERINARIAN 2>>
     Iman: Oh, no!
+    <<play_intonation_sound VETERINARIAN 1>>
     Vet: It's fine, it just means there's going to be some hair loss and a ton of farting.
+    <<play_intonation_sound VETERINARIAN 1>>
     Vet: I'm bringing it for observation, but no need to worry.
+    <<play_intonation_sound VETERINARIAN 2>>
     Iman: Okay… Goodbye, doctor. Sorry, kittycat.
     <<set $hasInterruptedCatFeeding to true>>
     <<endif>>
 <<else>>
     Vet: ...
+    <<play_intonation_sound VETERINARIAN 2>>
     Iman: May I ask you, what have you been looking at for so long?
+    <<play_intonation_sound VETERINARIAN 1>>
     Vet: The creeping void of absolute nothingness.
+    <<play_intonation_sound VETERINARIAN 2>>
     Iman: Oh dear.
 <<endif>>
 ===
@@ -212,8 +301,11 @@ title: NorthWestPathBlocking
 tags: path blocking
 ---
 Iman: Oh.
+<<play_intonation_sound "NorthWest Path Blocking" 1>>
 Iman: The mountain part of the desert is from here.
+<<play_intonation_sound "NorthWest Path Blocking" 1>>
 Iman: I don't want to end up being a fried stick.
+<<play_intonation_sound "NorthWest Path Blocking" 1>>
 Iman: Better stay in town!
 ===
 
@@ -221,8 +313,11 @@ title: SouthWestPathBlocking
 tags: path blocking
 ---
 Iman: From here, the endless, glorious desert!
+<<play_intonation_sound "SouthWest Path Blocking" 1>>
 Iman: Not that there is much to do with all this sand.
+<<play_intonation_sound "SouthWest Path Blocking" 1>>
 Iman: And I promised I was going to take care of all those things.
+<<play_intonation_sound "SouthWest Path Blocking" 1>>
 Iman: Ugh.
 ===
 
@@ -230,8 +325,11 @@ title: SouthEastPathBlocking
 tags: path blocking
 ---
 Iman: This is such a lovely part of the mountain.
+<<play_intonation_sound "South East Path Blocking" 1>>
 Iman: I remember camping here with Mom and Dad.
+<<play_intonation_sound "South East Path Blocking" 1>>
 Iman: It would be nice doing that again, one day.
+<<play_intonation_sound "South East Path Blocking" 1>>
 Iman: But now there is a lot left to do.
 ===
 
@@ -239,6 +337,8 @@ title: EastPathBlocking
 tags: path blocking
 ---
 Iman: Well, the roads of all adventures.
+<<play_intonation_sound "East Path Blocking" 1>>
 Iman: Also, Nour's street.
+<<play_intonation_sound "East Path Blocking" 1>>
 Iman: I really have to finish what I have to do first.
 ===

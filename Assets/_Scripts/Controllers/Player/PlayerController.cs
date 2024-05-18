@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private UIManager ui;
     [SerializeField] private AnnoyingPhone phone;
+    [SerializeField] private Transform cameraTransform;
 
     #region controls
     [SerializeField] private float walkSpeed;
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isTexting", false);
-            animator.SetLayerWeight(2,0);
+            animator.SetLayerWeight(2, 0);
         }
     }
 
@@ -56,15 +58,25 @@ public class PlayerController : MonoBehaviour
         // read from inputs
         Vector2 moveDirection = playerMove.ReadValue<Vector2>();
 
-        Vector2 movement = moveDirection * moveSpeed * Time.fixedDeltaTime;
-        Vector3 translation = new Vector3(0, 0, movement.y);
+        // rotation based on camera rotation
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+        forward.y = 0f;
+        right.y = 0f;
 
-        // movement
-        translation = transform.TransformDirection(translation);
-        transform.position += translation;
+        Vector3 desiredMoveDirection = forward * moveDirection.y + right * moveDirection.x;
+
+        if (desiredMoveDirection != Vector3.zero)
+        {
+            Quaternion desiredRotation = Quaternion.LookRotation(desiredMoveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, steeringSpeed * Time.deltaTime);
+        }
+
+        // Move Character
+        transform.position += desiredMoveDirection * moveSpeed * Time.deltaTime;
 
         // steering (rotation) and walk/idle animation
-        if(moveDirection != Vector2.zero)
+        if (moveDirection != Vector2.zero)
         {
             transform.Rotate(0, moveDirection.x * steeringSpeed * Time.deltaTime * 100, 0);
             animator.SetFloat("walkingSpeed", walkSpeed);
@@ -96,12 +108,12 @@ public class PlayerController : MonoBehaviour
 
             StopWalkingAnimation();
 
-            if (currentInteractingNPC != null && !phone.IsReadingPhone)
+            if (currentInteractingNPC != null && !AnnoyingPhone.IsReadingPhone)
             {
                 currentInteractingNPC.Talk(context);
             }
 
-            if (phone.IsReadingPhone)
+            if (AnnoyingPhone.IsReadingPhone)
             {
                 phone.GetNewMessage();
             }
@@ -173,11 +185,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (    currentInteractingNPC == null
+        if (currentInteractingNPC == null
             || !currentInteractingNPC.IsPlayingDialogue)
         {
             //if (!phone.IsReadingPhone)
-                Move();
+            Move();
         }
     }
 }
