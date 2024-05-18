@@ -765,8 +765,8 @@ MonoBehaviour:
   messageFromAppPrefab: {fileID: 249855474387582719, guid: f56a3c29aa02e5749a4f471c736d9008, type: 3}
   source: {fileID: 577848782}
   maxCharsPerLine: 25
-  charWidth: 7
-  charHeight: 12
+  charWidth: 10
+  charHeight: 25
   messageVerticalMargin: 40
   messageHorizontalMargin: 40
   messageSpacingBetweenSenders: 10
