@@ -12,7 +12,8 @@ using UnityEngine.UI.ProceduralImage;
 /// </summary>
 ///
 public class UIManager : MonoBehaviour
-{
+{   
+    #region member variables
     [Header("Settings")]
     [SerializeField] private bool showMissionStatusAtStart;
     [SerializeField] private bool showInteractionPromptAtStart;
@@ -72,6 +73,22 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueContentTMP;
     [SerializeField] private Collider playerCollider;
     [HideInInspector] public Collider CurrentInteractingNPCCollider;
+
+    [Header("Dialogue Box Color Change by Interlocutor")]
+    [SerializeField] private TextMeshProUGUI dialogueSpeakerNameSuperTMP;
+    [SerializeField] private ProceduralImage dialogueSpeakerNameBackground;
+    [SerializeField] private ProceduralImage dialogueContentBackground;
+    [SerializeField] private Color dialogueSpeakerSuperColorChange;
+    [SerializeField] private Color dialogueSpeakerSubColorChange;
+    [SerializeField] private Color dialogueSpeakerBckgColorChange;
+    [SerializeField] private Color dialogueContentTextColorChange;
+    [SerializeField] private Color dialogueContentBckgColorChange;
+    private Color dialogueSpeakerNameSuperColor;
+    private Color dialogueSpeakerNameSubColor;
+    private Color dialogueSpeakerNameBckgColor;
+    private Color dialogueContentTextColor;
+    private Color dialogueContentBackgroundtColor;
+
     public Transform dialogueAnchor;
     [Tooltip("default dialogue anchor")]
     public Transform otherDialogueAnchor;
@@ -102,6 +119,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float messageVerticalMargin = 20f;
     [SerializeField] private float messageHorizontalMargin = 30f;
     [SerializeField] private float messageSpacingBetweenSenders = 10f;
+    #endregion
+
     #endregion
 
 
@@ -154,6 +173,7 @@ public class UIManager : MonoBehaviour
     public void TriggerPop()
     {
         dialogueBoxGroup.GetComponent<Animator>().SetTrigger("Pop");
+        SetColorScheme();
     }
 
     public void OpenDialogueBox()
@@ -173,6 +193,7 @@ public class UIManager : MonoBehaviour
         dialogueSpeakerNameTMP.text = speakerName;
         dialogueContentTMP.text = dialogueLine;
 
+        // place anchors
         if (currentDialogueAnchor == null) return;
 
         if (speakerName == "Iman" || speakerName == "Game Manager")
@@ -183,6 +204,51 @@ public class UIManager : MonoBehaviour
         {
             if (dialogueAnchor == null) currentDialogueAnchor = playerDialogueAnchor;
             currentDialogueAnchor = dialogueAnchor;
+        }
+    }
+
+    private void RegisterColorScheme()
+    {
+        dialogueSpeakerNameSuperColor = dialogueSpeakerNameSuperTMP.color;
+        dialogueSpeakerNameSubColor = dialogueSpeakerNameTMP.color;
+        dialogueSpeakerNameBckgColor = dialogueSpeakerNameBackground.color;
+
+        dialogueContentTextColor = dialogueContentTMP.color;
+        dialogueContentBackgroundtColor = dialogueContentBackground.color;
+    }
+
+    private void ChangeColorScheme( Color speakerSuperColor,
+                                    Color speakerSubColor,
+                                    Color speakerBckgColor,
+                                    Color textColor,
+                                    Color backgroundColor)
+    {
+        dialogueSpeakerNameSuperTMP.color = speakerSuperColor;
+        dialogueSpeakerNameTMP.color= speakerSubColor;
+        dialogueSpeakerNameBackground.color = speakerBckgColor;
+
+        dialogueContentBackground.color = backgroundColor;
+        dialogueContentTMP.color = textColor;
+    }
+
+    public void SetColorScheme()
+    {
+        // change color scheme
+        if (dialogueSpeakerNameTMP.text == "Iman")
+        {
+            ChangeColorScheme(  dialogueSpeakerSuperColorChange,
+                                dialogueSpeakerSubColorChange,
+                                dialogueSpeakerBckgColorChange,
+                                dialogueContentTextColorChange,
+                                dialogueContentBckgColorChange);
+        }
+        else
+        {
+            ChangeColorScheme(  dialogueSpeakerNameSuperColor,
+                                dialogueSpeakerNameSubColor,
+                                dialogueSpeakerNameBckgColor,
+                                dialogueContentTextColor,
+                                dialogueContentBackgroundtColor);
         }
     }
     #endregion
@@ -638,11 +704,18 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        #region dialogue box color stuff
+        RegisterColorScheme();
+        #endregion
+
+        #region dialogue box colliding
         // todo to be refactored in a dialogue box method
         playerCollider = FindObjectOfType<PlayerController>().GetComponent<CapsuleCollider>();
         GetScreenBoundsWithMargins();
         // todo end
+        #endregion
 
+        #region initialize UI canvas for everything
         ClosePhoneUI();
         CloseControlsHelp();
         HideInteractionButton();
@@ -654,6 +727,7 @@ public class UIManager : MonoBehaviour
 
         if (showDialogueBoxAtStart) OpenDialogueBox();
         else CloseDialogueBox();
+        #endregion
 
         // todo refactor & correct
         // if (playerDialogueAnchor != null && dialogueAnchor != null)
@@ -662,17 +736,21 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        #region place dialogue box on screen
         if (currentDialogueAnchor != null)
         {
             PlaceDialogueBoxInScreen();
             TrackDialogueBoxBounds();
             RepositionDialogueBoxOnScreen();
         }
+        #endregion
 
+        #region prompt placing on screen
         if (dialogueAnchor != null)
         {
             PlaceInteractionButtonOnScreen();
         }
+        #endregion
     }
 
 #region utils

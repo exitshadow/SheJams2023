@@ -747,6 +747,14 @@ MonoBehaviour:
   dialogueContentTMP: {fileID: 1886760976}
   playerCollider: {fileID: 0}
   CurrentInteractingNPCCollider: {fileID: 0}
+  dialogueSpeakerNameSuperTMP: {fileID: 793297528544058948}
+  dialogueSpeakerNameBackground: {fileID: 9032413081556047445}
+  dialogueContentBackground: {fileID: 3141494722762368786}
+  dialogueSpeakerSuperColorChange: {r: 0.9960785, g: 0.3529412, b: 0.26666668, a: 1}
+  dialogueSpeakerSubColorChange: {r: 0.32156864, g: 0.31764707, b: 0.9294118, a: 1}
+  dialogueSpeakerBckgColorChange: {r: 1, g: 0.882353, b: 0.5803922, a: 1}
+  dialogueContentTextColorChange: {r: 1, g: 0.882353, b: 0.5803922, a: 1}
+  dialogueContentBckgColorChange: {r: 0.32156864, g: 0.31764707, b: 0.9294118, a: 1}
   dialogueAnchor: {fileID: 0}
   otherDialogueAnchor: {fileID: 0}
   playerDialogueAnchor: {fileID: 0}

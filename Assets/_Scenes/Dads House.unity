@@ -700,7 +700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.10531071, y: 0.8630365, z: -0.20148306, w: -0.45109004}
+  m_LocalRotation: {x: -0.1053107, y: 0.8630365, z: -0.20148303, w: -0.45109007}
   m_LocalPosition: {x: 2.6289985, y: 0.64235497, z: 1.5903769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1429,7 +1429,7 @@ PrefabInstance:
     - target: {fileID: 577848780, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: dialogueAnchor
       value: 
-      objectReference: {fileID: 2007886301}
+      objectReference: {fileID: 0}
     - target: {fileID: 577848780, guid: 119ed9184326a6647b7cfd49c7d65869, type: 3}
       propertyPath: playerCollider
       value: 
@@ -2642,15 +2642,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.22547193
+      value: -0.22547191
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.124747366
+      value: -0.124747396
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517830, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.029123306
+      value: 0.029123299
       objectReference: {fileID: 0}
     - target: {fileID: 6280239005854517831, guid: 719715cd974c3484598691e1b8a432db, type: 3}
       propertyPath: m_LookAt

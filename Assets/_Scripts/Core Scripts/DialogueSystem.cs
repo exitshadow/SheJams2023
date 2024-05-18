@@ -81,6 +81,7 @@ public class DialogueSystem : MonoBehaviour
     private void OnRequestInterrupt()
     {
         ui.TriggerPop();
+        //ui.SetColorScheme();
     }
 
 }
