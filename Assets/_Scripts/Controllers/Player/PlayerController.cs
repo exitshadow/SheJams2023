@@ -1,7 +1,9 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -11,6 +13,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    public UnityEvent OnPickupPhone;
+    public UnityEvent OnFetchNewPhoneMessage;
+
     [SerializeField] private UIManager ui;
     [SerializeField] private AnnoyingPhone phone;
     [SerializeField] private Transform cameraTransform;
@@ -115,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
             if (AnnoyingPhone.IsReadingPhone)
             {
-                phone.GetNewMessage();
+                OnFetchNewPhoneMessage.Invoke();
             }
         }
     }
@@ -125,11 +130,12 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("walkingSpeed", 0);
     }
 
+    // method is called from Player Input Component in Inspector!
     public void PickUpPhone(InputAction.CallbackContext context)
     {
         if (context.performed && currentInteractingNPC == null)
         {
-            phone.PickUpPhone(context);
+            OnPickupPhone.Invoke();
         }
     }
 

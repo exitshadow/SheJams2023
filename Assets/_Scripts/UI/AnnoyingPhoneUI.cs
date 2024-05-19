@@ -41,7 +41,7 @@ public class AnnoyingPhoneUI : MonoBehaviour
         uiCanvas = FindFirstObjectByType<Canvas>();
         
         ClosePhoneUI();
-        
+
         if (showPhoneAtStart) InitializePhoneIndicator();
         else ClosePhoneIndicator();
     }

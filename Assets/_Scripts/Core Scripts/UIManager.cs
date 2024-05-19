@@ -95,30 +95,30 @@ public class UIManager : MonoBehaviour
     public Transform playerDialogueAnchor;
     public Transform currentDialogueAnchor;
 
-    [Header("Phone prompt references")]
-    [SerializeField] private RectTransform phoneNotificationGroup;
-    [SerializeField] private RectTransform phoneIconGroup;
-    [SerializeField] private RectTransform phoneUIBoxGroup;
-    [SerializeField] private TextMeshProUGUI phoneStatusIndicator;
-    [SerializeField] private string idleStatusText = "no new message";
-    [SerializeField] private string newMessageStatusText = "read new message!";
+    // [Header("Phone prompt references")]
+    // [SerializeField] private RectTransform phoneNotificationGroup;
+    // [SerializeField] private RectTransform phoneIconGroup;
+    // [SerializeField] private RectTransform phoneUIBoxGroup;
+    // [SerializeField] private TextMeshProUGUI phoneStatusIndicator;
+    // [SerializeField] private string idleStatusText = "no new message";
+    // [SerializeField] private string newMessageStatusText = "read new message!";
 
-    [Header("Phone messages references")]
-    [SerializeField] private Image senderAvatar;
-    [SerializeField] private TextMeshProUGUI senderName;
-    [SerializeField] private VerticalLayoutGroup messageTextArea;
-    [SerializeField] private GameObject messageFromImanPrefab;
-    [SerializeField] private GameObject messageFromSenderPrefab;
-    [SerializeField] private GameObject messageFromAppPrefab;
-    [SerializeField] private AudioSource source;
+    // [Header("Phone messages references")]
+    // [SerializeField] private Image senderAvatar;
+    // [SerializeField] private TextMeshProUGUI senderName;
+    // [SerializeField] private VerticalLayoutGroup messageTextArea;
+    // [SerializeField] private GameObject messageFromImanPrefab;
+    // [SerializeField] private GameObject messageFromSenderPrefab;
+    // [SerializeField] private GameObject messageFromAppPrefab;
+    // [SerializeField] private AudioSource source;
     
-    [Header("Annoying Messages Display Parameters")]
-    [SerializeField] private int maxCharsPerLine = 25;
-    [SerializeField] private float charWidth = 8.5f;
-    [SerializeField] private float charHeight = 22f;
-    [SerializeField] private float messageVerticalMargin = 20f;
-    [SerializeField] private float messageHorizontalMargin = 30f;
-    [SerializeField] private float messageSpacingBetweenSenders = 10f;
+    // [Header("Annoying Messages Display Parameters")]
+    // [SerializeField] private int maxCharsPerLine = 25;
+    // [SerializeField] private float charWidth = 8.5f;
+    // [SerializeField] private float charHeight = 22f;
+    // [SerializeField] private float messageVerticalMargin = 20f;
+    // [SerializeField] private float messageHorizontalMargin = 30f;
+    // [SerializeField] private float messageSpacingBetweenSenders = 10f;
     #endregion
 
     #endregion

@@ -759,25 +759,6 @@ MonoBehaviour:
   otherDialogueAnchor: {fileID: 0}
   playerDialogueAnchor: {fileID: 0}
   currentDialogueAnchor: {fileID: 0}
-  phoneNotificationGroup: {fileID: 8163713551589999063}
-  phoneIconGroup: {fileID: 5627363568118401766}
-  phoneUIBoxGroup: {fileID: 3861782408715910246}
-  phoneStatusIndicator: {fileID: 2321720887908894659}
-  idleStatusText: no new message
-  newMessageStatusText: read new message!
-  senderAvatar: {fileID: 350731020322176002}
-  senderName: {fileID: 1134225020085166752}
-  messageTextArea: {fileID: 260078808}
-  messageFromImanPrefab: {fileID: 328135378187191250, guid: cbb235c2bc904264b90e885e8d46f3e9, type: 3}
-  messageFromSenderPrefab: {fileID: 328135378187191250, guid: 7780fa047d580d64ab062f41b439f9d4, type: 3}
-  messageFromAppPrefab: {fileID: 249855474387582719, guid: f56a3c29aa02e5749a4f471c736d9008, type: 3}
-  source: {fileID: 577848782}
-  maxCharsPerLine: 25
-  charWidth: 10
-  charHeight: 25
-  messageVerticalMargin: 40
-  messageHorizontalMargin: 40
-  messageSpacingBetweenSenders: 10
 --- !u!82 &577848782
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2332,20 +2313,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060183510761036745}
-  m_LocalRotation: {x: 0, y: 0, z: -0.034899585, w: 0.99939084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.88509, y: 0.88509, z: 0.88509}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4132860318664126127}
   - {fileID: 2655487477331502855}
   - {fileID: 3653747951631901392}
   - {fileID: 9000156330409416698}
-  m_Father: {fileID: 5851854293208939378}
+  m_Father: {fileID: 6630426073692586099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -544, y: -64}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 512, y: 830}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2348969006986059642
@@ -2984,6 +2965,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
+--- !u!1 &3689646666011710850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6630426073692586099}
+  m_Layer: 0
+  m_Name: ANNOYING PHONE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6630426073692586099
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689646666011710850}
+  m_LocalRotation: {x: -0, y: -0, z: -0.034899585, w: 0.99939084}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.88509005, y: 0.88509005, z: 0.88509}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3861782408715910246}
+  - {fileID: 5627363568118401766}
+  m_Father: {fileID: 5851854293208939378}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -544.00006, y: -63.999985}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3811524848071638142
 GameObject:
   m_ObjectHideFlags: 0
@@ -4089,8 +4107,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 822870139012040765}
-  - {fileID: 3861782408715910246}
-  - {fileID: 5627363568118401766}
+  - {fileID: 6630426073692586099}
   - {fileID: 8643282086859964614}
   - {fileID: 6241975615080682448}
   - {fileID: 6253513521592871039}
@@ -5338,19 +5355,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8075766250845047844}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.034899585, w: 0.99939084}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.5649143, y: 0.5649143, z: 0.5649143}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5310308400683706087}
   - {fileID: 3205664389691401732}
   - {fileID: 8163713551589999063}
-  m_Father: {fileID: 5851854293208939378}
+  m_Father: {fileID: 6630426073692586099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -154, y: 94}
+  m_AnchoredPosition: {x: 1501.6597, y: -274.1456}
   m_SizeDelta: {x: 288, y: 492}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &4921601099302959774
@@ -6873,6 +6890,14 @@ PrefabInstance:
     - target: {fileID: 1139265344027073086, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4293840556
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600568536192629813, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600568536192629813, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1139265343416787161, guid: eddb40b69cbeccd44afc18d4b97d1952, type: 3}

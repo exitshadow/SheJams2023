@@ -11,7 +11,7 @@ using UnityEngine.InputSystem;
 public class AnnoyingPhone : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private UIManager uiManager;
+    [SerializeField] private AnnoyingPhoneUI phoneUI;
     [SerializeField] private AudioSource source;
     [SerializeField] private PlayerController player;
     public AnnoyingTextMessageAsset textMessagesData;
@@ -30,50 +30,48 @@ public class AnnoyingPhone : MonoBehaviour
     {
         hasNewMessages = true;
         source.Play(0);
-        uiManager.ShowNotificationOnPhone();
+        phoneUI.ShowNotificationOnPhone();
     }
 
 
     /// <summary>
     /// To be accessed through the Player Action Event OnPickUp
     /// </summary>
-    public void PickUpPhone(InputAction.CallbackContext context)
+    public void PickUpPhone()
     {
-        if (context.performed)
-        {   
-            Debug.Log("picking phone up");
-            if (hasNewMessages)
-            {
-                uiManager.OpenPhoneUI();
-                uiManager.SetSender(currentConvo.conversationAvatar, currentConvo.conversationName);
-                uiManager.DisplayReadingMessagesOnPhone();
+        Debug.Log("picking phone up");
+        if (hasNewMessages)
+        {
+            phoneUI.OpenPhoneUI();
+            phoneUI.SetSender(currentConvo.conversationAvatar, currentConvo.conversationName);
+            phoneUI.DisplayReadingMessagesOnPhone();
 
-                GetNewMessage();
+            GetNewMessage();
 
-                hasNewMessages = false;
-                IsReadingPhone = true;
-                player.MakeTypeOnPhone(true);
-            }
-            else
-            {
-                // asks UI to show a dialogue box that says there are no new messages
-                // or just nothing lol
-            }
+            hasNewMessages = false;
+            IsReadingPhone = true;
+            player.MakeTypeOnPhone(true);
         }
+        else
+        {
+            // asks UI to show a dialogue box that says there are no new messages
+            // or just nothing lol
+        }
+
     }
     public void GetNewMessage()
     {
         if (queuedTextMessages.Count == 0)
         {
-            uiManager.EraseNotificationsOnPhone();
-            uiManager.ClearMessageBox();
-            uiManager.ClosePhoneUI();
+            phoneUI.EraseNotificationsOnPhone();
+            phoneUI.ClearMessageBox();
+            phoneUI.ClosePhoneUI();
             player.MakeTypeOnPhone(false);
             IsReadingPhone = false;
             return;
         }
 
-        uiManager.ShowNewMessage(queuedTextMessages.Dequeue());
+        phoneUI.ShowNewMessage(queuedTextMessages.Dequeue());
     }
     public void FetchDialogue(int dialogueIndex)
     {
