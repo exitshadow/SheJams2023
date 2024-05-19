@@ -45,6 +45,8 @@ public abstract class NPC : MonoBehaviour
     #region component references
     protected PlayerController player;
     protected IKLookatAnimation playerLookAt;
+
+    protected DialogueBoxUI dialogueUI;
     #endregion
 
     #region dialogue tracking tools
@@ -78,7 +80,7 @@ public abstract class NPC : MonoBehaviour
     {
         onDialogueRequest?.Invoke(dialogueNode);
 
-        if (dialogueAnchor) uiManager.dialogueAnchor = dialogueAnchor;
+        if (dialogueAnchor) dialogueUI.dialogueAnchor = dialogueAnchor;
 
         StartYarnDialogue();
         ContinueDialogue();
@@ -98,11 +100,11 @@ public abstract class NPC : MonoBehaviour
     {
         //Debug.Log("Requesting View advancement");
         dialogueRunner.dialogueViews[0].UserRequestedViewAdvancement();
-        uiManager.TriggerPop();
+        dialogueUI.TriggerPop();
         
         if (!dialogueRunner.IsDialogueRunning)
         {
-            uiManager.dialogueAnchor = null;
+            dialogueUI.dialogueAnchor = null;
         }
     }
 
@@ -133,12 +135,12 @@ public abstract class NPC : MonoBehaviour
 
         if (player)
         {
-            if (dialogueAnchor) uiManager.dialogueAnchor = this.dialogueAnchor;
-            else uiManager.dialogueAnchor = uiManager.playerDialogueAnchor;
+            if (dialogueAnchor) dialogueUI.dialogueAnchor = this.dialogueAnchor;
+            else dialogueUI.dialogueAnchor = dialogueUI.playerDialogueAnchor;
 
             if (useInteractionPrompt && !AnnoyingPhone.IsReadingPhone) uiManager.ShowInteractionButton(promptText);
             if (usePlayerLookAtOnTrigger) EnablePlayerLookAt();
-            if (!isMaskableByDialogueBoxes) uiManager.CurrentInteractingNPCCollider = GetComponent<CapsuleCollider>();
+            if (!isMaskableByDialogueBoxes) dialogueUI.currentInteractingNPCCollider = GetComponent<CapsuleCollider>();
             OccupyPlayerSlot();
         }
     }
@@ -153,8 +155,8 @@ public abstract class NPC : MonoBehaviour
         if (player)
         {
             uiManager.HideInteractionButton();
-            uiManager.currentDialogueAnchor = null;
-            uiManager.CurrentInteractingNPCCollider = null;
+            dialogueUI.currentDialogueAnchor = null;
+            dialogueUI.currentInteractingNPCCollider = null;
             DisablePlayerLookAt();
             ClearPlayerSlot();
         }
@@ -197,7 +199,7 @@ public abstract class NPC : MonoBehaviour
 
     protected virtual void OnRequestInterrupt()
     {
-        uiManager.TriggerPop();
+        dialogueUI.TriggerPop();
     }
 
 }

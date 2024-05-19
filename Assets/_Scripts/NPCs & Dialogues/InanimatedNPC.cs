@@ -17,8 +17,8 @@ public class InanimatedNPC : NPC
 
             if (player)
             {
-                if (dialogueAnchor) uiManager.currentDialogueAnchor = dialogueAnchor;
-                else uiManager.currentDialogueAnchor = uiManager.playerDialogueAnchor;
+                if (dialogueAnchor) dialogueUI.currentDialogueAnchor = dialogueAnchor;
+                else dialogueUI.currentDialogueAnchor = dialogueUI.playerDialogueAnchor;
 
                 OccupyPlayerSlot();
                 RequestDialogueStart();

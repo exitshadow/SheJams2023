@@ -12,7 +12,7 @@ public class DialogueSystem : MonoBehaviour
 
     #region private fields
     private LineView lineView;
-    private UIManager ui;
+    private DialogueBoxUI dialogueBoxUIHandler;
     private List<NPC> nPCs;
     private ImanActions actions;
     private InputAction interact;
@@ -41,7 +41,7 @@ public class DialogueSystem : MonoBehaviour
     #region unity messages
     void Start()
     {
-        ui = FindObjectOfType<UIManager>();
+        dialogueBoxUIHandler = FindObjectOfType<DialogueBoxUI>();
     }
     
     private void OnEnable()
@@ -80,7 +80,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void OnRequestInterrupt()
     {
-        ui.TriggerPop();
+        dialogueBoxUIHandler.TriggerPop();
         //ui.SetColorScheme();
     }
 
