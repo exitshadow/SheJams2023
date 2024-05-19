@@ -70,6 +70,7 @@ public class AnnoyingPhoneUI : MonoBehaviour
 
     public void OpenPhoneUI()
     {
+
         phoneUIBoxGroup.gameObject.SetActive(true);
     }
 
@@ -187,11 +188,15 @@ public class AnnoyingPhoneUI : MonoBehaviour
         if (nbLines < 1 ) maxCharsFirstLine = text.Length;
         else maxCharsFirstLine = maxCharsPerLine;
 
+        if (nbLines < 1) nbLines = 1;
+
         newWidth = (charWidth * maxCharsFirstLine) + (2 * messageHorizontalMargin);
         newHeight = (nbLines * charHeight * 2) + (2 * messageVerticalMargin);
 
+
         parentRT.localScale *= uiCanvas.scaleFactor;
         parentRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
+        parentRT.SetLocalPositionAndRotation(parentRT.localPosition + new Vector3(0, - messageSpacingBetweenSenders, 0), Quaternion.identity);
         childRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
         verticalGroupRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, verticalGroupRT.sizeDelta.y + newHeight);
     }
