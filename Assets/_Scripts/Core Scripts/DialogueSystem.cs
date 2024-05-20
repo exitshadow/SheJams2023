@@ -14,9 +14,6 @@ public class DialogueSystem : MonoBehaviour
     private LineView lineView;
     private DialogueBoxUI dialogueBoxUIHandler;
     private List<NPC> nPCs;
-    private ImanActions actions;
-    private InputAction interact;
-    private InputAction playerMove;
     private bool canDialogueRun;
     #endregion
 

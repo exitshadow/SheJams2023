@@ -49,6 +49,7 @@ public abstract class NPC : MonoBehaviour
 
     protected DialogueBoxUI dialogueUI;
     protected AnchorsHandler anchorsHandler;
+    protected InteractionPromptUI interactionPrompt;
     #endregion
 
     #region dialogue tracking tools
@@ -110,7 +111,7 @@ public abstract class NPC : MonoBehaviour
         {
             onDialogueStarted?.Invoke();
             dialogueRunner.StartDialogue(dialogueNode);
-            uiManager.HideInteractionButton();
+            if (interactionPrompt) interactionPrompt.HideInteractionButton();
         }
     }
 
@@ -140,7 +141,12 @@ public abstract class NPC : MonoBehaviour
         {
             OccupyPlayerSlot();
 
-            if (useInteractionPrompt && !AnnoyingPhone.IsReadingPhone) uiManager.ShowInteractionButton(promptText);
+            if (useInteractionPrompt && !AnnoyingPhone.IsReadingPhone && interactionPrompt)
+            {
+                interactionPrompt.ShowInteractionButton(promptText);
+            }
+            else if (!interactionPrompt) Debug.LogWarning("No interaction prompt has been found in the scene.");
+
             if (usePlayerLookAtOnTrigger) EnablePlayerLookAt();
             if (!isMaskableByDialogueBoxes) dialogueUI.currentInteractingNPCCollider = GetComponent<CapsuleCollider>();
         }
@@ -155,7 +161,7 @@ public abstract class NPC : MonoBehaviour
 
         if (player)
         {
-            uiManager.HideInteractionButton();
+            if (interactionPrompt) interactionPrompt.HideInteractionButton();
             anchorsHandler.ClearDialogueAnchors();
             dialogueUI.currentInteractingNPCCollider = null;
             DisablePlayerLookAt();
@@ -212,6 +218,7 @@ public abstract class NPC : MonoBehaviour
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
         dialogueUI = FindFirstObjectByType<DialogueBoxUI>();
         anchorsHandler = FindFirstObjectByType<AnchorsHandler>();
+        interactionPrompt = FindFirstObjectByType<InteractionPromptUI>();
     }
 
 }

@@ -171,7 +171,10 @@ public class DialogueBoxUI : MonoBehaviour
         public void PlaceDialogueBoxInScreen()
     {
         // initial values;
-        Vector2 screenPos = WorldToCanvasPoint(anchorsHandler.CurrentDialogueAnchor.position);
+        Vector2 screenPos = UIManager.WorldToCanvasPoint(   anchorsHandler.CurrentDialogueAnchor.position,
+                                                            screenBoundRight, screenBoundTop,
+                                                            0, 0);
+
         float pivotX = 0;
         float pivotY = 0;
 
@@ -276,8 +279,13 @@ public class DialogueBoxUI : MonoBehaviour
         // convert world corner points to screen corners and scale
         for (int i = 0; i < pCornersWS.Length; i++)
         {
-            pCornersCS[i] = WorldToCanvasPoint(pCornersWS[i]);
-            npCornersCS[i] = WorldToCanvasPoint(npCornersWS[i]);
+            pCornersCS[i] = UIManager.WorldToCanvasPoint(   pCornersCS[i],
+                                                            screenBoundRight, screenBoundTop,
+                                                            0, 0);
+
+            npCornersCS[i] = UIManager.WorldToCanvasPoint(   npCornersCS[i],
+                                                            screenBoundRight, screenBoundTop,
+                                                            0, 0);
         }
 
         // initialize canvas space bounds
@@ -427,26 +435,6 @@ public class DialogueBoxUI : MonoBehaviour
 
 
         dialogueBoxGroup.anchoredPosition = new Vector2(newX, newY);
-    }
-    #endregion
-
-    #region utils
-    private Vector2 ScaleToScreen(Vector2 coordinate)
-    {
-        float x = coordinate.x / Camera.main.pixelWidth / (screenBoundRight + screenMargin);
-        float y = coordinate.y / Camera.main.pixelHeight / (screenBoundTop + screenMarginY);
-
-        return new Vector2(x, y);
-    }
-
-    private Vector2 WorldToCanvasPoint(Vector3 position)
-    {
-        Vector2 coordinate = Camera.main.WorldToScreenPoint(position);
-
-        float x = coordinate.x / (Camera.main.pixelWidth / (screenBoundRight + screenMargin));
-        float y = coordinate.y / (Camera.main.pixelHeight / (screenBoundTop + screenMarginY));
-
-        return new Vector2(x, y);
     }
     #endregion
 }
