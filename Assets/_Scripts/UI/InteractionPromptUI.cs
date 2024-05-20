@@ -11,6 +11,11 @@ public class InteractionPromptUI : MonoBehaviour
     private AnchorsHandler anchorsHandler;
 
     #region unity lifecycle
+    void Awake()
+    {
+        anchorsHandler = FindFirstObjectByType<AnchorsHandler>();
+    }
+
     void Start()
     {
         HideInteractionButton();
