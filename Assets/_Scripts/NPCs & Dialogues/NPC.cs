@@ -202,6 +202,7 @@ public abstract class NPC : MonoBehaviour
 
     protected void OccupyPlayerSlot()
     {
+        //anchorsHandler.SetAnchors();
         if (dialogueAnchor) anchorsHandler.SetTargetDialogueAnchor(dialogueAnchor);
         else anchorsHandler.SetPlayerAnchorAsTarget();
 

@@ -1,5 +1,7 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using Yarn.Unity;
 
 public class AnchorsHandler : MonoBehaviour
 {
@@ -8,7 +10,13 @@ public class AnchorsHandler : MonoBehaviour
     public Transform CurrentDialogueAnchor { get; private set; }
     public Transform PlayerDialogueAnchor { get { return _playerDialogueAnchor; } }
 
-    [SerializeField] TextMeshProUGUI speakerName;
+    [SerializeField] private TextMeshProUGUI speakerName;
+
+    [Header("Debug options")]
+    [SerializeField] private bool debug;
+    private GameObject debugGO;
+    private DialogueRunner dialogueRunner;
+
 
     #region unity lifecycle
     void OnEnable()
@@ -20,9 +28,20 @@ public class AnchorsHandler : MonoBehaviour
     {
         TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
     }
+
+    void Awake()
+    {
+        if (debug) debugGO = new GameObject("DEBUG ANCHOR POSITION");
+        CurrentDialogueAnchor = PlayerDialogueAnchor;
+    }
+
+    void Update()
+    {
+        if (debug) debugGO.transform.position = CurrentDialogueAnchor.position;
+    }
     #endregion
 
-    public void SetAnchors(string speakerName)
+    public void PlaceAnchors(string speakerName)
     {
         // place anchors
         if (CurrentDialogueAnchor == null) return;
@@ -45,6 +64,7 @@ public class AnchorsHandler : MonoBehaviour
 
     public void SetTargetDialogueAnchor(Transform target)
     {
+        Debug.Log($"setting target dialogue anchor");
         TargetDialogueAnchor = target;
     }
 
@@ -58,6 +78,8 @@ public class AnchorsHandler : MonoBehaviour
     {
         if (objectChanged == speakerName)
         {
+            PlaceAnchors(speakerName.text);
+
             if (speakerName.text == "Iman")
             {
                 CurrentDialogueAnchor = _playerDialogueAnchor;

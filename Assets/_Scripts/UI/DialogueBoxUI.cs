@@ -115,6 +115,7 @@ public class DialogueBoxUI : MonoBehaviour
 
     public void UpdateDialogueLine(string speakerName, string dialogueLine)
     {
+        Debug.Log("updating dialogue lines");
         dialogueSpeakerNameTMP.text = speakerName;
         dialogueContentTMP.text = dialogueLine;
     }
