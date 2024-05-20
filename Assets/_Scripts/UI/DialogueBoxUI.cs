@@ -7,11 +7,6 @@ using UnityEngine.UI.ProceduralImage;
 
 public class DialogueBoxUI : MonoBehaviour
 {
-    [SerializeField] private bool showDialogueAtStart;
-    public Transform dialogueAnchor;
-    public Transform playerDialogueAnchor;
-    [HideInInspector] public Transform currentDialogueAnchor;
-
     [Header("Dialogue Box References")]
     [SerializeField] private RectTransform dialogueBoxGroup;
     [SerializeField] private TextMeshProUGUI dialogueSpeakerNameTMP;
@@ -60,12 +55,17 @@ public class DialogueBoxUI : MonoBehaviour
     private ProceduralImage placeHolderImg;
 
     private Canvas canvas;
+    private AnchorsHandler anchorsHandler;
+
+    [Header("Options")]
+    [SerializeField] private bool showDialogueAtStart;
     [SerializeField] private bool debug;
 
     #region Unity Messages
     void Awake()
     {
         canvas = FindFirstObjectByType<Canvas>();
+        anchorsHandler = FindFirstObjectByType<AnchorsHandler>();
 
         RegisterColorScheme();
 
@@ -74,12 +74,17 @@ public class DialogueBoxUI : MonoBehaviour
 
         if (showDialogueAtStart) OpenDialogueBox();
         else CloseDialogueBox();
+
+        playerCollider = FindObjectOfType<PlayerController>().GetComponent<CapsuleCollider>();
+        GetScreenBoundsWithMargins();
+
+        RegisterColorScheme();
     }
 
     void Update()
     {
         #region place dialogue box on screen
-        if (currentDialogueAnchor != null)
+        if (anchorsHandler.CurrentDialogueAnchor != null)
         {
             PlaceDialogueBoxInScreen();
             TrackDialogueBoxBounds();
@@ -112,19 +117,6 @@ public class DialogueBoxUI : MonoBehaviour
     {
         dialogueSpeakerNameTMP.text = speakerName;
         dialogueContentTMP.text = dialogueLine;
-
-        // place anchors
-        if (currentDialogueAnchor == null) return;
-
-        if (speakerName == "Iman" || speakerName == "Game Manager")
-        {
-            currentDialogueAnchor = playerDialogueAnchor;
-        }
-        else
-        {
-            if (dialogueAnchor == null) currentDialogueAnchor = playerDialogueAnchor;
-            else currentDialogueAnchor = dialogueAnchor;
-        }
     }
     #endregion
 
@@ -179,7 +171,7 @@ public class DialogueBoxUI : MonoBehaviour
         public void PlaceDialogueBoxInScreen()
     {
         // initial values;
-        Vector2 screenPos = WorldToCanvasPoint(currentDialogueAnchor.position);
+        Vector2 screenPos = WorldToCanvasPoint(anchorsHandler.CurrentDialogueAnchor.position);
         float pivotX = 0;
         float pivotY = 0;
 

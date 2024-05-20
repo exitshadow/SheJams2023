@@ -17,9 +17,6 @@ public class InanimatedNPC : NPC
 
             if (player)
             {
-                if (dialogueAnchor) dialogueUI.currentDialogueAnchor = dialogueAnchor;
-                else dialogueUI.currentDialogueAnchor = dialogueUI.playerDialogueAnchor;
-
                 OccupyPlayerSlot();
                 RequestDialogueStart();
                 player.StopWalkingAnimation();

@@ -29,8 +29,9 @@ public abstract class NPC : MonoBehaviour
     [SerializeField] protected Transform playerLookAimTarget;
 
     [Header("Yarn Settings")]
-    [Tooltip("Yarn dialogue runner component. One per scene")]
-    [SerializeField] protected DialogueRunner dialogueRunner;
+    protected DialogueRunner dialogueRunner;
+
+    [Tooltip("The dialogue node corresponding to the NPC’s yarn script")]
     [SerializeField] protected string dialogueNode;
     public string DialogueNode { get {return dialogueNode;} }
 
@@ -47,6 +48,7 @@ public abstract class NPC : MonoBehaviour
     protected IKLookatAnimation playerLookAt;
 
     protected DialogueBoxUI dialogueUI;
+    protected AnchorsHandler anchorsHandler;
     #endregion
 
     #region dialogue tracking tools
@@ -54,9 +56,23 @@ public abstract class NPC : MonoBehaviour
     public bool IsPlayingDialogue { get { return dialogueRunner.IsDialogueRunning ; } }
     #endregion
 
-    #region dialogue methods
+    #region unity events
+    protected virtual void Awake()
+    {
+        FetchReferences();
+    }
 
+    protected virtual void OnEnable()
+    {
+        if (dialogueRunner)
+        {
+            (dialogueRunner.dialogueViews[0] as LineView).requestInterrupt += OnRequestInterrupt;
+            dialogueRunner.onDialogueComplete.AddListener(ClearPlayerSlot);
+        }
+    }
+    #endregion
 
+    #region public methods
     /// <summary>
     /// Dequeues the first dialogue line from the current lines in queue and sends it to the UI Manager.
     /// </summary>
@@ -75,12 +91,14 @@ public abstract class NPC : MonoBehaviour
             RequestDialogueStart();
         }
     }
+    #endregion
 
+    #region internal methods
     protected void RequestDialogueStart()
     {
         onDialogueRequest?.Invoke(dialogueNode);
 
-        if (dialogueAnchor) dialogueUI.dialogueAnchor = dialogueAnchor;
+        if (dialogueAnchor) anchorsHandler.SetTargetDialogueAnchor(dialogueAnchor);
 
         StartYarnDialogue();
         ContinueDialogue();
@@ -88,12 +106,12 @@ public abstract class NPC : MonoBehaviour
 
     protected virtual void StartYarnDialogue()
     {
-            if (!dialogueRunner.IsDialogueRunning)
-            {
-                onDialogueStarted?.Invoke();
-                dialogueRunner.StartDialogue(dialogueNode);
-                uiManager.HideInteractionButton();
-            }
+        if (!dialogueRunner.IsDialogueRunning)
+        {
+            onDialogueStarted?.Invoke();
+            dialogueRunner.StartDialogue(dialogueNode);
+            uiManager.HideInteractionButton();
+        }
     }
 
     protected virtual void GetYarnLine()
@@ -104,27 +122,12 @@ public abstract class NPC : MonoBehaviour
         
         if (!dialogueRunner.IsDialogueRunning)
         {
-            dialogueUI.dialogueAnchor = null;
+            anchorsHandler.ClearDialogueAnchors();
         }
     }
 
     #endregion
 
-    #region unity events
-    protected virtual void Awake()
-    {
-
-    }
-
-    protected virtual void OnEnable()
-    {
-        if (dialogueRunner)
-        {
-            (dialogueRunner.dialogueViews[0] as LineView).requestInterrupt += OnRequestInterrupt;
-            dialogueRunner.onDialogueComplete.AddListener(ClearPlayerSlot);
-        }
-    }
-    #endregion
 
     #region trigger events
     public virtual void OnTriggerEnter(Collider other)
@@ -135,13 +138,11 @@ public abstract class NPC : MonoBehaviour
 
         if (player)
         {
-            if (dialogueAnchor) dialogueUI.dialogueAnchor = this.dialogueAnchor;
-            else dialogueUI.dialogueAnchor = dialogueUI.playerDialogueAnchor;
+            OccupyPlayerSlot();
 
             if (useInteractionPrompt && !AnnoyingPhone.IsReadingPhone) uiManager.ShowInteractionButton(promptText);
             if (usePlayerLookAtOnTrigger) EnablePlayerLookAt();
             if (!isMaskableByDialogueBoxes) dialogueUI.currentInteractingNPCCollider = GetComponent<CapsuleCollider>();
-            OccupyPlayerSlot();
         }
     }
 
@@ -155,7 +156,7 @@ public abstract class NPC : MonoBehaviour
         if (player)
         {
             uiManager.HideInteractionButton();
-            dialogueUI.currentDialogueAnchor = null;
+            anchorsHandler.ClearDialogueAnchors();
             dialogueUI.currentInteractingNPCCollider = null;
             DisablePlayerLookAt();
             ClearPlayerSlot();
@@ -168,6 +169,7 @@ public abstract class NPC : MonoBehaviour
     public void ClearPlayerSlot()
     {
         if (player) player.currentInteractingNPC = null;
+        else Debug.LogWarning("No player has been referenced!");
     }
 
     [YarnCommand("enable_player_lookat")]
@@ -194,12 +196,22 @@ public abstract class NPC : MonoBehaviour
 
     protected void OccupyPlayerSlot()
     {
+        if (dialogueAnchor) anchorsHandler.SetTargetDialogueAnchor(dialogueAnchor);
+        else anchorsHandler.SetPlayerAnchorAsTarget();
+
         if (player) player.currentInteractingNPC = this;
     }
 
     protected virtual void OnRequestInterrupt()
     {
         dialogueUI.TriggerPop();
+    }
+
+    protected void FetchReferences()
+    {
+        dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+        dialogueUI = FindFirstObjectByType<DialogueBoxUI>();
+        anchorsHandler = FindFirstObjectByType<AnchorsHandler>();
     }
 
 }
