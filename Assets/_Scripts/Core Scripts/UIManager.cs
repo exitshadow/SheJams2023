@@ -32,11 +32,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private RectTransform controlsHelpGroup;
     [HideInInspector] public bool isControlHelpDisplayed;
 
-    [Header("Mission Indicator Reference")]
-    [SerializeField] private TextMeshProUGUI missionPromptTMP;
-    [SerializeField] private TextMeshProUGUI secondaryMissionTMP;
-
-
     #endregion
     #endregion
 
@@ -68,20 +63,6 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region mission prompt
-    [YarnCommand("change_mission_prompt")]
-    public void ChangeMissionPrompt(string prompt)
-    {
-        missionPromptTMP.text = prompt;
-    }
-
-    [YarnCommand("change_secondary_mission_prompt")]
-    public void ChangeSecondaryMissionPrompt(string prompt)
-    {
-        secondaryMissionTMP.text = prompt;
-    }
-
-    public string MissionPrompt { get { return missionPromptTMP.text; }}
-    public string SecondaryMissionPrompt { get { return secondaryMissionTMP.text; }}
 
     #endregion
 

@@ -67,17 +67,17 @@ public class GameState : MonoBehaviour
     #region mission status tracking
     public void LoadMissionsText()
     {
-        FindFirstObjectByType<UIManager>().ChangeMissionPrompt(MissionStatusText);
-        FindAnyObjectByType<UIManager>().ChangeSecondaryMissionPrompt(SecondaryMissionStatusText);
+        FindFirstObjectByType<MissionStatusUI>().ChangeMissionPrompt(MissionStatusText);
+        FindAnyObjectByType<MissionStatusUI>().ChangeSecondaryMissionPrompt(SecondaryMissionStatusText);
 
         Debug.Log("load " + MissionStatusText);
     }
 
     public void SaveMissionsText()
     {
-        Debug.Log("text found: " + FindAnyObjectByType<UIManager>().MissionPrompt);
-        string mission = FindAnyObjectByType<UIManager>().MissionPrompt;
-        string secMission = FindAnyObjectByType<UIManager>().SecondaryMissionPrompt;
+        Debug.Log("text found: " + FindAnyObjectByType<MissionStatusUI>().MissionPrompt);
+        string mission = FindAnyObjectByType<MissionStatusUI>().MissionPrompt;
+        string secMission = FindAnyObjectByType<MissionStatusUI>().SecondaryMissionPrompt;
 
         gameState.missionStatusText = mission;
         gameState.secondaryMissionStatusText= secMission;

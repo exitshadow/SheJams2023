@@ -34,7 +34,7 @@ position: 0, 0
     <<play_intonation_sound NEIGHBOUR 2>>
     Iman: Well, off I go, I guess.
     <<set $hasVisitedNeighbour to true>>
-    <<change_mission_prompt UIManager "Find the butterfly tree branch in the park">>
+    <<change_mission_prompt MissionStatusHandler "Find the butterfly tree branch in the park">>
     <<stop>>
 <<endif>>
 
@@ -78,7 +78,7 @@ position: 0, 0
             Iman: Not to break the fourth wall or anything...
         <<endif>>
     <<endif>>
-    <<change_mission_prompt UIManager "Now it is time to fix Dad's computer.">>
+    <<change_mission_prompt MissionStatusHandler "Now it is time to fix Dad's computer.">>
     <<set $hasCapturedButterflies to true>>
     <<stop>>
 <<endif>>
@@ -136,7 +136,7 @@ position: 250, 0
         Iman: Oh, right. Avoiding Dad. And his broken computer.
         <<play_intonation_sound "TREE BRANCH" 1>>
         Iman: I'm sure he just forgot to plug it in, anyway.
-        <<change_mission_prompt UIManager "Bring the branch back to avoid performing your duties.">>
+        <<change_mission_prompt MissionStatusHandler "Bring the branch back to avoid performing your duties.">>
     <<endif>>
 <<endif>>
 ===
@@ -170,7 +170,7 @@ position: 0, 200
         <<play_intonation_sound CAT 4>>
         Iman: I'm definitely not using this as an excuse to do some shopping.
         <<set $hasEncounteredCat to true>>
-        <<change_secondary_mission_prompt UIManager "Find something for the cat to eat. Like tuna!">>
+        <<change_secondary_mission_prompt MissionStatusHandler "Find something for the cat to eat. Like tuna!">>
         <<stop>>
     <<else>> // has found tuna before encountering cat first time
         Cat: *MEOW! MEOW! MEOW!*
@@ -202,7 +202,7 @@ position: 0, 200
         Cat: *purrs furiously*
         <<set $hasGivenTuna to true>>
         <<set $hasEncounteredCat to true>>
-        <<change_secondary_mission_prompt UIManager "">>
+        <<change_secondary_mission_prompt MissionStatusHandler "">>
         <<stop>>
     <<endif>>
 <<else>> // has already encountered cat
@@ -215,7 +215,7 @@ position: 0, 200
     <<else>> // has found tuna after having encountered cat first time
         Iman: Here you go, kitty.
         <<set $hasGivenTuna to true>>
-        <<change_secondary_mission_prompt UIManager "">>
+        <<change_secondary_mission_prompt MissionStatusHandler "">>
     <<endif>>
 <<endif>>
 ===
@@ -251,7 +251,7 @@ position: 250, 200
     <<set $hasFoundTuna to true>>
     <<disable_player_lookat "TUNA CAN">>
     <<disable_tuna_can "TUNA CAN">>
-    <<change_secondary_mission_prompt UIManager "Great powers mean great responsibilities. Great tuna means... a great kitten?">>
+    <<change_secondary_mission_prompt MissionStatusHandler "Great powers mean great responsibilities. Great tuna means... a great kitten?">>
 <<endif>>
 ===
 
